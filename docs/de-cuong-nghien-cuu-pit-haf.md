@@ -1,384 +1,198 @@
 # Đề cương nghiên cứu PiT-HAF
 
-## 1. Định vị đề tài
+Cập nhật: 06/10/2026. Bản đề xuất 0.1, chưa freeze protocol và chưa có kết quả
+thực nghiệm. Bản trước sửa được giữ trong snapshot audit local; tài liệu này
+thay kế hoạch Mỹ/48 giờ bằng phạm vi Việt Nam đầy đủ theo các milestone.
 
-### Tên đề xuất
+Tiến độ kỹ thuật ngày17/10: đã cài Ollama, thêm snapshots/gateway và chạy
+pilot trích xuất; xem [báo cáo08](research/08-local-pilot-results.md). Phần
+"trạng thái hiện tại" ở cuối ghi mốc khảo sát06/10; chưa có kết quả dự báo/backtest.
 
-**Tiếng Việt**
+## 1. Tên và mục tiêu
 
-> Nghiên cứu các kỹ thuật LLM và Agentic-RAG nhận biết thời điểm để phát triển hệ thống Agentic AI đáng tin cậy cho phân tích và hỗ trợ quyết định tài chính
+**Tiếng Việt:** PiT-HAF: Khung Agentic-RAG phân cấp có kiểm soát Point-in-Time
+cho phân tích và hỗ trợ quyết định cổ phiếu Việt Nam.
 
-**Tiếng Anh**
+**Tiếng Anh:** PiT-HAF: A Point-in-Time Hierarchical Agentic-RAG Framework
+for Vietnamese Stock Analysis and Decision Support.
 
-> PiT-HAF: A Point-in-Time Hierarchical Agentic-RAG Framework for Trustworthy Financial Analysis and Decision Support
+Thị trường chính là Việt Nam. Mỹ chỉ là tham khảo literature hoặc chuyển miền
+khi có yêu cầu sau. Dùng LLM pretrained, ưu tiên inference local qua Ollama;
+không bắt buộc training từ đầu hoặc fine-tuning. Nhiều vai trò agent có thể
+chia sẻ một model và gọi lần lượt mà vẫn giữ kiến trúc phân cấp đầy đủ.
 
-PiT-HAF là tên làm việc. Cách viết đầy đủ cần được điều chỉnh nếu nhóm nghiên cứu đã quy định ý nghĩa khác cho chữ HAF.
+Mục tiêu là hệ thống chạy thật, phương pháp kiểm chứng được, thực nghiệm có
+đối chứng và hồ sơ giúp sinh viên giải thích/bảo vệ. Tên HAF, agent phân cấp
+và graph đã có tiền lệ; không tự xem chúng là tính mới của khóa luận.
 
-## 2. Phân biệt hai mục tiêu
+## 2. Tác vụ chính và dữ liệu
 
-### Milestone kỹ thuật trong 1-2 ngày
+Tại `decision_at`, phân tích doanh nghiệp từ bằng chứng đã khả dụng, sinh báo
+cáo có citations và dự đoán hướng lợi suất **5 phiên**. Đơn vị mẫu đề xuất là
+một sự kiện công bố BCTC hợp nhất; loại báo cáo/công bố khác bổ sung retrieval.
+Bản sửa không tự tạo mẫu độc lập trong thí nghiệm chính.
 
-Mục tiêu là chứng minh pipeline chạy xuyên suốt:
+Decision đề xuất lúc 16:00 Asia/Ho_Chi_Minh của phiên đầu có đủ bằng chứng theo
+policy đã đăng ký. Phiên giao dịch kế tiếp là s0; nhãn dùng
+`close(s4) / open(s0) - 1`, gồm 5 phiên s0–s4. UP nếu dương, DOWN nếu không dương.
+ABSTAIN xử lý thiếu evidence/lỗi/bất định, được báo cáo bằng coverage riêng.
+Giá open/close là mốc tham chiếu; không chứng minh có thể khớp đúng giá đó.
 
-- tải hoặc đọc dữ liệu đã cache;
-- chạy ít nhất ba baseline định lượng;
-- sinh một quyết định mẫu theo schema cố định;
-- lưu metric và nhật ký;
-- frontend đọc được kết quả và hiển thị biểu đồ;
-- có kiểm tra đơn giản rằng không dùng dữ liệu sau `as_of_time`.
+Giữ prediction, confidence và policy danh mục riêng. Cấu hình đầu long-only,
+UP có thể mở vị thế theo ngân sách 1/N_universe; DOWN/ABSTAIN không mở mới.
+Tồn kho và lệnh thoát đã cam kết phải tuân thủ timeline/lịch thanh toán. Engine
+phải xác minh quy định Việt Nam theo giai đoạn trước khi gọi mô phỏng khả thi.
+Labels/giá tương lai chỉ evaluator đọc, không đưa vào agent hoặc retrieval.
 
-Milestone này **không phải đóng góp khoa học cuối cùng** và không dùng để kết luận PiT-HAF tốt hơn các phương pháp khác.
+Thu thập OHLCV, VNINDEX, BCTC, báo cáo thường niên, giải trình/công bố và tin có
+provenance. Pilot mục tiêu 24 case thật, sau đó hướng tới 10–20 mã/ít nhất 3
+ngành/vài năm nếu nguồn đáp ứng. Chọn theo coverage đăng ký trước, không theo
+lợi suất tương lai. Universe lịch sử/delisting thiếu phải ghi survivorship bias.
+Chưa có corpus đủ để xác nhận cỡ mẫu hoặc chọn model.
 
-### Mục tiêu khóa luận trong nhiều tháng
+Chi tiết công thức, timestamp chỉ có ngày, giá điều chỉnh, corporate actions,
+policy và các quyết định cần xác nhận nằm trong [task protocol](research/01-task-protocol.md).
 
-Thiết kế, hiện thực và đánh giá một framework Agentic-RAG cho tài chính có khả năng:
+## 3. Câu hỏi nghiên cứu
 
-1. bảo đảm tính Point-in-Time trên toàn bộ vòng đời dữ liệu;
-2. kết hợp dữ liệu có cấu trúc và phi cấu trúc;
-3. phân rã tác vụ theo cấu trúc agent phân cấp;
-4. kiểm tra bằng chứng, xung đột và rủi ro trước khi ra quyết định;
-5. đánh giá đồng thời chất lượng dự đoán, giao dịch, retrieval, độ tin cậy và chi phí hệ thống.
-
-## 3. Khoảng trống nghiên cứu
-
-Từ các bài đã đọc, có thể hình thành khoảng trống sau:
-
-- Các hệ thống multi-agent như ElliottAgents và TradingAgents tập trung vào phân vai và hiệu quả giao dịch, nhưng kiểm soát look-ahead bias chưa phải thành phần kiến trúc trung tâm.
-- MASTER cung cấp đối chứng định lượng mạnh nhưng không giải quyết retrieval, bằng chứng hay sự nhiễm kiến thức tương lai của LLM.
-- CARAG có causal-temporal knowledge graph, lọc tài liệu theo thời điểm và entity masking, nhưng chưa xây một giao thức kiểm toán Point-in-Time tổng quát xuyên qua retrieval, memory, tool calls, cache và agent communication.
-- Look-Ahead-Bench đo alpha decay trong workflow giao dịch nhưng chưa cung cấp một kiến trúc Agentic-RAG hoàn chỉnh để ngăn leakage; benchmark hiện còn hẹp về số mã và số regime.
-- Profit Mirage/FactFin đặt vấn đề leakage và counterfactual reasoning, mở ra nhu cầu kết hợp kiểm soát thời gian, truy xuất bằng chứng và kiểm định phản thực trong một framework thống nhất.
-
-Khoảng trống có thể phát biểu:
-
-> Chưa có đủ bằng chứng về việc một kiến trúc Agentic-RAG được kiểm soát Point-in-Time ở mức hệ thống có cải thiện khả năng tổng quát ngoài cutoff, chất lượng bằng chứng và hiệu quả điều chỉnh rủi ro so với RAG hoặc multi-agent thông thường hay không.
-
-Đây là **giả thuyết về khoảng trống**, cần được xác nhận bằng systematic literature review trước khi tuyên bố là đóng góp mới.
-
-## 4. Đóng góp dự kiến
-
-### C1. Bi-temporal financial evidence model
-
-Mỗi dữ kiện có ít nhất hai mốc thời gian:
-
-- `event_time`: thời điểm sự kiện kinh tế diễn ra;
-- `available_time`: thời điểm thông tin thực sự có thể quan sát bởi nhà đầu tư.
-
-Hệ thống chỉ được sử dụng bằng chứng có `available_time <= as_of_time`. Cách biểu diễn này xử lý trường hợp báo cáo quý mô tả sự kiện cũ nhưng được công bố muộn hơn.
-
-### C2. Time-gated hybrid retrieval
-
-Pipeline truy xuất theo thứ tự:
-
-```text
-Temporal filtering
-    -> metadata/structured filtering
-    -> semantic or graph retrieval
-    -> reranking
-    -> evidence packaging
-```
-
-Temporal gate chạy trước semantic search và trước khi đưa dữ liệu vào cache/memory của agent.
-
-### C3. Hierarchical agent framework
-
-Các agent tầng chuyên môn tạo memo độc lập; verifier kiểm tra bằng chứng và timestamp; risk agent kiểm tra độ chắc chắn; synthesizer chỉ được sử dụng các claim đã qua xác minh.
-
-### C4. Point-in-Time audit ledger
-
-Mỗi lần retrieval, tool call, memory read và agent handoff sinh một bản ghi có:
-
-- query;
-- thời điểm quyết định;
-- danh sách document ID;
-- `available_time` của từng tài liệu;
-- agent sử dụng tài liệu;
-- claim được tạo;
-- trạng thái xác minh.
-
-Ledger cho phép tính trực tiếp tỷ lệ vi phạm thời gian và tái lập từng quyết định.
-
-### C5. Evaluation protocol
-
-Đánh giá cùng lúc:
-
-- dự đoán;
-- hiệu quả giao dịch sau phí;
-- look-ahead leakage;
-- retrieval và faithfulness;
-- robustness qua regime;
-- chi phí và độ trễ.
-
-## 5. Câu hỏi và giả thuyết nghiên cứu
-
-### RQ1 - Point-in-Time control
-
-Time-gated retrieval có làm giảm leakage và alpha decay so với static RAG không?
-
-**H1:** PiT retrieval làm giảm đáng kể timestamp violation và giảm độ suy giảm ngoài cutoff.
-
-### RQ2 - Agent decomposition
-
-Phân rã tác vụ phân cấp có tốt hơn single-agent khi cùng dùng một tập bằng chứng không?
-
-**H2:** PiT-HAF cải thiện Macro-F1/MCC và evidence coverage so với PiT-RAG single-agent.
-
-### RQ3 - Verification
-
-Verifier và risk agent có giảm hallucination, unsupported claims và quyết định quá tự tin không?
-
-**H3:** Verifier giảm unsupported-claim rate và cải thiện calibration, đổi lại latency và token cost tăng.
-
-### RQ4 - Causal-temporal retrieval
-
-Kết hợp truy xuất theo lịch sử doanh nghiệp, đối thủ cùng ngành và quan hệ nguyên nhân có tốt hơn vector retrieval thuần túy không?
-
-**H4:** Hybrid retrieval cải thiện evidence precision và hiệu quả ở các chân trời sau earnings announcement.
-
-### RQ5 - Generalization
-
-Kết quả có giữ được qua nhiều giai đoạn thị trường, nhóm vốn hóa và ngành hay không?
-
-**H5:** Lợi ích của PiT-HAF vẫn tồn tại sau khi thay đổi regime và universe, nhưng mức cải thiện sẽ khác nhau theo chất lượng dữ liệu.
-
-## 6. Kiến trúc đề xuất
-
-```text
-                         +----------------------+
-User task + as_of_time ->| Planner/Task Router  |
-                         +----------+-----------+
-                                    |
-                     +--------------v---------------+
-                     | Point-in-Time Data Gateway   |
-                     | event_time / available_time  |
-                     +--------------+---------------+
-                                    |
-                 +------------------v------------------+
-                 | Hybrid Retriever                   |
-                 | structured + vector + graph/time   |
-                 +-----+---------------+---------------+
-                       |               |
-          +------------v--+         +--v----------------+
-          | Historical &  |         | Market/Technical  |
-          | Fundamental   |         | Agent             |
-          | Agent         |         +-------------------+
-          +-------+-------+                   |
-                  |                +----------v----------+
-                  +--------------->| Evidence Verifier  |
-                                   +----------+----------+
-                                              |
-                                   +----------v----------+
-                                   | Risk/Uncertainty    |
-                                   | Agent               |
-                                   +----------+----------+
-                                              |
-                                   +----------v----------+
-                                   | Synthesizer         |
-                                   +----------+----------+
-                                              |
-                         Decision + evidence + audit log
-```
-
-Kiến trúc có thể mở rộng thêm News/Sentiment Agent và Peer Agent sau khi bản tối thiểu ổn định.
-
-## 7. Dữ liệu đề xuất
-
-### Tập chính: thị trường Mỹ
-
-Lý do chọn làm thí nghiệm chính:
-
-- có earnings-call transcript, SEC filings và OHLCV;
-- dễ đối chiếu CARAG, TradingAgents và Look-Ahead-Bench;
-- thuận lợi cho tái lập và so sánh quốc tế.
-
-Các lớp dữ liệu:
-
-1. giá và khối lượng theo ngày;
-2. earnings-call transcript;
-3. 10-Q/10-K và financial statements;
-4. ngày/giờ công bố thực tế;
-5. sector/peer mapping;
-6. tùy chọn: tin tức có timestamp đáng tin cậy.
-
-### Tập kiểm chứng mở rộng: Việt Nam
-
-Có thể dùng như case study cuối khóa luận nếu thu thập được dữ liệu công bố đáng tin cậy. Không nên dùng làm tập chính ngay từ đầu vì transcript, timestamp và dữ liệu doanh nghiệp có thể thiếu hoặc khó chuẩn hóa. Giá trị của tập này là chứng minh khả năng chuyển miền, không nhất thiết phải tái tạo toàn bộ benchmark Mỹ.
-
-## 8. Baseline đầy đủ
-
-### Nhóm định lượng
-
-- Buy & Hold.
-- Equal Weight.
-- Momentum 3M.
-- Mean Reversion 3M.
-- MA Crossover 50/100.
-- XGBoost hoặc LightGBM với feature kỹ thuật.
-- MASTER nếu tái hiện được ổn định ở giai đoạn sau.
-
-### Nhóm LLM/RAG
-
-- LLM không retrieval.
-- LLM + wide context.
-- Static vector RAG.
-- Single-agent Agentic-RAG.
-- TradingAgents hoặc framework multi-agent tương đương.
-- Multi-agent không PiT gate.
-- PiT single-agent RAG.
-- PiT-HAF đầy đủ.
-
-## 9. Ablation bắt buộc
-
-| Biến thể | Thành phần bị loại | Câu hỏi kiểm tra |
+| RQ | Câu hỏi kiểm chứng | Đối chứng và phép đo chính |
 |---|---|---|
-| A1 | Temporal gate | leakage tăng bao nhiêu? |
-| A2 | Causal/graph retrieval | vector-only có đủ không? |
-| A3 | Peer context | thông tin ngành đóng góp bao nhiêu? |
-| A4 | Agent hierarchy | single-agent có tương đương không? |
-| A5 | Verifier | hallucination và calibration thay đổi thế nào? |
-| A6 | Memory | historical consistency thay đổi thế nào? |
-| A7 | Entity masking | mô hình có dựa vào ký ức về ticker không? |
-| A8 | Counterfactual test | quyết định có phản ứng đúng với biến đổi nguyên nhân không? |
+| RQ1 | Gate và lựa chọn đúng revision giảm tiếp xúc bằng chứng tương lai thế nào? | Future/revision injection; exposure thực sự, version error; no-gate chỉ diagnostic |
+| RQ2 | Phân cấp giúp phân tích/dự đoán và coverage thế nào trên cùng dữ liệu/model? | PiT single-agent, multi-agent đối chứng, PiT-HAF; rubric/F1/MCC/coverage và budget |
+| RQ3 | Verifier giảm claim thiếu căn cứ, citation và số liệu sai với chi phí nào? | Bỏ verifier; gold quote/numeric/claim support, latency/tokens/failure |
+| RQ4 | Hybrid retrieval, graph và peer thêm giá trị gì so với vector-only? | Ablation tách các thành phần; retrieval gold, report quality, prediction |
+| RQ5 | Memory kiểm soát thời gian giúp gì và kết quả ổn định đến đâu? | Bỏ memory; replay quá khứ sau tương lai, ngành/regime/data quality/model robustness |
 
-## 10. Metric
+Giả thuyết về cải thiện phải được kiểm định; không đặt kết luận tích cực làm
+điều kiện thành công. Kết quả âm vẫn có giá trị nếu phương pháp, failures và
+phân tích giới hạn được báo cáo đủ.
 
-### Prediction
+## 4. Literature và đóng góp dự kiến
 
-- Macro-F1;
-- MCC;
-- balanced accuracy;
-- Brier score hoặc expected calibration error;
-- kết quả theo horizon 1/3/7/15/30 ngày.
+Đã đối chiếu phương pháp/giới hạn trong paper gốc
+[CARAG](https://aclanthology.org/2026.eacl-long.141/),
+[Look-Ahead-Bench](https://arxiv.org/abs/2601.13770) và
+[Profit Mirage](https://arxiv.org/abs/2510.07920).
+Chưa tái hiện code của các paper; TradingAgents/FinMem/MASTER mới kiểm metadata
+và abstract trong lượt khảo sát. Chưa có systematic review để tuyên bố tính mới.
 
-### Trading
+| Phần | Artifact đề xuất | Đánh giá | Trạng thái |
+|---|---|---|---|
+| C1: evidence có provenance/revision | Schema, raw snapshots, source/time proof, version query | QA nguồn, wrong-version/late-publication cases | Guard nhỏ đã có; schema/pipeline đầy đủ chưa có |
+| C2: gateway xuyên vòng đời | Retrieval/tool/cache/graph/memory/memo cùng eligibility | Future injection và replay không đổi context hợp lệ | Đề xuất tích hợp, chưa hiện thực |
+| C3: orchestration có kiểm chứng | Contracts, bounded workflow, verifier/risk/ABSTAIN, trace | Hierarchy/verifier/memory ablations + costs | Kế thừa vai trò, đề xuất kiểm soát, chưa hiện thực |
+| C4: bộ đánh giá Việt Nam | Samples/splits/labels/gold evidence/rubric/data card | Coverage, agreement, metrics/paired CI | Chưa thu thập/gán nhãn đủ |
+| C5: gói tái lập | Manifest/digests/raw responses/failures/replay | Một case replay và experiment matrix | Doctor source snapshot đã có; runner nghiên cứu chưa có |
 
-- cumulative và annualized return;
-- Sharpe/Sortino;
-- maximum drawdown;
-- volatility;
-- turnover;
-- return sau transaction cost;
-- alpha so với Buy & Hold/Equal Weight.
+[Ma trận contribution/literature](research/02-literature-contributions.md)
+phân biệt kế thừa, tích hợp, đề xuất và claim cần xác nhận. Schema có event và
+availability chưa đủ gọi bi-temporal: cần semantics thời gian hệ thống và query
+lịch sử đầy đủ nếu dùng thuật ngữ đó.
 
-### Point-in-Time và leakage
+## 5. Kiến trúc và ràng buộc thời gian
 
-- timestamp violation rate;
-- future-document exposure rate;
-- alpha decay qua các period;
-- độ nhạy khi che ticker/entity;
-- chênh lệch trước/sau knowledge cutoff;
-- hiệu năng trên counterfactual inputs.
+```mermaid
+flowchart TD
+  Q[Task, ticker, decision_at, horizon] --> P[Bounded planner/router]
+  P --> G[Point-in-Time gateway: source/time/version eligibility]
+  G --> H[Structured, lexical, vector, temporal graph retrieval]
+  H --> F[Fundamental/Historical agent]
+  H --> T[Technical/Market agent]
+  H --> N[News/Event agent]
+  H --> I[Peer/Industry agent]
+  F --> V[Evidence verifier]
+  T --> V
+  N --> V
+  I --> V
+  V --> R[Risk/Uncertainty, ABSTAIN]
+  R --> S[Hierarchical synthesizer]
+  S --> O[Report, prediction, policy, audit]
+  M[Versioned memory/cache] --> G
+  G --> A[Durable audit, evaluator only]
+  O --> E[Separate evaluation/backtest]
+  L[Future labels/outcomes] --> E
+```
 
-### RAG và giải thích
+Mọi document/chunk/fact/edge/tool/cache/memory/memo phải hợp lệ tại cutoff.
+Chọn revision sau khi loại tương lai. Eligibility áp dụng trước candidate set,
+corpus statistics, reranking và context; không mặc định metadata filter đủ với
+ANN/BM25. Derived memo cần lineage hợp lệ; cache phải chứa cutoff/snapshot/
+config/model/prompt; memory baseline và replay phải cô lập. Audit có thể giữ
+metadata tương lai cho evaluator, không đưa metadata đó vào prompt.
 
-- retrieval precision/recall trên tập gán nhãn;
-- citation correctness;
-- evidence coverage;
-- unsupported claim rate;
-- faithfulness được chấm thủ công và bằng rubric cố định.
+Graph có evidence/time/version, phân biệt quan hệ được tác giả báo cáo với
+suy luận LLM; không coi tên causal graph là chứng minh nhân quả. Verifier tách
+kiểm quote/locator/time/số học deterministic với semantic/human checks.
+Confidence tự báo không mặc định là probability đã calibration.
 
-### Hệ thống
+Structured adapter có schema validation, timeout/retry/budget hữu hạn, raw
+response và model digest/config. Không âm thầm đổi model khi lỗi. Mock chỉ dùng
+kiểm thử, có nhãn và bị loại khỏi bảng nghiên cứu. Temporal gate kiểm dữ liệu
+ngoài, không loại bỏ tri thức tương lai trong trọng số LLM.
 
-- latency theo agent và toàn pipeline;
-- input/output tokens;
-- chi phí mỗi quyết định;
-- failure/retry rate.
+Contracts, budgets, threat model và sơ đồ timeline trong
+[kiến trúc đầy đủ](research/03-architecture.md).
 
-## 11. Thiết kế thực nghiệm chống leakage
+## 6. Thực nghiệm và tiêu chí đánh giá
 
-1. Mọi bản ghi dùng `available_time`, không dùng riêng kỳ tài chính hoặc ngày sự kiện.
-2. Tách train/validation/test theo thời gian; không random split.
-3. Feature normalization chỉ fit trên train.
-4. Retrieval index cho thời điểm `t` chỉ chứa dữ liệu quan sát được tại `t` hoặc dùng pre-filter cứng trước truy vấn.
-5. Backtest khớp lệnh ở thời điểm thực tế có thể hành động, ví dụ T+1 sau earnings call.
-6. Tính phí giao dịch và slippage theo nhiều kịch bản.
-7. Cố định model snapshot, prompt, temperature và seed; lưu raw response.
-8. Đánh giá ít nhất ba regime và nhiều ngành; không chỉ năm mã công nghệ.
-9. Dùng block bootstrap hoặc kiểm định phù hợp với chuỗi thời gian thay vì coi mọi quyết định độc lập.
-10. Báo cáo cả kết quả âm và lỗi pipeline, không chỉ chọn những giao dịch tốt.
+Nhóm định lượng: Buy & Hold, Equal Weight, VNINDEX đối chứng chỉ số,
+Momentum/MA và Logistic Regression cùng feature/cutoff. Nhóm LLM: single LLM
+không retrieval, naive vector RAG trên corpus hợp lệ, PiT single-agent,
+multi-agent đối chứng và PiT-HAF. Giữ universe/samples/split/model/timeline,
+báo budget và so sánh theo token budget; portfolio baseline không có F1.
 
-## 12. Lộ trình nhiều tháng
+Ablation đầy đủ: hybrid/vector-only (tách thêm lexical/structured), graph,
+peer, hierarchy, verifier, memory. No-gate/future injection chỉ chẩn đoán
+leakage, không là thành tích đầu tư. Masking và counterfactual là stress tests,
+không chứng minh đã loại memorization. External paper baselines có thể thêm
+khi tái hiện phù hợp; không gọi bản rút gọn là reproduction chính xác.
 
-### Giai đoạn 1 - Khảo sát và đặc tả
+Split train/development/validation/test theo thời gian, purge label intervals,
+embargo theo horizon; prompt/model/scaler/threshold/calibration chỉ fit trên
+phần được phép. Freeze trước test. Báo denominator, coverage/ABSTAIN/failures,
+metric evidence/time/version, prediction, net/gross backtest và hệ thống.
+Bootstrap paired theo block thời gian/sự kiện, xử lý multiple comparisons;
+không coi mọi mã cùng ngày là độc lập hoặc thiếu significance là tương đương.
 
-- systematic literature review;
-- chốt task, dataset và định nghĩa Point-in-Time;
-- viết data card, threat model và evaluation protocol;
-- tái hiện baseline định lượng.
+Gold rubric chấm citation/support/numeric/coverage/report quality bằng người,
+đo agreement nếu có hai người; một người phải công bố giới hạn và chấm lại.
+Không dùng chính model thử nghiệm làm ground truth duy nhất.
 
-### Giai đoạn 2 - Data engineering
+Công thức, matrix, rubric và protocol thống kê nằm trong
+[đặc tả thực nghiệm](research/04-experiments-metrics.md).
 
-- xây bi-temporal schema;
-- ingestion cho transcript, filings và market data;
-- chuẩn hóa `available_time`;
-- test chống future leakage;
-- tạo các time-sliced index.
+## 7. Lộ trình và tài nguyên
 
-### Giai đoạn 3 - Baseline LLM/RAG
+Giữ toàn bộ phạm vi qua M1–M7: audit/đặc tả/literature/data/local pilot;
+snapshot/gateway/quant; adapter/hybrid PiT single-agent; graph/peer/specialists/
+hierarchy; verifier/risk/memory/audit/UI; freeze/full experiments/statistics;
+replay/thesis/demo/slides. Viết luận văn từ M1, gắn từng claim với artifact.
 
-- LLM-only, wide-context và static RAG;
-- single-agent PiT-RAG;
-- đo prediction, retrieval, latency và cost;
-- hoàn thiện frontend quan sát evidence và audit.
+Khung ban đầu 8–12 tuần, khoảng 210–360 giờ người làm, chưa tính compute.
+Đây là ước lượng có phụ thuộc, không cam kết; nếu cần tăng thời gian/tài nguyên
+sẽ báo tác động và giữ scope. [Roadmap](research/05-roadmap.md) có acceptance,
+pass/fail, lệnh kiểm chứng dự kiến và dependencies.
 
-### Giai đoạn 4 - PiT-HAF
+RAM tổng đo khoảng 15,40 GiB; RAM trống một lần đo chỉ khoảng 2,70 GiB.
+GPU RTX 3050 Laptop 4096 MiB. Không có inference benchmark. Chưa thấy Ollama
+ở các vị trí đã kiểm tra hoặc service default hoạt động; chưa kết luận không
+cài ở nơi khác. qwen3:4b Q4_K_M chỉ là candidate, cần pilot 20–30 case thật để
+đo quality/JSON/tokens/latency/RAM/VRAM trước chốt; artifact size khác peak memory.
 
-- specialist agents;
-- verifier và risk agent;
-- hierarchical synthesis;
-- memory có timestamp;
-- audit ledger và structured output.
+[Nguồn và pilot](research/06-data-local-pilot.md) tách bằng chứng truy cập/terms
+đã kiểm tra với timestamp/model/coverage chưa xác minh. Không dùng API trả phí,
+publish hoặc giao dịch thật khi chưa có ngân sách/yêu cầu xác định.
 
-### Giai đoạn 5 - Thực nghiệm lớn
+## 8. Trạng thái hiện tại và nghiệm thu
 
-- full comparison;
-- ablation;
-- multi-regime và multi-sector;
-- entity masking và counterfactual stress tests;
-- kiểm định thống kê.
+Provider Việt Nam và Guard độc lập đã có; UI chuyển về FPT/VND và VNINDEX.
+Doctor lưu môi trường/service/Git diff/hashes/code snapshot; tests/CI offline
+đã thêm. Chưa có retrieval, LLM inference, graph, agent workflow, durable
+memory, engine backtest hoặc runner tạo kết quả khoa học. M1 đã bắt đầu, chưa
+đạt toàn bộ acceptance corpus/local pilot.
 
-### Giai đoạn 6 - Hoàn thiện khóa luận
-
-- phân tích lỗi định tính;
-- viết chương phương pháp và thực nghiệm;
-- hoàn thiện demo;
-- reproducibility package;
-- chuẩn bị slide và kịch bản bảo vệ.
-
-## 13. Milestone 48 giờ đầu tiên
-
-### Backend/baseline
-
-- Một lệnh chạy Buy & Hold, Equal Weight, Momentum 3M và MA 50/100.
-- Hai period mẫu theo Look-Ahead-Bench.
-- File kết quả chuẩn: `metrics.csv`, `equity_curve.csv`, `trades.csv`.
-- Một adapter single-agent có thể chạy bằng API hoặc mock mode.
-- Schema quyết định thống nhất cho các phiên bản sau.
-- Test `available_time <= as_of_time`.
-
-### Frontend
-
-- chọn ticker/universe, ngày quyết định và horizon;
-- nút chạy baseline;
-- bảng return, alpha, Sharpe, drawdown và alpha decay;
-- equity curve;
-- vùng quyết định mẫu cùng evidence;
-- PiT audit badge;
-- trang hoặc panel theo dõi agent, ban đầu có thể chỉ đọc log mẫu.
-
-Frontend 48 giờ là **bề mặt quan sát thí nghiệm**, không phải sản phẩm đầu tư hoàn chỉnh. Thiết kế từ đầu để sau này thay mock output bằng PiT-HAF thật mà không phải viết lại giao diện.
-
-## 14. Tiêu chí để khóa luận được xem là đủ mạnh
-
-Khóa luận không nên chỉ dừng ở “xây được nhiều agent”. Tối thiểu cần có:
-
-1. định nghĩa Point-in-Time rõ và threat model cho leakage;
-2. một thành phần kỹ thuật mới hoặc cách kết hợp có căn cứ;
-3. ít nhất sáu baseline/biến thể có ý nghĩa;
-4. ablation cho từng thành phần chính;
-5. đánh giá nhiều regime/ngành và sau transaction cost;
-6. metric cho dự đoán, RAG, leakage và hệ thống;
-7. kiểm định thống kê và phân tích lỗi;
-8. mã nguồn, cấu hình, dữ liệu hoặc hướng dẫn tái lập;
-9. demo hiển thị bằng chứng và audit trail;
-10. giới hạn nghiên cứu được trình bày trung thực.
+[Audit](research/00-audit.md) ghi hiện trạng trước sửa;
+[hướng dẫn M1](research/07-milestone-1.md) ghi thay đổi, lệnh và kết quả mới.
+Trường, giảng viên, mẫu luận văn, deadline cụ thể và ngân sách còn chưa xác định.
+Checklist/test pass không bảo đảm điểm khóa luận; đích nghiệm thu là phương
+pháp giải thích được và bằng chứng thực nghiệm trung thực, kể cả kết quả âm.

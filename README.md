@@ -1,54 +1,118 @@
-# PiT-HAF — Dự án khóa luận được phục hồi
+# PiT-HAF
 
-Phục hồi ngày 10/09/2026 từ cuộc trò chuyện do chủ dự án cung cấp:
-https://chatgpt.com/s/cx_6aa22a7bbaa481918f53df4155f19eb1
+Đồ án nghiên cứu Point-in-Time Agentic-RAG hỗ trợ phân tích cổ phiếu Việt Nam.
+Trọng tâm là chất lượng bằng chứng, kiểm soát rò rỉ thời gian và khả năng tái lập.
+Dự án dùng LLM có sẵn; dữ liệu phục vụ truy xuất và đánh giá, không dùng để
+huấn luyện một LLM mới.
 
-## Mở và chạy trên máy này
+## Cài đặt và chạy
 
-Mở thư mục chứa README này trong VS Code. Trong PowerShell tại thư mục này:
+Yêu cầu Python 3.11 và uv. Giao diện chính dùng React + Vite, backend FastAPI.
+Để build frontend từ source cần Node.js 22.12+ hoặc 24 và pnpm 11.25.0.
+Trong PowerShell tại thư mục dự án:
 
 ```powershell
+uv sync --locked --python 3.11
+.\run.ps1 frontend-install
+.\run.ps1 frontend-build
 .\run.ps1 test
 .\run.ps1 lint
+.\run.ps1 doctor
+.\run.ps1 pit-demo
+.\run.ps1 pilot-data --extract-existing
+.\run.ps1 llm-pilot --cases configs/smoke_cases.jsonl --smoke
 .\run.ps1 app
 ```
 
-Frontend: http://localhost:8501. Chạy kiểm tra nguồn FPT bằng `.\run.ps1 data`.
-Không cần kích hoạt môi trường bằng Activate.ps1; script gọi Python trong `.venv`.
+Trên máy hiện tại, `.venv` đã được tạo và có các thư viện cần thiết. Các lệnh
+`run.ps1` gọi trực tiếp Python trong `.venv`, không cần kích hoạt bằng Activate.ps1.
 
-Môi trường mới được dựng bằng uv, Python 3.11, với các phiên bản đã xác nhận
-trong lịch sử: NumPy 2.2.6, Pandas 2.3.3, Vnstock 4.0.7. `uv.lock` ghi các
-dependency của lần phục hồi này, không phải lockfile của máy cũ.
-Khi chuyển máy, cài uv rồi chạy `uv sync --python 3.11` tại thư mục dự án.
+Frontend React: <http://localhost:8501>. `app` phục vụ bản build frontend và API
+trên cùng cổng, chỉ bind loopback. Máy này đã cài thư viện và build frontend;
+chỉ cần `.\run.ps1 app` sau khi tắt server cũ. Không cần chạy Streamlit.
+Nếu máy khác chưa có pnpm, cài Node.js rồi chạy `npm install --global pnpm@11.25.0`.
+Script tự nhận pnpm trong runtime Node của máy hiện tại nếu chưa có trên PATH.
+Khi sửa giao diện: chạy `frontend-dev` ở terminal thứ hai, truy cập cổng Vite
+hiển thị (mặc định 5173); `/api` được proxy tới backend 8501.
+Giao diện Streamlit cũ được giữ qua `.\run.ps1 streamlit` trên cổng 8502.
 
-## Phạm vi phục hồi
+Chạy `.\run.ps1 data` để tải giá FPT từ
+Vnstock/KBS; lệnh này cần Internet. Test, lint và `pit-demo` chạy offline.
+`pit-demo` chỉ dùng ví dụ giả định, không tạo kết quả thực nghiệm tài chính.
+`doctor` lưu số đo môi trường, trạng thái dịch vụ Ollama và snapshot mã nguồn
+tại `outputs/preflight/`. Lệnh này không chạy inference hoặc tải model.
 
-- `src/pit_haf/data/vnstock_provider.py`: trích từ bản diff gốc và áp dụng bản sửa ISO8601 cuối.
-- `tests/test_vnstock_provider.py`: lấy bộ kiểm thử gốc và bản sửa cuối; có thể khác định dạng sau Ruff.
-- `app.py`: lấy khối mã frontend cuối được chia sẻ và áp dụng bản sửa import. Vẫn là prototype AAPL/Yahoo/USD.
-- `docs/01-market-data.md`: bài hướng dẫn gốc về provider.
-- `docs/de-cuong-nghien-cuu-pit-haf.md` và báo cáo đọc paper: tài liệu lịch sử, chưa cập nhật theo hướng Việt Nam cuối cùng.
-- `docs/translations/`: khôi phục nội dung Markdown bản dịch; chưa có lại DOCX và các hình gốc.
-- `docs/lich-su-khoi-phuc.txt`: bản chép nội dung trao đổi để tra cứu; định dạng có thể bị gộp và chứa các đề xuất cũ.
-- `pyproject.toml`, `uv.lock`, `run.ps1`, README và ghi chú tiến độ: tạo lại cho máy này.
+Các phiên bản chính được khóa trong `uv.lock`: NumPy 2.2.6, Pandas 2.3.3,
+Vnstock 4.0.7. Môi trường trên máy hiện tại dùng Python 3.11.17.
 
-Không tìm thấy thư mục cũ `D:\CODE\KLTN\KhoaLuan\pit-haf` trên máy này.
-Đây là khôi phục từ nội dung chia sẻ, không phải bản sao ổ đĩa hay lịch sử Git.
-Không có lại API key, model Ollama, cache giá, môi trường Poetry và repository
-thực nghiệm AI Hedge Fund riêng trên máy cũ.
+## Những phần đã có
 
-## Mốc nghiên cứu cần tiếp tục
+- `src/pit_haf/data/vnstock_provider.py`: tải OHLCV cho cổ phiếu Việt Nam/VNINDEX,
+  kiểm tra dữ liệu và chuẩn hóa giá sang VND hoặc điểm chỉ số.
+- `src/pit_haf/data/point_in_time.py`: chọn dữ liệu có `available_at <= decision_at`,
+  xử lý các phiên bản sửa đổi và trả audit về kết quả lọc.
+- `tests/`: kiểm thử offline cho provider, Guard, snapshots/gateway, local adapter,
+  resource sampling, diagnostic và UI; kết quả mới trong báo cáo milestone.
+- `frontend/`: dashboard React responsive gồm tổng quan, kho bằng chứng,
+  bàn phân tích, thị trường và thực nghiệm. Số liệu từ artifact thật trên máy.
+- `src/pit_haf/ui/`: API FastAPI, loader kiểm checksum PDF/trang, BM25 baseline
+  lọc gateway trước khi tính thống kê corpus, trích xuất local có dấu vết và
+  đối chiếu trích dẫn/số liệu. Chưa phải toàn bộ hệ agent phân cấp/backtest.
+- `app.py`: giao diện Streamlit cũ, giữ để đối chiếu provider; không còn là
+  frontend mặc định.
+- `src/pit_haf/research/doctor.py`: kiểm tra môi trường/local service, lưu
+  Git revision, dirty diff, hashes và source snapshot, không trả mock inference.
+- `.github/workflows/offline-checks.yml`: CI test/lint; chưa chạy trên GitHub.
+- `src/pit_haf/data/`: evidence/snapshots/gateway cho provenance, raw blobs
+  SHA-256, SQLite append-only và giao đúng revision qua Guard. Bằng chứng thiếu
+  thời điểm/phiên bản lịch sử bị quarantine; fixture bị loại theo mặc định.
+- `src/pit_haf/data/pilot.py`: thu thập PDF theo danh sách nguồn official, lưu acquisition
+  failures, trích text theo trang và replay snapshot offline; chưa OCR.
+- `src/pit_haf/llm/`: structured local adapter, retry/timeout hữu hạn,
+  digest/raw outputs và pilot trích xuất; chưa phải Agentic-RAG/dự báo.
+- [Pilot data card](data/pilot/DATA_CARD.md): nguồn, coverage, provenance index,
+  extraction quality, rights và giới hạn chưa có proof lịch sử.
 
-Hướng mới nhất: Point-in-Time Agentic-RAG hỗ trợ phân tích cổ phiếu Việt Nam.
-Đánh giá chất lượng bằng chứng, rò rỉ thời gian và khả năng tái lập; hiệu quả
-giao dịch là một khía cạnh đánh giá, không phải cam kết sinh lời.
+Ngày 17/10/2026: Ollama 0.40.5 và qwen3:4b Q4_K_M đã cài trên máy này.
+[Báo cáo cài đặt và pilot](docs/research/08-local-pilot-results.md) ghi artifact,
+cấu hình và số đo thực tế; model vẫn là ứng viên phát triển.
 
-Đã có tầng tải/chuẩn hóa dữ liệu. `session_date` chưa phải `available_at`;
-lọc ngày chưa bảo đảm Point-in-Time và không loại bỏ kiến thức tương lai của LLM.
+Môi trường có thêm pypdf trong `uv.lock`. Registry metadata của Vnstock/vnai/
+ezchart trả 404 lúc cài; project dùng URL wheel bất biến từ files.pythonhosted.org,
+giữ đúng ba phiên bản và SHA-256 của lock cũ. Không thay phiên bản package cũ.
 
-Thứ tự tiếp tục: hiểu provider → Point-in-Time Guard → Buy & Hold/VNINDEX/MA
-→ frontend Việt Nam → single LLM/Ollama → Naive RAG → Agentic-RAG/verifier
-→ ablation và thí nghiệm khóa → luận văn.
+## Giới hạn hiện tại
 
-Mỗi bước nên kèm input/output, kiểm thử lỗi và phần tự giải thích khi bảo vệ,
-theo mong muốn học từng module trong cuộc trò chuyện gốc.
+`session_date` là nhãn phiên, `retrieved_at` là lúc tải dữ liệu. Cả hai không
+thay thế `available_at`, thời điểm phiên bản dữ liệu thực sự có thể quan sát.
+Provider hiện chưa có lịch sử công bố/phiên bản đủ để đưa giá vào Guard; Guard
+sẽ từ chối dữ liệu thiếu các trường bắt buộc. Không tự gán giờ đóng cửa thành
+thời điểm khả dụng đã xác minh.
+
+Guard kiểm soát timestamp được cung cấp, không chứng minh nguồn đã gắn đúng
+timestamp hoặc dữ liệu giá chưa bị điều chỉnh. Lọc dữ liệu ngoài cũng không
+loại bỏ kiến thức tương lai trong trọng số LLM. Đã có adapter và pilot trích xuất
+local; retrieval, graph/agent/memory và backtest đầy đủ còn theo roadmap.
+
+## Hồ sơ nghiên cứu và lộ trình
+
+[Hồ sơ nghiên cứu](docs/research/README.md) tập hợp audit, task/label/timeline,
+literature/contribution, contracts và sơ đồ, experiment matrix/rubric, roadmap
+và data/local feasibility. [Đề cương](docs/de-cuong-nghien-cuu-pit-haf.md) lấy
+Việt Nam làm thị trường chính. Task đề xuất là báo cáo doanh nghiệp có bằng
+chứng tại `decision_at` và dự đoán hướng lợi suất 5 phiên; protocol chưa freeze.
+
+Giữ đầy đủ scope qua 7 mốc: audit/pilot; dữ liệu/gateway/baseline định lượng;
+LLM và PiT single-agent retrieval; graph/peer và phân cấp; verifier/risk/memory/
+audit/UI; full experiment matrix; gói tái lập và luận văn. Khung 8–12 tuần là
+ước lượng ban đầu, không bảo đảm hoàn tất theo lịch hoặc thu gọn thành phần.
+
+Model nhỏ như qwen3:4b đang được đo ở pilot; chưa chốt chất lượng tài chính.
+Dataset phục vụ bằng chứng truy xuất, nhãn đánh giá, split phát triển/test và
+baseline định lượng. Không training LLM vẫn cần những dữ liệu này để kiểm chứng.
+
+Đọc [Bài 1](docs/01-market-data.md), [Bài 2](docs/02-point-in-time.md), rồi
+[hướng dẫn M1](docs/research/07-milestone-1.md) để tự chạy và giải thích thiết kế.
+Các paper/bản dịch là tài liệu tham khảo, không phải kết quả của dự án.
+Lịch sử khôi phục và các kiểm tra cũ nằm trong
+[ghi chú lịch sử](docs/RECOVERY-VERIFICATION.md).

@@ -2,7 +2,7 @@
 
 Ngày cập nhật: 03/09/2026
 
-> **Lưu ý phạm vi:** kế hoạch 1-2 ngày trong tài liệu này chỉ là milestone kỹ thuật để có baseline và frontend chạy cơ bản. Thiết kế nghiên cứu kéo dài nhiều tháng, đóng góp dự kiến, ablation và lộ trình đầy đủ được trình bày trong `de-cuong-nghien-cuu-pit-haf.md`.
+> **Ghi chú lịch sử, đối chiếu lại 06/10/2026:** giữ nội dung đọc paper và kế hoạch cũ để truy nguyên. Đề xuất rút gọn/1–2 ngày và protocol Mỹ dưới đây không còn là kế hoạch hiện hành. Phạm vi đầy đủ với Việt Nam làm thị trường chính nằm trong [đề cương](de-cuong-nghien-cuu-pit-haf.md) và [hồ sơ nghiên cứu](research/README.md). Các claim về paper cần đọc cùng [ma trận kiểm chứng](research/02-literature-contributions.md); chưa tái hiện thí nghiệm của tác giả.
 
 ## 1. Kết luận nhanh cho milestone 1-2 ngày
 

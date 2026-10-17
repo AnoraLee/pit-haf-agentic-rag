@@ -1,7 +1,8 @@
 # Bài 1 — Dữ liệu cổ phiếu Việt Nam
 
-Mốc này thêm `VietnamMarketDataProvider` vào repository. Giao diện hiện có vẫn
-là bản thử Yahoo/AAPL. Chưa có backtest, LLM, RAG hoặc Point-in-Time Guard đầy đủ.
+Mốc này thêm `VietnamMarketDataProvider` vào repository. Giao diện hiện có dùng
+provider Việt Nam với FPT/VND và VNINDEX/điểm. Chưa có backtest, LLM hoặc RAG. Guard lọc theo thời điểm
+khả dụng đã được thêm ở [Bài 2](02-point-in-time.md), chưa tích hợp với provider.
 
 ## Mục tiêu và cách đọc code
 
@@ -14,7 +15,7 @@ Frontend/chiến lược chỉ cần gọi `get_prices()`; chi tiết Vnstock n�
 2. `_download()`: gọi Vnstock với nguồn KBS, `interval="1D"`, `count=None`.
 3. `normalize_ohlcv()`: kiểm tra dữ liệu, giới hạn ngày và chuẩn hóa đơn vị.
 
-Ví dụ dùng trong Python (khi đã `poetry install`):
+Ví dụ dùng trong Python (sau khi chạy `uv sync --locked --python 3.11`):
 
 ```python
 from pit_haf.data.vnstock_provider import VietnamMarketDataProvider
@@ -31,10 +32,10 @@ print(prices.attrs)
 ## Chạy từ thư mục gốc của repo
 
 ```powershell
-py -3.11 -m poetry run pytest -q
-py -3.11 -m poetry run ruff check app.py src tests
-py -3.11 -m poetry run python -m pit_haf.data.vnstock_provider --symbol FPT --start 2024-01-01 --end 2024-03-31
-py -3.11 -m poetry run python -m pit_haf.data.vnstock_provider --symbol VNINDEX --asset-type index --start 2024-01-01 --end 2024-03-31
+.\run.ps1 test
+.\run.ps1 lint
+.\.venv\Scripts\python.exe -m pit_haf.data.vnstock_provider --symbol FPT --start 2024-01-01 --end 2024-03-31
+.\.venv\Scripts\python.exe -m pit_haf.data.vnstock_provider --symbol VNINDEX --asset-type index --start 2024-01-01 --end 2024-03-31
 ```
 
 Hai lệnh kiểm thử đầu chạy offline. Hai lệnh sau lấy dữ liệu thật và cần Internet.

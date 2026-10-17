@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "target_documents": 24,
+  "selection_note": "Small feasibility selection from verified official public URLs, not selected by future returns. Eleven configured documents are not 24 completed gold cases. HPG annual report and two earnings overviews added after observing empty/garbled statement text layers; FPT Vietnamese annual report is a distinct logical document from English translation. No historical bytes/version proof is available.",
+  "allowed_hosts": ["fpt.com", "www.hoaphat.com.vn", "file.hoaphat.com.vn", "www.vietcombank.com.vn"],
+  "sources": [
+    {"source_id": "fpt-ir", "listing_url": "https://fpt.com/en/ir/report?tab=3", "rights_url": "https://fpt.com/en/terms-of-use"},
+    {"source_id": "fpt-ir", "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022", "rights_url": "https://fpt.com/en/terms-of-use"},
+    {"source_id": "hpg-ir", "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html"},
+    {"source_id": "hpg-ir", "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien", "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html"},
+    {"source_id": "vcb-ir", "listing_url": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu", "rights_url": null}
+  ],
+  "documents": [
+    {
+      "record_id": "FPT-annual-2024-vi", "source_id": "fpt-ir", "ticker": "FPT",
+      "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022", "document_type": "annual_report", "title": "FPT bao cao thuong nien 2024 Vietnamese", "reporting_period": "2024", "statement_scope": "unknown",
+      "rights_url": "https://fpt.com/en/terms-of-use", "rights_note": "Personal/noncommercial source attribution. Vietnamese annual report is separate document from English translation, not an inferred revision. No historical time/version or raw redistribution permission asserted."
+    },
+    {
+      "record_id": "FPT-annual-2024", "source_id": "fpt-ir", "ticker": "FPT",
+      "source_url": "https://fpt.com/api/media/fpt_annual_report_2024_63d63bc4cd.pdf",
+      "listing_url": "https://fpt.com/en/ir/report?tab=3", "document_type": "annual_report", "title": "FPT annual report 2024", "reporting_period": "2024", "statement_scope": "unknown",
+      "rights_url": "https://fpt.com/en/terms-of-use", "rights_note": "Source terms inspected: personal/noncommercial with attribution. No permission to redistribute corpus asserted. Robots/access results recorded at acquisition."
+    },
+    {
+      "record_id": "FPT-consolidated-Q4-2024", "source_id": "fpt-ir", "ticker": "FPT",
+      "source_url": "https://fpt.com/api/media/20250124_fpt_consolidated_financial_statements_for_quarter_4_2024_350a16cb87.pdf",
+      "listing_url": "https://fpt.com/en/ir/report?tab=3", "document_type": "financial_statement", "title": "FPT consolidated financial statement Q4 2024", "reporting_period": "2024-Q4", "statement_scope": "consolidated",
+      "rights_url": "https://fpt.com/en/terms-of-use", "rights_note": "Personal/noncommercial source attribution. Search URL discovery is not historical publication proof."
+    },
+    {
+      "record_id": "HPG-consolidated-Q1-2026", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/04/bctc-hop-nhat-quy-i-2026.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "document_type": "financial_statement", "title": "Hoa Phat consolidated financial statement Q1 2026", "reporting_period": "2026-Q1", "statement_scope": "consolidated", "publication_date": "2026-04-29", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Local personal/noncommercial inspection with attribution. Date observed on current listing; historical bytes revision is unverified. No redistribution permission asserted."
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2025", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-hop-nhat-nam-2025-sau-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "document_type": "financial_statement", "title": "Hoa Phat consolidated audited financial statement 2025", "reporting_period": "2025", "statement_scope": "consolidated", "publication_date": "2026-03-27", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Personal/noncommercial inspection with attribution. Current listing date only, not historical revision proof."
+    },
+    {
+      "record_id": "HPG-consolidated-Q4-2025", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/01/20260130-hpg-bao-cao-tai-chinh-hop-nhat-va-giai-trinh-q4-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "document_type": "financial_statement", "title": "Hoa Phat consolidated financial statement and explanation Q4 2025", "reporting_period": "2025-Q4", "statement_scope": "consolidated", "publication_date": "2026-01-30", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Personal/noncommercial inspection with attribution. Current listing date only, not historical revision proof."
+    },
+    {
+      "record_id": "HPG-consolidated-Q3-2025", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/11/20251029-hpg-bao-cao-tai-chinh-hop-nhat-quy-iii-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "document_type": "financial_statement", "title": "Hoa Phat consolidated financial statement Q3 2025", "reporting_period": "2025-Q3", "statement_scope": "consolidated", "publication_date": "2025-10-29", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Personal/noncommercial inspection with attribution. Current listing date only, not historical revision proof."
+    },
+    {
+      "record_id": "HPG-annual-2024-vi", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien", "document_type": "annual_report", "title": "Hoa Phat annual report 2024 Vietnamese", "reporting_period": "2024", "statement_scope": "unknown", "publication_date": "2025-04-15", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Local personal/noncommercial inspection with attribution. Current official annual-listing date, no historical bytes/version proof or redistribution permission asserted."
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2026", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/04/bcq1-2026-vn-v4.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "document_type": "earnings_overview", "title": "Hoa Phat business overview Q1 2026", "reporting_period": "2026-Q1", "statement_scope": "unknown", "publication_date": "2026-04-29", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Personal/noncommercial inspection with attribution. Current listing date only; not audited financial statement or historical revision proof."
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2026", "source_id": "hpg-ir", "ticker": "HPG",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/07/tong-quan-tinh-hinh-kinh-doanh-quy2-2026-vn-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh", "document_type": "earnings_overview", "title": "Hoa Phat business overview Q2 2026", "reporting_period": "2026-Q2", "statement_scope": "unknown", "publication_date": "2026-07-30", "timestamp_precision": "day",
+      "rights_url": "https://www.hoaphat.com.vn/trang/dieu-khoan-su-dung.html", "rights_note": "Personal/noncommercial inspection with attribution. Current listing date only; not audited financial statement or historical revision proof."
+    },
+    {
+      "record_id": "VCB-annual-2024", "source_id": "vcb-ir", "ticker": "VCB",
+      "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+      "listing_url": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu", "document_type": "annual_report", "title": "Vietcombank annual report 2024", "reporting_period": "2024", "statement_scope": "unknown",
+      "rights_note": "Official public IR URL. Terms/redistribution rights not established; local source inspection only. Search publication dates and filename timestamps are not treated as availability."
+    }
+  ]
+}

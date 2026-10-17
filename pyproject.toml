@@ -1,22 +1,32 @@
 [project]
 name = "pit-haf"
 version = "0.1.0"
-description = "Recovered PiT-HAF thesis project"
+description = "Point-in-Time Agentic-RAG for Vietnamese stock analysis"
 requires-python = ">=3.11,<3.12"
 dependencies = [
   "numpy==2.2.6",
   "pandas==2.3.3",
   "vnstock==4.0.7",
+  "vnai==2.5.9",
+  "vnstock-ezchart==1.0.2",
   "streamlit",
   "yfinance",
   "plotly",
   "pydantic",
   "ollama",
   "python-dotenv",
+  "pypdf>=6.10,<7",
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.40,<1",
 ]
 
 [dependency-groups]
 dev = ["pytest", "ruff"]
+
+[tool.uv.sources]
+vnstock = { url = "https://files.pythonhosted.org/packages/13/0b/a3021930b75ac9c9ca0525e06181e29c59b60cf5d1001ae19aabf3ed4fbb/vnstock-4.0.7-py3-none-any.whl" }
+vnai = { url = "https://files.pythonhosted.org/packages/0f/44/d2c925d26633ea84c579e721c1e509f3755108fb88acb611cfd1e312fbb8/vnai-2.5.9-py3-none-any.whl" }
+vnstock-ezchart = { url = "https://files.pythonhosted.org/packages/ff/8f/3cd5a3938d70d68dec36e54cc846706134e1a1eaadfb7249556fe96022c9/vnstock_ezchart-1.0.2-py3-none-any.whl" }
 
 [build-system]
 requires = ["hatchling"]
@@ -24,6 +34,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pit_haf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100

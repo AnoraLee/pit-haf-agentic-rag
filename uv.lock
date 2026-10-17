@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = "==3.11.*"
 
 [[package]]
@@ -16,6 +16,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/06/a1/5e6cc638a66da48cfc89a79c2f4810dfec00b63385f9b009ab1f069779bb/altair-6.2.2.tar.gz", hash = "sha256:a1ff9d9cfe81c75414641826312b9471780e19d39293ba0b012933f6b6cba0fe", size = 766606, upload-time = "2026-06-23T12:47:13.384Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e3/99/d6031f4f146298951c46b1bf1cc160c2a63f6e44b3c13a30054add100d5f/altair-6.2.2-py3-none-any.whl", hash = "sha256:94014f8ad8617c3cb163d1137359cd6db5ba134b9b46d93cfd8b609fd245a583", size = 797613, upload-time = "2026-06-23T12:47:11.451Z" },
+]
+
+[[package]]
+name = "annotated-doc"
+version = "0.0.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/5a/8e/38aa427ed5402449e226975b649c5dc73ccadfefeb95e6aecb8f8ea4b6b6/annotated_doc-0.0.5.tar.gz", hash = "sha256:c7e58ce09192557605d8bbd92836d7e1d520ac9580096042c0bfd197efacf1bb", size = 10758, upload-time = "2026-07-28T13:50:58.129Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3e/30/e900b21425a860e195f32e37657aa1f7c7f2b1bfb26f03ca209b90933c06/annotated_doc-0.0.5-py3-none-any.whl", hash = "sha256:117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101", size = 5302, upload-time = "2026-07-28T13:50:57.239Z" },
 ]
 
 [[package]]
@@ -220,6 +229,23 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d3/38/af70d7ab1ae9d4da450eeec1fa3918940a5fafb9055e934af8d6eb0c2313/et_xmlfile-2.0.0.tar.gz", hash = "sha256:dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54", size = 17234, upload-time = "2024-10-25T17:25:40.039Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/8b/5fe2cc11fee489817272089c4203e679c63b570a5aaeb18d852ae3cbba6a/et_xmlfile-2.0.0-py3-none-any.whl", hash = "sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa", size = 18059, upload-time = "2024-10-25T17:25:39.051Z" },
+]
+
+[[package]]
+name = "fastapi"
+version = "0.143.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "annotated-doc" },
+    { name = "opentelemetry-api" },
+    { name = "pydantic" },
+    { name = "starlette" },
+    { name = "typing-extensions" },
+    { name = "typing-inspection" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/38/d5/b0aeb0b303650ac87b0411de4aaf3f901b06042dcc3fb00f30b97b7ff585/fastapi-0.143.3.tar.gz", hash = "sha256:b9ab567ee57afb4454004ce04c889f8f0160ac47946b99795887cd6e88484848", size = 469834, upload-time = "2026-10-16T14:14:13.31Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2c/1a/03d246befcf307219bb2161c97d8c5d314f84125bf7dd245730a28589828/fastapi-0.143.3-py3-none-any.whl", hash = "sha256:75e8bd68e2f52f77d29b2879749c257d64de2d85282d25270caf2bfccce5efe5", size = 144849, upload-time = "2026-10-16T14:14:11.763Z" },
 ]
 
 [[package]]
@@ -550,6 +576,18 @@ wheels = [
 ]
 
 [[package]]
+name = "opentelemetry-api"
+version = "1.45.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2e/02/6e0ae9cc61bd3169d401077b507b3ebc344745171e1051ab430be012dcd9/opentelemetry_api-1.45.1.tar.gz", hash = "sha256:aa38ed19bcc084ba42782a73255b3582283eced7ad6dddbd6695189e69adfb75", size = 72804, upload-time = "2026-10-06T17:32:58.133Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/41/f7dcf80b81ee8e71c1a2b59f14208bc723edbd89ed027a73b175abf6348e/opentelemetry_api-1.45.1-py3-none-any.whl", hash = "sha256:b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb", size = 60256, upload-time = "2026-10-06T17:32:33.506Z" },
+]
+
+[[package]]
 name = "packaging"
 version = "26.3"
 source = { registry = "https://pypi.org/simple" }
@@ -615,14 +653,19 @@ name = "pit-haf"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "fastapi" },
     { name = "numpy" },
     { name = "ollama" },
     { name = "pandas" },
     { name = "plotly" },
     { name = "pydantic" },
+    { name = "pypdf" },
     { name = "python-dotenv" },
     { name = "streamlit" },
+    { name = "uvicorn" },
+    { name = "vnai" },
     { name = "vnstock" },
+    { name = "vnstock-ezchart" },
     { name = "yfinance" },
 ]
 
@@ -634,14 +677,19 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "fastapi", specifier = ">=0.115,<1" },
     { name = "numpy", specifier = "==2.2.6" },
     { name = "ollama" },
     { name = "pandas", specifier = "==2.3.3" },
     { name = "plotly" },
     { name = "pydantic" },
+    { name = "pypdf", specifier = ">=6.10,<7" },
     { name = "python-dotenv" },
     { name = "streamlit" },
-    { name = "vnstock", specifier = "==4.0.7" },
+    { name = "uvicorn", specifier = ">=0.40,<1" },
+    { name = "vnai", url = "https://files.pythonhosted.org/packages/0f/44/d2c925d26633ea84c579e721c1e509f3755108fb88acb611cfd1e312fbb8/vnai-2.5.9-py3-none-any.whl" },
+    { name = "vnstock", url = "https://files.pythonhosted.org/packages/13/0b/a3021930b75ac9c9ca0525e06181e29c59b60cf5d1001ae19aabf3ed4fbb/vnstock-4.0.7-py3-none-any.whl" },
+    { name = "vnstock-ezchart", url = "https://files.pythonhosted.org/packages/ff/8f/3cd5a3938d70d68dec36e54cc846706134e1a1eaadfb7249556fe96022c9/vnstock_ezchart-1.0.2-py3-none-any.whl" },
     { name = "yfinance" },
 ]
 
@@ -819,6 +867,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f3/91/9c6ee907786a473bf81c5f53cf703ba0957b23ab84c264080fb5a450416f/pyparsing-3.3.2.tar.gz", hash = "sha256:c777f4d763f140633dcb6d8a3eda953bf7a214dc4eff598413c070bcdc117cbc", size = 6851574, upload-time = "2026-01-21T03:57:59.36Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl", hash = "sha256:850ba148bd908d7e2411587e247a1e4f0327839c40e2e5e6d05a007ecc69911d", size = 122781, upload-time = "2026-01-21T03:57:55.912Z" },
+]
+
+[[package]]
+name = "pypdf"
+version = "6.21.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d5/40/08cc87810195e5ee37a6917d4b19abc907c8def3a7ce265a81c7f5073304/pypdf-6.21.0.tar.gz", hash = "sha256:c16174c8653abafbe4d023b3c9227d226938d9579ffb5a73b4fac7756c0895a6", size = 7088285, upload-time = "2026-10-16T10:23:18.47Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f4/64/5cea5792cae22892a4ddba8ed9f7424c77b4cb49fdca5016bd62145c12c6/pypdf-6.21.0-py3-none-any.whl", hash = "sha256:3aec619699dacb1b73f57e87d9adaa4424814517b2cc028de20adba5a37af4c4", size = 405135, upload-time = "2026-10-16T10:23:16.38Z" },
 ]
 
 [[package]]
@@ -1114,21 +1171,29 @@ wheels = [
 [[package]]
 name = "vnai"
 version = "2.5.9"
-source = { registry = "https://pypi.org/simple" }
+source = { url = "https://files.pythonhosted.org/packages/0f/44/d2c925d26633ea84c579e721c1e509f3755108fb88acb611cfd1e312fbb8/vnai-2.5.9-py3-none-any.whl" }
 dependencies = [
     { name = "cffi" },
     { name = "psutil" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/71/c9/fc89c949768f877a1d1b4bbe982b99f8d8f6e9981d6f58845b548ff9b3ca/vnai-2.5.9.tar.gz", hash = "sha256:e80597b295b6f334b0326a60a2ba4a439a82c4731194788a19aba504a8a0bebf", size = 44953, upload-time = "2026-08-20T23:30:13.454Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0f/44/d2c925d26633ea84c579e721c1e509f3755108fb88acb611cfd1e312fbb8/vnai-2.5.9-py3-none-any.whl", hash = "sha256:923270b10a354e988493969c939bf8ca70cfaea6e999ec83641b30adb20500fe", size = 54538, upload-time = "2026-08-20T23:30:12.188Z" },
+    { url = "https://files.pythonhosted.org/packages/0f/44/d2c925d26633ea84c579e721c1e509f3755108fb88acb611cfd1e312fbb8/vnai-2.5.9-py3-none-any.whl", hash = "sha256:923270b10a354e988493969c939bf8ca70cfaea6e999ec83641b30adb20500fe" },
 ]
+
+[package.metadata]
+requires-dist = [
+    { name = "cffi", specifier = ">=1.17.1" },
+    { name = "psutil", specifier = ">=5.8.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=6.0.0" },
+    { name = "requests", specifier = ">=2.25.0" },
+]
+provides-extras = ["dev"]
 
 [[package]]
 name = "vnstock"
 version = "4.0.7"
-source = { registry = "https://pypi.org/simple" }
+source = { url = "https://files.pythonhosted.org/packages/13/0b/a3021930b75ac9c9ca0525e06181e29c59b60cf5d1001ae19aabf3ed4fbb/vnstock-4.0.7-py3-none-any.whl" }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "importlib-metadata" },
@@ -1144,15 +1209,40 @@ dependencies = [
     { name = "vnai" },
     { name = "vnstock-ezchart" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/47/55/77df9c15f7f42706c0ac86a1fef97c33f97eda5f89c173290a2144aedd38/vnstock-4.0.7.tar.gz", hash = "sha256:111ffe80dcfca1853322f90817024b1e13067d6f95216149cdf13f73821cdd5d", size = 230466, upload-time = "2026-08-20T23:45:42.96Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/13/0b/a3021930b75ac9c9ca0525e06181e29c59b60cf5d1001ae19aabf3ed4fbb/vnstock-4.0.7-py3-none-any.whl", hash = "sha256:5b73bcaacb9edc93ef7fc4f5c91924a2801929bf501c57faa5656ce1aa5257bb", size = 275791, upload-time = "2026-08-20T23:45:41.038Z" },
+    { url = "https://files.pythonhosted.org/packages/13/0b/a3021930b75ac9c9ca0525e06181e29c59b60cf5d1001ae19aabf3ed4fbb/vnstock-4.0.7-py3-none-any.whl", hash = "sha256:5b73bcaacb9edc93ef7fc4f5c91924a2801929bf501c57faa5656ce1aa5257bb" },
 ]
+
+[package.metadata]
+requires-dist = [
+    { name = "beautifulsoup4" },
+    { name = "importlib-metadata", specifier = ">=1.0" },
+    { name = "openpyxl" },
+    { name = "packaging", specifier = ">=20.0" },
+    { name = "pandas" },
+    { name = "pre-commit", marker = "extra == 'dev'" },
+    { name = "psutil" },
+    { name = "pydantic" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
+    { name = "pytest", marker = "extra == 'test'", specifier = ">=7.0" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
+    { name = "pytest-cov", marker = "extra == 'test'", specifier = ">=4.0" },
+    { name = "pytest-timeout", marker = "extra == 'dev'" },
+    { name = "pytest-timeout", marker = "extra == 'test'" },
+    { name = "pytz" },
+    { name = "requests" },
+    { name = "ruff", marker = "extra == 'dev'" },
+    { name = "seaborn" },
+    { name = "tenacity" },
+    { name = "vnai", specifier = ">=2.5.7" },
+    { name = "vnstock-ezchart", specifier = ">=1.0.1" },
+]
+provides-extras = ["test", "dev"]
 
 [[package]]
 name = "vnstock-ezchart"
 version = "1.0.2"
-source = { registry = "https://pypi.org/simple" }
+source = { url = "https://files.pythonhosted.org/packages/ff/8f/3cd5a3938d70d68dec36e54cc846706134e1a1eaadfb7249556fe96022c9/vnstock_ezchart-1.0.2-py3-none-any.whl" }
 dependencies = [
     { name = "cycler" },
     { name = "matplotlib" },
@@ -1164,10 +1254,25 @@ dependencies = [
     { name = "seaborn" },
     { name = "vnstock" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/0c/3e/e708a13bc70cb0c0ba743498a642fa95c02585e37c0bb846923083bd555f/vnstock_ezchart-1.0.2.tar.gz", hash = "sha256:b66ce3ffcffedf6ec38dc79b136a076fea5d24dcb25218c788c6fdcaae3dcfd6", size = 29942, upload-time = "2026-05-17T07:48:58.69Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ff/8f/3cd5a3938d70d68dec36e54cc846706134e1a1eaadfb7249556fe96022c9/vnstock_ezchart-1.0.2-py3-none-any.whl", hash = "sha256:b5ca85613fce8f8ce77487be37f7b2b362e71cfcf83c525be980cedaea217d18", size = 22659, upload-time = "2026-05-17T07:48:56.48Z" },
+    { url = "https://files.pythonhosted.org/packages/ff/8f/3cd5a3938d70d68dec36e54cc846706134e1a1eaadfb7249556fe96022c9/vnstock_ezchart-1.0.2-py3-none-any.whl", hash = "sha256:b5ca85613fce8f8ce77487be37f7b2b362e71cfcf83c525be980cedaea217d18" },
 ]
+
+[package.metadata]
+requires-dist = [
+    { name = "cycler", specifier = ">=0.10.0" },
+    { name = "matplotlib", specifier = ">=3.5.0" },
+    { name = "mplfinance", specifier = ">=0.12.9b5" },
+    { name = "numpy", specifier = ">=1.24,<2.3" },
+    { name = "openpyxl", specifier = ">=3.0.0" },
+    { name = "pandas", specifier = ">=1.4.0,<3" },
+    { name = "requests", specifier = ">=2.25.0" },
+    { name = "seaborn", specifier = ">=0.11.0" },
+    { name = "squarify", marker = "extra == 'all'", specifier = ">=0.4.0" },
+    { name = "vnstock", specifier = ">=4.0.3" },
+    { name = "wordcloud", marker = "extra == 'all'", specifier = ">=1.8.0" },
+]
+provides-extras = ["all"]
 
 [[package]]
 name = "watchdog"
