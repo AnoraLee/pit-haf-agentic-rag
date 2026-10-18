@@ -72,7 +72,7 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
                           "annual_years": annual,
                           "related_articles": sum(issuer["ticker"] in item.related_tickers
                                                   for item in versions.values()
-                                                  if item.media_type == "text/html"),
+                                                  if item.media_type != "application/pdf"),
                           "financial_statement_periods": sorted({
                               item.reporting_period for item in documents
                               if item.document_type == "financial_statement" and item.reporting_period
@@ -82,7 +82,7 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
     for item in versions.values():
         by_blob[item.content_hash].append(item.record_id)
     pdfs = [v for v in versions.values() if v.media_type == "application/pdf"]
-    articles = [v for v in versions.values() if v.media_type == "text/html"]
+    articles = [v for v in versions.values() if v.media_type != "application/pdf"]
     pdf_rows = [successful[v.version_id] for v in pdfs]
     dates = sorted(str(v.publication_date) for v in articles if v.publication_date)
     coverage = {
@@ -95,10 +95,14 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
         "acquired_documents": len(versions),
         "unique_pdf_blobs": len({v.content_hash for v in pdfs}),
         "unique_raw_blobs": len(by_blob),
-        "pdf_documents": len(pdfs), "html_articles": len(articles),
+        "pdf_documents": len(pdfs),
+        "html_articles": sum(v.media_type == "text/html" for v in articles),
+        "dataset_articles": sum(v.origin == "dataset_mirror" for v in articles),
+        "article_documents": len(articles),
         "pdf_page_count": sum(row["pages"] for row in pdf_rows),
         "text_pdf_page_count": sum(row["text_pages"] for row in pdf_rows),
-        "html_section_count": sum(successful[v.version_id]["pages"] for v in articles),
+        "html_section_count": sum(successful[v.version_id]["pages"] for v in articles if v.media_type == "text/html"),
+        "dataset_section_count": sum(successful[v.version_id]["pages"] for v in articles if v.origin == "dataset_mirror"),
         "news_by_publisher": dict(Counter(v.publisher or v.source_id for v in articles)),
         "market_context_articles": sum(v.evidence_scope == "market" for v in articles),
         "articles_with_publication_date": sum(v.publication_date is not None for v in articles),

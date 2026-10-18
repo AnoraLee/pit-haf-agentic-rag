@@ -7,12 +7,13 @@ huấn luyện một LLM mới.
 
 ## Cài đặt và chạy
 
-Yêu cầu Python 3.11 và uv. Giao diện chính dùng React + Vite, backend FastAPI.
+Yêu cầu Python 3.11 hoặc 3.12 và uv. Giao diện chính dùng React + Vite, backend FastAPI.
 Để build frontend từ source cần Node.js 22.12+ hoặc 24 và pnpm 11.25.0.
 Trong PowerShell tại thư mục dự án:
 
 ```powershell
-uv sync --locked --python 3.11
+$env:UV_PROJECT_ENVIRONMENT = ".venv312"
+uv sync --locked --python 3.12
 .\run.ps1 frontend-install
 .\run.ps1 frontend-build
 .\run.ps1 test
@@ -24,8 +25,11 @@ uv sync --locked --python 3.11
 .\run.ps1 app
 ```
 
-Trên máy hiện tại, `.venv` đã được tạo và có các thư viện cần thiết. Các lệnh
-`run.ps1` gọi trực tiếp Python trong `.venv`, không cần kích hoạt bằng Activate.ps1.
+Các lệnh `run.ps1` gọi trực tiếp Python trong môi trường của dự án,
+không cần kích hoạt bằng Activate.ps1.
+Đợt v0.5, Python 3.11 trong `.venv` trên máy bị Windows Application Control chặn khởi chạy;
+đã tạo `.venv312` riêng từ Python 3.12.14 có sẵn. `run.ps1` ưu tiên môi trường
+này khi có, giữ nguyên `.venv` cũ và các phiên bản package đã khóa.
 
 Frontend React: <http://localhost:8501>. `app` phục vụ bản build frontend và API
 trên cùng cổng, chỉ bind loopback. Máy này đã cài thư viện và build frontend;
@@ -43,7 +47,8 @@ Vnstock/KBS; lệnh này cần Internet. Test, lint và `pit-demo` chạy offlin
 tại `outputs/preflight/`. Lệnh này không chạy inference hoặc tải model.
 
 Các phiên bản chính được khóa trong `uv.lock`: NumPy 2.2.6, Pandas 2.3.3,
-Vnstock 4.0.7. Môi trường trên máy hiện tại dùng Python 3.11.17.
+Vnstock 4.0.7. Pilot cũ dùng Python 3.11.17; môi trường local hiện tại dùng
+Python 3.12.14 trong `.venv312`.
 
 ## Những phần đã có
 
@@ -86,7 +91,13 @@ báo cáo đã qua kiểm tra. Có bộ lọc năm/phạm vi và phân trang tro
 PDF lưu local; GitHub chứa mã, danh mục và checksum. Xem
 [hướng dẫn batch, retry và ghép snapshot](docs/research/11-corpus-v03.md).
 
-Corpus hiện hành [v0.4](data/corpus/v0.4/DATA_CARD.md) có 264 PDF và 675 bài viết thật: báo chí tài chính/ngành, tin chính sách/vĩ mô và tin doanh nghiệp tự công bố. Kho bằng chứng lọc theo nguồn đăng/loại/năm/mã liên quan và mở toàn văn local. HTML được đếm riêng với trang PDF; chưa có proof lịch sử để chạy PiT strict. Xem [quy trình thu thập và replay](docs/research/12-news-corpus-v04.md).
+Corpus [v0.4](data/corpus/v0.4/DATA_CARD.md) có 264 PDF và 675 bài thu thập trực tiếp.
+Corpus hiện hành [v0.5](data/corpus/v0.5/DATA_CARD.md) mở rộng lên **30.939 tài liệu**,
+thêm **30.000 bài toàn văn** kinh doanh/bất động sản từ VietOnlineNews với URL,
+ngày đăng và nguồn báo ghép theo ID. Bản nhập dataset được ghi provenance riêng;
+không gọi đó là HTML tải trực tiếp từ báo hoặc proof lịch sử. Giao diện phân
+trang/lọc trên server; SQLite/FTS5 phục vụ truy xuất hiện tại, gateway vẫn lọc
+trước BM25 lịch sử. Xem [quy trình nhập và giới hạn](docs/research/13-large-corpus-v05.md).
 
 Để mở rộng/tái trích corpus v0.2 dùng
 `.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`

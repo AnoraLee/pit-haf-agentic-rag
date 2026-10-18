@@ -1,0 +1,92 @@
+{
+  "release_id": "development-corpus-v0.5-30000-news-20261018",
+  "dataset_id": "VLUS06/VietOnlineNews",
+  "dataset_revision": "bd8d2a865c8981d34cb9d85f69f62bda7c40b520",
+  "dataset_url": "https://huggingface.co/datasets/VLUS06/VietOnlineNews",
+  "target_documents": 30000,
+  "categories": [
+    "Kinh doanh",
+    "Bất động sản"
+  ],
+  "splits": [
+    "train",
+    "dev",
+    "test"
+  ],
+  "min_body_chars": 600,
+  "max_body_chars": 250000,
+  "allowed_original_hosts": [
+    "tuoitre.vn",
+    "thanhnien.vn",
+    "vietnamnet.vn"
+  ],
+  "license_observed": "other; repository LICENSE empty at pinned revision",
+  "rights_note": "Dataset mirror for local noncommercial thesis research; publisher rights remain; no full-text/raw redistribution established. Attribute VLUS06/VietOnlineNews.",
+  "selection_note": "Deterministic source split order train/dev/test and row order; financial/business and real-estate categories only; no future-return based selection, no synthetic summaries or inferred availability. Original classification splits preserved as provenance, not reused as finance evaluation splits.",
+  "files": [
+    {
+      "path": "processed/dev.csv",
+      "size": 177500621,
+      "sha256": "e4ee1f7f6cac061c423e2dc4281152fd41a03f90314dfb48b807fe2f35b09925"
+    },
+    {
+      "path": "processed/news_metadata.csv",
+      "size": 74023953,
+      "sha256": "9ff45fac81c434db5cd3e5c1aecb8f10375b2eb89833d0cbb9002495082ff0f9"
+    },
+    {
+      "path": "processed/test.csv",
+      "size": 177057656,
+      "sha256": "6aa13c5c1154f1fea2b9e43305d13d92ebdd6b67bf6dcee8fb4003a09df5b32d"
+    },
+    {
+      "path": "processed/train.csv",
+      "size": 825371506,
+      "sha256": "5094aace683c151ff0bc91ef8b814f32c5010b664b5f7bc392f9af671a61692f"
+    }
+  ],
+  "ticker_aliases": {
+    "FPT": [
+      "tập đoàn FPT"
+    ],
+    "HPG": [
+      "Hòa Phát"
+    ],
+    "VCB": [
+      "Vietcombank"
+    ],
+    "ACB": [
+      "ngân hàng Á Châu"
+    ],
+    "VNM": [
+      "Vinamilk"
+    ],
+    "MWG": [
+      "Thế Giới Di Động"
+    ],
+    "PNJ": [
+      "vàng bạc đá quý Phú Nhuận"
+    ],
+    "REE": [
+      "Cơ Điện Lạnh"
+    ],
+    "GAS": [
+      "PV GAS",
+      "PVGAS",
+      "Tổng công ty Khí Việt Nam"
+    ],
+    "SSI": [
+      "chứng khoán SSI"
+    ],
+    "DPM": [
+      "Đạm Phú Mỹ",
+      "phân bón và hóa chất dầu khí"
+    ],
+    "TCB": [
+      "Techcombank"
+    ],
+    "BID": [
+      "BIDV"
+    ]
+  }
+}

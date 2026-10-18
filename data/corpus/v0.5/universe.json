@@ -1,0 +1,119 @@
+{
+  "release_id": "development-corpus-v0.5-30000-news-20261018",
+  "purpose": "Development coverage targets plus separately labeled market context; not a frozen evaluation universe",
+  "target_annual_years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "sector_taxonomy": "Manually curated broad business groups; not an official index classification",
+  "selection_rule": "Current issuers across business groups with official public reports; selected by access and source diversity, never future returns",
+  "historical_membership_verified": false,
+  "survivorship_bias_assessed": false,
+  "issuers": [
+    {
+      "ticker": "FPT",
+      "name": "FPT",
+      "sector": "Công nghệ",
+      "source_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "HPG",
+      "name": "Hòa Phát",
+      "sector": "Vật liệu",
+      "source_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "VCB",
+      "name": "Vietcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "ACB",
+      "name": "Ngân hàng Á Châu",
+      "sector": "Ngân hàng",
+      "source_url": "https://acb.com.vn/nha-dau-tu/bao-cao-thuong-nien",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "VNM",
+      "name": "Vinamilk",
+      "sector": "Hàng tiêu dùng",
+      "source_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "MWG",
+      "name": "Thế Giới Di Động",
+      "sector": "Bán lẻ",
+      "source_url": "https://mwg.vn/bao-cao",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "PNJ",
+      "name": "Vàng bạc Đá quý Phú Nhuận",
+      "sector": "Bán lẻ",
+      "source_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "REE",
+      "name": "Cơ Điện Lạnh",
+      "sector": "Hạ tầng đa ngành",
+      "source_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "GAS",
+      "name": "PV GAS",
+      "sector": "Năng lượng",
+      "source_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "SSI",
+      "name": "Chứng khoán SSI",
+      "sector": "Chứng khoán",
+      "source_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "DPM",
+      "name": "Đạm Phú Mỹ",
+      "sector": "Phân bón và hóa chất",
+      "source_url": "https://dpm.vn/bao-cao-thuong-nien",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "TCB",
+      "name": "Techcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://techcombank.com/nha-dau-tu/bao-cao-thuong-nien",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "BID",
+      "name": "BIDV",
+      "sector": "Ngân hàng",
+      "source_url": "https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2025/bctn%2B2024",
+      "entity_type": "issuer"
+    },
+    {
+      "ticker": "MARKET",
+      "name": "Thị trường và vĩ mô",
+      "sector": "Bối cảnh thị trường",
+      "entity_type": "market_context"
+    }
+  ]
+}

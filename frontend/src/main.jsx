@@ -64,8 +64,10 @@ const when = (s) =>
 const navTo = (key) => {
   window.location.hash = key;
 };
+const isArticleDoc = (d) =>
+  d.media_type === "text/html" || d.origin === "dataset_mirror";
 const shortTitle = (d) =>
-  d.media_type === "text/html"
+  isArticleDoc(d)
     ? d.title
     : `${d.ticker} · ${TYPES[d.document_type] || "Công bố doanh nghiệp"} ${d.reporting_period || ""}${/Vietnamese/i.test(d.title) ? " · Tiếng Việt" : ""}`;
 const entityLabel = (d) =>
@@ -184,13 +186,16 @@ function DocTable({ docs, onOpen, compact = false }) {
                       {entityLabel(d)} <span>·</span>{" "}
                       {TYPES[d.document_type] || "Công bố doanh nghiệp"}
                       {d.publisher && <> · {d.publisher}</>}
+                      {d.origin === "dataset_mirror" && (
+                        <> · Bản nhập dataset</>
+                      )}
                     </small>
                   </span>
                 </button>
               </td>
               {!compact && (
                 <td>
-                  {d.media_type === "text/html"
+                  {isArticleDoc(d)
                     ? when(d.publication_date)
                     : d.reporting_period || "—"}
                 </td>
@@ -200,7 +205,7 @@ function DocTable({ docs, onOpen, compact = false }) {
                   {d.text_pages}/{d.pages}
                 </strong>
                 <small>
-                  {d.media_type === "text/html"
+                  {isArticleDoc(d)
                     ? "mục nội dung bài viết"
                     : "trang PDF có văn bản"}
                 </small>
@@ -234,25 +239,28 @@ function DocTable({ docs, onOpen, compact = false }) {
     </div>
   );
 }
-function Coverage({ docs }) {
-  const tickers = [...new Set(docs.map((d) => d.ticker))];
-  const max = Math.max(
-    1,
-    ...tickers.map((t) => docs.filter((d) => d.ticker === t).length),
-  );
+function Coverage({ docs, summaryRows }) {
+  const rows =
+    summaryRows ||
+    [...new Set(docs.map((d) => d.ticker))].map((ticker) => {
+      const selected = docs.filter((d) => d.ticker === ticker);
+      return {
+        ticker,
+        documents: selected.length,
+        with_text: selected.filter((d) => d.text_pages > 0).length,
+      };
+    });
+  const max = Math.max(1, ...rows.map((r) => r.documents));
   return (
     <div className="coverage">
-      {tickers.map((ticker) => {
-        const selected = docs.filter((d) => d.ticker === ticker);
-        const pages = selected.length;
-        const text = selected.filter((d) => d.text_pages > 0).length;
+      {rows.map(({ ticker, documents: pages, with_text: text }) => {
         return (
           <div className="coverage-row" key={ticker}>
             <div className="coverage-label">
               <DocLogo ticker={ticker} />
               <span>
                 <strong>{ticker === "MARKET" ? "Thị trường" : ticker}</strong>
-                <small>{selected.length} tài liệu</small>
+                <small>{fmt(pages)} tài liệu</small>
               </span>
             </div>
             <div className="bar-track">
@@ -280,6 +288,9 @@ function Coverage({ docs }) {
           <i className="dot light" /> Chưa có văn bản
         </span>
       </div>
+      {summaryRows && (
+        <p className="footnote">Một bài có thể liên quan nhiều mã cổ phiếu.</p>
+      )}
     </div>
   );
 }
@@ -358,11 +369,15 @@ function Quality({ pilot }) {
   );
 }
 function Overview({ data, docs, onOpen }) {
-  const pdfs = docs.filter((d) => d.media_type !== "text/html");
-  const articles = docs.length - pdfs.length;
-  const pages = pdfs.reduce((n, d) => n + d.pages, 0),
-    text = pdfs.reduce((n, d) => n + d.text_pages, 0);
-  const eligible = docs.filter((d) => !d.quarantine_reasons.length).length;
+  const pdfs = docs.filter((d) => !isArticleDoc(d));
+  const stats = data.catalog?.scope_stats;
+  const total = stats?.documents ?? docs.length;
+  const articles = stats?.articles ?? docs.length - pdfs.length;
+  const pages = stats?.pdf_pages ?? pdfs.reduce((n, d) => n + d.pages, 0),
+    text = stats?.pdf_text_pages ?? pdfs.reduce((n, d) => n + d.text_pages, 0);
+  const eligible = stats
+    ? total - (stats.quarantined || 0)
+    : docs.filter((d) => !d.quarantine_reasons.length).length;
   return (
     <>
       <div className="hero">
@@ -407,8 +422,8 @@ function Overview({ data, docs, onOpen }) {
       <div className="stats-grid">
         <Stat
           label="Tài liệu trong kho"
-          value={fmt(docs.length)}
-          note={`${pdfs.length} PDF · ${articles} bài viết`}
+          value={fmt(total)}
+          note={`${fmt(stats?.pdf_documents ?? pdfs.length)} PDF · ${fmt(articles)} bài viết`}
           icon={FolderOpen}
         />
         <Stat
@@ -428,7 +443,7 @@ function Overview({ data, docs, onOpen }) {
         <Stat
           label="Đủ điều kiện PiT strict"
           value={fmt(eligible)}
-          note={`${docs.length - eligible} tài liệu cần xác minh lịch sử`}
+          note={`${fmt(total - eligible)} tài liệu cần xác minh lịch sử`}
           icon={ShieldCheck}
           tone="amber"
         />
@@ -440,7 +455,16 @@ function Overview({ data, docs, onOpen }) {
           action={<Badge>LOCAL CORPUS</Badge>}
         >
           {docs.length ? (
-            <Coverage docs={docs} />
+            <Coverage
+              docs={docs}
+              summaryRows={
+                data.catalog
+                  ? data.catalog.scope_ticker === "all"
+                    ? data.catalog.breakdown
+                    : [{ ticker: data.catalog.scope_ticker, ...stats }]
+                  : null
+              }
+            />
           ) : (
             <Empty title="Không có tài liệu">
               Đổi bộ lọc hoặc kiểm tra kho dữ liệu.
@@ -577,15 +601,62 @@ function AnnualCoverage({ coverage, ticker }) {
   );
 }
 
-function Documents({ docs, onOpen, coverage, ticker }) {
+function Documents({ docs, onOpen, coverage, ticker, catalog }) {
   const [query, setQuery] = useState(""),
     [type, setType] = useState("all"),
     [year, setYear] = useState("all"),
     [scope, setScope] = useState("all"),
     [publisher, setPublisher] = useState("all"),
+    [origin, setOrigin] = useState("all"),
     [page, setPage] = useState(1);
+  const [remote, setRemote] = useState(null),
+    [busy, setBusy] = useState(false),
+    [failure, setFailure] = useState("");
   useEffect(() => setPage(1), [ticker, docs.length]);
-  const filtered = docs
+  useEffect(() => {
+    if (!catalog) return;
+    let active = true;
+    setBusy(true);
+    setFailure("");
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams({
+        offset: String((page - 1) * 20),
+        limit: "20",
+        q: query,
+        ticker,
+        kind: type,
+        year,
+        scope,
+        publisher,
+        origin,
+      });
+      api(`catalog/documents?${params}`)
+        .then((r) => {
+          if (active) setRemote(r);
+        })
+        .catch((e) => {
+          if (active) setFailure(e.message);
+        })
+        .finally(() => {
+          if (active) setBusy(false);
+        });
+    }, 200);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [
+    Boolean(catalog),
+    ticker,
+    query,
+    type,
+    year,
+    scope,
+    publisher,
+    origin,
+    page,
+  ]);
+  const localFiltered = docs
     .filter(
       (d) =>
         `${d.title} ${d.ticker} ${d.related_tickers?.join(" ") || ""} ${d.publisher || ""} ${d.reporting_period}`
@@ -610,8 +681,13 @@ function Documents({ docs, onOpen, coverage, ticker }) {
         a.ticker.localeCompare(b.ticker) ||
         a.title.localeCompare(b.title),
     );
+  const filtered = catalog ? remote?.documents || [] : localFiltered;
+  const total = catalog ? remote?.total || 0 : filtered.length;
+  const stats = remote?.stats || catalog?.scope_stats;
+  const documentCount = stats?.documents ?? docs.length;
+  const facets = catalog?.facets;
   const pageSize = 20;
-  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const pages = Math.max(1, Math.ceil(total / pageSize));
   const currentPage = Math.min(page, pages);
   const start = (currentPage - 1) * pageSize;
   return (
@@ -628,22 +704,28 @@ function Documents({ docs, onOpen, coverage, ticker }) {
       <div className="stats-grid three">
         <Stat
           label="Tài liệu"
-          value={docs.length}
-          note={`${docs.filter((d) => d.media_type !== "text/html").length} PDF · ${docs.filter((d) => d.media_type === "text/html").length} bài viết`}
+          value={fmt(documentCount)}
+          note={`${fmt(stats?.pdf_documents ?? docs.filter((d) => !isArticleDoc(d)).length)} PDF · ${fmt(stats?.articles ?? docs.filter(isArticleDoc).length)} bài viết`}
           icon={FileText}
         />
         <Stat
           label="Trang cần kiểm tra OCR"
-          value={docs
-            .filter((d) => d.media_type !== "text/html")
-            .reduce((n, d) => n + d.pages - d.text_pages, 0)}
+          value={fmt(
+            stats?.ocr_backlog ??
+              docs
+                .filter((d) => !isArticleDoc(d))
+                .reduce((n, d) => n + d.pages - d.text_pages, 0),
+          )}
           note="Chưa chạy OCR; không suy diễn nội dung"
           icon={BookOpen}
           tone="blue"
         />
         <Stat
           label="Cần xác minh PiT"
-          value={docs.filter((d) => d.quarantine_reasons.length).length}
+          value={fmt(
+            stats?.quarantined ??
+              docs.filter((d) => d.quarantine_reasons.length).length,
+          )}
           note="Được giữ ngoài corpus lịch sử strict"
           icon={Clock3}
           tone="amber"
@@ -651,8 +733,8 @@ function Documents({ docs, onOpen, coverage, ticker }) {
       </div>
       <Panel
         title="Danh mục tài liệu"
-        subtitle={`${filtered.length} tài liệu phù hợp bộ lọc`}
-        action={<Badge>{docs.length} SNAPSHOTS</Badge>}
+        subtitle={`${fmt(total)} tài liệu phù hợp bộ lọc`}
+        action={<Badge>{fmt(documentCount)} SNAPSHOTS</Badge>}
       >
         <div className="table-toolbar">
           <label className="input-with-icon">
@@ -676,7 +758,9 @@ function Documents({ docs, onOpen, coverage, ticker }) {
             }}
           >
             <option value="all">Tất cả loại tài liệu</option>
-            {[...new Set(docs.map((d) => d.document_type))].map((t) => (
+            {(
+              facets?.types || [...new Set(docs.map((d) => d.document_type))]
+            ).map((t) => (
               <option key={t} value={t}>
                 {TYPES[t] || t}
               </option>
@@ -691,13 +775,15 @@ function Documents({ docs, onOpen, coverage, ticker }) {
             }}
           >
             <option value="all">Tất cả năm</option>
-            {[
-              ...new Set(
-                docs
-                  .map((d) => d.reporting_period?.slice(0, 4))
-                  .filter(Boolean),
-              ),
-            ]
+            {(
+              facets?.years || [
+                ...new Set(
+                  docs
+                    .map((d) => d.reporting_period?.slice(0, 4))
+                    .filter(Boolean),
+                ),
+              ]
+            )
               .sort()
               .reverse()
               .map((y) => (
@@ -729,11 +815,13 @@ function Documents({ docs, onOpen, coverage, ticker }) {
             }}
           >
             <option value="all">Tất cả nguồn đăng</option>
-            {[
-              ...new Set(
-                docs.map((d) => d.publisher || "Báo cáo doanh nghiệp"),
-              ),
-            ]
+            {(
+              facets?.publishers || [
+                ...new Set(
+                  docs.map((d) => d.publisher || "Báo cáo doanh nghiệp"),
+                ),
+              ]
+            )
               .sort()
               .map((p) => (
                 <option key={p} value={p}>
@@ -741,11 +829,32 @@ function Documents({ docs, onOpen, coverage, ticker }) {
                 </option>
               ))}
           </select>
+          {catalog && (
+            <select
+              aria-label="Loại nguồn"
+              value={origin}
+              onChange={(e) => {
+                setOrigin(e.target.value);
+                setPage(1);
+              }}
+            >
+              <option value="all">Tất cả cách thu thập</option>
+              <option value="publisher_snapshot">Thu thập trực tiếp</option>
+              <option value="dataset_mirror">Nhập từ dataset công khai</option>
+            </select>
+          )}
         </div>
-        {filtered.length ? (
+        {failure && <Notice tone="error">{failure}</Notice>}
+        {busy ? (
+          <div className="loading">
+            <Loader2 className="spin" /> Đang tìm tài liệu…
+          </div>
+        ) : filtered.length ? (
           <>
             <DocTable
-              docs={filtered.slice(start, start + pageSize)}
+              docs={
+                catalog ? filtered : filtered.slice(start, start + pageSize)
+              }
               onOpen={onOpen}
             />
             <nav
@@ -753,8 +862,8 @@ function Documents({ docs, onOpen, coverage, ticker }) {
               aria-label="Phân trang tài liệu"
             >
               <span>
-                {start + 1}–{Math.min(start + pageSize, filtered.length)} /{" "}
-                {filtered.length} tài liệu
+                {fmt(start + 1)}–{fmt(Math.min(start + pageSize, total))} /{" "}
+                {fmt(total)} tài liệu
               </span>
               <div>
                 <button
@@ -788,7 +897,7 @@ function Documents({ docs, onOpen, coverage, ticker }) {
   );
 }
 function DocumentDrawer({ doc, onClose }) {
-  const isArticle = doc.media_type === "text/html";
+  const isArticle = isArticleDoc(doc);
   const [page, setPage] = useState(1),
     [content, setContent] = useState(null),
     [error, setError] = useState("");
@@ -860,6 +969,13 @@ function DocumentDrawer({ doc, onClose }) {
             Ngày đăng quan sát: {when(doc.publication_date)}
             {doc.author ? ` · Tác giả: ${doc.author}` : ""}. Thời gian trên
             trang chưa phải bằng chứng khả dụng lịch sử.
+          </p>
+        )}
+        {doc.origin === "dataset_mirror" && (
+          <p className="footnote">
+            Nội dung nhập từ VietOnlineNews, có URL báo gốc; chưa đối chiếu lại
+            với trang báo hiện tại. Dataset ghi nguồn {doc.dataset_split}, ID{" "}
+            {doc.dataset_row_id}.
           </p>
         )}
         {doc.quarantine_reasons.length > 0 && (
@@ -1718,7 +1834,11 @@ function App() {
     setLoading(true);
     setError("");
     try {
-      setData(await api("workspace"));
+      setData(
+        await api(
+          `workspace?ticker=${encodeURIComponent(ticker === "all" ? "" : ticker)}`,
+        ),
+      );
     } catch (e) {
       setError(e.message);
     } finally {
@@ -1737,6 +1857,22 @@ function App() {
     refresh();
     checkModel();
   }, []);
+  useEffect(() => {
+    if (!data?.catalog) return;
+    let active = true;
+    api(
+      `workspace?ticker=${encodeURIComponent(ticker === "all" ? "" : ticker)}`,
+    )
+      .then((next) => {
+        if (active) setData(next);
+      })
+      .catch((e) => {
+        if (active) setError(e.message);
+      });
+    return () => {
+      active = false;
+    };
+  }, [ticker, Boolean(data?.catalog)]);
   useEffect(() => {
     const handler = () => {
       setTab(window.location.hash.slice(1) || "overview");
@@ -1797,7 +1933,9 @@ function App() {
               <Icon icon={I} size={19} />
               <span>{label}</span>
               {key === "documents" && data && (
-                <small>{data.documents.length}</small>
+                <small>
+                  {fmt(data.document_count ?? data.documents.length)}
+                </small>
               )}
             </button>
           ))}
@@ -1815,10 +1953,11 @@ function App() {
             <option value="all">Tất cả doanh nghiệp và thị trường</option>
             {[
               ...new Set(
-                (data?.documents || []).flatMap((d) => [
-                  d.ticker,
-                  ...(d.related_tickers || []),
-                ]),
+                data?.catalog?.facets?.tickers ||
+                  (data?.documents || []).flatMap((d) => [
+                    d.ticker,
+                    ...(d.related_tickers || []),
+                  ]),
               ),
             ]
               .sort()
@@ -1968,6 +2107,7 @@ function App() {
                   onOpen={setDrawer}
                   coverage={data.coverage}
                   ticker={ticker}
+                  catalog={data.catalog}
                 />
               )}
               {current[0] === "analysis" && (

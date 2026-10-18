@@ -81,7 +81,7 @@ def publication_fields(observations: list[dict]) -> dict:
                 return {"publication_date": date.fromisoformat(raw).isoformat(),
                         "timestamp_precision": "day"}
             value = (datetime.fromisoformat(raw.replace("Z", "+00:00"))
-                     if re.match(r"\d{4}-\d{2}-\d{2}T", raw) else parsedate_to_datetime(raw))
+                     if re.match(r"\d{4}-\d{2}-\d{2}[T ]", raw) else parsedate_to_datetime(raw))
             if value.tzinfo is None or value.utcoffset() is None:
                 return {"publication_date": value.date().isoformat(), "timestamp_precision": "day"}
             return {"published_at": value.astimezone(UTC).isoformat(),

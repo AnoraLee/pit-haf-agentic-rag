@@ -1,0 +1,46 @@
+{
+  "run_kind": "local_integrity_checks_not_semantic_validation",
+  "research_prediction_results": false,
+  "summary_sha256": "e67bf94ffba4dcf0588898d949c3065826252ab1e6a899c2aed4d51a4212ba8c",
+  "pages_sha256": "192fe62b1e8a639748a62edf926700e8bb8ea6118f1d11215f62b248ee14e2d1",
+  "catalog_sha256": "c241cac5be754270d2f11737cbaf421a961d53f5b47d67075caacc1d82349c4a",
+  "catalog_documents": 30939,
+  "frozen_pilot_registry_versions_unchanged": 11,
+  "frozen_pilot_page_text_hashes_unchanged": 905,
+  "source_file_sha256": {
+    "src/pit_haf/data/catalog.py": "239d60ab9b9b97e51eda33389355bf683730f0def81d5fb8042cb88f0c90474c",
+    "src/pit_haf/data/dataset_import.py": "e27a7de8bb81282fc8308eb8c1fdd0de696e0dc9b19b74536ea6e2a29ef1dab6",
+    "src/pit_haf/data/hub.py": "84aae730bc738243c47c4a71793419348e10a9af13e3bdd9ea68f6fe0c482860",
+    "src/pit_haf/data/evidence.py": "9888ce12014a2b0bf3de7690fdd9bdfbff54d15f13eaf95f5d612a318c636deb",
+    "src/pit_haf/data/snapshots.py": "b4449cd89df3ad22ebe2a0b06c72d7ae0ba3384f3de74c1dfc27e084240cbe56",
+    "src/pit_haf/data/corpus.py": "188b64f626d6e042c6d84ad81539d871a9203dc8b331cb5999006260f5714884",
+    "src/pit_haf/data/coverage.py": "319d4766e87ed3da94ac744ec63af628d6468d151896fa12c4a7739ac6393539",
+    "src/pit_haf/data/news.py": "c25bc1d818fd59a1b470eb1507568ca513730651b9ac12ffc95df1f230ef0939"
+  },
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "dataset_counts_by_original_split": {
+    "dev": 2230,
+    "train": 27770
+  },
+  "dataset_counts_by_publisher": {
+    "Tuổi Trẻ": 7091,
+    "Thanh Niên": 7671,
+    "VietnamNet": 15238
+  },
+  "source_config_sha256": "cedb7621fe3d825371b30fd26593b035ce730cd324359f5f42532e36105bc837",
+  "merged_manifest_sha256": "8781376cb67da480d4107c255273efa74063e8e8c2fac7fa2a5e45946e44ab67",
+  "import_summary_sha256": "04f3992a7ac9ca23ef85df5d4d5441d0c6934e9d276b12551acdf2edec373925",
+  "selection_counts": {
+    "scanned_rows": 201011,
+    "outside_categories": 170860,
+    "domain_candidate_rows": 30151
+  },
+  "rejected_candidate_rows": 151,
+  "not_validated": [
+    "Independent human gold",
+    "OCR/table/semantic accuracy",
+    "Historical time/revision availability",
+    "Predictive performance"
+  ]
+}

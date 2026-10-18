@@ -1,0 +1,75 @@
+{
+  "run_kind": "local_software_and_real_corpus_checks_not_model_evaluation",
+  "checked_at": "2026-10-18T11:21:55.019829+00:00",
+  "python": "3.12.14",
+  "software_checks": {
+    "pytest": {
+      "passed": 274,
+      "failed": 0,
+      "warnings": 2,
+      "warning_kind": "Starlette/AnyIO deprecation"
+    },
+    "ruff_src_tests_scripts": "passed",
+    "frontend_build": "passed; two lucide-react use-client directive warnings",
+    "prettier_check": "passed",
+    "uv_lock_check_offline_python312": "passed; 85 locked packages",
+    "git_diff_check": "passed_before_staging"
+  },
+  "http_integration": {
+    "run_kind": "real_local_http_checks_not_prediction_results",
+    "documents": 30939,
+    "dataset_articles": 30000,
+    "pdf_pages": 17915,
+    "workspace_payload_bytes": 175976,
+    "workspace_initial_seconds": 12.615,
+    "browse_first_seconds": 0.317,
+    "browse_last_seconds": 4.093,
+    "search_seconds": 1.627,
+    "strict_seconds": 2.738,
+    "first_and_last_pages_distinct": true,
+    "all_literal_offsets_verified": true,
+    "strict_allowed_versions": 0,
+    "mirror_page_verified": "43d8b754f3e6d56eefc84cac0e6dfd826b68863d686e6369e4481c3b6b944b16",
+    "mirror_original_url": "https://tuoitre.vn/88-nha-dau-tu-crypto-o-viet-nam-duoi-35-tuoi-nhom-thu-nhap-cao-co-hieu-suat-bat-ngo-20251231134621717.htm",
+    "retrieval_method": "SQLite FTS5 BM25; current catalog only",
+    "llm_inference_performed": false,
+    "snapshot": "outputs\\milestone-1\\data-pilot\\20261018-corpus-v0.5-scale-curated\\summary.json"
+  },
+  "metadata_artifact_checks": {
+    "run_kind": "local_public_metadata_integrity_check",
+    "registry_versions": 30956,
+    "active_documents": 30939,
+    "active_dataset_articles": 30000,
+    "all_original_registry_json_hashes_match": true,
+    "all_source_code_hashes_match": true,
+    "no_body_or_auth_fields": true,
+    "rejection_reasons": {
+      "Empty/short/large publisher content": 151
+    },
+    "artifact_bytes": {
+      "coverage.json": 89842,
+      "DATA_CARD.md": 4673,
+      "registry_index.jsonl.gz": 11852993,
+      "release.json": 472,
+      "universe.json": 3607,
+      "verification.json": 2228
+    }
+  },
+  "browser_checks": {
+    "url": "http://localhost:8501/#documents",
+    "visible_documents": 30939,
+    "visible_pdf_documents": 264,
+    "visible_articles": 30675,
+    "dataset_origin_filter_count": 30000,
+    "mirror_drawer_body_and_original_url_loaded": true,
+    "dataset_split_and_row_id_visible": true,
+    "filters_restored": "all",
+    "screenshot_local": "outputs/ui-preview/corpus-v05-large.png",
+    "screenshot_sha256": "26c1086c3cc22b03f9cc9e19d2eeb0462519e5a2555defb2ba22c6316c2a4fd0"
+  },
+  "llm_inference_performed": false,
+  "prediction_or_backtest_results": false,
+  "semantic_or_human_gold_validated": false,
+  "historical_pit_eligible_documents": 0,
+  "github_actions_status": "not_checked_this_run"
+}

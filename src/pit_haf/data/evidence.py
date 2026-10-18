@@ -36,7 +36,13 @@ class EvidenceVersion(BaseModel):
     ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
     document_type: str = Field(min_length=1)
     title: str = Field(min_length=1)
-    media_type: Literal["application/pdf", "text/html"] = "application/pdf"
+    media_type: Literal["application/pdf", "text/html", "application/json"] = "application/pdf"
+    origin: Literal["publisher_snapshot", "dataset_mirror"] = "publisher_snapshot"
+    dataset_id: str | None = None
+    dataset_revision: str | None = Field(default=None, pattern=r"^[0-9a-f]{40}$")
+    dataset_path: str | None = None
+    dataset_row_id: str | None = None
+    dataset_split: str | None = None
     publisher: str | None = None
     author: str | None = None
     evidence_scope: Literal["issuer", "market"] = "issuer"
@@ -138,6 +144,10 @@ class EvidenceVersion(BaseModel):
 
     @model_validator(mode="after")
     def check_availability(self) -> "EvidenceVersion":
+        if self.origin == "dataset_mirror" and (self.media_type != "application/json" or not all((
+            self.dataset_id, self.dataset_revision, self.dataset_path, self.dataset_row_id, self.dataset_split
+        ))):
+            raise ValueError("Dataset mirror needs pinned dataset provenance and serialized JSON row media")
         expected_path = f"blobs/{self.content_hash[:2]}/{self.content_hash}"
         if self.raw_snapshot_path != expected_path:
             raise ValueError("raw_snapshot_path must match the content-addressed blob locator")

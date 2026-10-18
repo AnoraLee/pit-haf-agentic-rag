@@ -9,12 +9,13 @@ from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
+from pit_haf.data.catalog import Catalog
 from pit_haf.data.evidence import aware
 from pit_haf.data.gateway import deliver_as_of
 from pit_haf.data.snapshots import SnapshotStore
@@ -61,6 +62,31 @@ def create_app(root: Path | None = None) -> FastAPI:
     model_lock = threading.Lock()
     corpus_lock = threading.Lock()
     cache = {"fingerprint": None, "corpus": None}
+    disk_cache = {"fingerprint": None, "catalog": None}
+
+    def disk_catalog():
+        paths = sorted(root.glob("outputs/milestone-1/data-pilot/*/summary.json"),
+                       key=lambda p: p.stat().st_mtime_ns, reverse=True)
+        if not paths or not (paths[0].parent / "catalog.json").is_file():
+            return None
+        summary = paths[0]
+        pointer = summary.parent / "catalog.json"
+        try:
+            name = json.loads(pointer.read_text(encoding="utf-8"))["catalog_file"]
+            if Path(name).name != name:
+                raise ValueError("Invalid catalog locator")
+            files = [summary, pointer, summary.parent / name]
+            fingerprint = tuple((str(p), p.stat().st_mtime_ns, p.stat().st_size) for p in files)
+        except (OSError, ValueError, KeyError) as exc:
+            raise HTTPException(503, "Không mở được catalog: " + str(exc)) from exc
+        with corpus_lock:
+            if fingerprint != disk_cache["fingerprint"]:
+                try:
+                    catalog = Catalog(root, summary)
+                except (OSError, ValueError, KeyError) as exc:
+                    raise HTTPException(503, "Không mở được catalog: " + str(exc)) from exc
+                disk_cache.update(fingerprint=fingerprint, catalog=catalog)
+        return disk_cache["catalog"]
 
     @app.middleware("http")
     async def local_origin(request: Request, call_next):
@@ -79,8 +105,9 @@ def create_app(root: Path | None = None) -> FastAPI:
             return cache["corpus"]
 
     def retrieve(body: SearchRequest):
-        data = corpus()
-        if data.errors:
+        catalog = disk_catalog()
+        data = None if catalog else corpus()
+        if data is not None and data.errors:
             raise HTTPException(503, detail="; ".join(data.errors))
         allowed, audit = None, []
         if body.mode == "strict_point_in_time":
@@ -88,7 +115,13 @@ def create_app(root: Path | None = None) -> FastAPI:
                                  decision_at=body.decision_at.isoformat())
             allowed = {item.evidence.version_id for item in gate.deliveries}
             audit = list(gate.audit)
-        hits = search_passages(data, body.query, ticker=body.ticker, allowed_versions=allowed)
+        if catalog:
+            try:
+                data, hits = catalog.search(body.query, ticker=body.ticker, allowed_versions=allowed)
+            except (OSError, ValueError) as exc:
+                raise HTTPException(503, "Bằng chứng không còn toàn vẹn: " + str(exc)) from exc
+        else:
+            hits = search_passages(data, body.query, ticker=body.ticker, allowed_versions=allowed)
         return data, hits, allowed, audit
 
     @app.get("/api/health")
@@ -96,7 +129,29 @@ def create_app(root: Path | None = None) -> FastAPI:
         return {"status": "ok", "application": "pit-haf", "interface": "react"}
 
     @app.get("/api/workspace")
-    def workspace():
+    def workspace(ticker: str | None = None):
+        catalog = disk_catalog()
+        if catalog:
+            facets = catalog.facets()
+            stats = catalog.stats()
+            scoped = catalog.stats(ticker)
+            coverage = None
+            for path in sorted(root.glob("data/corpus/*/coverage.json"), reverse=True):
+                report = json.loads(path.read_text(encoding="utf-8"))
+                if report.get("summary_sha256") == catalog.pointer["summary_sha256"]:
+                    coverage = report
+                    break
+            return {"documents": catalog.browse(ticker=ticker)["documents"], "errors": [],
+                    "snapshot": catalog.snapshot, "coverage": coverage,
+                    "document_count": stats["documents"], "page_count": stats["pages"],
+                    "text_page_count": stats["text_pages"], "pdf_page_count": stats.get("pdf_pages", 0),
+                    "article_count": stats.get("articles", 0), "dataset_article_count": stats.get("dataset_articles", 0),
+                    "html_article_count": stats.get("articles", 0) - stats.get("dataset_articles", 0),
+                    "pilot": load_pilot_metrics(root),
+                    "catalog": {"facets": facets, "stats": stats, "scope_stats": scoped,
+                                "scope_ticker": ticker or "all",
+                                "breakdown": [{"ticker": t, **catalog.stats(t)} for t in facets["tickers"]],
+                                "retrieval_method": "SQLite FTS5 current-corpus BM25; strict cohort uses filtered literal BM25"}}
         data = corpus()
         versions = []
         for item in data.versions:
@@ -130,8 +185,28 @@ def create_app(root: Path | None = None) -> FastAPI:
                 "html_article_count": sum(v["media_type"] == "text/html" for v in versions),
                 "pilot": load_pilot_metrics(root)}
 
+    @app.get("/api/catalog/documents")
+    def catalog_documents(offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100),
+                          q: str = Query("", max_length=300), ticker: str | None = None,
+                          kind: str | None = None, year: str | None = None, scope: str | None = None,
+                          publisher: str | None = None, origin: str | None = None):
+        catalog = disk_catalog()
+        if catalog is None:
+            raise HTTPException(404, "Snapshot hiện tại chưa có catalog trên đĩa.")
+        return {**catalog.browse(offset=offset, limit=limit, q=q, ticker=ticker, kind=kind,
+                                year=year, scope=scope, publisher=publisher, origin=origin),
+                "stats": catalog.stats(ticker)}
+
     @app.get("/api/documents/{version_id}/pages/{page_number}")
     def page_text(version_id: str, page_number: int):
+        catalog = disk_catalog()
+        if catalog:
+            try:
+                return catalog.page(version_id, page_number)[1].model_dump(mode="json")
+            except KeyError as exc:
+                raise HTTPException(404, "Không tìm thấy trang tài liệu.") from exc
+            except (OSError, ValueError) as exc:
+                raise HTTPException(503, "Bằng chứng không còn toàn vẹn: " + str(exc)) from exc
         page = next((item for item in corpus().pages if item.version_id == version_id
                      and item.page == page_number), None)
         if page is None:
@@ -159,7 +234,8 @@ def create_app(root: Path | None = None) -> FastAPI:
         return {"passages": [asdict(hit) for hit in hits], "mode": body.mode,
                 "allowed_versions": len(allowed) if allowed is not None else None,
                 "gateway_audit": audit, "historical_availability_validated": allowed is not None,
-                "retrieval_method": "BM25; statistics computed after gateway filtering"}
+                "retrieval_method": ("SQLite FTS5 BM25; current catalog only" if disk_catalog() and allowed is None
+                                     else "BM25; statistics computed after gateway filtering")}
 
     @app.post("/api/analysis")
     def analysis(body: AnalysisRequest):
@@ -175,7 +251,8 @@ def create_app(root: Path | None = None) -> FastAPI:
                                    decision_at=body.decision_at.isoformat() if body.decision_at
                                    else None, allowed_versions=allowed, retrieval={
                                        "query": body.query, "ticker": body.ticker,
-                                       "method": "bm25_literal_chunks_v0.1",
+                                       "method": ("sqlite_fts5_current_catalog_v1" if disk_catalog() and allowed is None
+                                                  else "bm25_literal_chunks_v0.1"),
                                        "gateway_audit_evaluator_only": audit,
                                        "ranked_passages": [{
                                            "version_id": item.version_id, "page": item.page,

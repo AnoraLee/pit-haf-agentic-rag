@@ -1,0 +1,10 @@
+{
+  "release_id": "development-corpus-v0.5-30000-news-20261018",
+  "summary_sha256": "e67bf94ffba4dcf0588898d949c3065826252ab1e6a899c2aed4d51a4212ba8c",
+  "registry_index_sha256": "fb2816ad0d6d5eabd4c59d49bfcfce7949db76eba247c3e050003cde57ffffd1",
+  "source_config_sha256": "cedb7621fe3d825371b30fd26593b035ce730cd324359f5f42532e36105bc837",
+  "configured_records": 31163,
+  "active_documents": 30939,
+  "dataset_articles": 30000,
+  "research_prediction_results": false
+}

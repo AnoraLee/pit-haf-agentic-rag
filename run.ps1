@@ -7,6 +7,9 @@ param(
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 $pythonExe = Join-Path $PSScriptRoot '.venv\Scripts\python.exe'
+if (Test-Path -LiteralPath (Join-Path $PSScriptRoot '.venv312\Scripts\python.exe')) {
+  $pythonExe = Join-Path $PSScriptRoot '.venv312\Scripts\python.exe'
+}
 if (!(Test-Path -LiteralPath $pythonExe)) { throw 'Missing .venv. See README.md for setup.' }
 switch ($Task) {
   'test' {

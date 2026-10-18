@@ -4,3 +4,5 @@ configs/corpus_sources_v0_4.json -text whitespace=blank-at-eol,blank-at-eof,spac
 configs/news_sources_v0_4.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 configs/universe_v0_4.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 src/pit_haf/data/*.py text eol=lf
+data/corpus/v0.5/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+configs/dataset_sources_v0_5.json text eol=lf
