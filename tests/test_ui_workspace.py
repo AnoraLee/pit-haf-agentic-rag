@@ -99,6 +99,16 @@ def test_future_pages_do_not_change_historical_bm25_statistics(local_corpus):
     assert page.text[hit.start:hit.end] == hit.text
 
 
+def test_related_ticker_retrieval_cannot_bypass_historical_allowlist(local_corpus):
+    root, _, page = local_corpus
+    original = load_corpus(root)
+    related = page.model_copy(update={"related_tickers": ("FPT", "HPG")})
+    data = Corpus(original.versions, (related,))
+    assert search_passages(data, "doanh thu", ticker="HPG")
+    assert search_passages(data, "doanh thu", ticker="HPG", allowed_versions=set()) == []
+    assert search_passages(data, "doanh thu", ticker="TCB") == []
+
+
 class FixtureAdapter:
     def __init__(self, quote="Doanh thu đạt 100 tỷ đồng.", *, changed=False, fail=False):
         self.quote, self.changed, self.fail, self.inspections = quote, changed, fail, 0

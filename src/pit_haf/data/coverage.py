@@ -18,6 +18,8 @@ from pit_haf.data.snapshots import SnapshotStore
 def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[dict, dict]:
     tickers = [item["ticker"] for item in universe["issuers"]]
     years = universe["target_annual_years"]
+    annual_targets = [item for item in universe["issuers"]
+                      if item.get("entity_type", "issuer") == "issuer"]
     if len(set(tickers)) != len(tickers) or len(set(years)) != len(years):
         raise ValueError("Duplicate issuer/year targets would distort coverage")
     successful_rows = [row for row in summary["documents"] if row.get("status") == "extracted"]
@@ -58,15 +60,19 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
     for issuer in universe["issuers"]:
         documents = [item for item in versions.values() if item.ticker == issuer["ticker"]]
         present = {item.reporting_period for item in documents if item.document_type == "annual_report"}
-        annual = {str(year): str(year) in present for year in years}
+        annual = ({str(year): str(year) in present for year in years}
+                  if issuer.get("entity_type", "issuer") == "issuer" else {})
         gaps.extend({"ticker": issuer["ticker"], "year": year, "kind": "annual_report"}
-                    for year in years if not annual[str(year)])
+                    for year in years if str(year) in annual and not annual[str(year)])
         page_stats = [successful[item.version_id] for item in documents]
         by_ticker.append({**issuer, "documents": len(documents),
                           "logical_records": len({item.record_id for item in documents}),
                           "pages": sum(item["pages"] for item in page_stats),
                           "text_pages": sum(item["text_pages"] for item in page_stats),
                           "annual_years": annual,
+                          "related_articles": sum(issuer["ticker"] in item.related_tickers
+                                                  for item in versions.values()
+                                                  if item.media_type == "text/html"),
                           "financial_statement_periods": sorted({
                               item.reporting_period for item in documents
                               if item.document_type == "financial_statement" and item.reporting_period
@@ -75,6 +81,10 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
     by_blob = defaultdict(list)
     for item in versions.values():
         by_blob[item.content_hash].append(item.record_id)
+    pdfs = [v for v in versions.values() if v.media_type == "application/pdf"]
+    articles = [v for v in versions.values() if v.media_type == "text/html"]
+    pdf_rows = [successful[v.version_id] for v in pdfs]
+    dates = sorted(str(v.publication_date) for v in articles if v.publication_date)
     coverage = {
         "release_id": universe["release_id"], "run_kind": "development_corpus_coverage",
         "created_at": summary["created_at"], "research_prediction_results": False,
@@ -83,7 +93,17 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
             row["version_id"] for row in summary["documents"] if row.get("version_id")
         })),
         "acquired_documents": len(versions),
-        "unique_pdf_blobs": len(by_blob),
+        "unique_pdf_blobs": len({v.content_hash for v in pdfs}),
+        "unique_raw_blobs": len(by_blob),
+        "pdf_documents": len(pdfs), "html_articles": len(articles),
+        "pdf_page_count": sum(row["pages"] for row in pdf_rows),
+        "text_pdf_page_count": sum(row["text_pages"] for row in pdf_rows),
+        "html_section_count": sum(successful[v.version_id]["pages"] for v in articles),
+        "news_by_publisher": dict(Counter(v.publisher or v.source_id for v in articles)),
+        "market_context_articles": sum(v.evidence_scope == "market" for v in articles),
+        "articles_with_publication_date": sum(v.publication_date is not None for v in articles),
+        "articles_without_publication_date": sum(v.publication_date is None for v in articles),
+        "observed_article_date_range": [dates[0], dates[-1]] if dates else [],
         "unique_raw_byte_count": sum(blob_sizes.values()),
         "duplicate_blob_groups": [{"content_hash": content_hash, "record_ids": sorted(records)}
                                   for content_hash, records in sorted(by_blob.items())
@@ -97,17 +117,19 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
         "parser_failed_documents": summary.get("parser_failed_documents", summary["failed_documents"]),
         "curation_excluded_documents": summary.get("curation_excluded_documents", 0),
         "configured_records_not_registered": summary.get("configured_records_not_registered", []),
-        "target_issuers": len(tickers), "observed_issuers": len({v.ticker for v in versions.values()}),
-        "observed_broad_sectors": len({row["sector"] for row in by_ticker if row["documents"]}),
-        "target_annual_cells": len(tickers) * len(years),
-        "covered_annual_cells": len(tickers) * len(years) - len(gaps),
+        "target_issuers": len(annual_targets),
+        "observed_issuers": len({v.ticker for v in versions.values() if v.evidence_scope == "issuer"}),
+        "observed_broad_sectors": len({row["sector"] for row in by_ticker if row["documents"]
+                                       and row.get("entity_type", "issuer") == "issuer"}),
+        "target_annual_cells": len(annual_targets) * len(years),
+        "covered_annual_cells": len(annual_targets) * len(years) - len(gaps),
         "page_count": summary["page_count"], "text_page_count": summary["text_page_count"],
         "empty_page_count_no_ocr": summary["empty_page_count_no_ocr"],
         "documents_without_extracted_text": sum(row["text_pages"] == 0 for row in successful_rows),
         "ocr_backlog": sorted([
             {"record_id": row["record_id"], "ticker": row["ticker"], "pages": row["pages"],
              "text_pages": row["text_pages"], "pages_without_text": row["pages"] - row["text_pages"]}
-            for row in successful_rows if row["pages"] > row["text_pages"]
+            for row in pdf_rows if row["pages"] > row["text_pages"]
         ], key=lambda row: (row["text_pages"] != 0, -row["pages_without_text"], row["record_id"])),
         "documents_with_parser_warnings": sum(bool(row.get("parser_warning_count"))
                                               for row in successful_rows),
@@ -131,11 +153,12 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
         ],
     }
     index = {
-        "schema_version": "corpus_snapshot_index_v0.2", "release_id": universe["release_id"],
+        "schema_version": "corpus_snapshot_index_v0.4", "release_id": universe["release_id"],
         "raw_store_relative_path": "data/cache/evidence", "total_versions": len(entries),
         "strict_deliveries": len(eligible),
         "historical_availability_validated": bool(entries) and len(eligible) == len(entries),
-        "notes": ["Metadata/hash export only. Raw PDFs/pages are local ignored artifacts.",
+        "notes": ["Metadata/hash export only. Raw PDFs/HTML/text are local ignored artifacts.",
+                  "page_count includes PDF pages and HTML sections; separate media totals are explicit.",
                   "registry_metadata_sha256 covers original immutable JSON, before derived defaults."],
         "versions": entries,
     }

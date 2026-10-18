@@ -1,0 +1,3313 @@
+{
+  "release_id": "development-corpus-v0.4-20261018",
+  "run_kind": "development_corpus_coverage",
+  "created_at": "2026-10-18T02:47:50.296735+00:00",
+  "research_prediction_results": false,
+  "configured_documents": 1163,
+  "registered_versions": 956,
+  "acquired_documents": 939,
+  "unique_pdf_blobs": 264,
+  "unique_raw_blobs": 939,
+  "pdf_documents": 264,
+  "html_articles": 675,
+  "pdf_page_count": 17915,
+  "text_pdf_page_count": 12943,
+  "html_section_count": 675,
+  "news_by_publisher": {
+    "Báo Tài chính - Đầu tư": 88,
+    "CafeF": 206,
+    "Báo điện tử Chính phủ": 91,
+    "Tập đoàn FPT": 12,
+    "Tập đoàn Hòa Phát": 104,
+    "Công ty Cổ phần Cơ Điện Lạnh REE": 17,
+    "VietnamBiz": 14,
+    "VnExpress": 143
+  },
+  "market_context_articles": 508,
+  "articles_with_publication_date": 675,
+  "articles_without_publication_date": 0,
+  "observed_article_date_range": [
+    "2020-02-16",
+    "2026-10-18"
+  ],
+  "unique_raw_byte_count": 2270957904,
+  "duplicate_blob_groups": [],
+  "document_types": {
+    "annual_report": 76,
+    "financial_statement": 171,
+    "earnings_overview": 17,
+    "news_article": 451,
+    "official_policy_news": 91,
+    "issuer_news": 133
+  },
+  "financial_statement_scopes": {
+    "consolidated": 87,
+    "parent": 84
+  },
+  "failed_documents": 224,
+  "parser_failed_documents": 15,
+  "curation_excluded_documents": 2,
+  "configured_records_not_registered": [],
+  "target_issuers": 13,
+  "observed_issuers": 13,
+  "observed_broad_sectors": 9,
+  "target_annual_cells": 130,
+  "covered_annual_cells": 75,
+  "page_count": 18590,
+  "text_page_count": 13618,
+  "empty_page_count_no_ocr": 4972,
+  "documents_without_extracted_text": 123,
+  "ocr_backlog": [
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025",
+      "ticker": "PNJ",
+      "pages": 104,
+      "text_pages": 0,
+      "pages_without_text": 104
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025",
+      "ticker": "PNJ",
+      "pages": 100,
+      "text_pages": 0,
+      "pages_without_text": 100
+    },
+    {
+      "record_id": "MWG-annual-2024-vi",
+      "ticker": "MWG",
+      "pages": 96,
+      "text_pages": 0,
+      "pages_without_text": 96
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2021",
+      "ticker": "HPG",
+      "pages": 80,
+      "text_pages": 0,
+      "pages_without_text": 80
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2021-H1",
+      "ticker": "HPG",
+      "pages": 80,
+      "text_pages": 0,
+      "pages_without_text": 80
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2020",
+      "ticker": "HPG",
+      "pages": 77,
+      "text_pages": 0,
+      "pages_without_text": 77
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2020-H1",
+      "ticker": "HPG",
+      "pages": 77,
+      "text_pages": 0,
+      "pages_without_text": 77
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2022-H1",
+      "ticker": "HPG",
+      "pages": 76,
+      "text_pages": 0,
+      "pages_without_text": 76
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2019",
+      "ticker": "HPG",
+      "pages": 75,
+      "text_pages": 0,
+      "pages_without_text": 75
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2022-Q1",
+      "ticker": "TCB",
+      "pages": 74,
+      "text_pages": 0,
+      "pages_without_text": 74
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022",
+      "ticker": "HPG",
+      "pages": 68,
+      "text_pages": 0,
+      "pages_without_text": 68
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-H1",
+      "ticker": "HPG",
+      "pages": 67,
+      "text_pages": 0,
+      "pages_without_text": 67
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024",
+      "ticker": "HPG",
+      "pages": 67,
+      "text_pages": 0,
+      "pages_without_text": 67
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2026-H1",
+      "ticker": "HPG",
+      "pages": 67,
+      "text_pages": 0,
+      "pages_without_text": 67
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-H1",
+      "ticker": "HPG",
+      "pages": 66,
+      "text_pages": 0,
+      "pages_without_text": 66
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2022-Q1",
+      "ticker": "TCB",
+      "pages": 66,
+      "text_pages": 0,
+      "pages_without_text": 66
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2023",
+      "ticker": "HPG",
+      "pages": 65,
+      "text_pages": 0,
+      "pages_without_text": 65
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2026-H1",
+      "ticker": "PNJ",
+      "pages": 54,
+      "text_pages": 0,
+      "pages_without_text": 54
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2025",
+      "ticker": "HPG",
+      "pages": 53,
+      "text_pages": 0,
+      "pages_without_text": 53
+    },
+    {
+      "record_id": "HPG-parent-audited-2020",
+      "ticker": "HPG",
+      "pages": 53,
+      "text_pages": 0,
+      "pages_without_text": 53
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2022-H1",
+      "ticker": "HPG",
+      "pages": 52,
+      "text_pages": 0,
+      "pages_without_text": 52
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2026-H1",
+      "ticker": "PNJ",
+      "pages": 52,
+      "text_pages": 0,
+      "pages_without_text": 52
+    },
+    {
+      "record_id": "HPG-parent-audited-2021",
+      "ticker": "HPG",
+      "pages": 51,
+      "text_pages": 0,
+      "pages_without_text": 51
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2020-H1",
+      "ticker": "HPG",
+      "pages": 51,
+      "text_pages": 0,
+      "pages_without_text": 51
+    },
+    {
+      "record_id": "HPG-parent-audited-2019",
+      "ticker": "HPG",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2021-H1",
+      "ticker": "HPG",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2023",
+      "ticker": "PNJ",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2025-H1",
+      "ticker": "PNJ",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "PNJ-parent-audited-2024",
+      "ticker": "PNJ",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2026-H1",
+      "ticker": "HPG",
+      "pages": 49,
+      "text_pages": 0,
+      "pages_without_text": 49
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2024",
+      "ticker": "PNJ",
+      "pages": 49,
+      "text_pages": 0,
+      "pages_without_text": 49
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2024-H1",
+      "ticker": "PNJ",
+      "pages": 49,
+      "text_pages": 0,
+      "pages_without_text": 49
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2022",
+      "ticker": "PNJ",
+      "pages": 48,
+      "text_pages": 0,
+      "pages_without_text": 48
+    },
+    {
+      "record_id": "PNJ-parent-audited-2022",
+      "ticker": "PNJ",
+      "pages": 48,
+      "text_pages": 0,
+      "pages_without_text": 48
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2025-H1",
+      "ticker": "PNJ",
+      "pages": 48,
+      "text_pages": 0,
+      "pages_without_text": 48
+    },
+    {
+      "record_id": "PNJ-parent-audited-2023",
+      "ticker": "PNJ",
+      "pages": 47,
+      "text_pages": 0,
+      "pages_without_text": 47
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2024-H1",
+      "ticker": "PNJ",
+      "pages": 47,
+      "text_pages": 0,
+      "pages_without_text": 47
+    },
+    {
+      "record_id": "FPT-consolidated-Q4-2024",
+      "ticker": "FPT",
+      "pages": 46,
+      "text_pages": 0,
+      "pages_without_text": 46
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022",
+      "ticker": "HPG",
+      "pages": 44,
+      "text_pages": 0,
+      "pages_without_text": 44
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2023-H1",
+      "ticker": "PNJ",
+      "pages": 44,
+      "text_pages": 0,
+      "pages_without_text": 44
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-H1",
+      "ticker": "HPG",
+      "pages": 43,
+      "text_pages": 0,
+      "pages_without_text": 43
+    },
+    {
+      "record_id": "HPG-parent-audited-2025",
+      "ticker": "HPG",
+      "pages": 41,
+      "text_pages": 0,
+      "pages_without_text": 41
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-H1",
+      "ticker": "HPG",
+      "pages": 41,
+      "text_pages": 0,
+      "pages_without_text": 41
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024",
+      "ticker": "HPG",
+      "pages": 40,
+      "text_pages": 0,
+      "pages_without_text": 40
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2026-Q2",
+      "ticker": "HPG",
+      "pages": 37,
+      "text_pages": 0,
+      "pages_without_text": 37
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q4",
+      "ticker": "HPG",
+      "pages": 34,
+      "text_pages": 0,
+      "pages_without_text": 34
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2026-Q2",
+      "ticker": "PNJ",
+      "pages": 34,
+      "text_pages": 0,
+      "pages_without_text": 34
+    },
+    {
+      "record_id": "HPG-consolidated-Q3-2025",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-Q4-2025",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2025-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2025-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2026-Q2",
+      "ticker": "PNJ",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q2",
+      "ticker": "HPG",
+      "pages": 32,
+      "text_pages": 0,
+      "pages_without_text": 32
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q4",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q1",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q2",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q1",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q1",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q2",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q3",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q2",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q2",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q3",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q1",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q2",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q3",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q1",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q3",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q2",
+      "ticker": "PNJ",
+      "pages": 27,
+      "text_pages": 0,
+      "pages_without_text": 27
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q1",
+      "ticker": "PNJ",
+      "pages": 26,
+      "text_pages": 0,
+      "pages_without_text": 26
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2026-Q2",
+      "ticker": "HPG",
+      "pages": 25,
+      "text_pages": 0,
+      "pages_without_text": 25
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q2",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q3",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q4",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q2",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q4",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2026-Q1",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2019-Q4",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q1",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q4",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q1",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q2",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q3",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q1",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q2",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q3",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q4",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q1",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q3",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q4",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q1",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q2",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q3",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2025",
+      "ticker": "HPG",
+      "pages": 9,
+      "text_pages": 0,
+      "pages_without_text": 9
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2026",
+      "ticker": "HPG",
+      "pages": 8,
+      "text_pages": 0,
+      "pages_without_text": 8
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2025",
+      "ticker": "HPG",
+      "pages": 8,
+      "text_pages": 0,
+      "pages_without_text": 8
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2025",
+      "ticker": "HPG",
+      "pages": 8,
+      "text_pages": 0,
+      "pages_without_text": 8
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2025",
+      "ticker": "HPG",
+      "pages": 7,
+      "text_pages": 0,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2024",
+      "ticker": "HPG",
+      "pages": 7,
+      "text_pages": 0,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2024",
+      "ticker": "HPG",
+      "pages": 6,
+      "text_pages": 0,
+      "pages_without_text": 6
+    },
+    {
+      "record_id": "HPG-annual-2025-vi",
+      "ticker": "HPG",
+      "pages": 141,
+      "text_pages": 88,
+      "pages_without_text": 53
+    },
+    {
+      "record_id": "SSI-annual-2023-vi",
+      "ticker": "SSI",
+      "pages": 132,
+      "text_pages": 82,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "FPT-annual-2020-vi",
+      "ticker": "FPT",
+      "pages": 210,
+      "text_pages": 163,
+      "pages_without_text": 47
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q2",
+      "ticker": "HPG",
+      "pages": 21,
+      "text_pages": 4,
+      "pages_without_text": 17
+    },
+    {
+      "record_id": "HPG-annual-2020-vi",
+      "ticker": "HPG",
+      "pages": 160,
+      "text_pages": 150,
+      "pages_without_text": 10
+    },
+    {
+      "record_id": "FPT-annual-2019-vi",
+      "ticker": "FPT",
+      "pages": 96,
+      "text_pages": 89,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "VNM-annual-2016-vi",
+      "ticker": "VNM",
+      "pages": 105,
+      "text_pages": 98,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "HPG-annual-2017-vi",
+      "ticker": "HPG",
+      "pages": 164,
+      "text_pages": 159,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "HPG-annual-2021-vi",
+      "ticker": "HPG",
+      "pages": 166,
+      "text_pages": 161,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "HPG-annual-2022-vi",
+      "ticker": "HPG",
+      "pages": 161,
+      "text_pages": 156,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "VNM-annual-2017-vi",
+      "ticker": "VNM",
+      "pages": 103,
+      "text_pages": 98,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "VNM-annual-2019-vi",
+      "ticker": "VNM",
+      "pages": 105,
+      "text_pages": 101,
+      "pages_without_text": 4
+    },
+    {
+      "record_id": "GAS-annual-2020-vi",
+      "ticker": "GAS",
+      "pages": 86,
+      "text_pages": 83,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "HPG-annual-2018-vi",
+      "ticker": "HPG",
+      "pages": 156,
+      "text_pages": 153,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "HPG-annual-2019-vi",
+      "ticker": "HPG",
+      "pages": 153,
+      "text_pages": 150,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "HPG-annual-2023-vi",
+      "ticker": "HPG",
+      "pages": 145,
+      "text_pages": 142,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "PNJ-annual-2023-vi",
+      "ticker": "PNJ",
+      "pages": 111,
+      "text_pages": 108,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "REE-annual-2023-vi",
+      "ticker": "REE",
+      "pages": 153,
+      "text_pages": 150,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "BID-annual-2024-vi",
+      "ticker": "BID",
+      "pages": 91,
+      "text_pages": 89,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "PNJ-annual-2025-vi",
+      "ticker": "PNJ",
+      "pages": 133,
+      "text_pages": 131,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "REE-annual-2022-vi",
+      "ticker": "REE",
+      "pages": 81,
+      "text_pages": 79,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "SSI-annual-2024-vi",
+      "ticker": "SSI",
+      "pages": 129,
+      "text_pages": 127,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "VNM-annual-2018-vi",
+      "ticker": "VNM",
+      "pages": 106,
+      "text_pages": 104,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "ACB-annual-2024-vi",
+      "ticker": "ACB",
+      "pages": 142,
+      "text_pages": 141,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "DPM-annual-2020-vi",
+      "ticker": "DPM",
+      "pages": 85,
+      "text_pages": 84,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "DPM-annual-2024-vi",
+      "ticker": "DPM",
+      "pages": 97,
+      "text_pages": 96,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "DPM-annual-2025-vi",
+      "ticker": "DPM",
+      "pages": 114,
+      "text_pages": 113,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2018-vi",
+      "ticker": "FPT",
+      "pages": 87,
+      "text_pages": 86,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2022-vi",
+      "ticker": "FPT",
+      "pages": 101,
+      "text_pages": 100,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2024-vi",
+      "ticker": "FPT",
+      "pages": 213,
+      "text_pages": 212,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2025-vi",
+      "ticker": "FPT",
+      "pages": 232,
+      "text_pages": 231,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "GAS-annual-2021-vi",
+      "ticker": "GAS",
+      "pages": 86,
+      "text_pages": 85,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "HPG-annual-2024-vi",
+      "ticker": "HPG",
+      "pages": 156,
+      "text_pages": 155,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2025-H1",
+      "ticker": "HPG",
+      "pages": 53,
+      "text_pages": 52,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "PNJ-annual-2019-vi",
+      "ticker": "PNJ",
+      "pages": 68,
+      "text_pages": 67,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "REE-annual-2024-vi",
+      "ticker": "REE",
+      "pages": 164,
+      "text_pages": 163,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "REE-annual-2025-vi",
+      "ticker": "REE",
+      "pages": 81,
+      "text_pages": 80,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2016-vi",
+      "ticker": "TCB",
+      "pages": 96,
+      "text_pages": 95,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2021-vi",
+      "ticker": "TCB",
+      "pages": 117,
+      "text_pages": 116,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2023-vi",
+      "ticker": "TCB",
+      "pages": 100,
+      "text_pages": 99,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2024-vi",
+      "ticker": "TCB",
+      "pages": 133,
+      "text_pages": 132,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2025-vi",
+      "ticker": "TCB",
+      "pages": 197,
+      "text_pages": 196,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "VNM-annual-2023-vi",
+      "ticker": "VNM",
+      "pages": 180,
+      "text_pages": 179,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "VNM-annual-2025-vi",
+      "ticker": "VNM",
+      "pages": 112,
+      "text_pages": 111,
+      "pages_without_text": 1
+    }
+  ],
+  "documents_with_parser_warnings": 84,
+  "documents_with_potentially_partial_text": 4,
+  "strict_eligible_documents": 0,
+  "issuers": [
+    {
+      "ticker": "FPT",
+      "name": "FPT",
+      "sector": "Công nghệ",
+      "source_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "entity_type": "issuer",
+      "documents": 31,
+      "logical_records": 31,
+      "pages": 1693,
+      "text_pages": 1589,
+      "annual_years": {
+        "2016": true,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 19,
+      "financial_statement_periods": [
+        "2024-Q4"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "HPG",
+      "name": "Hòa Phát",
+      "sector": "Vật liệu",
+      "source_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "entity_type": "issuer",
+      "documents": 208,
+      "logical_records": 208,
+      "pages": 4616,
+      "text_pages": 1617,
+      "annual_years": {
+        "2016": false,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 105,
+      "financial_statement_periods": [
+        "2019",
+        "2019-Q4",
+        "2020",
+        "2020-H1",
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021",
+        "2021-H1",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022",
+        "2022-H1",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023",
+        "2023-H1",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024",
+        "2024-H1",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025",
+        "2025-H1",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-H1",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "VCB",
+      "name": "Vietcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu",
+      "entity_type": "issuer",
+      "documents": 4,
+      "logical_records": 4,
+      "pages": 109,
+      "text_pages": 109,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": false,
+        "2024": true,
+        "2025": false
+      },
+      "related_articles": 8,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "ACB",
+      "name": "Ngân hàng Á Châu",
+      "sector": "Ngân hàng",
+      "source_url": "https://acb.com.vn/nha-dau-tu/bao-cao-thuong-nien",
+      "entity_type": "issuer",
+      "documents": 6,
+      "logical_records": 6,
+      "pages": 147,
+      "text_pages": 146,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": false,
+        "2024": true,
+        "2025": false
+      },
+      "related_articles": 5,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "VNM",
+      "name": "Vinamilk",
+      "sector": "Hàng tiêu dùng",
+      "source_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "entity_type": "issuer",
+      "documents": 11,
+      "logical_records": 11,
+      "pages": 1201,
+      "text_pages": 1181,
+      "annual_years": {
+        "2016": true,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 1,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "MWG",
+      "name": "Thế Giới Di Động",
+      "sector": "Bán lẻ",
+      "source_url": "https://mwg.vn/bao-cao",
+      "entity_type": "issuer",
+      "documents": 2,
+      "logical_records": 2,
+      "pages": 193,
+      "text_pages": 97,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": true,
+        "2024": true,
+        "2025": false
+      },
+      "related_articles": 0,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "PNJ",
+      "name": "Vàng bạc Đá quý Phú Nhuận",
+      "sector": "Bán lẻ",
+      "source_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "entity_type": "issuer",
+      "documents": 49,
+      "logical_records": 49,
+      "pages": 2124,
+      "text_pages": 585,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": false,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 6,
+      "financial_statement_periods": [
+        "2022",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023",
+        "2023-H1",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024",
+        "2024-H1",
+        "2024-Q1",
+        "2025",
+        "2025-H1",
+        "2025-Q2",
+        "2025-Q4",
+        "2026-H1",
+        "2026-Q2"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "REE",
+      "name": "Cơ Điện Lạnh",
+      "sector": "Hạ tầng đa ngành",
+      "source_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "entity_type": "issuer",
+      "documents": 23,
+      "logical_records": 23,
+      "pages": 648,
+      "text_pages": 641,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 17,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "GAS",
+      "name": "PV GAS",
+      "sector": "Năng lượng",
+      "source_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "entity_type": "issuer",
+      "documents": 5,
+      "logical_records": 5,
+      "pages": 418,
+      "text_pages": 414,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": false,
+        "2025": false
+      },
+      "related_articles": 0,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "SSI",
+      "name": "Chứng khoán SSI",
+      "sector": "Chứng khoán",
+      "source_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "entity_type": "issuer",
+      "documents": 6,
+      "logical_records": 6,
+      "pages": 652,
+      "text_pages": 600,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": false
+      },
+      "related_articles": 1,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "DPM",
+      "name": "Đạm Phú Mỹ",
+      "sector": "Phân bón và hóa chất",
+      "source_url": "https://dpm.vn/bao-cao-thuong-nien",
+      "entity_type": "issuer",
+      "documents": 9,
+      "logical_records": 9,
+      "pages": 750,
+      "text_pages": 747,
+      "annual_years": {
+        "2016": false,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 0,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "TCB",
+      "name": "Techcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://techcombank.com/nha-dau-tu/bao-cao-thuong-nien",
+      "entity_type": "issuer",
+      "documents": 68,
+      "logical_records": 68,
+      "pages": 5432,
+      "text_pages": 5287,
+      "annual_years": {
+        "2016": true,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "related_articles": 7,
+      "financial_statement_periods": [
+        "2022",
+        "2022-H1",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023",
+        "2023-H1",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024",
+        "2024-H1",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025",
+        "2025-H1",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-H1",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "BID",
+      "name": "BIDV",
+      "sector": "Ngân hàng",
+      "source_url": "https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2025/bctn%2B2024",
+      "entity_type": "issuer",
+      "documents": 9,
+      "logical_records": 9,
+      "pages": 99,
+      "text_pages": 97,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": false,
+        "2024": true,
+        "2025": false
+      },
+      "related_articles": 8,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "MARKET",
+      "name": "Thị trường và vĩ mô",
+      "sector": "Bối cảnh thị trường",
+      "entity_type": "market_context",
+      "documents": 508,
+      "logical_records": 508,
+      "pages": 508,
+      "text_pages": 508,
+      "annual_years": {},
+      "related_articles": 0,
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    }
+  ],
+  "missing_annual_cells": [
+    {
+      "ticker": "HPG",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2024,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "DPM",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2025,
+      "kind": "annual_report"
+    }
+  ],
+  "failures": [
+    {
+      "record_id": "PNJ-annual-2022-vi",
+      "ticker": "PNJ",
+      "error_type": "LimitReachedError",
+      "error": "Reached maximum number of tokens per stream."
+    },
+    {
+      "record_id": "GAS-annual-2024-vi",
+      "ticker": "GAS",
+      "error_type": "reviewed_source_exclusion",
+      "error": "Official download currently returns a one-page blank PDF, visually confirmed; not the full annual report. Keep raw bytes and acquisition history; exclude from active report corpus and annual-year coverage."
+    },
+    {
+      "record_id": "MWG-annual-2022-vi",
+      "ticker": "MWG",
+      "error_type": "PdfReadError",
+      "error": "Broken xref table"
+    },
+    {
+      "record_id": "GAS-annual-2025-vi",
+      "ticker": "GAS",
+      "error_type": "reviewed_source_exclusion",
+      "error": "Official download returned a one-page blank PDF, visually confirmed. Not a full annual report; retain raw bytes and acquisition history, exclude from active corpus and annual coverage."
+    },
+    {
+      "record_id": "SSI-annual-2025-vi",
+      "ticker": "SSI",
+      "error_type": "ValueError",
+      "error": "Response exceeds pilot byte limit"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2026-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x68e6ef for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2026-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6d1fa5 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x649fc4 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6b4a26 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6c68d9 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6721d0 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q4",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6aee73 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q4",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x665ee5 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0xa9da28 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0xa252c5 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q2",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x9ca8b0 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q2",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x94f11a for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2023-H1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0xed8ed8 for key /Info"
+    },
+    {
+      "record_id": "NEWS-vnexpress-7649e6fef7fb3e72360d",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-40db67825af8056913eb",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-f07aa75995cdb6997a9a",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-92847d2728a35e6ebfa8",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-d6127f2b51577c459f20",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-d4d9adeae40ac18d8911",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-3900037f02ed4a35bf77",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-f59dd71b74f2096b0ac3",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-583d167d7d8b5a4d9920",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-e48316c3087893b6ecb1",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-2027582bb087ceac966f",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-5ee6a53e333aa908606b",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-30166dd676faabb24465",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-2b27d698720cd5ba5bc1",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-f620995bb77a9e0290b5",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-6066b803811a996d944a",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-5e73d01c101f4ff0d0ab",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-daa30fa6efb94f985d7b",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-c6ea709ae8c3183af987",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-10df9d27d3c03ece720f",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-5b605bf9a550ce7498dc",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-af04fb0051c8f787e9a2",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-c4f7c123ee7ea8fabec7",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-efe5746d3f7b5e6f9e08",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-89d5242c2c285cf52f96",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-15aaa475bc5e844204a3",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-200fe9cb0e15f997a9a4",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-145fa3d52cd6dab91ecb",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-f727a7b9a1faff5b0901",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article title missing; listing/error pages must not become articles"
+    },
+    {
+      "record_id": "NEWS-vnexpress-c489a12f60cdd9d9e360",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-daba783dcc2a697b9407",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article body too short/large; no summary-only indexing"
+    },
+    {
+      "record_id": "NEWS-vnexpress-28c8929f9d389b8cd48a",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-b55aaeb0585a9198eb02",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-2fc83b0b57b3a14f7684",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-ab0e25782fab5b08803d",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vnexpress-79dfc74acfb844074c6a",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-e349b80bc8d00e86c23e",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-93eda4b353d08d2a35d7",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-e13ffdb293616da9f816",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-4336c634908dbf45dd84",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-71f8447153f228034f3a",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-5827ca6ad5a2534444f2",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-65c7dcf46ef0baf18b46",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-dbf96fabca7cb1e1db67",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-89b7749e5e03bad8b8e1",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article body too short/large; no summary-only indexing"
+    },
+    {
+      "record_id": "NEWS-cafef-b7ec00ba43584cfb6a1b",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-87b2e3605ad5c3646503",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-8b39736c798fe600f57b",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-86feb2034f55eac512cc",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article body too short/large; no summary-only indexing"
+    },
+    {
+      "record_id": "NEWS-cafef-c75c32b67b31ff907621",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error _ssl.c:999: The handshake operation timed out>"
+    },
+    {
+      "record_id": "NEWS-cafef-39ab567d917a4d062553",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-90576fd090af7cda1293",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-bcc7e0ff68f969ec6126",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-cafef-dee7c185bebda09429a9",
+      "ticker": "MARKET",
+      "error_type": "TimeoutError",
+      "error": "The read operation timed out"
+    },
+    {
+      "record_id": "NEWS-cafef-e90be0342c548495dbdb",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-954e5191d9663ec380bc",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-d3bd9b0c45b808d3e7ba",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-66e6e0ac3daae8059dcc",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-c8cf7163f4cf8da56f5e",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-b711755a7b389acbe674",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-4c53b4177ee39e98def2",
+      "ticker": "MARKET",
+      "error_type": "TimeoutError",
+      "error": "The read operation timed out"
+    },
+    {
+      "record_id": "NEWS-cafef-aac0a0adef4e0783a0bc",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-b74c35c57655655beeeb",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-ab9c832cab22e56b5708",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-efce6249e6758d4d84bd",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-cafef-3fb451a65ff58e13c178",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-cafef-7bbf310d80312bac1356",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-cafef-6d74cc6b88dd97dec794",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-596c398720e7b0f68b8c",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-cafef-fd5cdb8a95f14c5e6dd9",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-1c173636707a57db4368",
+      "ticker": "MARKET",
+      "error_type": "TimeoutError",
+      "error": "The read operation timed out"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-442050785437e97f44bc",
+      "ticker": "MARKET",
+      "error_type": "TimeoutError",
+      "error": "The read operation timed out"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-5c90124466327a2c056f",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [WinError 10053] An established connection was aborted by the software in your host machine>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-254561fcef9b6ed70edd",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-b7998d47a50d8bcf182e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-5a722cba1345721addf9",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-360677add66ce1a8e57b",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-b4062468dc72ddc3be6e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-34749d4dd40c2bf556ef",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cb3b34585e95f79f387e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-4ce2982fc890c45f746d",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d86b395d39a60cc4bea5",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-5ea921b98374b138b757",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-7855b5de17cedf31ecfe",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-36114d7ebc8d597ad3e5",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-2c8c5ff85d59aae88e89",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d9865b89f42431954488",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-3eeeead248bb68a0bd59",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d453b611cbfe7c555a45",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-47029be5d753bd446b91",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-7a1fa0402ed9c9a04c56",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-27de2f736ce88a76a26d",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d7cff80d549c234a4c0f",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-98b7fc587aa1e1c27539",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-9061ec331b482936de5e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-bfd6a4209c32d7a2b0bc",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-8762328662b40bd38b79",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e5c0e342e6d37fb0575b",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cfbce689d6d2341dacbb",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-1b30d391f3405d103cbb",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-c50f73bdaa551e3186f2",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e2372542f2866759c3ed",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-ac2c8276c7d624d7a258",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f8f54e70cb8fa979b667",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-614439e4ced4d4f18ebe",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-c3f7132f243604e913d3",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-52179d1e1fc18607215b",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-a16dbcc713d5d677cefd",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-ddf7707392e110886d6f",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-20a35fc238206de6c256",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-4d09e4f22194ac3b55b2",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-5acdf704fe9fb4b31ca8",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-a9f335dcb588fb8f4043",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-471a038e9c11897841b9",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f2d3e6357a53d8a4d300",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-df9faee9af332cb0c403",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-7060da9d294f7c8d37be",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-8009dc92de0eafe69036",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-7051b3d1c667d9eb4dc5",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-9b3cb4bf4247d9224843",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f7e0873fd9b169bdb4db",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-32a564743a4773b87ba7",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-db452b234db8d7a73555",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-28e02eb899a1a313343f",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d5c3d5f7431873d5823d",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-95dbdbb1d66d2e1a728a",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-05a11c58f92c01b2328b",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-899170055dafd4a88dae",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e6a9dd841fabb87127bc",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-72dfccc8d83fa67ad2ab",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-14fe2acda4ec6aa2442e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e81f695b02178fffe985",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-0da686b3b3bbc7f54e2e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-45dd2b849bdeaa89385c",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-8b02c551b6456f175df0",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-ec849d203b843e3b6f33",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-afa8dbd953effe731bf7",
+      "ticker": "MARKET",
+      "error_type": "TimeoutError",
+      "error": "The read operation timed out"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-116bb6035c323c7712bb",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-6e5a8d8fbe1112f913c2",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error timed out>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-8196823d673c5b53337c",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e2bc89203107ac65adfd",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-625ef42f0bd61466bc7f",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-efa308f6c4f833b3afd5",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cbf690f6b216af3d70c3",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-80600c9c0e7dfa041b3d",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-641a12029537b79e52fd",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e5a6e1d1d66845658a93",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-9e4892c574890b489103",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-47f204bfa479c0e67964",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-11be4905ade239c0ba88",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e458c22dd557c5edf51c",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-84700c59c569e46bf5de",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-5de58664dfa474641885",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-bb91099f16b004541455",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-879a4c13f6368929bd47",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-8076f7dc5b8a21563c41",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-4ae52f13a2dd6d86205e",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e48958a9607413e5bff1",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f7eeaa9f8e31ad8e54cf",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-ebd4a92c7d84dee693e8",
+      "ticker": "MARKET",
+      "error_type": "TimeoutError",
+      "error": "The read operation timed out"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-5994500711c6eb1528fd",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-96c179995aa589553acf",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-91fbfaa7c307875053bd",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-fa125318b617aff7e408",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-833d77f0b38ed1db5a3a",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-7a9e82751e00d0ea13ca",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d11e991ec0336029299e",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cd386f7307090debc936",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d60b97c24b2c0547bc4b",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-fc0e5369df96329ef874",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-a765e004ffeb4a7b60cc",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-0ef861c72eeeed795394",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-7810b601aab03c9e6118",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-0491c51cdb5e7fb5da13",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f0b94e0c73e29dbe156a",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d5fdaf7d50e6364120f3",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cedd3af41a8ce7b0aebe",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-39956df16ff9678af4fa",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-25b2b39b0dcfebd11344",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-d563a08b0c0e32046891",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-8fe53cf431c28c40b00d",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cdee0bbb05f547ba0ed0",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-2c7c8655631a3a588b9d",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f6cade7506170993738c",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e0e788902745c691c176",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-f63d8c470a2870622efc",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-e66e860131a5e7548efe",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-763d68e980235a5202f8",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-aa74e2486baf86dde7bd",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-9063e19d0596023ec276",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-b024a5eefb7ea32ac09d",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-532b26c5c233aafbba6b",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-cb1074da8d4627c19672",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-2cd8c669877f0f550bf4",
+      "ticker": "MARKET",
+      "error_type": "URLError",
+      "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-0f768219d0c7b4109683",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-vietnambiz-59809770a0df27343e2e",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-chinhphu-123e6084b79407a041e3",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-chinhphu-7fab7ae889b7c49a5d61",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-chinhphu-c7d591b3306e9d0954ed",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-chinhphu-da63e93afe7acc36250c",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-chinhphu-ed9739efba39bda64d79",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Reviewed article-body selector not found"
+    },
+    {
+      "record_id": "NEWS-chinhphu-18e86a7a8e7e4af024a4",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-chinhphu-690afd44621838abcdca",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-chinhphu-c88cf3fd51843ecf4380",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    },
+    {
+      "record_id": "NEWS-hpg-news-f1d2aa9652b92709133e",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Article body too short/large; no summary-only indexing"
+    },
+    {
+      "record_id": "NEWS-baodautu-0405f50261a920c198e4",
+      "ticker": "MARKET",
+      "error_type": "ValueError",
+      "error": "Outside declared financial/industry relevance; metadata retained"
+    }
+  ],
+  "limitations": [
+    "Broad sector labels are curated, not an official historical index classification.",
+    "Current issuer/access selection; historical membership and survivorship not validated.",
+    "Annual ticker-year coverage counts a translation or revision only once.",
+    "Text presence is not OCR/table/numeric/semantic fidelity.",
+    "Missing time/version proof remains quarantined; no prediction/backtest or gold labels."
+  ],
+  "summary_sha256": "803858c5527dfccb67009e3960edc2d4db15bd6a9eef624d49a0ccf57e3ed158",
+  "universe_sha256": "cbd97fe7a339687915dd768acde54ceb643d1e558d7ff09584936f2cc2766f1f"
+}

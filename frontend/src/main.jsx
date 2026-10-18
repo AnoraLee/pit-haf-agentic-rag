@@ -45,6 +45,9 @@ const TYPES = {
   business_overview: "Kết quả kinh doanh",
   earnings_overview: "Kết quả kinh doanh",
   financial_report: "Báo cáo tài chính",
+  news_article: "Bài báo",
+  issuer_news: "Tin doanh nghiệp tự công bố",
+  official_policy_news: "Tin chính sách / vĩ mô",
 };
 const REASONS = {
   availability_unverified: "Chưa xác minh thời điểm khả dụng",
@@ -62,7 +65,15 @@ const navTo = (key) => {
   window.location.hash = key;
 };
 const shortTitle = (d) =>
-  `${d.ticker} · ${TYPES[d.document_type] || "Công bố doanh nghiệp"} ${d.reporting_period || ""}${/Vietnamese/i.test(d.title) ? " · Tiếng Việt" : ""}`;
+  d.media_type === "text/html"
+    ? d.title
+    : `${d.ticker} · ${TYPES[d.document_type] || "Công bố doanh nghiệp"} ${d.reporting_period || ""}${/Vietnamese/i.test(d.title) ? " · Tiếng Việt" : ""}`;
+const entityLabel = (d) =>
+  d.ticker === "MARKET"
+    ? "Thị trường / vĩ mô"
+    : d.related_tickers?.length
+      ? d.related_tickers.join(", ")
+      : d.ticker;
 
 async function api(path, body) {
   const response = await fetch(
@@ -153,7 +164,7 @@ function DocTable({ docs, onOpen, compact = false }) {
         <thead>
           <tr>
             <th>TÀI LIỆU / DOANH NGHIỆP</th>
-            {!compact && <th>KỲ BÁO CÁO</th>}
+            {!compact && <th>NGÀY ĐĂNG / KỲ BÁO CÁO</th>}
             <th>ĐỘ BAO PHỦ</th>
             <th>POINT-IN-TIME</th>
             <th>
@@ -170,18 +181,29 @@ function DocTable({ docs, onOpen, compact = false }) {
                   <span>
                     <strong>{shortTitle(d)}</strong>
                     <small>
-                      {d.ticker} <span>·</span>{" "}
+                      {entityLabel(d)} <span>·</span>{" "}
                       {TYPES[d.document_type] || "Công bố doanh nghiệp"}
+                      {d.publisher && <> · {d.publisher}</>}
                     </small>
                   </span>
                 </button>
               </td>
-              {!compact && <td>{d.reporting_period || "—"}</td>}
+              {!compact && (
+                <td>
+                  {d.media_type === "text/html"
+                    ? when(d.publication_date)
+                    : d.reporting_period || "—"}
+                </td>
+              )}
               <td>
                 <strong className="normal">
                   {d.text_pages}/{d.pages}
                 </strong>
-                <small>trang có văn bản</small>
+                <small>
+                  {d.media_type === "text/html"
+                    ? "mục nội dung bài viết"
+                    : "trang PDF có văn bản"}
+                </small>
                 {(d.potentially_partial_text_pages?.length > 0 ||
                   d.potentially_partial_document) && (
                   <small className="parser-warning">
@@ -216,22 +238,20 @@ function Coverage({ docs }) {
   const tickers = [...new Set(docs.map((d) => d.ticker))];
   const max = Math.max(
     1,
-    ...tickers.map((t) =>
-      docs.filter((d) => d.ticker === t).reduce((n, d) => n + d.pages, 0),
-    ),
+    ...tickers.map((t) => docs.filter((d) => d.ticker === t).length),
   );
   return (
     <div className="coverage">
       {tickers.map((ticker) => {
         const selected = docs.filter((d) => d.ticker === ticker);
-        const pages = selected.reduce((n, d) => n + d.pages, 0);
-        const text = selected.reduce((n, d) => n + d.text_pages, 0);
+        const pages = selected.length;
+        const text = selected.filter((d) => d.text_pages > 0).length;
         return (
           <div className="coverage-row" key={ticker}>
             <div className="coverage-label">
               <DocLogo ticker={ticker} />
               <span>
-                <strong>{ticker}</strong>
+                <strong>{ticker === "MARKET" ? "Thị trường" : ticker}</strong>
                 <small>{selected.length} tài liệu</small>
               </span>
             </div>
@@ -247,7 +267,7 @@ function Coverage({ docs }) {
               </div>
             </div>
             <span className="coverage-count">
-              {fmt(pages)} <small>trang</small>
+              {fmt(pages)} <small>tài liệu</small>
             </span>
           </div>
         );
@@ -257,7 +277,7 @@ function Coverage({ docs }) {
           <i className="dot green" /> Có lớp văn bản
         </span>
         <span>
-          <i className="dot light" /> Cần kiểm tra OCR
+          <i className="dot light" /> Chưa có văn bản
         </span>
       </div>
     </div>
@@ -338,8 +358,10 @@ function Quality({ pilot }) {
   );
 }
 function Overview({ data, docs, onOpen }) {
-  const pages = docs.reduce((n, d) => n + d.pages, 0),
-    text = docs.reduce((n, d) => n + d.text_pages, 0);
+  const pdfs = docs.filter((d) => d.media_type !== "text/html");
+  const articles = docs.length - pdfs.length;
+  const pages = pdfs.reduce((n, d) => n + d.pages, 0),
+    text = pdfs.reduce((n, d) => n + d.text_pages, 0);
   const eligible = docs.filter((d) => !d.quarantine_reasons.length).length;
   return (
     <>
@@ -386,18 +408,18 @@ function Overview({ data, docs, onOpen }) {
         <Stat
           label="Tài liệu trong kho"
           value={fmt(docs.length)}
-          note={`${new Set(docs.map((d) => d.ticker)).size} doanh nghiệp Việt Nam`}
+          note={`${pdfs.length} PDF · ${articles} bài viết`}
           icon={FolderOpen}
         />
         <Stat
-          label="Trang đã thu thập"
+          label="Trang PDF đã thu thập"
           value={fmt(pages)}
           note="Snapshot gốc được kiểm tra SHA-256"
           icon={FileText}
           tone="blue"
         />
         <Stat
-          label="Trang có văn bản"
+          label="Trang PDF có văn bản"
           value={fmt(text)}
           note={`${fmt(pages - text)} trang trống / chưa OCR`}
           icon={BookOpen}
@@ -414,7 +436,7 @@ function Overview({ data, docs, onOpen }) {
       <div className="grid-two">
         <Panel
           title="Độ bao phủ tài liệu"
-          subtitle="Phân bố snapshot thực tế theo doanh nghiệp"
+          subtitle="Phân bố nội dung theo doanh nghiệp và thị trường"
           action={<Badge>LOCAL CORPUS</Badge>}
         >
           {docs.length ? (
@@ -443,7 +465,7 @@ function Overview({ data, docs, onOpen }) {
       <div className="grid-wide">
         <Panel
           title="Tài liệu trong không gian nghiên cứu"
-          subtitle="Nguồn chính thức · phiên bản bất biến · đọc tại máy"
+          subtitle="Báo cáo, báo chí và tin doanh nghiệp · đọc tại máy"
           action={
             <button className="text-button" onClick={() => navTo("documents")}>
               Xem tất cả <Icon icon={ArrowRight} size={16} />
@@ -455,7 +477,7 @@ function Overview({ data, docs, onOpen }) {
         <Panel title="Luồng phân tích" subtitle="Các bước đã nối với backend">
           <div className="flow-list">
             {[
-              [Database, "Kho bằng chứng", "PDF và provenance"],
+              [Database, "Kho bằng chứng", "PDF, bài báo và nguồn gốc"],
               [Search, "Truy xuất", "BM25 trên đoạn nguyên văn"],
               [Zap, "Mô hình local", "qwen3:4b qua Ollama"],
               [ShieldCheck, "Đối chiếu nguồn", "Trích dẫn và chuỗi số"],
@@ -491,8 +513,11 @@ function Overview({ data, docs, onOpen }) {
 function AnnualCoverage({ coverage, ticker }) {
   if (!coverage) return null;
   const rows = coverage.issuers.filter(
-    (row) => ticker === "all" || row.ticker === ticker,
+    (row) =>
+      row.entity_type !== "market_context" &&
+      (ticker === "all" || row.ticker === ticker),
   );
+  if (!rows.length) return null;
   const years = Object.keys(rows[0]?.annual_years || {});
   const covered = rows.reduce(
     (n, row) => n + Object.values(row.annual_years).filter(Boolean).length,
@@ -557,20 +582,30 @@ function Documents({ docs, onOpen, coverage, ticker }) {
     [type, setType] = useState("all"),
     [year, setYear] = useState("all"),
     [scope, setScope] = useState("all"),
+    [publisher, setPublisher] = useState("all"),
     [page, setPage] = useState(1);
   useEffect(() => setPage(1), [ticker, docs.length]);
   const filtered = docs
     .filter(
       (d) =>
-        `${d.title} ${d.ticker} ${d.reporting_period}`
+        `${d.title} ${d.ticker} ${d.related_tickers?.join(" ") || ""} ${d.publisher || ""} ${d.reporting_period}`
           .toLowerCase()
           .includes(query.toLowerCase()) &&
         (type === "all" || d.document_type === type) &&
         (year === "all" || d.reporting_period?.startsWith(year)) &&
-        (scope === "all" || d.statement_scope === scope),
+        (scope === "all" || d.statement_scope === scope) &&
+        (publisher === "all" ||
+          (d.publisher || "Báo cáo doanh nghiệp") === publisher),
     )
     .sort(
       (a, b) =>
+        (
+          b.publication_date ||
+          b.reporting_period?.slice(0, 4) ||
+          ""
+        ).localeCompare(
+          a.publication_date || a.reporting_period?.slice(0, 4) || "",
+        ) ||
         (b.reporting_period || "").localeCompare(a.reporting_period || "") ||
         a.ticker.localeCompare(b.ticker) ||
         a.title.localeCompare(b.title),
@@ -594,12 +629,14 @@ function Documents({ docs, onOpen, coverage, ticker }) {
         <Stat
           label="Tài liệu"
           value={docs.length}
-          note={`${new Set(docs.map((d) => d.content_hash)).size} PDF khác nhau từ nguồn chính thức`}
+          note={`${docs.filter((d) => d.media_type !== "text/html").length} PDF · ${docs.filter((d) => d.media_type === "text/html").length} bài viết`}
           icon={FileText}
         />
         <Stat
           label="Trang cần kiểm tra OCR"
-          value={docs.reduce((n, d) => n + d.pages - d.text_pages, 0)}
+          value={docs
+            .filter((d) => d.media_type !== "text/html")
+            .reduce((n, d) => n + d.pages - d.text_pages, 0)}
           note="Chưa chạy OCR; không suy diễn nội dung"
           icon={BookOpen}
           tone="blue"
@@ -612,7 +649,6 @@ function Documents({ docs, onOpen, coverage, ticker }) {
           tone="amber"
         />
       </div>
-      <AnnualCoverage coverage={coverage} ticker={ticker} />
       <Panel
         title="Danh mục tài liệu"
         subtitle={`${filtered.length} tài liệu phù hợp bộ lọc`}
@@ -647,7 +683,7 @@ function Documents({ docs, onOpen, coverage, ticker }) {
             ))}
           </select>
           <select
-            aria-label="Năm báo cáo"
+            aria-label="Năm tài liệu"
             value={year}
             onChange={(e) => {
               setYear(e.target.value);
@@ -682,6 +718,28 @@ function Documents({ docs, onOpen, coverage, ticker }) {
             <option value="consolidated">Hợp nhất</option>
             <option value="parent">Công ty mẹ / riêng lẻ</option>
             <option value="unknown">Chưa xác định</option>
+            <option value="not_applicable">Bài viết / không áp dụng</option>
+          </select>
+          <select
+            aria-label="Nguồn đăng"
+            value={publisher}
+            onChange={(e) => {
+              setPublisher(e.target.value);
+              setPage(1);
+            }}
+          >
+            <option value="all">Tất cả nguồn đăng</option>
+            {[
+              ...new Set(
+                docs.map((d) => d.publisher || "Báo cáo doanh nghiệp"),
+              ),
+            ]
+              .sort()
+              .map((p) => (
+                <option key={p} value={p}>
+                  {p}
+                </option>
+              ))}
           </select>
         </div>
         {filtered.length ? (
@@ -725,10 +783,12 @@ function Documents({ docs, onOpen, coverage, ticker }) {
           </Empty>
         )}
       </Panel>
+      <AnnualCoverage coverage={coverage} ticker={ticker} />
     </>
   );
 }
 function DocumentDrawer({ doc, onClose }) {
+  const isArticle = doc.media_type === "text/html";
   const [page, setPage] = useState(1),
     [content, setContent] = useState(null),
     [error, setError] = useState("");
@@ -779,7 +839,10 @@ function DocumentDrawer({ doc, onClose }) {
           <div>
             <h2>{shortTitle(doc)}</h2>
             <p>
-              {doc.ticker} · {doc.reporting_period || "Chưa ghi kỳ"}
+              {entityLabel(doc)} ·{" "}
+              {isArticle
+                ? doc.publisher
+                : doc.reporting_period || "Chưa ghi kỳ"}
             </p>
           </div>
         </div>
@@ -788,9 +851,17 @@ function DocumentDrawer({ doc, onClose }) {
             Thu thập <strong>{when(doc.retrieved_at)}</strong>
           </span>
           <a href={doc.source_url} target="_blank" rel="noreferrer">
-            PDF nguồn <ExternalLink size={13} />
+            {isArticle ? "Bài viết nguồn" : "PDF nguồn"}{" "}
+            <ExternalLink size={13} />
           </a>
         </div>
+        {isArticle && (
+          <p className="footnote">
+            Ngày đăng quan sát: {when(doc.publication_date)}
+            {doc.author ? ` · Tác giả: ${doc.author}` : ""}. Thời gian trên
+            trang chưa phải bằng chứng khả dụng lịch sử.
+          </p>
+        )}
         {doc.quarantine_reasons.length > 0 && (
           <Notice>
             <strong>Chưa đủ điều kiện lịch sử.</strong>
@@ -808,38 +879,45 @@ function DocumentDrawer({ doc, onClose }) {
           </Notice>
         )}
         <div className="page-control">
-          <span>Văn bản trích xuất · chưa OCR</span>
-          <div>
-            <button
-              className="icon-button"
-              disabled={page === 1}
-              aria-label="Trang trước"
-              onClick={() => setPage(page - 1)}
-            >
-              <ChevronLeft size={16} />
-            </button>
-            <input
-              aria-label="Số trang"
-              type="number"
-              min="1"
-              max={doc.pages}
-              value={page}
-              onChange={(e) =>
-                setPage(
-                  Math.min(doc.pages, Math.max(1, Number(e.target.value) || 1)),
-                )
-              }
-            />
-            <span>/ {doc.pages}</span>
-            <button
-              className="icon-button"
-              disabled={page === doc.pages}
-              aria-label="Trang sau"
-              onClick={() => setPage(page + 1)}
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
+          <span>
+            {isArticle ? "Văn bản bài viết" : "Văn bản trích xuất · chưa OCR"}
+          </span>
+          {!isArticle && (
+            <div>
+              <button
+                className="icon-button"
+                disabled={page === 1}
+                aria-label="Trang trước"
+                onClick={() => setPage(page - 1)}
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <input
+                aria-label="Số trang"
+                type="number"
+                min="1"
+                max={doc.pages}
+                value={page}
+                onChange={(e) =>
+                  setPage(
+                    Math.min(
+                      doc.pages,
+                      Math.max(1, Number(e.target.value) || 1),
+                    ),
+                  )
+                }
+              />
+              <span>/ {doc.pages}</span>
+              <button
+                className="icon-button"
+                disabled={page === doc.pages}
+                aria-label="Trang sau"
+                onClick={() => setPage(page + 1)}
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          )}
         </div>
         {error ? (
           <Notice tone="error">{error}</Notice>
@@ -1670,7 +1748,10 @@ function App() {
   }, []);
   const current = NAV.find((n) => n[0] === tab) || NAV[0];
   const docs = (data?.documents || []).filter(
-    (d) => ticker === "all" || d.ticker === ticker,
+    (d) =>
+      ticker === "all" ||
+      d.ticker === ticker ||
+      d.related_tickers?.includes(ticker),
   );
   return (
     <div className="app-shell">
@@ -1724,18 +1805,27 @@ function App() {
         <div className="sidebar-filter">
           <div className="nav-label">PHẠM VI NGHIÊN CỨU</div>
           <label className="sr-only" htmlFor="ticker-filter">
-            Phạm vi doanh nghiệp
+            Phạm vi bằng chứng
           </label>
           <select
             id="ticker-filter"
             value={ticker}
             onChange={(e) => setTicker(e.target.value)}
           >
-            <option value="all">Tất cả doanh nghiệp</option>
-            {[...new Set((data?.documents || []).map((d) => d.ticker))]
+            <option value="all">Tất cả doanh nghiệp và thị trường</option>
+            {[
+              ...new Set(
+                (data?.documents || []).flatMap((d) => [
+                  d.ticker,
+                  ...(d.related_tickers || []),
+                ]),
+              ),
+            ]
               .sort()
               .map((t) => (
-                <option key={t}>{t}</option>
+                <option key={t} value={t}>
+                  {t === "MARKET" ? "Thị trường / vĩ mô" : t}
+                </option>
               ))}
           </select>
           <p>Nguồn bằng chứng tại máy của bạn.</p>

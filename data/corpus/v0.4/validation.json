@@ -1,0 +1,57 @@
+{
+  "run_kind": "local_software_and_artifact_checks_not_research_results",
+  "research_prediction_results": false,
+  "software_checks": {
+    "pytest": {
+      "command": ".\\run.ps1 test --tb=short",
+      "passed": 262,
+      "failed": 0,
+      "warnings": 2
+    },
+    "ruff": "passed; app.py src tests and both metadata export scripts",
+    "uv_lock_check": "passed offline; 85 packages resolved",
+    "prettier_check": "passed",
+    "frontend_build": "passed; two existing lucide use-client bundler warnings"
+  },
+  "real_http_checks": {
+    "run_kind": "real_local_http_integration_checks",
+    "research_prediction_results": false,
+    "snapshot": "outputs\\milestone-1\\data-pilot\\20261018-corpus-v0.4-news-curated\\summary.json",
+    "documents": 939,
+    "html_articles": 675,
+    "pdf_pages": 17915,
+    "workspace_errors": [],
+    "retrieval_version_id": "fbe500f244c801c2acd847c6966ddf67e1dddf6624ec15344fafa4a337189c07",
+    "retrieval_hit_count": 6,
+    "all_literal_passage_offsets_verified": true,
+    "strict_allowed_versions": 0,
+    "article_page_sha256": "7b2d8d38f6161eeee3497183da8d4f351fc9353814d3e1057485dc62f17d9f0f",
+    "llm_inference_performed": false
+  },
+  "browser_checks": {
+    "total_documents_visible": 939,
+    "pdf_and_article_counts_visible": [
+      264,
+      675
+    ],
+    "news_type_and_vnexpress_filter_count": 143,
+    "article_opened": true,
+    "publisher_and_observed_date_visible": true,
+    "raw_html_executed": false,
+    "llm_inference_performed": false,
+    "proof_path": "outputs/ui-preview/corpus-v04-news.png"
+  },
+  "artifact_sha256": {
+    "coverage.json": "3f3132902c54ce2a74c62d6ffde12e8b24dc3e429662241fe320c64cf5ed1a0d",
+    "curation.json": "1c3ece1ab56854f9be1182042573e59d69173e399a08e1b5db3cb222d4cf7635",
+    "DATA_CARD.md": "6639ed1e00f7a9a935e37adbaaa87eb2a652f1f9cf840afe2244096eba39eaa0",
+    "news_audit.json": "032218fa4777d0809a03999d68e7dc3024d45228cd2849c08630e987be9fc661",
+    "raw_inventory.json": "f80005cbe180ac4a6212ec000a48d163bc507c8b3c1b2d5954093e9d50f54fca",
+    "snapshot_index.json": "59432a90c26bf91dee0af626475439f27661e821e082b80183bec148053df8c9",
+    "verification.json": "bf085675e4e771522cbba612879c83207452fcddb6b5ebd5da75b3c0c13b86c6"
+  },
+  "limitations": [
+    "Local checks only; GitHub Actions status not verified.",
+    "No independent human gold, semantic accuracy or prediction metrics measured."
+  ]
+}

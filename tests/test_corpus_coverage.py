@@ -73,6 +73,35 @@ def test_identical_pdf_bytes_are_reported_separately_from_record_count(tmp_path)
     assert coverage["duplicate_blob_groups"][0]["record_ids"] == sorted([original.record_id, alias.record_id])
 
 
+def test_market_articles_do_not_inflate_issuers_annual_targets_or_pdf_pages(tmp_path):
+    store, summary, universe = sample_release(tmp_path)
+    digest = store.put_blob(b"Synthetic HTML fixture, not a real news article")
+    article = EvidenceVersion(
+        record_id="NEWS-fixture", version_id="news-fixture", source_id="fixture",
+        source_url="https://fixture.example/article", ticker="MARKET", evidence_scope="market",
+        document_type="news_article", media_type="text/html", publisher="Synthetic publisher",
+        title="Synthetic macro news fixture", content_hash=digest,
+        publication_date="2024-04-03", timestamp_precision="day",
+        retrieved_at="2026-10-18T00:00:00Z", system_recorded_at="2026-10-18T00:00:01Z",
+    )
+    store.register(article)
+    summary["documents"].append({"record_id": article.record_id, "version_id": article.version_id,
+                                  "ticker": "MARKET", "content_hash": digest, "pages": 1,
+                                  "text_pages": 1, "status": "extracted"})
+    summary.update(configured_documents=5, page_count=16, text_page_count=10)
+    universe["issuers"].insert(0, {"ticker": "MARKET", "sector": "Market context", "entity_type": "market_context"})
+    _, coverage = build_release(store, summary, universe)
+    assert coverage["target_annual_cells"] == 4 and coverage["observed_issuers"] == 1
+    assert coverage["target_issuers"] == 2 and coverage["observed_broad_sectors"] == 1
+    assert coverage["covered_annual_cells"] == 2
+    assert coverage["issuers"][0]["annual_years"] == {}
+    assert coverage["pdf_page_count"] == 15 and coverage["html_section_count"] == 1
+    assert coverage["unique_pdf_blobs"] == 3 and coverage["html_articles"] == 1
+    assert coverage["market_context_articles"] == 1
+    assert coverage["news_by_publisher"] == {"Synthetic publisher": 1}
+    assert coverage["observed_article_date_range"] == ["2024-04-03", "2024-04-03"]
+
+
 @pytest.mark.parametrize("change", ["duplicate_target", "duplicate_version", "bad_pages", "fixture"])
 def test_coverage_rejects_inconsistent_denominators(tmp_path, change):
     store, summary, universe = sample_release(tmp_path)

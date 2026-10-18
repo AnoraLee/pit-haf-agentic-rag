@@ -85,6 +85,7 @@ def merge_snapshots(manifest_path: Path, summaries: list[Path], *, store: Snapsh
             if (row is None or version is None or page.record_id != version.record_id or
                     page.ticker != version.ticker or page.content_hash != version.content_hash or
                     page.source_url != version.source_url or page.data_kind != version.data_kind or
+                    page.related_tickers != version.related_tickers or
                     page.retrieved_at != version.retrieved_at or
                     digest(page.text.encode()) != page.text_hash):
                 raise ValueError("Input page does not match accepted immutable evidence")

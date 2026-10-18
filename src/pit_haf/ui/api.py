@@ -126,6 +126,8 @@ def create_app(root: Path | None = None) -> FastAPI:
                 "coverage": coverage,
                 "page_count": len(data.pages),
                 "text_page_count": sum(bool(page.text.strip()) for page in data.pages),
+                "pdf_page_count": sum(v["pages"] for v in versions if v["media_type"] == "application/pdf"),
+                "html_article_count": sum(v["media_type"] == "text/html" for v in versions),
                 "pilot": load_pilot_metrics(root)}
 
     @app.get("/api/documents/{version_id}/pages/{page_number}")

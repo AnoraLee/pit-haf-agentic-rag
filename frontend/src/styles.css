@@ -1211,6 +1211,7 @@ td > small {
 }
 .table-toolbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
   padding: 0 21px 18px;

@@ -86,6 +86,8 @@ def load_corpus(root: Path) -> Corpus:
                 page.record_id, page.ticker, page.content_hash, page.source_url
             ) != (version.record_id, version.ticker, version.content_hash, version.source_url):
                 raise SnapshotError("Trang không khớp định danh tài liệu trong registry.")
+            if page.related_tickers != version.related_tickers:
+                raise SnapshotError("Mã liên quan của trang không khớp metadata nguồn.")
             if sha256(page.text.encode()) != page.text_hash:
                 raise SnapshotError("Checksum văn bản trang không khớp.")
             identity = (page.version_id, page.page)
@@ -152,7 +154,7 @@ def search_passages(corpus: Corpus, query: str, *, ticker: str | None = None,
         return []
     chunks = []
     for page in corpus.pages:
-        if ticker and page.ticker != ticker:
+        if ticker and page.ticker != ticker and ticker not in page.related_tickers:
             continue
         if allowed_versions is not None and page.version_id not in allowed_versions:
             continue

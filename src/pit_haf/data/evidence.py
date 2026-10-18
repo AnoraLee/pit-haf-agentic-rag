@@ -36,6 +36,12 @@ class EvidenceVersion(BaseModel):
     ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
     document_type: str = Field(min_length=1)
     title: str = Field(min_length=1)
+    media_type: Literal["application/pdf", "text/html"] = "application/pdf"
+    publisher: str | None = None
+    author: str | None = None
+    evidence_scope: Literal["issuer", "market"] = "issuer"
+    related_tickers: tuple[str, ...] = ()
+    entity_linking_basis: str | None = None
     content_hash: str = Field(pattern=r"^[0-9a-f]{64}$")
     raw_snapshot_path: str
     event_at: date | datetime | None = None
@@ -109,6 +115,13 @@ class EvidenceVersion(BaseModel):
             raise ValueError("Identifiers and titles must be nonempty and trimmed")
         return value
 
+    @field_validator("related_tickers")
+    @classmethod
+    def clean_related_tickers(cls, value):
+        if len(value) != len(set(value)) or any(not re.fullmatch(r"[A-Z0-9]{2,12}", t) for t in value):
+            raise ValueError("Related tickers must be unique ticker identifiers")
+        return value
+
     @field_validator("source_url", "listing_url", "rights_url")
     @classmethod
     def source_is_public_url(cls, value: str | None) -> str | None:
@@ -165,6 +178,7 @@ class EvidencePage(BaseModel):
     record_id: str
     version_id: str
     ticker: str
+    related_tickers: tuple[str, ...] = ()
     content_hash: str
     page: int = Field(ge=1)
     text: str

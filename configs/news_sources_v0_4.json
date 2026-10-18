@@ -1,0 +1,276 @@
+{
+  "release_id": "development-corpus-v0.4-news-20261018",
+  "max_candidates": 1300,
+  "ticker_aliases": {
+    "FPT": [
+      "tập đoàn FPT"
+    ],
+    "HPG": [
+      "Hòa Phát"
+    ],
+    "VCB": [
+      "Vietcombank"
+    ],
+    "ACB": [
+      "ngân hàng Á Châu"
+    ],
+    "VNM": [
+      "Vinamilk"
+    ],
+    "MWG": [
+      "Thế Giới Di Động"
+    ],
+    "PNJ": [
+      "vàng bạc đá quý Phú Nhuận"
+    ],
+    "REE": [
+      "Cơ Điện Lạnh"
+    ],
+    "GAS": [
+      "PV GAS",
+      "PVGAS",
+      "Tổng công ty Khí Việt Nam"
+    ],
+    "SSI": [
+      "chứng khoán SSI"
+    ],
+    "DPM": [
+      "Đạm Phú Mỹ",
+      "phân bón và hóa chất dầu khí"
+    ],
+    "TCB": [
+      "Techcombank"
+    ],
+    "BID": [
+      "BIDV"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "vnexpress",
+      "publisher": "VnExpress",
+      "document_type": "news_article",
+      "allowed_hosts": [
+        "vnexpress.net"
+      ],
+      "feeds": [
+        "https://vnexpress.net/rss/kinh-doanh.rss",
+        "https://vnexpress.net/rss/bat-dong-san.rss",
+        "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss"
+      ],
+      "body_selectors": [
+        "article.fck_detail"
+      ],
+      "lede_selector": ".description",
+      "max_candidates": 180,
+      "article_pattern": "-\\d+\\.html$",
+      "max_per_feed": 60
+    },
+    {
+      "source_id": "cafef",
+      "publisher": "CafeF",
+      "document_type": "news_article",
+      "allowed_hosts": [
+        "cafef.vn"
+      ],
+      "feeds": [
+        "https://cafef.vn/thi-truong-chung-khoan.rss",
+        "https://cafef.vn/doanh-nghiep.rss",
+        "https://cafef.vn/tai-chinh-ngan-hang.rss",
+        "https://cafef.vn/vi-mo-dau-tu.rss",
+        "https://cafef.vn/tai-chinh-quoc-te.rss",
+        "https://cafef.vn/kinh-te-so.rss"
+      ],
+      "body_selectors": [
+        ".detail-content.afcbc-body",
+        ".detail-content"
+      ],
+      "lede_selector": ".sapo",
+      "max_candidates": 240,
+      "article_pattern": "-\\d+\\.chn$",
+      "max_per_feed": 60
+    },
+    {
+      "source_id": "baodautu",
+      "publisher": "Báo Tài chính - Đầu tư",
+      "document_type": "news_article",
+      "allowed_hosts": [
+        "baodautu.vn"
+      ],
+      "feeds": [
+        "https://baodautu.vn/kinh-doanh.rss",
+        "https://baodautu.vn/ngan-hang--bao-hiem.rss",
+        "https://baodautu.vn/dau-tu-tai-chinh.rss",
+        "https://baodautu.vn/thoi-su-dau-tu.rss",
+        "https://baodautu.vn/toan-canh-dau-tu.rss",
+        "https://baodautu.vn/thong-tin-doanh-nghiep.rss",
+        "https://baodautu.vn/kinh-te-so.rss",
+        "https://baodautu.vn/phat-trien-ben-vung.rss"
+      ],
+      "body_selectors": [
+        "#content_detail_news"
+      ],
+      "lede_selector": ".sapo-detail",
+      "max_candidates": 240,
+      "article_pattern": "-d\\d+\\.html$",
+      "max_per_feed": 60,
+      "title_selector": ".title-detail",
+      "listings": [
+        "https://baodautu.vn/kinh-doanh-d3/",
+        "https://baodautu.vn/dau-tu-tai-chinh-d6/",
+        "https://baodautu.vn/toan-canh-dau-tu-d2/",
+        "https://baodautu.vn/kinh-te-so-d77/"
+      ],
+      "max_listing_pages": 4,
+      "publication_selector": ".post-time"
+    },
+    {
+      "source_id": "vietnambiz",
+      "publisher": "VietnamBiz",
+      "document_type": "news_article",
+      "allowed_hosts": [
+        "vietnambiz.vn"
+      ],
+      "feeds": [
+        "https://vietnambiz.vn/tin-moi-nhat.rss"
+      ],
+      "listings": [
+        "https://vietnambiz.vn/"
+      ],
+      "body_selectors": [
+        ".vnbcbc-body",
+        ".article-body-content"
+      ],
+      "lede_selector": ".vnbcbc-sapo",
+      "max_candidates": 140,
+      "article_pattern": "-\\d+\\.htm$",
+      "max_per_feed": 60
+    },
+    {
+      "source_id": "chinhphu",
+      "publisher": "Báo điện tử Chính phủ",
+      "document_type": "official_policy_news",
+      "allowed_hosts": [
+        "baochinhphu.vn"
+      ],
+      "listings": [
+        "https://baochinhphu.vn/kinh-te.htm",
+        "https://baochinhphu.vn/kinh-te/ngan-hang.htm",
+        "https://baochinhphu.vn/kinh-te/chung-khoan.htm",
+        "https://baochinhphu.vn/kinh-te/kinh-doanh.htm"
+      ],
+      "body_selectors": [
+        ".detail-content",
+        ".detail__content",
+        "[data-role=\"content\"]"
+      ],
+      "lede_selector": ".detail-sapo",
+      "max_candidates": 120,
+      "article_pattern": "-\\d+\\.htm$",
+      "max_per_feed": 60,
+      "link_selector": "h2 a[href],h3 a[href]",
+      "max_listing_pages": 4
+    },
+    {
+      "source_id": "hpg-news",
+      "publisher": "Tập đoàn Hòa Phát",
+      "document_type": "issuer_news",
+      "issuer_ticker": "HPG",
+      "allowed_hosts": [
+        "www.hoaphat.com.vn"
+      ],
+      "listings": [
+        "https://www.hoaphat.com.vn/tin-tuc"
+      ],
+      "body_selectors": [
+        ".detail.css-content"
+      ],
+      "publication_selector": "p.time",
+      "lede_selector": ".detail.css-content > p:first-of-type",
+      "max_listing_pages": 7,
+      "max_candidates": 105,
+      "article_pattern": "/tin-tuc/[^/?]+\\.html$",
+      "max_per_feed": 60
+    },
+    {
+      "source_id": "fpt-news",
+      "publisher": "Tập đoàn FPT",
+      "document_type": "issuer_news",
+      "issuer_ticker": "FPT",
+      "allowed_hosts": [
+        "fpt.com"
+      ],
+      "listings": [
+        "https://fpt.com/vi/tin-tuc"
+      ],
+      "body_selectors": [
+        "article"
+      ],
+      "lede_selector": "article > p:first-of-type",
+      "max_candidates": 30,
+      "article_pattern": "/vi/tin-tuc/[^/?]+$",
+      "max_per_feed": 60
+    },
+    {
+      "source_id": "ree-news",
+      "publisher": "Công ty Cổ phần Cơ Điện Lạnh REE",
+      "document_type": "issuer_news",
+      "issuer_ticker": "REE",
+      "allowed_hosts": [
+        "www.reecorp.com"
+      ],
+      "listings": [
+        "https://www.reecorp.com/tin-tuc-su-kien/"
+      ],
+      "body_selectors": [
+        ".entry-content",
+        ".vii-content",
+        ".wpb_text_column"
+      ],
+      "link_selector": ".vii-blog-item a[href]",
+      "pagination_selector": ".pagination a,.page-numbers a",
+      "listing_path_prefix": "/tin-tuc-su-kien/",
+      "max_listing_pages": 3,
+      "max_candidates": 30,
+      "article_pattern": "https://www\\.reecorp\\.com/[^/?]+/$",
+      "max_per_feed": 60
+    }
+  ],
+  "selection_note": "Public financial/business/industry/technology news, official economic policy and issuer announcements. Bounded RSS/listing snapshot, no return-based selection; ticker aliases observed in title/lede or issuer source are not human gold.",
+  "access_exclusions": [
+    {
+      "source": "Tin nhanh chứng khoán",
+      "url": "https://www.tinnhanhchungkhoan.vn/",
+      "reason": "TLS certificate verification failed; not bypassed"
+    }
+  ],
+  "topic_terms": [
+    "doanh nghiệp",
+    "sản xuất",
+    "thị trường",
+    "ngân hàng",
+    "bất động sản",
+    "đầu tư",
+    "xuất khẩu",
+    "nhập khẩu",
+    "chứng khoán",
+    "cổ phiếu",
+    "trái phiếu",
+    "GDP",
+    "lãi suất",
+    "tỷ giá",
+    "tín dụng",
+    "lạm phát",
+    "thuế",
+    "bán lẻ",
+    "năng lượng",
+    "thép",
+    "phân bón",
+    "chuyển đổi số",
+    "trí tuệ nhân tạo",
+    "giá vàng",
+    "giá dầu",
+    "tiền tệ",
+    "kinh tế"
+  ]
+}

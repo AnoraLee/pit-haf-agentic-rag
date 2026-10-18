@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-10-18T02:47:57.537358+00:00",
+  "release_id": "development-corpus-v0.4-20261018",
+  "summary_sha256": "803858c5527dfccb67009e3960edc2d4db15bd6a9eef624d49a0ccf57e3ed158",
+  "research_prediction_results": false,
+  "run_kind": "artifact_integrity_checks_not_semantic_validation",
+  "active_page_count_verified": 18590,
+  "active_pages_sha256": "747ebd8eb90eb8592f1e5a37df25b679b7f2bd18ef606db062808bba0df29a34",
+  "frozen_pilot_registry_versions_unchanged": 11,
+  "frozen_pilot_page_text_hashes_unchanged": 905,
+  "frozen_pilot_index_sha256": "22635e82e33f9b21ac112341e4f050e0871057c77d50d704b262e4e77e8f73b2",
+  "source_file_sha256": {
+    "src/pit_haf/data/evidence.py": "c3621e6610d5e1085fad4cbd52aee8016cb864a7ee2326010db1ca243b1fac35",
+    "src/pit_haf/data/snapshots.py": "b4449cd89df3ad22ebe2a0b06c72d7ae0ba3384f3de74c1dfc27e084240cbe56",
+    "src/pit_haf/data/pilot.py": "d3192c56f389b69590332ff460fd1aa8a71f7a253d9665c79884076a1c40bd60",
+    "src/pit_haf/data/batches.py": "0d0177247380d9046fe5343907d60aab8242b81bf200a8cc6f273a9b9c225b26",
+    "src/pit_haf/data/corpus.py": "188b64f626d6e042c6d84ad81539d871a9203dc8b331cb5999006260f5714884",
+    "src/pit_haf/data/coverage.py": "39130f2313dd622ecf24597e4d6d12a0f6d07a5903606300b78a25bcbbb2dea4",
+    "src/pit_haf/data/news.py": "7ac90994c31262ec8c6204dcf5bc2e8779a5c4709ad69a80860aed17cac1d320"
+  },
+  "not_validated": [
+    "OCR/table/numeric/semantic accuracy",
+    "Independent human gold",
+    "Historical time/revision availability",
+    "Predictive performance"
+  ]
+}

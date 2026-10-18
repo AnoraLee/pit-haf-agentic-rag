@@ -73,16 +73,20 @@ def main():
               "summary_sha256": sha(raw_summary), "research_prediction_results": False}
     inventory = {**common, "run_kind": "metadata_only_raw_acquisition_inventory",
                  "configured_records": len(specs), "registered_raw_versions": len(entries),
-                 "unique_raw_pdf_blobs": len(blob_sizes),
+                 "unique_raw_blobs": len(blob_sizes),
+                 "unique_raw_pdf_blobs": len({row["metadata"]["content_hash"] for row in entries
+                                               if row["metadata"]["media_type"] == "application/pdf"}),
+                 "unique_raw_html_blobs": len({row["metadata"]["content_hash"] for row in entries
+                                                if row["metadata"]["media_type"] == "text/html"}),
                  "unique_raw_byte_count": sum(blob_sizes.values()),
                  "status_by_record": dict(Counter(row["status"] for row in events.values())),
                  "records_without_registered_version": sorted(set(specs) - {
                      row["metadata"]["record_id"] for row in entries}),
                  "notes": ["Includes parser-failed/review-excluded raw responses; not all are usable reports.",
-                           "No raw PDF bytes, source text or redistribution license in this export."],
+                           "No raw PDF/HTML bytes, source text or redistribution license in this export."],
                  "versions": entries}
     source_files = [Path("src/pit_haf/data") / name for name in (
-        "evidence.py", "snapshots.py", "pilot.py", "batches.py", "corpus.py", "coverage.py")]
+        "evidence.py", "snapshots.py", "pilot.py", "batches.py", "corpus.py", "coverage.py", "news.py")]
     verification = {**common, "run_kind": "artifact_integrity_checks_not_semantic_validation",
                     "active_page_count_verified": len(active_pages),
                     "active_pages_sha256": sha(raw_pages),
