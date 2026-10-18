@@ -1,0 +1,275 @@
+{
+  "release_id": "development-corpus-v0.2-20261017",
+  "run_kind": "development_corpus_coverage",
+  "created_at": "2026-10-17T10:40:22.323970+00:00",
+  "research_prediction_results": false,
+  "configured_documents": 34,
+  "registered_versions": 32,
+  "acquired_documents": 29,
+  "failed_documents": 5,
+  "parser_failed_documents": 2,
+  "curation_excluded_documents": 1,
+  "configured_records_not_registered": [
+    "SSI-annual-2022-vi",
+    "SSI-annual-2023-vi"
+  ],
+  "target_issuers": 10,
+  "observed_issuers": 10,
+  "observed_broad_sectors": 8,
+  "target_annual_cells": 30,
+  "covered_annual_cells": 21,
+  "page_count": 3243,
+  "text_page_count": 2950,
+  "empty_page_count_no_ocr": 293,
+  "documents_with_parser_warnings": 13,
+  "documents_with_potentially_partial_text": 1,
+  "strict_eligible_documents": 0,
+  "issuers": [
+    {
+      "ticker": "FPT",
+      "name": "FPT",
+      "sector": "Công nghệ",
+      "source_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "documents": 5,
+      "logical_records": 5,
+      "pages": 782,
+      "text_pages": 734,
+      "annual_years": {
+        "2022": true,
+        "2023": true,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "HPG",
+      "name": "Hòa Phát",
+      "sector": "Vật liệu",
+      "source_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "documents": 9,
+      "logical_records": 9,
+      "pages": 633,
+      "text_pages": 497,
+      "annual_years": {
+        "2022": true,
+        "2023": true,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "VCB",
+      "name": "Vietcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu",
+      "documents": 1,
+      "logical_records": 1,
+      "pages": 106,
+      "text_pages": 106,
+      "annual_years": {
+        "2022": false,
+        "2023": false,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "ACB",
+      "name": "Ngân hàng Á Châu",
+      "sector": "Ngân hàng",
+      "source_url": "https://acb.com.vn/nha-dau-tu/bao-cao-thuong-nien",
+      "documents": 1,
+      "logical_records": 1,
+      "pages": 142,
+      "text_pages": 141,
+      "annual_years": {
+        "2022": false,
+        "2023": false,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "VNM",
+      "name": "Vinamilk",
+      "sector": "Hàng tiêu dùng",
+      "source_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "documents": 3,
+      "logical_records": 3,
+      "pages": 448,
+      "text_pages": 447,
+      "annual_years": {
+        "2022": true,
+        "2023": true,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "MWG",
+      "name": "Thế Giới Di Động",
+      "sector": "Bán lẻ",
+      "source_url": "https://mwg.vn/bao-cao",
+      "documents": 2,
+      "logical_records": 2,
+      "pages": 193,
+      "text_pages": 97,
+      "annual_years": {
+        "2022": false,
+        "2023": true,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "PNJ",
+      "name": "Vàng bạc Đá quý Phú Nhuận",
+      "sector": "Bán lẻ",
+      "source_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "documents": 2,
+      "logical_records": 2,
+      "pages": 228,
+      "text_pages": 225,
+      "annual_years": {
+        "2022": false,
+        "2023": true,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "REE",
+      "name": "Cơ Điện Lạnh",
+      "sector": "Hạ tầng đa ngành",
+      "source_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "documents": 3,
+      "logical_records": 3,
+      "pages": 398,
+      "text_pages": 392,
+      "annual_years": {
+        "2022": true,
+        "2023": true,
+        "2024": true
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "GAS",
+      "name": "PV GAS",
+      "sector": "Năng lượng",
+      "source_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "documents": 2,
+      "logical_records": 2,
+      "pages": 184,
+      "text_pages": 184,
+      "annual_years": {
+        "2022": true,
+        "2023": true,
+        "2024": false
+      },
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "SSI",
+      "name": "Chứng khoán SSI",
+      "sector": "Chứng khoán",
+      "source_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "documents": 1,
+      "logical_records": 1,
+      "pages": 129,
+      "text_pages": 127,
+      "annual_years": {
+        "2022": false,
+        "2023": false,
+        "2024": true
+      },
+      "strict_eligible": 0
+    }
+  ],
+  "missing_annual_cells": [
+    {
+      "ticker": "VCB",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2024,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2023,
+      "kind": "annual_report"
+    }
+  ],
+  "failures": [
+    {
+      "record_id": "GAS-annual-2024-vi",
+      "ticker": "GAS",
+      "error_type": "reviewed_source_exclusion",
+      "error": "Official download currently returns a one-page blank PDF, visually confirmed; not the full annual report. Keep raw bytes and acquisition history; exclude from active report corpus and annual-year coverage."
+    },
+    {
+      "record_id": "MWG-annual-2022-vi",
+      "ticker": "MWG",
+      "error_type": "PdfReadError",
+      "error": "Broken xref table"
+    },
+    {
+      "record_id": "PNJ-annual-2022-vi",
+      "ticker": "PNJ",
+      "error_type": "LimitReachedError",
+      "error": "Reached maximum number of tokens per stream."
+    },
+    {
+      "record_id": "SSI-annual-2022-vi",
+      "error_type": "not_registered",
+      "error": "No acquired version; original acquisition failure remains in ledger."
+    },
+    {
+      "record_id": "SSI-annual-2023-vi",
+      "error_type": "not_registered",
+      "error": "No acquired version; original acquisition failure remains in ledger."
+    }
+  ],
+  "limitations": [
+    "Broad sector labels are curated, not an official historical index classification.",
+    "Current issuer/access selection; historical membership and survivorship not validated.",
+    "Annual ticker-year coverage counts a translation or revision only once.",
+    "Text presence is not OCR/table/numeric/semantic fidelity.",
+    "Missing time/version proof remains quarantined; no prediction/backtest or gold labels."
+  ],
+  "summary_sha256": "33232cfc41625a2b59af8738febbfd13e5582d0f834b8804abc1791bef23ae33",
+  "universe_sha256": "40bd429f978028bfd94e44b6af73e813a0abca366d5ac83e10fc334010b6fd9e"
+}

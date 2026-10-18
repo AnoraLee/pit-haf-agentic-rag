@@ -1,0 +1,13 @@
+{
+  "policy_id": "development-source-review-v0.2",
+  "reviewer": "assistant_visual_spot_check_not_independent_human_gold",
+  "exclude_versions": [
+    {
+      "record_id": "GAS-annual-2024-vi",
+      "version_id": "48f7e66fc17e484b33091f51e78f5384e468cdecba992a7b4338ca57cf14493c",
+      "content_hash": "f3dda79c6904fd68bfc3a241326e937756ac41d8868e729ac009c6ffbc29f1ed",
+      "reason": "Official download currently returns a one-page blank PDF, visually confirmed; not the full annual report. Keep raw bytes and acquisition history; exclude from active report corpus and annual-year coverage.",
+      "review_image_sha256": "4b21325e9eca9414bb9463eb56a7af1be4b345315a37f63546470c165f63d30d"
+    }
+  ]
+}

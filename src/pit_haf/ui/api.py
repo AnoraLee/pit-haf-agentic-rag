@@ -101,10 +101,27 @@ def create_app(root: Path | None = None) -> FastAPI:
         versions = []
         for item in data.versions:
             pages = [page for page in data.pages if page.version_id == item.version_id]
+            diagnostics = next((row for row in data.document_diagnostics
+                                if row.get("version_id") == item.version_id), {})
             versions.append({**item.model_dump(mode="json"), "pages": len(pages),
                              "text_pages": sum(bool(page.text.strip()) for page in pages),
+                             "parser_warning_count": diagnostics.get("parser_warning_count"),
+                             "potentially_partial_text_pages": diagnostics.get(
+                                 "potentially_partial_text_pages", []),
                              "quarantine_reasons": item.quarantine_reasons("strict")})
+        coverage = None
+        if data.snapshot:
+            summary_hash = sha256((root / data.snapshot).read_bytes())
+            for path in sorted(root.glob("data/corpus/*/coverage.json"), reverse=True):
+                try:
+                    report = json.loads(path.read_text(encoding="utf-8"))
+                    if report.get("summary_sha256") == summary_hash:
+                        coverage = report
+                        break
+                except (OSError, ValueError):
+                    continue
         return {"documents": versions, "errors": data.errors, "snapshot": data.snapshot,
+                "coverage": coverage,
                 "page_count": len(data.pages),
                 "text_page_count": sum(bool(page.text.strip()) for page in data.pages),
                 "pilot": load_pilot_metrics(root)}

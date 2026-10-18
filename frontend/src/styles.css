@@ -909,6 +909,33 @@ main {
   text-align: right;
   min-width: 60px;
 }
+.coverage-matrix th,
+.coverage-matrix td {
+  text-align: center;
+}
+.coverage-matrix th:first-child,
+.coverage-matrix td:first-child,
+.coverage-matrix th:nth-child(2),
+.coverage-matrix td:nth-child(2) {
+  text-align: left;
+}
+.cell-present,
+.cell-missing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+}
+.cell-present {
+  color: #458568;
+}
+.cell-missing {
+  color: #b2a583;
+}
+.parser-warning {
+  color: #b18d51;
+}
 .coverage-count small {
   font-size: 8px;
   color: #9eaaa1;

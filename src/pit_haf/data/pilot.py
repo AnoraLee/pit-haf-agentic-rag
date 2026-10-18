@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import io
 import json
+import logging
 import time
 import urllib.error
 import urllib.request
@@ -60,7 +61,46 @@ def fetch_public(url: str, allowed_hosts: set[str], *, timeout: float = 30) -> t
         raise ValueError(f"HTTP {exc.code}: {url}") from exc
 
 
-def extract_pdf_pages(store: SnapshotStore, evidence: EvidenceVersion) -> tuple[EvidencePage, ...]:
+class PdfWarningCollector(logging.Handler):
+    def __init__(self):
+        super().__init__(logging.WARNING)
+        self.page = None
+        self.count = 0
+        self.messages = []
+        self.partial_pages = set()
+
+    def emit(self, record):
+        message = record.getMessage()
+        self.count += 1
+        if len(self.messages) < 300:
+            self.messages.append({"page": self.page, "message": message[:2000]})
+        if "skipped" in message.lower() or "exceeded" in message.lower():
+            self.partial_pages.add(self.page)
+
+
+def extract_pdf_pages(store: SnapshotStore, evidence: EvidenceVersion,
+                      diagnostics: dict | None = None) -> tuple[EvidencePage, ...]:
+    collector = PdfWarningCollector()
+    logger = logging.getLogger("pypdf")
+    if diagnostics is not None:
+        logger.addHandler(collector)
+    try:
+        return _extract_pdf_pages(store, evidence, collector)
+    finally:
+        if diagnostics is not None:
+            logger.removeHandler(collector)
+        if diagnostics is not None:
+            diagnostics.update(parser_warning_count=collector.count,
+                               parser_warnings=collector.messages,
+                               parser_warnings_truncated=collector.count > len(collector.messages),
+                               potentially_partial_text_pages=sorted(
+                                   page for page in collector.partial_pages if page is not None
+                               ),
+                               potentially_partial_document=None in collector.partial_pages)
+
+
+def _extract_pdf_pages(store: SnapshotStore, evidence: EvidenceVersion,
+                       collector: PdfWarningCollector) -> tuple[EvidencePage, ...]:
     from pypdf import PdfReader
 
     raw = store.read_blob(evidence.content_hash)
@@ -73,6 +113,7 @@ def extract_pdf_pages(store: SnapshotStore, evidence: EvidenceVersion) -> tuple[
         raise ValueError("PDF exceeds pilot page limit")
     pages = []
     for number, page in enumerate(reader.pages, start=1):
+        collector.page = number
         text = page.extract_text() or ""
         pages.append(EvidencePage(
             record_id=evidence.record_id, version_id=evidence.version_id, ticker=evidence.ticker,
@@ -95,7 +136,7 @@ def validate_manifest_identity(evidence: EvidenceVersion, spec: dict) -> None:
 
 def acquire_pilot(
     config: dict, *, store: SnapshotStore, output: Path, delay: float = 1,
-    reuse_registered: bool = False,
+    reuse_registered: bool = False, skip_registered: bool = False,
 ) -> dict:
     """Keep failures and quota shortfalls. Never infer times from file names or PDF signatures."""
     output.mkdir(parents=True, exist_ok=False)
@@ -139,39 +180,54 @@ def acquire_pilot(
                 acquire_resource(source[key], kind)
 
     existing = {item.version_id: item for item in store.versions()}
+    existing_records = {}
+    for item in existing.values():
+        existing_records.setdefault(item.record_id, []).append(item)
     pages_path = output / "pages.jsonl"
     with pages_path.open("x", encoding="utf-8", newline="\n") as stream:
         for spec in documents:
             event = {"record_id": spec["record_id"], "ticker": spec["ticker"],
                      "source_url": spec["source_url"], "status": "failed"}
+            diagnostics = {}
             try:
                 host = urlsplit(spec["source_url"]).hostname
                 robot = robot_policies.get(host)
                 if robot and not robot.can_fetch(USER_AGENT, spec["source_url"]):
                     raise ValueError("robots.txt disallows configured URL")
-                payload, acquisition = fetch_public(spec["source_url"], hosts)
-                event.update(acquisition)
-                digest = store.put_blob(payload)
-                event["content_hash"] = digest
-                if not payload.startswith(b"%PDF-"):
-                    raise ValueError("Response is not a PDF; retained for acquisition audit only")
-                listing = resources.get(spec.get("listing_url"), {})
-                version_id = version_id_for(spec["record_id"], digest)
-                if version_id in existing:
-                    evidence = existing[version_id]
+                prior = existing_records.get(spec["record_id"], []) if skip_registered else []
+                if prior:
+                    if len(prior) != 1:
+                        raise ValueError("Local reuse needs exactly one version; select revisions explicitly")
+                    evidence = prior[0]
                     validate_manifest_identity(evidence, spec)
-                    event["registration"] = "existing_version_first_observation_preserved"
+                    store.read_blob(evidence.content_hash)
+                    event.update(registration="local_reuse_without_remote_revalidation",
+                                 content_hash=evidence.content_hash, network_requests=0)
                 else:
-                    evidence = EvidenceVersion(
-                        **spec, version_id=version_id, content_hash=digest,
-                        retrieved_at=acquisition["retrieved_at"], system_recorded_at=datetime.now(UTC),
-                        listing_snapshot_hash=listing.get("content_hash"),
-                    )
-                    store.register(evidence)
-                    existing[version_id] = evidence
-                    event["registration"] = "new_version"
-                event["version_id"] = version_id
-                pages = extract_pdf_pages(store, evidence)
+                    payload, acquisition = fetch_public(spec["source_url"], hosts)
+                    event.update(acquisition)
+                    digest = store.put_blob(payload)
+                    event["content_hash"] = digest
+                    if not payload.startswith(b"%PDF-"):
+                        raise ValueError("Response is not a PDF; retained for acquisition audit only")
+                    listing = resources.get(spec.get("listing_url"), {})
+                    version_id = version_id_for(spec["record_id"], digest)
+                    if version_id in existing:
+                        evidence = existing[version_id]
+                        validate_manifest_identity(evidence, spec)
+                        event["registration"] = "existing_version_first_observation_preserved"
+                    else:
+                        evidence = EvidenceVersion(
+                            **spec, version_id=version_id, content_hash=digest,
+                            retrieved_at=acquisition["retrieved_at"], system_recorded_at=datetime.now(UTC),
+                            listing_snapshot_hash=listing.get("content_hash"),
+                        )
+                        store.register(evidence)
+                        existing[version_id] = evidence
+                        event["registration"] = "new_version"
+                event["version_id"] = evidence.version_id
+                pages = extract_pdf_pages(store, evidence, diagnostics)
+                event.update(diagnostics)
                 for page in pages:
                     stream.write(page.model_dump_json() + "\n")
                 event.update(
@@ -185,6 +241,7 @@ def acquire_pilot(
             except Exception as exc:
                 # Per-document acquisition failures must remain visible in the denominator.
                 event.update(error_type=type(exc).__name__, error=str(exc))
+            event.update(diagnostics)
             events.append(event)
             store.log_acquisition(event)
             time.sleep(delay)
@@ -196,6 +253,7 @@ def acquire_pilot(
             item.get("data_kind", "real_document") == "real_document" for item in documents
         ) else "test_fixture"),
         "research_prediction_results": False, "historical_availability_inferred": False,
+        "skip_registered_without_remote_revalidation": skip_registered,
         "created_at": cutoff, "manifest_hash": hashlib.sha256(json_config).hexdigest(),
         "target_documents": config.get("target_documents", 24),
         "configured_documents": len(documents), "success_documents": sum(successes.values()),
@@ -215,7 +273,7 @@ def acquire_pilot(
             "Successful extraction alone does not imply text/table fidelity.",
         ],
     }
-    (output / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    publish_summary(output, summary)
     return summary
 
 
@@ -233,9 +291,11 @@ def reextract_registered(config: dict, *, store: SnapshotStore, output: Path) ->
                 continue
             event = {"record_id": item.record_id, "version_id": item.version_id,
                      "ticker": item.ticker, "content_hash": item.content_hash}
+            diagnostics = {}
             try:
                 validate_manifest_identity(item, specs[item.record_id])
-                pages = extract_pdf_pages(store, item)
+                pages = extract_pdf_pages(store, item, diagnostics)
+                event.update(diagnostics)
                 for page in pages:
                     stream.write(page.model_dump_json() + "\n")
                 event.update(status="extracted", pages=len(pages), text_pages=sum(
@@ -243,6 +303,7 @@ def reextract_registered(config: dict, *, store: SnapshotStore, output: Path) ->
                 ))
             except Exception as exc:
                 event.update(status="failed", error_type=type(exc).__name__, error=str(exc))
+            event.update(diagnostics)
             events.append(event)
     successful = [event for event in events if event["status"] == "extracted"]
     cutoff = datetime.now(UTC).isoformat()
@@ -272,8 +333,15 @@ def reextract_registered(config: dict, *, store: SnapshotStore, output: Path) ->
         "limitations": ["Re-extraction does not create historical time/version proof.",
                         "No OCR or human semantic/numeric QA performed by this command."],
     }
-    (output / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    publish_summary(output, summary)
     return summary
+
+
+def publish_summary(output: Path, summary: dict) -> None:
+    """Readers see the completed release, never a partially written JSON summary."""
+    temporary = output / "summary.json.tmp"
+    temporary.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    temporary.replace(output / "summary.json")
 
 
 def main() -> None:
@@ -282,12 +350,15 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=Path("data/cache/evidence"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--extract-existing", action="store_true", help="No network; export snapshots")
+    parser.add_argument("--skip-registered", action="store_true",
+                        help="Reuse unique local versions without checking for remote revisions")
     args = parser.parse_args()
     run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
     output = args.output or Path("outputs/milestone-1/data-pilot") / run_id
     config = json.loads(args.sources.read_text(encoding="utf-8"))
     result = acquire_pilot(config, store=SnapshotStore(args.root), output=output,
-                           reuse_registered=args.extract_existing)
+                           reuse_registered=args.extract_existing,
+                           skip_registered=args.skip_registered)
     print(json.dumps({key: result[key] for key in (
         "success_documents", "success_by_ticker", "failed_documents", "target_shortfall",
         "page_count", "text_page_count", "strict_gateway_deliveries", "pages_file"

@@ -62,7 +62,8 @@ Vnstock 4.0.7. Môi trường trên máy hiện tại dùng Python 3.11.17.
   frontend mặc định.
 - `src/pit_haf/research/doctor.py`: kiểm tra môi trường/local service, lưu
   Git revision, dirty diff, hashes và source snapshot, không trả mock inference.
-- `.github/workflows/offline-checks.yml`: CI test/lint; chưa chạy trên GitHub.
+- `.github/workflows/offline-checks.yml`: CI test/lint đã push; kết quả GitHub Actions
+  chưa xác nhận qua API. Kết quả local được ghi riêng, không thay kết quả CI.
 - `src/pit_haf/data/`: evidence/snapshots/gateway cho provenance, raw blobs
   SHA-256, SQLite append-only và giao đúng revision qua Guard. Bằng chứng thiếu
   thời điểm/phiên bản lịch sử bị quarantine; fixture bị loại theo mặc định.
@@ -72,6 +73,16 @@ Vnstock 4.0.7. Môi trường trên máy hiện tại dùng Python 3.11.17.
   digest/raw outputs và pilot trích xuất; chưa phải Agentic-RAG/dự báo.
 - [Pilot data card](data/pilot/DATA_CARD.md): nguồn, coverage, provenance index,
   extraction quality, rights và giới hạn chưa có proof lịch sử.
+- [Corpus v0.2](data/corpus/v0.2/DATA_CARD.md): 29 tài liệu được chọn từ 32 raw
+  versions/34 URL cấu hình, 10 mã/8 nhóm ngành, 3.243 trang. Phủ 21/30 ô báo cáo
+  thường niên 2022–2024; vẫn chưa có evidence đủ điều kiện PiT strict. Pilot cũ
+  và kết quả 24 đoạn được giữ nguyên; không phải đánh giá model trên corpus mới.
+
+Để mở rộng/tái trích corpus mới dùng
+`.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`
+hoặc `--extract-existing` khi chỉ replay local. Công cụ `corpus-coverage` tạo
+bảng coverage và bản lọc theo review có pin hash; xem
+[lệnh và giới hạn v0.2](docs/research/10-corpus-expansion.md).
 
 Ngày 17/10/2026: Ollama 0.40.5 và qwen3:4b Q4_K_M đã cài trên máy này.
 [Báo cáo cài đặt và pilot](docs/research/08-local-pilot-results.md) ghi artifact,

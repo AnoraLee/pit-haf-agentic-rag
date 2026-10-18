@@ -62,6 +62,23 @@ def test_loader_refuses_changed_page_file(local_corpus):
     assert "Checksum" in load_corpus(root).errors[0]
 
 
+def test_pending_ingestion_does_not_change_active_release(local_corpus):
+    root, version, _ = local_corpus
+    store = SnapshotStore(root / "data/cache/evidence")
+    digest = store.put_blob(b"pending synthetic fixture without published pages")
+    pending = version.model_copy(update={
+        "version_id": "pending-v2", "record_id": "pending-fixture", "content_hash": digest,
+        "raw_snapshot_path": f"blobs/{digest[:2]}/{digest}",
+    })
+    store.register(pending)
+    # A pending raw file does not belong to the active release at all.
+    store.blob_path(digest).write_bytes(b"pending corrupted bytes")
+    active = load_corpus(root)
+    assert not active.errors
+    assert active.versions == (version,)
+    assert len(active.pages) == 1
+
+
 def test_empty_historical_allowlist_is_not_exploratory(local_corpus):
     root, _, _ = local_corpus
     data = load_corpus(root)
@@ -161,6 +178,20 @@ def test_api_returns_sources_and_prevents_cross_origin_inference(local_corpus):
     assert client.post("/api/search", json={"query": "doanh thu"}).json()["passages"]
     assert client.post("/api/analysis", headers={"Origin": "https://untrusted.example"},
                        json={"query": "doanh thu"}).status_code == 403
+
+
+def test_workspace_does_not_mix_coverage_from_a_different_snapshot(local_corpus):
+    root, _, _ = local_corpus
+    client = TestClient(create_app(root))
+    folder = root / "data/corpus/synthetic-fixture"
+    folder.mkdir(parents=True)
+    path = folder / "coverage.json"
+    path.write_text(json.dumps({"summary_sha256": "0" * 64}), encoding="utf-8")
+    assert client.get("/api/workspace").json()["coverage"] is None
+    source = next(root.glob("outputs/milestone-1/data-pilot/*/summary.json"))
+    report = {"summary_sha256": sha256(source.read_bytes()), "release_id": "synthetic-fixture"}
+    path.write_text(json.dumps(report), encoding="utf-8")
+    assert client.get("/api/workspace").json()["coverage"] == report
 
 
 def test_api_retrieves_selected_context_and_saves_audit_separately(local_corpus, monkeypatch):

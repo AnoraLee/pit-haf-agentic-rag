@@ -1,0 +1,203 @@
+{
+  "release_id": "development-corpus-v0.2-20261017",
+  "documents": [
+    {
+      "record_id": "FPT-annual-2022-vi",
+      "source_url": "https://fpt.com/api/media/bctnfpt_2022_bd76320560.pdf",
+      "discovery_listing": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "discovery_listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2022-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/03/bao-cao-thuong-nien-2022.pdf",
+      "discovery_listing": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2023-vi",
+      "source_url": "https://fpt.com/api/media/bctn_fpt_2023_vn_aea384ead8.pdf",
+      "discovery_listing": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "discovery_listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2023-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/03/bao-cao-thuong-nien-2023.pdf",
+      "discovery_listing": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2022-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/BCTN-2022-Under30MB_v2.pdf",
+      "discovery_listing": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "discovery_listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2023-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/Binder-17052024-small.pdf",
+      "discovery_listing": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "discovery_listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2024-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/20250416-PNJ-Bao-cao-thuong-nien-2024-vi.pdf",
+      "discovery_listing": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "discovery_listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2022-vi",
+      "source_url": "https://www.vinamilk.com.vn/bao-cao-thuong-nien/bao-cao/2022/download-file/vinamilk_ar_2022.pdf",
+      "discovery_listing": "https://www.vinamilk.com.vn/bao-cao-thuong-nien/bao-cao/2022/index.html",
+      "discovery_listing_sha256": "40299b6b503a81d96c1b419e08609c13ffba1a33fed34db3c82b0905a77e261a",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2023-vi",
+      "source_url": "https://www.vinamilk.com.vn/bao-cao-thuong-nien/bao-cao/2023/_astro/Vinamilk%20BCTN%202023.nwYxiaAn.pdf",
+      "discovery_listing": "https://www.vinamilk.com.vn/bao-cao-thuong-nien/bao-cao/2023/index.html",
+      "discovery_listing_sha256": "84de829f382ca848031ff8e5672ddd496b03d0f9cf93157c4596584e027a2f6e",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2024-vi",
+      "source_url": "https://www.vinamilk.com.vn/bao-cao-thuong-nien/bao-cao/2024/doc/vi/full-bao-cao.pdf",
+      "discovery_listing": "https://www.vinamilk.com.vn/bao-cao-thuong-nien/bao-cao/2024/index.html",
+      "discovery_listing_sha256": "0844ed0d7ec29fe3067fa1e3df71bf2f310a9e76ff5567c1ab4383313067eafa",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "REE-annual-2022-vi",
+      "source_url": "https://www.reecorp.com/wp-content/uploads/2023/11/20230315-ree-bc-thuong-nien-2022-update-14-04-2023-vi-1681443870.pdf",
+      "discovery_listing": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "discovery_listing_sha256": "9985acb4024f9232dadd1d1fc591b74fdfacb70020119cf14fd53bd7c1dfcb94",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "REE-annual-2023-vi",
+      "source_url": "https://www.reecorp.com/wp-content/uploads/2024/03/vn-ar-2023-27mar2024.pdf",
+      "discovery_listing": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "discovery_listing_sha256": "9985acb4024f9232dadd1d1fc591b74fdfacb70020119cf14fd53bd7c1dfcb94",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "REE-annual-2024-vi",
+      "source_url": "https://www.reecorp.com/wp-content/uploads/2025/03/20250318-ree-bao-cao-thuong-nien-2024.pdf",
+      "discovery_listing": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "discovery_listing_sha256": "9985acb4024f9232dadd1d1fc591b74fdfacb70020119cf14fd53bd7c1dfcb94",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2022-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=13212&documentid=2686",
+      "discovery_listing": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2023-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=13717&documentid=2866",
+      "discovery_listing": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2024-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=14138&documentid=3055",
+      "discovery_listing": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "MWG-annual-2022-vi",
+      "source_url": "https://cdnv2.tgdd.vn/mwgvn/ir/2023/3/bao-cao-thuong-nien-2022-1.pdf",
+      "discovery_listing": "https://mwg.vn/bao-cao",
+      "discovery_listing_sha256": "b05659130135c1bd80b267a40dd3cd995a4aa3fbb807b4d6addb41bda47a2453",
+      "discovery_basis": "official_indexed_pdf_url",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "MWG-annual-2023-vi",
+      "source_url": "https://cdnv2.tgdd.vn/mwgvn/ir/2024/4/mwg---bao-cao-thuong-nien-2023.pdf",
+      "discovery_listing": "https://mwg.vn/bao-cao",
+      "discovery_listing_sha256": "b05659130135c1bd80b267a40dd3cd995a4aa3fbb807b4d6addb41bda47a2453",
+      "discovery_basis": "official_indexed_pdf_url",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "MWG-annual-2024-vi",
+      "source_url": "https://cdnv2.tgdd.vn/mwgvn/investorrelations/files/posts/2025/4/0/64/c2/64c27697a67a3feb53d97256e4de3d7e.pdf",
+      "discovery_listing": "https://mwg.vn/bao-cao",
+      "discovery_listing_sha256": "b05659130135c1bd80b267a40dd3cd995a4aa3fbb807b4d6addb41bda47a2453",
+      "discovery_basis": "official_indexed_pdf_url",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "SSI-annual-2022-vi",
+      "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/SSI_BCTN_2022.pdf",
+      "discovery_listing": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien?page=2",
+      "discovery_listing_sha256": "c44645cb63105f896c7b6bfc2bf957edb856339d0c2d2b311035f95369cfb27c",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "SSI-annual-2023-vi",
+      "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/AR_2023_Full_v1404_final.pdf",
+      "discovery_listing": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "8f32ed3fedceddd76ea4d349fa0f1bbc99b1ad2079ed8333139ff3d9451be5f3",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "SSI-annual-2024-vi",
+      "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/SSI_BCTN2024_VN.pdf",
+      "discovery_listing": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "discovery_listing_sha256": "8f32ed3fedceddd76ea4d349fa0f1bbc99b1ad2079ed8333139ff3d9451be5f3",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "ACB-annual-2024-vi",
+      "source_url": "https://acb.com.vn/acbwebsite/files/BCTN_2024.pdf",
+      "discovery_listing": "https://acb.com.vn/nha-dau-tu/bao-cao-thuong-nien-2024",
+      "discovery_listing_sha256": "39f5e73ae0c0cef6e50e32bce3dd228c40c2e529f04a9a64520986c708e0d2a4",
+      "discovery_basis": "official_indexed_pdf_url",
+      "historical_time_or_revision_proof": false
+    }
+  ],
+  "unconfigured_annual_cells": [
+    "ACB:2022",
+    "ACB:2023",
+    "VCB:2022",
+    "VCB:2023"
+  ],
+  "access_exclusions": [
+    {
+      "issuer": "VIC",
+      "url": "https://www.vingroup.net/quan-he-co-dong/bao-cao-thuong-nien",
+      "status": 403,
+      "action": "not_bypassed; excluded_from_configured_downloads"
+    }
+  ]
+}

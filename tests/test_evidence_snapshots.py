@@ -274,6 +274,35 @@ def test_pdf_extraction_preserves_page_locator_and_marks_no_ocr(store):
     assert page.extractor.endswith(";no_ocr")
 
 
+def test_parser_content_skip_is_retained_as_page_diagnostic(store, monkeypatch):
+    import logging
+
+    import pypdf
+
+    class PartialPage:
+        def extract_text(self):
+            logging.getLogger("pypdf.test_fixture").warning(
+                "Exceeded fixture form limit; further form content is skipped."
+            )
+            return "Only the synthetic retained text."
+
+    class Reader:
+        is_encrypted = False
+        pages = [PartialPage()]
+
+        def __init__(self, *args, **kwargs):
+            pass
+
+    monkeypatch.setattr(pypdf, "PdfReader", Reader)
+    diagnostics = {}
+    pages = extract_pdf_pages(store, evidence(store, payload=blank_pdf()), diagnostics)
+    assert pages[0].text == "Only the synthetic retained text."
+    assert pages[0].extraction_status == "text_present"
+    assert diagnostics["parser_warning_count"] == 1
+    assert diagnostics["potentially_partial_text_pages"] == [1]
+    assert "skipped" in diagnostics["parser_warnings"][0]["message"]
+
+
 def test_pilot_records_acquisition_failure_and_true_shortfall(store, tmp_path, monkeypatch):
     from pit_haf.data import pilot
 
@@ -344,6 +373,55 @@ def test_snapshot_locator_is_derived_and_cannot_escape_store(store):
     assert item.adjustment_status == "not_applicable"
     with pytest.raises(ValidationError, match="content-addressed"):
         evidence(store, raw_snapshot_path="../../outside.pdf")
+
+
+def test_expansion_can_reuse_local_snapshot_without_redownloading(store, tmp_path, monkeypatch):
+    from pit_haf.data import pilot
+
+    item = evidence(store, payload=blank_pdf())
+    store.register(item)
+    requests = []
+
+    def fetch(url, hosts):
+        requests.append(url)
+        assert not url.endswith(".pdf"), "Local reuse must not re-download the PDF"
+        return b"User-agent: *\nAllow: /\n", {"source_url": url, "http_status": 200,
+                                               "retrieved_at": datetime.now(UTC).isoformat()}
+
+    monkeypatch.setattr(pilot, "fetch_public", fetch)
+    spec = {key: getattr(item, key) for key in (
+        "record_id", "source_id", "source_url", "ticker", "document_type", "title", "data_kind"
+    )}
+    config = {"allowed_hosts": ["official.example"], "sources": [], "documents": [spec]}
+    result = acquire_pilot(config, store=store, output=tmp_path / "reuse", delay=0,
+                           skip_registered=True)
+    assert result["success_documents"] == 1
+    assert result["skip_registered_without_remote_revalidation"] is True
+    assert result["documents"][0]["registration"] == "local_reuse_without_remote_revalidation"
+    assert store.versions()[0].retrieved_at == item.retrieved_at
+    assert requests == ["https://official.example/robots.txt"]
+    assert (tmp_path / "reuse/summary.json").is_file()
+    assert not (tmp_path / "reuse/summary.json.tmp").exists()
+
+
+def test_local_reuse_rejects_ambiguous_versions(store, tmp_path, monkeypatch):
+    from pit_haf.data import pilot
+
+    original = evidence(store, payload=blank_pdf())
+    store.register(original)
+    store.register(evidence(store, payload=b"second synthetic revision",
+                            available_at="2024-01-04T09:00:00Z"))
+    monkeypatch.setattr(pilot, "fetch_public", lambda *args: (
+        b"User-agent: *\nAllow: /\n", {"retrieved_at": datetime.now(UTC).isoformat()}
+    ))
+    spec = {key: getattr(original, key) for key in (
+        "record_id", "source_id", "source_url", "ticker", "document_type", "title", "data_kind"
+    )}
+    result = acquire_pilot({"allowed_hosts": ["official.example"], "sources": [],
+                            "documents": [spec]}, store=store, output=tmp_path / "ambiguous",
+                           delay=0, skip_registered=True)
+    assert result["success_documents"] == 0 and result["failed_documents"] == 1
+    assert "exactly one version" in result["documents"][0]["error"]
 
 
 @pytest.mark.parametrize("value", [1704189600, "2024-01-02T09:00:00.000000001+07:00"])

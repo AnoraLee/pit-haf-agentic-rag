@@ -23,6 +23,7 @@ class Corpus:
     pages: tuple[EvidencePage, ...] = ()
     errors: tuple[str, ...] = ()
     snapshot: str | None = None
+    document_diagnostics: tuple[dict, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -63,16 +64,23 @@ def load_corpus(root: Path) -> Corpus:
         pages_raw = (summary_path.parent / "pages.jsonl").read_bytes()
         if sha256(pages_raw) != summary["pages_sha256"]:
             raise SnapshotError("Checksum tập trang không khớp snapshot.")
+        loaded_pages = tuple(EvidencePage.model_validate_json(line)
+                             for line in pages_raw.splitlines() if line.strip())
+        active_ids = {page.version_id for page in loaded_pages}
+        if "documents" in summary and active_ids != {
+            row["version_id"] for row in summary["documents"] if row.get("status") == "extracted"
+        }:
+            raise SnapshotError("Coverage trang và bản phát hành không khớp.")
         store = SnapshotStore(root / "data/cache/evidence")
-        versions = tuple(item for item in store.versions() if item.data_kind == "real_document")
+        # Newly ingested versions do not change the active view until a complete
+        # checksummed page snapshot is published. Keep the previous release usable.
+        versions = tuple(item for item in store.versions() if item.data_kind == "real_document"
+                         and item.version_id in active_ids)
         by_id = {item.version_id: item for item in versions}
         for item in versions:
             store.read_blob(item.content_hash)
         pages, seen = [], set()
-        for line in pages_raw.splitlines():
-            if not line.strip():
-                continue
-            page = EvidencePage.model_validate_json(line)
+        for page in loaded_pages:
             version = by_id.get(page.version_id)
             if version is None or page.data_kind != "real_document" or (
                 page.record_id, page.ticker, page.content_hash, page.source_url
@@ -87,7 +95,8 @@ def load_corpus(root: Path) -> Corpus:
             pages.append(page)
         if len(pages) != summary["page_count"] or {p.version_id for p in pages} != set(by_id):
             raise SnapshotError("Coverage trang và registry không khớp; hãy trích xuất lại.")
-        return Corpus(versions, tuple(pages), snapshot=str(summary_path.relative_to(root)))
+        return Corpus(versions, tuple(pages), snapshot=str(summary_path.relative_to(root)),
+                      document_diagnostics=tuple(summary.get("documents", [])))
     except (OSError, ValueError, KeyError, TypeError) as exc:
         return Corpus(errors=(f"Không mở được kho bằng chứng: {exc}",))
 
@@ -215,6 +224,8 @@ def extract_passage(corpus: Corpus, passage: Passage, output_base: Path, *, mode
         "status": "started", "config": config.model_dump(), "source": version.model_dump(mode="json"),
         "passage": asdict(passage), "context_sha256": sha256(passage.text.encode()),
         "corpus_snapshot": corpus.snapshot, "retrieval_audit": retrieval,
+        "source_parser_diagnostics": next((row for row in corpus.document_diagnostics
+                                            if row.get("version_id") == version.version_id), None),
         "semantic_support": "not_assessed", "research_prediction_results": False,
         "historical_availability_validated": mode == "strict_point_in_time",
         "path": str(destination.resolve()), "generation": None,

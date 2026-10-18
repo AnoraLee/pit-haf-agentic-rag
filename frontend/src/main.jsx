@@ -182,6 +182,11 @@ function DocTable({ docs, onOpen, compact = false }) {
                   {d.text_pages}/{d.pages}
                 </strong>
                 <small>trang có văn bản</small>
+                {d.potentially_partial_text_pages?.length > 0 && (
+                  <small className="parser-warning">
+                    Có trang trích xuất thiếu
+                  </small>
+                )}
               </td>
               <td>
                 <Badge tone={d.quarantine_reasons.length ? "amber" : "green"}>
@@ -482,7 +487,71 @@ function Overview({ data, docs, onOpen }) {
     </>
   );
 }
-function Documents({ docs, onOpen }) {
+function AnnualCoverage({ coverage, ticker }) {
+  if (!coverage) return null;
+  const rows = coverage.issuers.filter(
+    (row) => ticker === "all" || row.ticker === ticker,
+  );
+  const years = Object.keys(rows[0]?.annual_years || {});
+  const covered = rows.reduce(
+    (n, row) => n + Object.values(row.annual_years).filter(Boolean).length,
+    0,
+  );
+  return (
+    <Panel
+      title="Độ bao phủ báo cáo thường niên"
+      subtitle="Mỗi ô là một doanh nghiệp × năm. Bản dịch không được tính thêm một kỳ."
+      action={
+        <Badge tone="green">
+          {covered}/{rows.length * years.length} kỳ
+        </Badge>
+      }
+    >
+      <div className="table-scroll">
+        <table className="coverage-matrix">
+          <thead>
+            <tr>
+              <th>DOANH NGHIỆP</th>
+              <th>NHÓM NGÀNH</th>
+              {years.map((y) => (
+                <th key={y}>{y}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.ticker}>
+                <td>
+                  <strong>{row.ticker}</strong>
+                </td>
+                <td>{row.sector}</td>
+                {years.map((y) => (
+                  <td key={y}>
+                    <span
+                      className={
+                        row.annual_years[y] ? "cell-present" : "cell-missing"
+                      }
+                    >
+                      {row.annual_years[y] ? <CheckCheck size={14} /> : "—"}
+                      <span>{row.annual_years[y] ? "Đã có" : "Còn thiếu"}</span>
+                    </span>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="footnote">
+        Độ phủ tài liệu chưa chứng minh đủ điều kiện Point-in-Time. Nhóm ngành
+        được gán thủ công; universe lịch sử và survivorship bias chưa được xác
+        minh.
+      </p>
+    </Panel>
+  );
+}
+
+function Documents({ docs, onOpen, coverage, ticker }) {
   const [query, setQuery] = useState(""),
     [type, setType] = useState("all");
   const filtered = docs.filter(
@@ -525,6 +594,7 @@ function Documents({ docs, onOpen }) {
           tone="amber"
         />
       </div>
+      <AnnualCoverage coverage={coverage} ticker={ticker} />
       <Panel
         title="Danh mục tài liệu"
         subtitle={`${filtered.length} tài liệu phù hợp bộ lọc`}
@@ -632,6 +702,12 @@ function DocumentDrawer({ doc, onClose }) {
             <strong>Chưa đủ điều kiện lịch sử.</strong>
             <br />
             {doc.quarantine_reasons.map((r) => REASONS[r] || r).join("; ")}.
+          </Notice>
+        )}
+        {doc.potentially_partial_text_pages?.includes(page) && (
+          <Notice>
+            Trình đọc PDF đã bỏ qua một phần nội dung ở trang này. Văn bản bên
+            dưới có thể thiếu; kiểm tra PDF gốc trước khi dùng cho đánh giá.
           </Notice>
         )}
         <div className="page-control">
@@ -1002,6 +1078,14 @@ function ExtractionResult({ result }) {
               : "Bị chặn"}
         </Badge>
       </div>
+      {result.source_parser_diagnostics?.potentially_partial_text_pages?.includes(
+        result.passage?.page,
+      ) && (
+        <Notice>
+          Trang nguồn có cảnh báo bị lược bỏ một phần nội dung khi đọc PDF.
+          Trích dẫn khớp chuỗi không chứng minh văn bản trang đã đầy đủ.
+        </Notice>
+      )}
       {accepted ? (
         <>
           <blockquote>{result.verification.quote.source_quote}</blockquote>
@@ -1691,7 +1775,12 @@ function App() {
                 <Overview data={data} docs={docs} onOpen={setDrawer} />
               )}
               {current[0] === "documents" && (
-                <Documents docs={docs} onOpen={setDrawer} />
+                <Documents
+                  docs={docs}
+                  onOpen={setDrawer}
+                  coverage={data.coverage}
+                  ticker={ticker}
+                />
               )}
               {current[0] === "analysis" && (
                 <Analysis
