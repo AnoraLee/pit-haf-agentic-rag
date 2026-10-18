@@ -58,6 +58,21 @@ def test_translations_do_not_inflate_ticker_years_and_missing_issuers_remain_vis
         assert len(entry["registry_metadata_sha256"]) == hashlib.sha256().digest_size * 2
 
 
+def test_identical_pdf_bytes_are_reported_separately_from_record_count(tmp_path):
+    store, summary, universe = sample_release(tmp_path)
+    original = store.versions()[0]
+    alias = original.model_copy(update={"record_id": "FPT-fixture-alias", "version_id": "alias"})
+    store.register(alias)
+    summary["documents"].append({"record_id": alias.record_id, "version_id": alias.version_id,
+                                  "ticker": alias.ticker, "content_hash": alias.content_hash,
+                                  "status": "extracted", "pages": 5, "text_pages": 3})
+    summary.update(configured_documents=5, page_count=20, text_page_count=12, empty_page_count_no_ocr=8)
+    _, coverage = build_release(store, summary, universe)
+    assert coverage["acquired_documents"] == 4 and coverage["unique_pdf_blobs"] == 3
+    assert coverage["covered_annual_cells"] == 2
+    assert coverage["duplicate_blob_groups"][0]["record_ids"] == sorted([original.record_id, alias.record_id])
+
+
 @pytest.mark.parametrize("change", ["duplicate_target", "duplicate_version", "bad_pages", "fixture"])
 def test_coverage_rejects_inconsistent_denominators(tmp_path, change):
     store, summary, universe = sample_release(tmp_path)

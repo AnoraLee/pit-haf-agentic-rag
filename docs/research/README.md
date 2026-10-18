@@ -1,6 +1,6 @@
 # Hồ sơ nghiên cứu PiT-HAF
 
-Cập nhật: 17/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
+Cập nhật: 18/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
 không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết quả khoa học.
 
 | Hồ sơ | Nội dung |
@@ -17,6 +17,7 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [08 — Local pilot](08-local-pilot-results.md) | Ollama đã cài, source snapshots/gateway và các số đo pilot thật |
 | [09 — React workspace](09-react-workspace.md) | Dashboard, truy xuất BM25, luồng trích xuất local và kiểm tra trên UI |
 | [10 — Corpus v0.2](10-corpus-expansion.md) | Mở rộng 10 mã, coverage theo năm, parser QA và curation có audit |
+| [11 — Corpus v0.3](11-corpus-v03.md) | Mở rộng nhiều năm/quý, 13 mã, tải theo batch, retry và bộ lọc kho lớn |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

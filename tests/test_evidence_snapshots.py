@@ -424,6 +424,45 @@ def test_local_reuse_rejects_ambiguous_versions(store, tmp_path, monkeypatch):
     assert "exactly one version" in result["documents"][0]["error"]
 
 
+@pytest.mark.parametrize("status,headers,body,accepted", [
+    (200, {"Content-Length": "3"}, b"abc", True),
+    (200, {}, b"abc", True),
+    (206, {"Content-Range": "bytes 0-2/100"}, b"abc", False),
+    (200, {"Content-Range": "bytes 0-2/100"}, b"abc", False),
+    (200, {"Content-Length": "5"}, b"abc", False),
+])
+def test_fetch_rejects_incomplete_responses(monkeypatch, status, headers, body, accepted):
+    from pit_haf.data import pilot
+
+    class Response(io.BytesIO):
+        url = "https://fixture.example/document.pdf"
+
+    response = Response(body)
+    response.status, response.headers = status, headers
+
+    class Opener:
+        def open(self, *args, **kwargs):
+            assert args[0].full_url == "https://fixture.example/document%20with%20space.pdf"
+            return response
+
+    monkeypatch.setattr(pilot.urllib.request, "build_opener", lambda *args: Opener())
+    if accepted:
+        raw, metadata = pilot.fetch_public("https://fixture.example/document with space.pdf",
+                                           {"fixture.example"})
+        assert raw == body and metadata["http_status"] == 200
+    else:
+        with pytest.raises(ValueError):
+            pilot.fetch_public("https://fixture.example/document with space.pdf", {"fixture.example"})
+
+
+@pytest.mark.parametrize("limit", [0, True, 128 * 1024 * 1024 + 1])
+def test_fetch_cannot_disable_or_exceed_the_hard_response_bound(limit):
+    from pit_haf.data.pilot import fetch_public
+
+    with pytest.raises(ValueError, match="128 MiB"):
+        fetch_public("https://fixture.example/file.pdf", {"fixture.example"}, max_bytes=limit)
+
+
 @pytest.mark.parametrize("value", [1704189600, "2024-01-02T09:00:00.000000001+07:00"])
 def test_evidence_timestamps_cannot_silently_coerce_epoch_or_lose_precision(store, value):
     with pytest.raises(ValidationError):

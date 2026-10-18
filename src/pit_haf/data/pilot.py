@@ -14,7 +14,7 @@ from collections import Counter
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit, urlunsplit
 
 from pit_haf.data.evidence import EvidencePage, EvidenceVersion, version_id_for
 from pit_haf.data.gateway import deliver_as_of
@@ -22,6 +22,7 @@ from pit_haf.data.snapshots import SnapshotStore
 
 USER_AGENT = "PiTHAFResearchPilot/0.1 (local noncommercial research; sequential requests)"
 MAX_BYTES = 64 * 1024 * 1024
+MAX_CONFIGURED_BYTES = 128 * 1024 * 1024
 
 
 def approved_url(url: str, allowed_hosts: set[str]) -> None:
@@ -40,18 +41,30 @@ class ApprovedRedirect(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(request, fp, code, message, headers, newurl)
 
 
-def fetch_public(url: str, allowed_hosts: set[str], *, timeout: float = 30) -> tuple[bytes, dict]:
+def fetch_public(url: str, allowed_hosts: set[str], *, timeout: float = 30,
+                 max_bytes: int = MAX_BYTES) -> tuple[bytes, dict]:
+    if type(max_bytes) is not int or not 1 <= max_bytes <= MAX_CONFIGURED_BYTES:
+        raise ValueError("Configured response limit must be between 1 byte and 128 MiB")
     approved_url(url, allowed_hosts)
     opener = urllib.request.build_opener(ApprovedRedirect(allowed_hosts))
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    parsed = urlsplit(url)
+    transport_url = urlunsplit(parsed._replace(
+        path=quote(parsed.path, safe="/%:@!$&'()*+,;=-._~"),
+        query=quote(parsed.query, safe="%:@!$&'()*+,;=/?-._~"), fragment="",
+    ))
+    request = urllib.request.Request(transport_url, headers={"User-Agent": USER_AGENT})
     try:
         with opener.open(request, timeout=timeout) as response:
+            if response.status != 200 or response.headers.get("Content-Range"):
+                raise ValueError("Expected complete HTTP 200 response; partial content is not a snapshot")
             length = response.headers.get("Content-Length")
-            if length and int(length) > MAX_BYTES:
+            if length and int(length) > max_bytes:
                 raise ValueError("Response exceeds pilot byte limit")
-            payload = response.read(MAX_BYTES + 1)
-            if len(payload) > MAX_BYTES:
+            payload = response.read(max_bytes + 1)
+            if len(payload) > max_bytes:
                 raise ValueError("Response exceeds pilot byte limit")
+            if length and len(payload) != int(length):
+                raise ValueError("Response body length disagrees with Content-Length")
             return payload, {
                 "source_url": url, "final_url": response.url, "http_status": response.status,
                 "headers": dict(response.headers.items()), "retrieved_at": datetime.now(UTC).isoformat(),
@@ -204,7 +217,9 @@ def acquire_pilot(
                     event.update(registration="local_reuse_without_remote_revalidation",
                                  content_hash=evidence.content_hash, network_requests=0)
                 else:
-                    payload, acquisition = fetch_public(spec["source_url"], hosts)
+                    options = ({"max_bytes": config["max_document_bytes"]}
+                               if "max_document_bytes" in config else {})
+                    payload, acquisition = fetch_public(spec["source_url"], hosts, **options)
                     event.update(acquisition)
                     digest = store.put_blob(payload)
                     event["content_hash"] = digest
@@ -254,6 +269,7 @@ def acquire_pilot(
         ) else "test_fixture"),
         "research_prediction_results": False, "historical_availability_inferred": False,
         "skip_registered_without_remote_revalidation": skip_registered,
+        "max_document_bytes": config.get("max_document_bytes", MAX_BYTES),
         "created_at": cutoff, "manifest_hash": hashlib.sha256(json_config).hexdigest(),
         "target_documents": config.get("target_documents", 24),
         "configured_documents": len(documents), "success_documents": sum(successes.values()),

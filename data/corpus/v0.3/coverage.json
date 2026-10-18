@@ -1,0 +1,2011 @@
+{
+  "release_id": "development-corpus-v0.3-20261018",
+  "run_kind": "development_corpus_coverage",
+  "created_at": "2026-10-18T00:25:43.070609+00:00",
+  "research_prediction_results": false,
+  "configured_documents": 282,
+  "registered_versions": 281,
+  "acquired_documents": 264,
+  "unique_pdf_blobs": 264,
+  "unique_raw_byte_count": 2189242878,
+  "duplicate_blob_groups": [],
+  "document_types": {
+    "annual_report": 76,
+    "financial_statement": 171,
+    "earnings_overview": 17
+  },
+  "financial_statement_scopes": {
+    "consolidated": 87,
+    "parent": 84
+  },
+  "failed_documents": 18,
+  "parser_failed_documents": 15,
+  "curation_excluded_documents": 2,
+  "configured_records_not_registered": [],
+  "target_issuers": 13,
+  "observed_issuers": 13,
+  "observed_broad_sectors": 9,
+  "target_annual_cells": 130,
+  "covered_annual_cells": 75,
+  "page_count": 17915,
+  "text_page_count": 12943,
+  "empty_page_count_no_ocr": 4972,
+  "documents_without_extracted_text": 123,
+  "ocr_backlog": [
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025",
+      "ticker": "PNJ",
+      "pages": 104,
+      "text_pages": 0,
+      "pages_without_text": 104
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025",
+      "ticker": "PNJ",
+      "pages": 100,
+      "text_pages": 0,
+      "pages_without_text": 100
+    },
+    {
+      "record_id": "MWG-annual-2024-vi",
+      "ticker": "MWG",
+      "pages": 96,
+      "text_pages": 0,
+      "pages_without_text": 96
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2021",
+      "ticker": "HPG",
+      "pages": 80,
+      "text_pages": 0,
+      "pages_without_text": 80
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2021-H1",
+      "ticker": "HPG",
+      "pages": 80,
+      "text_pages": 0,
+      "pages_without_text": 80
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2020",
+      "ticker": "HPG",
+      "pages": 77,
+      "text_pages": 0,
+      "pages_without_text": 77
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2020-H1",
+      "ticker": "HPG",
+      "pages": 77,
+      "text_pages": 0,
+      "pages_without_text": 77
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2022-H1",
+      "ticker": "HPG",
+      "pages": 76,
+      "text_pages": 0,
+      "pages_without_text": 76
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2019",
+      "ticker": "HPG",
+      "pages": 75,
+      "text_pages": 0,
+      "pages_without_text": 75
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2022-Q1",
+      "ticker": "TCB",
+      "pages": 74,
+      "text_pages": 0,
+      "pages_without_text": 74
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022",
+      "ticker": "HPG",
+      "pages": 68,
+      "text_pages": 0,
+      "pages_without_text": 68
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-H1",
+      "ticker": "HPG",
+      "pages": 67,
+      "text_pages": 0,
+      "pages_without_text": 67
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024",
+      "ticker": "HPG",
+      "pages": 67,
+      "text_pages": 0,
+      "pages_without_text": 67
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2026-H1",
+      "ticker": "HPG",
+      "pages": 67,
+      "text_pages": 0,
+      "pages_without_text": 67
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-H1",
+      "ticker": "HPG",
+      "pages": 66,
+      "text_pages": 0,
+      "pages_without_text": 66
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2022-Q1",
+      "ticker": "TCB",
+      "pages": 66,
+      "text_pages": 0,
+      "pages_without_text": 66
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2023",
+      "ticker": "HPG",
+      "pages": 65,
+      "text_pages": 0,
+      "pages_without_text": 65
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2026-H1",
+      "ticker": "PNJ",
+      "pages": 54,
+      "text_pages": 0,
+      "pages_without_text": 54
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2025",
+      "ticker": "HPG",
+      "pages": 53,
+      "text_pages": 0,
+      "pages_without_text": 53
+    },
+    {
+      "record_id": "HPG-parent-audited-2020",
+      "ticker": "HPG",
+      "pages": 53,
+      "text_pages": 0,
+      "pages_without_text": 53
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2022-H1",
+      "ticker": "HPG",
+      "pages": 52,
+      "text_pages": 0,
+      "pages_without_text": 52
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2026-H1",
+      "ticker": "PNJ",
+      "pages": 52,
+      "text_pages": 0,
+      "pages_without_text": 52
+    },
+    {
+      "record_id": "HPG-parent-audited-2021",
+      "ticker": "HPG",
+      "pages": 51,
+      "text_pages": 0,
+      "pages_without_text": 51
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2020-H1",
+      "ticker": "HPG",
+      "pages": 51,
+      "text_pages": 0,
+      "pages_without_text": 51
+    },
+    {
+      "record_id": "HPG-parent-audited-2019",
+      "ticker": "HPG",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2021-H1",
+      "ticker": "HPG",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2023",
+      "ticker": "PNJ",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2025-H1",
+      "ticker": "PNJ",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "PNJ-parent-audited-2024",
+      "ticker": "PNJ",
+      "pages": 50,
+      "text_pages": 0,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2026-H1",
+      "ticker": "HPG",
+      "pages": 49,
+      "text_pages": 0,
+      "pages_without_text": 49
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2024",
+      "ticker": "PNJ",
+      "pages": 49,
+      "text_pages": 0,
+      "pages_without_text": 49
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2024-H1",
+      "ticker": "PNJ",
+      "pages": 49,
+      "text_pages": 0,
+      "pages_without_text": 49
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2022",
+      "ticker": "PNJ",
+      "pages": 48,
+      "text_pages": 0,
+      "pages_without_text": 48
+    },
+    {
+      "record_id": "PNJ-parent-audited-2022",
+      "ticker": "PNJ",
+      "pages": 48,
+      "text_pages": 0,
+      "pages_without_text": 48
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2025-H1",
+      "ticker": "PNJ",
+      "pages": 48,
+      "text_pages": 0,
+      "pages_without_text": 48
+    },
+    {
+      "record_id": "PNJ-parent-audited-2023",
+      "ticker": "PNJ",
+      "pages": 47,
+      "text_pages": 0,
+      "pages_without_text": 47
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2024-H1",
+      "ticker": "PNJ",
+      "pages": 47,
+      "text_pages": 0,
+      "pages_without_text": 47
+    },
+    {
+      "record_id": "FPT-consolidated-Q4-2024",
+      "ticker": "FPT",
+      "pages": 46,
+      "text_pages": 0,
+      "pages_without_text": 46
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022",
+      "ticker": "HPG",
+      "pages": 44,
+      "text_pages": 0,
+      "pages_without_text": 44
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2023-H1",
+      "ticker": "PNJ",
+      "pages": 44,
+      "text_pages": 0,
+      "pages_without_text": 44
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-H1",
+      "ticker": "HPG",
+      "pages": 43,
+      "text_pages": 0,
+      "pages_without_text": 43
+    },
+    {
+      "record_id": "HPG-parent-audited-2025",
+      "ticker": "HPG",
+      "pages": 41,
+      "text_pages": 0,
+      "pages_without_text": 41
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-H1",
+      "ticker": "HPG",
+      "pages": 41,
+      "text_pages": 0,
+      "pages_without_text": 41
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024",
+      "ticker": "HPG",
+      "pages": 40,
+      "text_pages": 0,
+      "pages_without_text": 40
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2026-Q2",
+      "ticker": "HPG",
+      "pages": 37,
+      "text_pages": 0,
+      "pages_without_text": 37
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q4",
+      "ticker": "HPG",
+      "pages": 34,
+      "text_pages": 0,
+      "pages_without_text": 34
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2026-Q2",
+      "ticker": "PNJ",
+      "pages": 34,
+      "text_pages": 0,
+      "pages_without_text": 34
+    },
+    {
+      "record_id": "HPG-consolidated-Q3-2025",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-Q4-2025",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q3",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q4",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2025-Q1",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2025-Q2",
+      "ticker": "HPG",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2026-Q2",
+      "ticker": "PNJ",
+      "pages": 33,
+      "text_pages": 0,
+      "pages_without_text": 33
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q2",
+      "ticker": "HPG",
+      "pages": 32,
+      "text_pages": 0,
+      "pages_without_text": 32
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q4",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q1",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q2",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q1",
+      "ticker": "PNJ",
+      "pages": 30,
+      "text_pages": 0,
+      "pages_without_text": 30
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q1",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q2",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q3",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q2",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q2",
+      "ticker": "PNJ",
+      "pages": 29,
+      "text_pages": 0,
+      "pages_without_text": 29
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q3",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q1",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q2",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q3",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q1",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q3",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q4",
+      "ticker": "PNJ",
+      "pages": 28,
+      "text_pages": 0,
+      "pages_without_text": 28
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q2",
+      "ticker": "PNJ",
+      "pages": 27,
+      "text_pages": 0,
+      "pages_without_text": 27
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q1",
+      "ticker": "PNJ",
+      "pages": 26,
+      "text_pages": 0,
+      "pages_without_text": 26
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2026-Q2",
+      "ticker": "HPG",
+      "pages": 25,
+      "text_pages": 0,
+      "pages_without_text": 25
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q2",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q3",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q4",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q2",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q4",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2026-Q1",
+      "ticker": "HPG",
+      "pages": 24,
+      "text_pages": 0,
+      "pages_without_text": 24
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2019-Q4",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q1",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q4",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q1",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q2",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q3",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q1",
+      "ticker": "HPG",
+      "pages": 23,
+      "text_pages": 0,
+      "pages_without_text": 23
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q2",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q3",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q4",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q1",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q3",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q4",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q1",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q2",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q3",
+      "ticker": "HPG",
+      "pages": 22,
+      "text_pages": 0,
+      "pages_without_text": 22
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2025",
+      "ticker": "HPG",
+      "pages": 9,
+      "text_pages": 0,
+      "pages_without_text": 9
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2026",
+      "ticker": "HPG",
+      "pages": 8,
+      "text_pages": 0,
+      "pages_without_text": 8
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2025",
+      "ticker": "HPG",
+      "pages": 8,
+      "text_pages": 0,
+      "pages_without_text": 8
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2025",
+      "ticker": "HPG",
+      "pages": 8,
+      "text_pages": 0,
+      "pages_without_text": 8
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2025",
+      "ticker": "HPG",
+      "pages": 7,
+      "text_pages": 0,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2024",
+      "ticker": "HPG",
+      "pages": 7,
+      "text_pages": 0,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2024",
+      "ticker": "HPG",
+      "pages": 6,
+      "text_pages": 0,
+      "pages_without_text": 6
+    },
+    {
+      "record_id": "HPG-annual-2025-vi",
+      "ticker": "HPG",
+      "pages": 141,
+      "text_pages": 88,
+      "pages_without_text": 53
+    },
+    {
+      "record_id": "SSI-annual-2023-vi",
+      "ticker": "SSI",
+      "pages": 132,
+      "text_pages": 82,
+      "pages_without_text": 50
+    },
+    {
+      "record_id": "FPT-annual-2020-vi",
+      "ticker": "FPT",
+      "pages": 210,
+      "text_pages": 163,
+      "pages_without_text": 47
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q2",
+      "ticker": "HPG",
+      "pages": 21,
+      "text_pages": 4,
+      "pages_without_text": 17
+    },
+    {
+      "record_id": "HPG-annual-2020-vi",
+      "ticker": "HPG",
+      "pages": 160,
+      "text_pages": 150,
+      "pages_without_text": 10
+    },
+    {
+      "record_id": "FPT-annual-2019-vi",
+      "ticker": "FPT",
+      "pages": 96,
+      "text_pages": 89,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "VNM-annual-2016-vi",
+      "ticker": "VNM",
+      "pages": 105,
+      "text_pages": 98,
+      "pages_without_text": 7
+    },
+    {
+      "record_id": "HPG-annual-2017-vi",
+      "ticker": "HPG",
+      "pages": 164,
+      "text_pages": 159,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "HPG-annual-2021-vi",
+      "ticker": "HPG",
+      "pages": 166,
+      "text_pages": 161,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "HPG-annual-2022-vi",
+      "ticker": "HPG",
+      "pages": 161,
+      "text_pages": 156,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "VNM-annual-2017-vi",
+      "ticker": "VNM",
+      "pages": 103,
+      "text_pages": 98,
+      "pages_without_text": 5
+    },
+    {
+      "record_id": "VNM-annual-2019-vi",
+      "ticker": "VNM",
+      "pages": 105,
+      "text_pages": 101,
+      "pages_without_text": 4
+    },
+    {
+      "record_id": "GAS-annual-2020-vi",
+      "ticker": "GAS",
+      "pages": 86,
+      "text_pages": 83,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "HPG-annual-2018-vi",
+      "ticker": "HPG",
+      "pages": 156,
+      "text_pages": 153,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "HPG-annual-2019-vi",
+      "ticker": "HPG",
+      "pages": 153,
+      "text_pages": 150,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "HPG-annual-2023-vi",
+      "ticker": "HPG",
+      "pages": 145,
+      "text_pages": 142,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "PNJ-annual-2023-vi",
+      "ticker": "PNJ",
+      "pages": 111,
+      "text_pages": 108,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "REE-annual-2023-vi",
+      "ticker": "REE",
+      "pages": 153,
+      "text_pages": 150,
+      "pages_without_text": 3
+    },
+    {
+      "record_id": "BID-annual-2024-vi",
+      "ticker": "BID",
+      "pages": 91,
+      "text_pages": 89,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "PNJ-annual-2025-vi",
+      "ticker": "PNJ",
+      "pages": 133,
+      "text_pages": 131,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "REE-annual-2022-vi",
+      "ticker": "REE",
+      "pages": 81,
+      "text_pages": 79,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "SSI-annual-2024-vi",
+      "ticker": "SSI",
+      "pages": 129,
+      "text_pages": 127,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "VNM-annual-2018-vi",
+      "ticker": "VNM",
+      "pages": 106,
+      "text_pages": 104,
+      "pages_without_text": 2
+    },
+    {
+      "record_id": "ACB-annual-2024-vi",
+      "ticker": "ACB",
+      "pages": 142,
+      "text_pages": 141,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "DPM-annual-2020-vi",
+      "ticker": "DPM",
+      "pages": 85,
+      "text_pages": 84,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "DPM-annual-2024-vi",
+      "ticker": "DPM",
+      "pages": 97,
+      "text_pages": 96,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "DPM-annual-2025-vi",
+      "ticker": "DPM",
+      "pages": 114,
+      "text_pages": 113,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2018-vi",
+      "ticker": "FPT",
+      "pages": 87,
+      "text_pages": 86,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2022-vi",
+      "ticker": "FPT",
+      "pages": 101,
+      "text_pages": 100,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2024-vi",
+      "ticker": "FPT",
+      "pages": 213,
+      "text_pages": 212,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "FPT-annual-2025-vi",
+      "ticker": "FPT",
+      "pages": 232,
+      "text_pages": 231,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "GAS-annual-2021-vi",
+      "ticker": "GAS",
+      "pages": 86,
+      "text_pages": 85,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "HPG-annual-2024-vi",
+      "ticker": "HPG",
+      "pages": 156,
+      "text_pages": 155,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2025-H1",
+      "ticker": "HPG",
+      "pages": 53,
+      "text_pages": 52,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "PNJ-annual-2019-vi",
+      "ticker": "PNJ",
+      "pages": 68,
+      "text_pages": 67,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "REE-annual-2024-vi",
+      "ticker": "REE",
+      "pages": 164,
+      "text_pages": 163,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "REE-annual-2025-vi",
+      "ticker": "REE",
+      "pages": 81,
+      "text_pages": 80,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2016-vi",
+      "ticker": "TCB",
+      "pages": 96,
+      "text_pages": 95,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2021-vi",
+      "ticker": "TCB",
+      "pages": 117,
+      "text_pages": 116,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2023-vi",
+      "ticker": "TCB",
+      "pages": 100,
+      "text_pages": 99,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2024-vi",
+      "ticker": "TCB",
+      "pages": 133,
+      "text_pages": 132,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "TCB-annual-2025-vi",
+      "ticker": "TCB",
+      "pages": 197,
+      "text_pages": 196,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "VNM-annual-2023-vi",
+      "ticker": "VNM",
+      "pages": 180,
+      "text_pages": 179,
+      "pages_without_text": 1
+    },
+    {
+      "record_id": "VNM-annual-2025-vi",
+      "ticker": "VNM",
+      "pages": 112,
+      "text_pages": 111,
+      "pages_without_text": 1
+    }
+  ],
+  "documents_with_parser_warnings": 84,
+  "documents_with_potentially_partial_text": 4,
+  "strict_eligible_documents": 0,
+  "issuers": [
+    {
+      "ticker": "FPT",
+      "name": "FPT",
+      "sector": "Công nghệ",
+      "source_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "documents": 12,
+      "logical_records": 12,
+      "pages": 1674,
+      "text_pages": 1570,
+      "annual_years": {
+        "2016": true,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [
+        "2024-Q4"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "HPG",
+      "name": "Hòa Phát",
+      "sector": "Vật liệu",
+      "source_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "documents": 103,
+      "logical_records": 103,
+      "pages": 4511,
+      "text_pages": 1512,
+      "annual_years": {
+        "2016": false,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [
+        "2019",
+        "2019-Q4",
+        "2020",
+        "2020-H1",
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021",
+        "2021-H1",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022",
+        "2022-H1",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023",
+        "2023-H1",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024",
+        "2024-H1",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025",
+        "2025-H1",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-H1",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "VCB",
+      "name": "Vietcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://www.vietcombank.com.vn/vi-VN/Nha-dau-tu",
+      "documents": 1,
+      "logical_records": 1,
+      "pages": 106,
+      "text_pages": 106,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": false,
+        "2024": true,
+        "2025": false
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "ACB",
+      "name": "Ngân hàng Á Châu",
+      "sector": "Ngân hàng",
+      "source_url": "https://acb.com.vn/nha-dau-tu/bao-cao-thuong-nien",
+      "documents": 1,
+      "logical_records": 1,
+      "pages": 142,
+      "text_pages": 141,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": false,
+        "2024": true,
+        "2025": false
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "VNM",
+      "name": "Vinamilk",
+      "sector": "Hàng tiêu dùng",
+      "source_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "documents": 10,
+      "logical_records": 10,
+      "pages": 1200,
+      "text_pages": 1180,
+      "annual_years": {
+        "2016": true,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "MWG",
+      "name": "Thế Giới Di Động",
+      "sector": "Bán lẻ",
+      "source_url": "https://mwg.vn/bao-cao",
+      "documents": 2,
+      "logical_records": 2,
+      "pages": 193,
+      "text_pages": 97,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": true,
+        "2024": true,
+        "2025": false
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "PNJ",
+      "name": "Vàng bạc Đá quý Phú Nhuận",
+      "sector": "Bán lẻ",
+      "source_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "documents": 45,
+      "logical_records": 45,
+      "pages": 2120,
+      "text_pages": 581,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": false,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [
+        "2022",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023",
+        "2023-H1",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024",
+        "2024-H1",
+        "2024-Q1",
+        "2025",
+        "2025-H1",
+        "2025-Q2",
+        "2025-Q4",
+        "2026-H1",
+        "2026-Q2"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "REE",
+      "name": "Cơ Điện Lạnh",
+      "sector": "Hạ tầng đa ngành",
+      "source_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "documents": 6,
+      "logical_records": 6,
+      "pages": 631,
+      "text_pages": 624,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "GAS",
+      "name": "PV GAS",
+      "sector": "Năng lượng",
+      "source_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "documents": 5,
+      "logical_records": 5,
+      "pages": 418,
+      "text_pages": 414,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": false,
+        "2025": false
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "SSI",
+      "name": "Chứng khoán SSI",
+      "sector": "Chứng khoán",
+      "source_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "documents": 5,
+      "logical_records": 5,
+      "pages": 651,
+      "text_pages": 599,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": false
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "DPM",
+      "name": "Đạm Phú Mỹ",
+      "sector": "Phân bón và hóa chất",
+      "source_url": "https://dpm.vn/bao-cao-thuong-nien",
+      "documents": 9,
+      "logical_records": 9,
+      "pages": 750,
+      "text_pages": 747,
+      "annual_years": {
+        "2016": false,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "TCB",
+      "name": "Techcombank",
+      "sector": "Ngân hàng",
+      "source_url": "https://techcombank.com/nha-dau-tu/bao-cao-thuong-nien",
+      "documents": 64,
+      "logical_records": 64,
+      "pages": 5428,
+      "text_pages": 5283,
+      "annual_years": {
+        "2016": true,
+        "2017": true,
+        "2018": true,
+        "2019": true,
+        "2020": true,
+        "2021": true,
+        "2022": true,
+        "2023": true,
+        "2024": true,
+        "2025": true
+      },
+      "financial_statement_periods": [
+        "2022",
+        "2022-H1",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023",
+        "2023-H1",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024",
+        "2024-H1",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025",
+        "2025-H1",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-H1",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "strict_eligible": 0
+    },
+    {
+      "ticker": "BID",
+      "name": "BIDV",
+      "sector": "Ngân hàng",
+      "source_url": "https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2025/bctn%2B2024",
+      "documents": 1,
+      "logical_records": 1,
+      "pages": 91,
+      "text_pages": 89,
+      "annual_years": {
+        "2016": false,
+        "2017": false,
+        "2018": false,
+        "2019": false,
+        "2020": false,
+        "2021": false,
+        "2022": false,
+        "2023": false,
+        "2024": true,
+        "2025": false
+      },
+      "financial_statement_periods": [],
+      "strict_eligible": 0
+    }
+  ],
+  "missing_annual_cells": [
+    {
+      "ticker": "HPG",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "VCB",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "ACB",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "MWG",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "PNJ",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "REE",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2024,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "GAS",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "SSI",
+      "year": 2025,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "DPM",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2016,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2017,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2018,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2019,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2020,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2021,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2022,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2023,
+      "kind": "annual_report"
+    },
+    {
+      "ticker": "BID",
+      "year": 2025,
+      "kind": "annual_report"
+    }
+  ],
+  "failures": [
+    {
+      "record_id": "PNJ-annual-2022-vi",
+      "ticker": "PNJ",
+      "error_type": "LimitReachedError",
+      "error": "Reached maximum number of tokens per stream."
+    },
+    {
+      "record_id": "GAS-annual-2024-vi",
+      "ticker": "GAS",
+      "error_type": "reviewed_source_exclusion",
+      "error": "Official download currently returns a one-page blank PDF, visually confirmed; not the full annual report. Keep raw bytes and acquisition history; exclude from active report corpus and annual-year coverage."
+    },
+    {
+      "record_id": "MWG-annual-2022-vi",
+      "ticker": "MWG",
+      "error_type": "PdfReadError",
+      "error": "Broken xref table"
+    },
+    {
+      "record_id": "GAS-annual-2025-vi",
+      "ticker": "GAS",
+      "error_type": "reviewed_source_exclusion",
+      "error": "Official download returned a one-page blank PDF, visually confirmed. Not a full annual report; retain raw bytes and acquisition history, exclude from active corpus and annual coverage."
+    },
+    {
+      "record_id": "SSI-annual-2025-vi",
+      "ticker": "SSI",
+      "error_type": "ValueError",
+      "error": "Response exceeds pilot byte limit"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2026-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x68e6ef for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2026-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6d1fa5 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x649fc4 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6b4a26 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6c68d9 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6721d0 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q4",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x6aee73 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q4",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x665ee5 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0xa9da28 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q3",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0xa252c5 for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q2",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x9ca8b0 for key /Info"
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q2",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0x94f11a for key /Info"
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2023-H1",
+      "ticker": "PNJ",
+      "error_type": "PdfReadError",
+      "error": "Multiple definitions in dictionary at byte 0xed8ed8 for key /Info"
+    }
+  ],
+  "limitations": [
+    "Broad sector labels are curated, not an official historical index classification.",
+    "Current issuer/access selection; historical membership and survivorship not validated.",
+    "Annual ticker-year coverage counts a translation or revision only once.",
+    "Text presence is not OCR/table/numeric/semantic fidelity.",
+    "Missing time/version proof remains quarantined; no prediction/backtest or gold labels."
+  ],
+  "summary_sha256": "ed471500b9fe694f9e0221f58805150d1a1573c5087e847d341718c64ce68f97",
+  "universe_sha256": "e20e58cfe1a31fb8502334d952066bf5fbc34b07b9223d2bd433a975b5410162"
+}

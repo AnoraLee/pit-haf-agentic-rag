@@ -78,7 +78,15 @@ Vnstock 4.0.7. Môi trường trên máy hiện tại dùng Python 3.11.17.
   thường niên 2022–2024; vẫn chưa có evidence đủ điều kiện PiT strict. Pilot cũ
   và kết quả 24 đoạn được giữ nguyên; không phải đánh giá model trên corpus mới.
 
-Để mở rộng/tái trích corpus mới dùng
+Corpus hiện hành được mở rộng ở [v0.3](data/corpus/v0.3/DATA_CARD.md): 13 mã,
+264 PDF khác nhau/17.915 trang; manifest gồm 282 báo cáo nhiều năm/quý.
+Số PDF đã chọn, trang có text, lỗi, backlog
+OCR và độ phủ thực tế được ghi trong data card; số URL cấu hình không phải số
+báo cáo đã qua kiểm tra. Có bộ lọc năm/phạm vi và phân trang trong kho tài liệu.
+PDF lưu local; GitHub chứa mã, danh mục và checksum. Xem
+[hướng dẫn batch, retry và ghép snapshot](docs/research/11-corpus-v03.md).
+
+Để mở rộng/tái trích corpus v0.2 dùng
 `.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`
 hoặc `--extract-existing` khi chỉ replay local. Công cụ `corpus-coverage` tạo
 bảng coverage và bản lọc theo review có pin hash; xem

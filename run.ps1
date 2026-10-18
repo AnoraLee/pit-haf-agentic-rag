@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-coverage','llm-pilot','quote-audit')]
+  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit')]
   [string]$Task = 'app',
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]]$TaskArgs
@@ -41,6 +41,7 @@ switch ($Task) {
   'doctor' { & $pythonExe -m pit_haf.research.doctor @TaskArgs }
   'pilot-data' { & $pythonExe -m pit_haf.data.pilot @TaskArgs }
   'corpus-coverage' { & $pythonExe -m pit_haf.data.coverage @TaskArgs }
+  'corpus-merge' { & $pythonExe -m pit_haf.data.corpus @TaskArgs }
   'llm-pilot' { & $pythonExe -m pit_haf.llm.pilot @TaskArgs }
   'quote-audit' { & $pythonExe -m pit_haf.research.quote_replay @TaskArgs }
 }

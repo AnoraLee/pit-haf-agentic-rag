@@ -182,7 +182,8 @@ function DocTable({ docs, onOpen, compact = false }) {
                   {d.text_pages}/{d.pages}
                 </strong>
                 <small>trang có văn bản</small>
-                {d.potentially_partial_text_pages?.length > 0 && (
+                {(d.potentially_partial_text_pages?.length > 0 ||
+                  d.potentially_partial_document) && (
                   <small className="parser-warning">
                     Có trang trích xuất thiếu
                   </small>
@@ -553,14 +554,31 @@ function AnnualCoverage({ coverage, ticker }) {
 
 function Documents({ docs, onOpen, coverage, ticker }) {
   const [query, setQuery] = useState(""),
-    [type, setType] = useState("all");
-  const filtered = docs.filter(
-    (d) =>
-      `${d.title} ${d.ticker} ${d.reporting_period}`
-        .toLowerCase()
-        .includes(query.toLowerCase()) &&
-      (type === "all" || d.document_type === type),
-  );
+    [type, setType] = useState("all"),
+    [year, setYear] = useState("all"),
+    [scope, setScope] = useState("all"),
+    [page, setPage] = useState(1);
+  useEffect(() => setPage(1), [ticker, docs.length]);
+  const filtered = docs
+    .filter(
+      (d) =>
+        `${d.title} ${d.ticker} ${d.reporting_period}`
+          .toLowerCase()
+          .includes(query.toLowerCase()) &&
+        (type === "all" || d.document_type === type) &&
+        (year === "all" || d.reporting_period?.startsWith(year)) &&
+        (scope === "all" || d.statement_scope === scope),
+    )
+    .sort(
+      (a, b) =>
+        (b.reporting_period || "").localeCompare(a.reporting_period || "") ||
+        a.ticker.localeCompare(b.ticker) ||
+        a.title.localeCompare(b.title),
+    );
+  const pageSize = 20;
+  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const currentPage = Math.min(page, pages);
+  const start = (currentPage - 1) * pageSize;
   return (
     <>
       <div className="page-heading">
@@ -576,7 +594,7 @@ function Documents({ docs, onOpen, coverage, ticker }) {
         <Stat
           label="Tài liệu"
           value={docs.length}
-          note="Tài liệu thật từ nguồn chính thức"
+          note={`${new Set(docs.map((d) => d.content_hash)).size} PDF khác nhau từ nguồn chính thức`}
           icon={FileText}
         />
         <Stat
@@ -607,13 +625,19 @@ function Documents({ docs, onOpen, coverage, ticker }) {
               aria-label="Lọc tài liệu"
               placeholder="Tìm tên, mã cổ phiếu, kỳ báo cáo…"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setPage(1);
+              }}
             />
           </label>
           <select
             aria-label="Loại tài liệu"
             value={type}
-            onChange={(e) => setType(e.target.value)}
+            onChange={(e) => {
+              setType(e.target.value);
+              setPage(1);
+            }}
           >
             <option value="all">Tất cả loại tài liệu</option>
             {[...new Set(docs.map((d) => d.document_type))].map((t) => (
@@ -622,9 +646,79 @@ function Documents({ docs, onOpen, coverage, ticker }) {
               </option>
             ))}
           </select>
+          <select
+            aria-label="Năm báo cáo"
+            value={year}
+            onChange={(e) => {
+              setYear(e.target.value);
+              setPage(1);
+            }}
+          >
+            <option value="all">Tất cả năm</option>
+            {[
+              ...new Set(
+                docs
+                  .map((d) => d.reporting_period?.slice(0, 4))
+                  .filter(Boolean),
+              ),
+            ]
+              .sort()
+              .reverse()
+              .map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+          </select>
+          <select
+            aria-label="Phạm vi báo cáo"
+            value={scope}
+            onChange={(e) => {
+              setScope(e.target.value);
+              setPage(1);
+            }}
+          >
+            <option value="all">Tất cả phạm vi</option>
+            <option value="consolidated">Hợp nhất</option>
+            <option value="parent">Công ty mẹ / riêng lẻ</option>
+            <option value="unknown">Chưa xác định</option>
+          </select>
         </div>
         {filtered.length ? (
-          <DocTable docs={filtered} onOpen={onOpen} />
+          <>
+            <DocTable
+              docs={filtered.slice(start, start + pageSize)}
+              onOpen={onOpen}
+            />
+            <nav
+              className="document-pagination"
+              aria-label="Phân trang tài liệu"
+            >
+              <span>
+                {start + 1}–{Math.min(start + pageSize, filtered.length)} /{" "}
+                {filtered.length} tài liệu
+              </span>
+              <div>
+                <button
+                  className="button secondary"
+                  disabled={currentPage === 1}
+                  onClick={() => setPage(currentPage - 1)}
+                >
+                  Trước
+                </button>
+                <span aria-live="polite">
+                  Trang {currentPage}/{pages}
+                </span>
+                <button
+                  className="button secondary"
+                  disabled={currentPage === pages}
+                  onClick={() => setPage(currentPage + 1)}
+                >
+                  Tiếp
+                </button>
+              </div>
+            </nav>
+          </>
         ) : (
           <Empty title="Không tìm thấy tài liệu">
             Thử từ khóa khác hoặc bỏ bộ lọc.
@@ -704,10 +798,13 @@ function DocumentDrawer({ doc, onClose }) {
             {doc.quarantine_reasons.map((r) => REASONS[r] || r).join("; ")}.
           </Notice>
         )}
-        {doc.potentially_partial_text_pages?.includes(page) && (
+        {(doc.potentially_partial_text_pages?.includes(page) ||
+          doc.potentially_partial_document) && (
           <Notice>
-            Trình đọc PDF đã bỏ qua một phần nội dung ở trang này. Văn bản bên
-            dưới có thể thiếu; kiểm tra PDF gốc trước khi dùng cho đánh giá.
+            {doc.potentially_partial_document
+              ? "Trình đọc PDF cảnh báo có thể bỏ sót nội dung của tài liệu."
+              : "Trình đọc PDF đã bỏ qua một phần nội dung ở trang này."}{" "}
+            Kiểm tra PDF gốc trước khi dùng cho đánh giá.
           </Notice>
         )}
         <div className="page-control">
@@ -1078,12 +1175,13 @@ function ExtractionResult({ result }) {
               : "Bị chặn"}
         </Badge>
       </div>
-      {result.source_parser_diagnostics?.potentially_partial_text_pages?.includes(
-        result.passage?.page,
-      ) && (
+      {(result.source_parser_diagnostics?.potentially_partial_document ||
+        result.source_parser_diagnostics?.potentially_partial_text_pages?.includes(
+          result.passage?.page,
+        )) && (
         <Notice>
-          Trang nguồn có cảnh báo bị lược bỏ một phần nội dung khi đọc PDF.
-          Trích dẫn khớp chuỗi không chứng minh văn bản trang đã đầy đủ.
+          Nguồn có cảnh báo nội dung có thể bị lược bỏ khi đọc PDF. Trích dẫn
+          khớp chuỗi không chứng minh văn bản trang đã đầy đủ.
         </Notice>
       )}
       {accepted ? (

@@ -2857,6 +2857,24 @@ select {
     font-size: 12px;
   }
 }
+.document-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.document-pagination > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.table-toolbar select {
+  max-width: 100%;
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *:before,

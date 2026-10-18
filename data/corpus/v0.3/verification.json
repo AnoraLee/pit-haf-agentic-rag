@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-10-18T00:26:55.838165+00:00",
+  "release_id": "development-corpus-v0.3-20261018",
+  "summary_sha256": "ed471500b9fe694f9e0221f58805150d1a1573c5087e847d341718c64ce68f97",
+  "research_prediction_results": false,
+  "run_kind": "artifact_integrity_checks_not_semantic_validation",
+  "active_page_count_verified": 17915,
+  "active_pages_sha256": "9ff7fb9f8418968cc1faae8ca20b6f4e8be5ef476be599f8413b774875a1aead",
+  "frozen_pilot_registry_versions_unchanged": 11,
+  "frozen_pilot_page_text_hashes_unchanged": 905,
+  "frozen_pilot_index_sha256": "22635e82e33f9b21ac112341e4f050e0871057c77d50d704b262e4e77e8f73b2",
+  "source_file_sha256": {
+    "src/pit_haf/data/evidence.py": "cb7959593ccc8c05104eceac5333cb92e3866507c948226d202953da4a9e6213",
+    "src/pit_haf/data/snapshots.py": "b4449cd89df3ad22ebe2a0b06c72d7ae0ba3384f3de74c1dfc27e084240cbe56",
+    "src/pit_haf/data/pilot.py": "d3192c56f389b69590332ff460fd1aa8a71f7a253d9665c79884076a1c40bd60",
+    "src/pit_haf/data/batches.py": "0d0177247380d9046fe5343907d60aab8242b81bf200a8cc6f273a9b9c225b26",
+    "src/pit_haf/data/corpus.py": "000fa7a57e7f64a4ef429f2fed106f03ce245dd36be708ae6e1613e3a96e6c08",
+    "src/pit_haf/data/coverage.py": "8ec5fca61a290827014478b9a30e49d525f5fa122c7a9bd6ef5466691ab6b08e"
+  },
+  "not_validated": [
+    "OCR/table/numeric/semantic accuracy",
+    "Independent human gold",
+    "Historical time/revision availability",
+    "Predictive performance"
+  ]
+}

@@ -1,0 +1,2255 @@
+{
+  "release_id": "development-corpus-v0.3-20261018",
+  "documents": [
+    {
+      "record_id": "FPT-annual-2016-vi",
+      "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_2016_df36a8ca2a.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2017-vi",
+      "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_2017_34c6021841.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2017-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/uploads/Bao-cao-thuong-nien-nam-2017-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2018-vi",
+      "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_2018_7000bb1ec9.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2018-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/uploads/HPG_BCTN_2018_V3.3.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2019-vi",
+      "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_2019_e01358115e.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2019-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/04/bao-cao-thuong-nien-hpg-2019.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2020-vi",
+      "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_2020_512664a8e2.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2021-vi",
+      "source_url": "https://fpt.com/api/media/ar_fpt_2021_vn_13c179f5b4.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2021-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/04/bao-cao-thuong-nien-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "FPT-annual-2025-vi",
+      "source_url": "https://fpt.com/api/media/BCTN_2025_ad403f779b.pdf",
+      "listing_url": "https://fpt.com/vi/nha-dau-tu/bao-cao-thuong-nien?id=monthly-year-2022",
+      "listing_sha256": "c0c8a9de3a71f2a98b9a8c43cea249fab6f5c12cd88b16b8b4ff3b09d49dc9a0",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2025-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/05/bao-cao-thuong-nien-nam-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2025-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/31a-20260407-PNJ-Bao-cao-thuong-nien-2025.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2021-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/3-Bao-cao-thuong-nien-2021-V3-Final.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2020-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2021/4-Bao_cao_thuong_nien_nam_2020_V5_Final-SGDCK_website_ngay_280420.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-annual-2019-vi",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2020/BAOCAOTHUONGNIEN-2019-VN-view.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/",
+      "listing_sha256": "519d173312e0214fb8e932111070403c22f99fcd9e896becba08291d75e19805",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "REE-annual-2025-vi",
+      "source_url": "https://www.reecorp.com/wp-content/uploads/2026/03/20260330-ree-bao-cao-thuong-nien-nam-2025.pdf",
+      "listing_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "listing_sha256": "9985acb4024f9232dadd1d1fc591b74fdfacb70020119cf14fd53bd7c1dfcb94",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "REE-annual-2021-vi",
+      "source_url": "https://www.reecorp.com/wp-content/uploads/2022/10/20220315-ree-bao-cao-thuong-nien-nam-2021_vi_1647325900.pdf",
+      "listing_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "listing_sha256": "9985acb4024f9232dadd1d1fc591b74fdfacb70020119cf14fd53bd7c1dfcb94",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "REE-annual-2020-vi",
+      "source_url": "https://www.reecorp.com/wp-content/uploads/2022/10/ree-bctn-2020-01-04-2021-vn_vi_1617265020.pdf",
+      "listing_url": "https://www.reecorp.com/danh-muc-bao-cao/bao-cao-thuong-nien/",
+      "listing_sha256": "9985acb4024f9232dadd1d1fc591b74fdfacb70020119cf14fd53bd7c1dfcb94",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2025-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/20260319_VNM_Bao_cao_thuong_nien_2025_eae619d5f6.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2021-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/1650451537_b3efd46d2f003afce29e7e0aaab1521241f779cb82f0b211a34af53b17adfb09_1261da94e5.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2020-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/1617354921_428a45ccc0746e6cdfa3569800fb919bbf8e6d36b54603862caf12ac95d89383_2e6b53ea3c.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2019-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/1585291596_7f525505f3621558355a60c10f6862cbb3b9c9863921a9b06587f7b42a0f9733_9de96673d7.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2018-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/1553138983_a3f4f09df851002f3a853674959d0f68a4f9559b11a2d9fd8ad72048fcae6ac5_96adb71b43.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2017-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/1522048369_e00f62c63c48b66dd2ef2120675537d0ced4e10b0acaae7be6d5ddfd8767f0ea_cd3cdb2917.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "VNM-annual-2016-vi",
+      "source_url": "https://d8um25gjecm9v.cloudfront.net/cms/1489983725_31b5eb9c9cb7e8d174f01b917ccc9152696ece752cf491ed9bac8f9aad516528_b0bfca06ec.pdf",
+      "listing_url": "https://www.vinamilk.com.vn/investor/reports/annual",
+      "listing_sha256": "3f085084293b6a5e3a417bb3a6dec0110e5c95288fb5087b2c74485ed105bcc1",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2025-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=14466&documentid=3269",
+      "listing_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2021-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=12923&documentid=2631",
+      "listing_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2020-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=11525&documentid=1501",
+      "listing_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "GAS-annual-2019-vi",
+      "source_url": "https://www.pvgas.com.vn/DesktopModules/EasyDNNNews/DocumentDownload.ashx?portalid=0&moduleid=574&articleid=9132&documentid=391",
+      "listing_url": "https://www.pvgas.com.vn/quan-he-co-%C4%91ong/category/bao-cao-thuong-nien",
+      "listing_sha256": "c228acc2f66057d636a579fda0b35b3a2e2787aebf6b491dbbef3387fda8d093",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "SSI-annual-2025-vi",
+      "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/SSI_BCTN2025_VN.pdf",
+      "listing_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien",
+      "listing_sha256": "8f32ed3fedceddd76ea4d349fa0f1bbc99b1ad2079ed8333139ff3d9451be5f3",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "SSI-annual-2021-vi",
+      "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/SSI_BCTN2021.pdf",
+      "listing_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien?page=2",
+      "listing_sha256": "c44645cb63105f896c7b6bfc2bf957edb856339d0c2d2b311035f95369cfb27c",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "SSI-annual-2020-vi",
+      "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/SSI_BCTN2020.pdf",
+      "listing_url": "https://www.ssi.com.vn/quan-he-nha-dau-tu/bao-cao-thuong-nien?page=2",
+      "listing_sha256": "c44645cb63105f896c7b6bfc2bf957edb856339d0c2d2b311035f95369cfb27c",
+      "observed_listing_title": null,
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2017-vi",
+      "source_url": "https://dpm.vn/static/upload/users/dpm.vn/2018/04-19/20180414_PVFCCo_AR%202017_Web.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-2017-830",
+      "listing_sha256": "1885f62cdf204a7ef4937e67ba7f60507111788c70b13dc254c3390a188d4414",
+      "observed_listing_title": "tại đây.",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2018-vi",
+      "source_url": "https://dpm.vn/static/upload/users/dpm.vn/2019/04-12/20190408_DPM_AR%202018_VN_Final_Web.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2018-829",
+      "listing_sha256": "f619d2997b4635ac588ee3d48d75b174ed4ae507da86aed6f4a151c47450aad5",
+      "observed_listing_title": "tại đây",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2019-vi",
+      "source_url": "https://dpm.vn/static/upload/users/dpm.vn/2020/04-20/20200420-DPM-AR2019-VN.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2019-ban-pdf-828",
+      "listing_sha256": "6577adae5b13eabb6973e15a10f83b2543ac07f670abda77222bdead493b7496",
+      "observed_listing_title": "tại đây",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2020-vi",
+      "source_url": "https://dpm.vn/static/upload/users/dpm.vn/20210415_AR_DPM_VN_Final.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2020-826",
+      "listing_sha256": "25f15c3c8a1932f32c5be2df23cc808b90ddc4086d6d953a71767f7a7d890e6b",
+      "observed_listing_title": "Vui lòng xem tại đây",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2021-vi",
+      "source_url": "https://dpm.vn/static/upload/users/dpm.vn/2022/05-16/20220516_DPM_AR%202021_VN.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2021-825",
+      "listing_sha256": "c086c38c6a5220aa47f3fb3b861fa99a18f90e1fd911817b1699380059f56efb",
+      "observed_listing_title": "Tổng công ty Phân bón và Hóa chất Dầu khí – CTCP (Mã chứng khoán DPM), công bố thông tin về Báo cáo thường niên của Tổng công ty năm 2021. Thông tin chi tiết vui lòng tải tại đây",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2022-vi",
+      "source_url": "https://dpm.vn/static/upload/users/dpm.vn/2023/04-13/20230412_AR%202022_DPM_Final_VN.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2022-823",
+      "listing_sha256": "6d59e5d6b080295eff4d99fe9c2cee032d50c81f2fb8084600d974b543625c7e",
+      "observed_listing_title": "Tổng công ty Phân bón và Hóa chất Dầu khí – CTCP (Mã chứng khoán DPM), công bố thông tin về báo cáo thường niên năm 2022. Thông tin chi tiết vui lòng xem tại đây",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2023-vi",
+      "source_url": "https://dpm.vn/public_folder/files_upload/202605/final20240405dpmar2023vn2024-154113pdf1778575318.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2023-821",
+      "listing_sha256": "d7b4fe3a42c757a266c26c67ad042447244d022b0bbcd0f21a773714ecb2d002",
+      "observed_listing_title": "Báo Cáo Thường Niên năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2024-vi",
+      "source_url": "https://dpm.vn/public_folder/files_upload/202504/20250410dpmar-2024vnwebpdf1744691930.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-nam-2024-1236",
+      "listing_sha256": "ae7ab6b7c1e5b25aa64e5d1ea0df9f232b9d0751b4fd16191234ef2da455715e",
+      "observed_listing_title": "Báo cáo thương niên năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "DPM-annual-2025-vi",
+      "source_url": "https://dpm.vn/public_folder/files_upload/202608/20260412-dpm-ar2025---vn---final-1pdf1786088933.pdf",
+      "listing_url": "https://dpm.vn/bao-cao-thuong-nien/bao-cao-thuong-nien-2025-1335",
+      "listing_sha256": "8aeb19e2b275040bfdc6670712fcc9f6e799b639d13804b2088aff353daf694a",
+      "observed_listing_title": "Ấn vào để xem Báo Cáo Thường Niên 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2026-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/79c_-_20260903_-_PNJ_-_BCTC_soat_xet_ban_nien_2026__Hop_nhat_.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC hợp nhất giữa niên độ cho kỳ 6 tháng kết thúc ngày 30 tháng 06 năm 2026 (03/09/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2026-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/79b_-_20260903_-_PNJ_-_BCTC_soat_xet_ban_nien_2026__Rieng_.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC riêng giữa niên độ cho kỳ 6 tháng kết thúc ngày 30 tháng 06 năm 2026 (03/09/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2026-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/2b_-_20260730_-_PNJ_-_BCTC_quy_2_nam_2026__Hop_nhat_.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2026 (Hợp nhất) (30/07/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2026-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/2a_-_20260730_-_PNJ_-_BCTC_quy_2_nam_2026__Rieng_.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2026 (Riêng) (30/07/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2026-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/47-20260429-PNJ-BCTC-quy-1-nam-2026-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2026 (Hợp nhất) (29/04/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2026-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2026/46-20260429-PNJ-BCTC-quy-1-nam-2026-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2026 (Riêng) (29/04/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/21b-20260319-PNJ-BCTC-kiem-toan-nam-2025-Hop-nhat-VN-EN.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC hợp nhất cho năm tài chính kết thúc ngày 31 tháng 12 năm 2025 (19/03/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/21a-20260319-PNJ-BCTC-kiem-toan-nam-2025-Rieng-VN-EN.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC riêng cho năm tài chính kết thúc ngày 31 tháng 12 năm 2025 (19/03/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/BCTC-Q4-HN-31-01.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2025 (Hợp nhất) (30/01/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/BCTC-Q4-Rieng-31-01.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2025 (Riêng) (30/01/2026)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/51b-20251028-PNJ-BCTC-quy-3-nam-2025-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2025 (Hợp nhất) (28/10/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/51a-20251028-PNJ-BCTC-quy-3-nam-2025-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2025 (Riêng) (28/10/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2025-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/38b - 20250829 - PNJ - BCTC soat xet ban nien nam 2025 (Hop nhat).pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC hợp nhất giữa niên độ cho kỳ 6 tháng kết thúc ngày 30 tháng 06 năm 2025 (29/08/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2025-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/38a - 20250829 - PNJ - BCTC soat xet ban nien nam 2025 (Rieng).pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC riêng giữa niên độ cho kỳ 6 tháng kết thúc ngày 30 tháng 06 năm 2025 (29/08/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/34c-20250728-PNJ-BCTC-quy-2-nam-2025-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2025 (Hợp nhất) (28/07/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/34a-20250728-PNJ-BCTC-quy-2-nam-2025-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2025 (Riêng) (28/07/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2025-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/23b-20250424-PNJ-BCTC-quy-1-nam-2025-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2025 (Hợp nhất) (24/04/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2025-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2025/23a-20250424-PNJ-BCTC-quy-1-nam-2025-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2025 (Riêng) (24/04/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2024",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/16b-20250328-PNJ-BCTC-nam-2024-da-duoc-kiem-toan-boi-PwC-Hop-nhat_Signed.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC năm 2024 đã được kiểm toán bởi PwC (Hợp nhất) (28/03/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-audited-2024",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/16a-20250328-PNJ-BCTC-nam-2024-da-duoc-kiem-toan-boi-PwC-Rieng_Signed.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC năm 2024 đã được kiểm toán bởi PwC (Riêng) (28/03/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/8c-20250123-PNJ-BCTC-quy-4-nam-2024-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2024 (Hợp nhất) (24/01/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/8a-20250123-PNJ-BCTC-quy-4-nam-2024-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2024 (Riêng) (24/01/2025)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/47b-20241022-PNJ-BCTC-quy-3-nam-2024-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2024 (Hợp nhất) (22/10/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/47a-20241022-PNJ-BCTC-quy-3-nam-2024-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2024 (Riêng) (22/10/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2024-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/20240829-PNJ-BCTC-soat-xet-ban-nien-nam-2024-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC bán niên năm 2024 đã được soát xét bời PWC (Hợp nhất) (29/08/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2024-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/20240829-PNJ-BCTC-soat-xet-ban-nien-nam-2024-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC bán niên năm 2024 đã được soát xét bời PWC (Riêng) (29/08/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/27b-20240729-PNJ-BCTC-quy-2-nam-2024-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2024 (Hợp nhất) (29/07/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/27a-20240729-PNJ-BCTC-quy-2-nam-2024-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2024 (Riêng) (29/07/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2024-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/21b-20240422-PNJ-BCTC-quy-1-nam-2024-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2024 (Hợp nhất) (22/04/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2024-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/21a-20240422-PNJ-BCTC-quy-1-nam-2024-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2024 (Riêng) (22/04/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2023",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/14b-20240326-PNJ-BCTC-nam-2023-da-duoc-kiem-toan-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC năm 2023 đã được kiểm toán bởi KPMG (Hợp nhất) (26/03/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-audited-2023",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2024/14a-20240326-PNJ-BCTC-nam-2023-da-duoc-kiem-toan-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC năm 2023 đã được kiểm toán bởi KPMG (Riêng) (26/03/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/7b-20240130-PNJ-BCTC-quy-4-nam-2023-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2023 (Hợp nhất) (30/01/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/7a-20240130-PNJ-BCTC-quy-4-nam-2023-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2023 (Riêng) (30/01/2024)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/20231020-PNJ-BCTC-quy-3-nam-2023-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2023 (Hợp nhất) (20/10/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/20231020-PNJ-BCTC-quy-3-nam-2023-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2023 (Riêng) (20/10/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-reviewed-2023-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/2-BCTC-soat-xet-ban-nien-nam-2023-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC bán niên năm 2023 đã được soát xét bởi KPMG (Hợp nhất) (24/08/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-reviewed-2023-H1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/1-BCTC-soat-xet-ban-nien-nam-2023-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC bán niên năm 2023 đã được soát xét bởi KPMG (Riêng) (24/08/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/2-BCTC-quy-2-nam-2023-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2023 (Hợp nhất) (27/07/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/2-BCTC-quy-2-nam-2023-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2023 (Riêng) (27/07/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2023-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/23b-20230426-PNJ-BCTC-quy-1-nam-2023-Hop-nhat-v1.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2023 (Hợp nhất) (26/04/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2023-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/23a-20230426-PNJ-BCTC-quy-1-nam-2023-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2023 (Riêng) (26/04/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-audited-2022",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/15b-20230329-PNJ-BCTC-nam-2022-da-duoc-kiem-toan-boi-PwC-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC năm 2022 đã được kiểm toán bởi PwC (Hợp nhất) (29/03/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-audited-2022",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/15a-20230329-PNJ-BCTC-nam-2022-da-duoc-kiem-toan-boi-PwC-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC năm 2022 đã được kiểm toán bởi PwC (Riêng) (29/03/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/20230130-PNJ-BCTC-quy-4-nam-2022-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2022 (Hợp nhất) (30/01/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q4",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2023/20230130-PNJ-BCTC-quy-4-nam-2022-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 4 năm 2022 (Riêng) (30/01/2023)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/20221024-PNJ-BCTC-quy-3-nam-2022-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2022 (Hợp nhất) (24/10/2022)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q3",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/20221024-PNJ-BCTC-quy-3-nam-2022-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 3 năm 2022 (Riêng) (24/10/2022)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/38b-20220721-PNJ-BCTC-quy-2-nam-2022-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2022 (Hợp nhất) (21/07/2022)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q2",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/38a-20220721-PNJ-BCTC-quy-2-nam-2022-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 2 năm 2022 (Riêng) (21/07/2022)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-consolidated-quarterly-2022-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/28c-20220421-PNJ-BCTC-quy-1-nam-2022-Hop-nhat.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2022 (Hợp nhất) (20/04/2022)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "PNJ-parent-quarterly-2022-Q1",
+      "source_url": "https://cdn.pnj.io/images/quan-he-co-dong/2022/28b-20220421-PNJ-BCTC-quy-1-nam-2022-Rieng.pdf",
+      "listing_url": "https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/",
+      "listing_sha256": "d742285a0d9faf11f72c0cd31a2beda5f4380ccfde8b17f858ae101e97984775",
+      "observed_listing_title": "BCTC quý 1 năm 2022 (Riêng) (20/04/2022)",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2026-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-hop-nhat-soat-xet-6-thang-2026-va-giai-trinh-1-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất soát xét 6 tháng 2026",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2026-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260828-hpg-bctc-cong-ty-me-soat-xet-6-thang-2026-va-giai-trinh-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Báo cáo tài chính công ty mẹ soát xét 6 tháng 2026",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2026-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/07/20260730-hpg-bctc-hop-nhat-quy-2-2026-va-giai-trinh.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý II/2026",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2026-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/08/20260730-hpg-bctc-cong-ty-me-quy-2-2026-va-giai-trinh-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý II/2026",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2026-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/04/20260429-hpg-bctc-rieng-cong-ty-me-quy1-2026.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý I/2026",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-audited-2025",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/03/20260327-hpg-bctc-cong-ty-me-sau-kiem-toan-nam-2025-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "BCTC Công ty mẹ sau kiểm toán năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2025",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/01/tong-quan-tinh-hinh-kinh-doanh-hpg-quy-4-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy IV năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2026/01/20260130-hpg-bao-cao-tai-chinh-rieng-cong-ty-me-va-giai-trinh-q4-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Báo cáo tài chính riêng Qúy IV năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2025",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/11/tong-quan-tinh-hinh-kinh-doanh-hpg-quy-3-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh",
+      "listing_sha256": "fb11cf4a3e82e7afb394fb996d97d6dfe2132b1f434f1d3f5e3a8bc319e79d89",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy III năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2025-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/08/20250829-hpg-bctc-hop-nhat-da-soat-xet-30-06-2025-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất đã soát xét 30.06.2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2025-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/08/bctc-rieng-da-soat-xet-30-06-2025-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính riêng đã soát xét 30.06.2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2025-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/07/bao-cao-tai-chinh-hop-nhat-quy-ii-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy II năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2025",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/07/bcq2-1-5-vn.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy II năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/07/bao-cao-tai-chinh-rieng-quy-ii-2025-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính riêng Qúy II năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2025-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-tai-chinh-rieng-quy-i-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ Qúy I năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2025-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-tai-chinh-hop-nhat-quy-i-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy I năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2025",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/07/bao-cao-quy-1-2025.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy I năm 2025",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/03/bao-cao-tai-chinh-hop-nhat-nam-2024-da-kiem-toan-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=2",
+      "listing_sha256": "b9169d6bd7e8928d3fcc6d0d37b0f09d56f1a7d9f9e02e130fcb5736db4f6787",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/03/bao-cao-tai-chinh-cong-ty-me-nam-2024-da-kiem-toan-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/02/bao-cao-tai-chinh-hop-nhat-quy-4-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý IV năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2024",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/03/tong-quan-tinh-hinh-kinh-doanh-q4-2024-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Quý IV năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/02/bao-cao-tai-chinh-cong-ty-me-quy-iv.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính riêng Công ty mẹ Quý IV năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/10/bao-cao-tai-chinh-rieng-quy-iii-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ Qúy III năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/10/bao-cao-tai-chinh-hop-nhat-quy-iii-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy III năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2024",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/10/quarter-summary-q3-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy III năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/08/20240829-hpg-bctc-hop-nhat-6-thang-dau-nam-2024-sau-soat-xet.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất 6 tháng đầu năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/08/20240829-hpg-bctc-cong-ty-me-6-thang-dau-nam-2024-sau-soat-xet.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=3",
+      "listing_sha256": "978d2acf0781b7d7bd4f3721972fb798ae908d861f299f6079e55dd1582a9168",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ 6 tháng đầu năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2024-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/07/bao-cao-tai-chinh-rieng-qii-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Báo cáo tài chính riêng Qúy II năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/07/20240731-hpg-bao-cao-tai-chinh-hop-nhat-qii-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy II năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2024",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/07/quarter-summary-q2-2024-vie.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy II năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2024-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/04/20240425-hpg-bao-cao-tai-chinh-hop-nhat-qi-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy I năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2024",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/04/quarter-summary-q1-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy I năm 2024",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2023",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/03/bctc-hop-nhat-nam-2023-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất năm 2023 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2023",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/01/quarter-summary-q4-2023-vie.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Qúy IV năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2024/01/20240130-hpg-bao-cao-hop-nhat-quy-iv-2024.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=4",
+      "listing_sha256": "f933ef720ba0087a3beb18f4c1e067a602d2ef2d0dace2d03158ab6c2982908b",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy IV năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2023",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/10/quarter-summary-q3-2023-vie.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Quý III năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/10/20231027-hpg-bao-cao-tai-chinh-hop-nhat-q3-2023.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy III năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/10/20231027-hpg-bao-cao-tai-chinh-rieng-q3-2023.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính tiêng Công ty mẹ Qúy III năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/08/hpg-30-june-2023-sepa-fs.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính riêng Công ty mẹ 6 tháng đầu năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/08/hpg-30-june-2023-consol-fs.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất 6 tháng năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2023",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/07/quarter-summary-q2-2023.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Quý II năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/07/bao-cao-tai-chinh-hop-nhat-qii-2023-mai.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý II năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/07/20230728-hpg-bctc-rieng-cong-ty-me-q2-2023.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính riêng Công ty mẹ Quý II năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2023-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/04/20230428-hpg-bctc-rieng-q1-2023.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính riêng Công ty mẹ Qúy I năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2023-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/07/bao-cao-tai-chinh-hop-nhat-quy-i-2023.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy I năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q1-2023",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/04/quarter-summary-q1-2023-vn-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=5",
+      "listing_sha256": "fefee34c6729a575b565518fb4cc95db5d83230f8dd58b9029b161bf72480374",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Quý I năm 2023",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/03/20220320-hpg-bao-cao-tai-chinh-hop-nhat-sau-kiem-toan-nam-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/03/20220320-hpg-bao-cao-tai-chinh-rieng-sau-kiem-toan-nam-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính riêng Công ty mẹ năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/01/2023301030-hpg-bao-cao-tai-chinh-rieng-quy-iv-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ Quý IV năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/02/bao-cao-tai-chinh-hop-nhat-quy-4-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý IV năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q4-2022",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2023/01/quarter-summary-q4-2022-vi.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Quý IV năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/10/20221028-hpg-bao-cao-tai-chinh-rieng-cong-ty-me-quy-iii-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính riêng Công ty mẹ quý III năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/10/22021028-hpg-bao-cao-tai-chinh-hop-nhat-quy-iii-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Qúy III năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q3-2022",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/10/quarter-summary-q3-2022-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Tổng quan tình hình Kinh doanh quý III năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2022-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/08/bao-cao-tai-chinh-hop-nhat-6-thang-dau-nam-2022-sau-soat-xet-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất 6 tháng đầu năm 2022 sau soát xét",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2022-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/08/ba-o-ca-o-ta-i-chi-nh-co-ng-ty-me-6-tha-ng-da-u-na-m-sau-soa-t-xe-t.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=6",
+      "listing_sha256": "968b5d33a88e8ca716df7195d2f642ed94ee8667b0962ab2a71f2ce056a0f688",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ 6 tháng đầu năm 2022 sau soát xét",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/07/ba-o-ca-o-ta-i-chi-nh-ho-p-nha-t-quy-ii-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý II năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-business-overview-Q2-2022",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/07/to-ng-quan-ti-nh-hi-nh-kinh-doanh-quy-2-2022-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Tổng quan tình hình kinh doanh Quý II năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/07/ba-o-ca-o-ta-i-chi-nh-rie-ng-quy-ii-2022.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý II năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2022-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/04/bctc-rieng-q1-2022-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ Qúy I năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2022-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/04/bao-cao-tai-chinh-hop-nhat-quy-i-2022-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất quý I năm 2022",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2021",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/03/bao-cao-tai-chinh-hop-nhat-nam-2021-sau-kiem-toan-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất năm 2021 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-audited-2021",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/03/bao-cao-tai-chinh-rieng-nam-2021-sau-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=7",
+      "listing_sha256": "85c91e7e5f19b3191aec8b854266b75080e75b4865380dc55fe9ae71b74ab2c8",
+      "observed_listing_title": "Báo cáo tài chính riêng năm 2021 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/01/bao-cao-tai-chinh-cong-ty-me-quy-iv-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=8",
+      "listing_sha256": "529ba476c8f82021dbbea56093ba2d4d7e9211ae2401c426720eb2447aaa1848",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ Quý IV năm 2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2022/02/bao-cao-tai-chinh-hop-nhat-quy-iv-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=8",
+      "listing_sha256": "529ba476c8f82021dbbea56093ba2d4d7e9211ae2401c426720eb2447aaa1848",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý IV năm 2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/10/20211030-hpg-bctc-hop-nhat-quy-iii-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=8",
+      "listing_sha256": "529ba476c8f82021dbbea56093ba2d4d7e9211ae2401c426720eb2447aaa1848",
+      "observed_listing_title": "Báo cáo tài chính Hợp nhất Qúy III năm 2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/10/20211030-hpg-bctc-cong-ty-me-quy-iii-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=8",
+      "listing_sha256": "529ba476c8f82021dbbea56093ba2d4d7e9211ae2401c426720eb2447aaa1848",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ Qúy III năm 2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2021-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/08/20210827-hpg-bctc-cong-ty-me-ban-nien-sau-soat-xet.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=8",
+      "listing_sha256": "529ba476c8f82021dbbea56093ba2d4d7e9211ae2401c426720eb2447aaa1848",
+      "observed_listing_title": "Báo cáo tài chính Công ty mẹ 6 tháng đầu năm 2021 sau soát xét",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2021-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/08/20210827-hpg-bctc-hop-nhat-ban-nien-sau-soat-xet-30062021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất 6 tháng đầu năm 2021 sau soát xét",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/07/bchn-q2-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất quý II/ 2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/07/bao-cao-tai-chinh-rieng-quy-ii-2021-3.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính riêng quý II/2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2021-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/04/bctc-rieng-q1-2021-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính riêng quý I/2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2021-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/04/bao-cao-tai-chinh-hop-nhat-quy-i-2021.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất quý I/2021",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-audited-2020",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/03/hpg-bao-cao-tai-chinh-rieng-nam-2020-sau-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính riêng Tập đoàn Hòa Phát năm 2020 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2020",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/03/hpg-bao-cao-tai-chinh-hop-nhat-nam-2020-sau-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính Hợp nhất Tập đoàn Hòa Phát năm 2020 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/01/bao-cao-tai-chinh-rieng-quy-iv-2020.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý IV năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/01/bao-cao-tai-chinh-hop-nhat-quy-iv-2020.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý IV năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/10/bao-cao-tai-chinh-hop-nhat-quy-iii-2020.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=9",
+      "listing_sha256": "c4806927ea2aeed39c811d0f926fa80c8c3a50743cf941d07f88860f80bc5d8d",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý III.2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q3",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/10/bao-cao-tai-chinh-rieng-quy-iii-2020.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý III.2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-reviewed-2020-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/08/bchn-6t-2020-sau-soat-xet.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất 6 tháng đầu năm 2020 sau soát xét",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-reviewed-2020-H1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/08/bctc-cong-ty-me-t6-sau-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính riêng 6 tháng đầu năm 2020 sau soát xét",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/07/bchn-q2-2020-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý II năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q2",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/07/bctc-rieng-30-06-2020-3.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý II năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2020-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/04/bctc-rieng-q1-2020-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý I năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-quarterly-2020-Q1",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/04/bchn-q1-2020-1.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất Quý I năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-audited-2019",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/03/bctc-cong-ty-me-2019-sau-kiem-toan.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính riêng năm 2019 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-consolidated-audited-2019",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/03/bchn-2019-sau-kiem-toan-compressed.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính hợp nhất năm 2019 sau kiểm toán",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-parent-quarterly-2019-Q4",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2020/01/hpg-bctc-rieng-cong-ty-me-31-12-2019-2.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-tai-chinh?page=10",
+      "listing_sha256": "efad66cbc3506a386ee1d49801ddd4fce4ce687a3bb9bf8b24479c1891266d67",
+      "observed_listing_title": "Báo cáo tài chính riêng Quý IV năm 2019",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2025-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2025 - 03/04/2026",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2023-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/TCB-AR-VN-2023-21ec5bc1bd.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2023 - 20/04/2024",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2024-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/bao-cao-thuong-nien-nam-2024-vie.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2024 - 04/04/2025",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2019-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Bao_cao_thuong_nien_nam_2019_f8470fb767_aaeeba489c.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2019 - 16/04/2020",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2022-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/VIE-Book-TCB-AR-22-Web-23063f37a7.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2022 - 19/04/2023",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2020-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Bao_cao_thuong_nien_nam_2020_4b03c59e43_f6b3b1dd18.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2020 - 12/04/2021",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2016-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Bao_cao_thuong_nien_nam_2016_77a58387e8_43b3e79198.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2016",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2017-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Bao_cao_thuong_nien_nam_2017_9bb613a4ca_37021c8d72.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2017",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2018-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Bao_cao_thuong_nien_nam_2018_be0b9d9ad0_1535af435b.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2018",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-annual-2021-vi",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Bao_cao_thuong_nien_nam_2021_64c83bbd2d_86e6d06b95.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-thuong-nien/",
+      "listing_sha256": "d0a4ffcde6ba726c05c013df2b47e9ed683795403357aefa31ad37a25ab528d5",
+      "observed_listing_title": "Báo cáo thường niên năm 2021 - 19/04/2022",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2026-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-1q26-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2026 Techcombank – phát hành ngày 21/04/2026  | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2026-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-1q26-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2026 Techcombank – phát hành ngày 21/04/2026  | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2025-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-1q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2025 Techcombank – phát hành ngày 21/04/2025 | Hợp nhất (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2025-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-1q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2025 Techcombank – phát hành ngày 21/04/2025 | Riêng lẻ (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2024-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-1-Q24-Searchable-b319d9ff17.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2024 Techcombank – phát hành ngày 22/04/2024 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2024-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-1-Q24-Searchable-9717481ddc.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2024 Techcombank – phát hành ngày 22/04/2024 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2025-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-2q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2025 Techcombank – phát hành ngày 21/07/2025 | Hợp nhất (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2025-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-2q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2025 Techcombank – phát hành ngày 21/07/2025 | Riêng lẻ (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2026-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-2q26-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2026 Techcombank – phát hành ngày 21/07/2026 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2026-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-2q26-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2026 Techcombank – phát hành ngày 21/07/2026 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2024-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-2q24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2024 Techcombank – phát hành ngày 22/07/2024 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2024-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-2q24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2024 Techcombank – phát hành ngày 22/07/2024 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2025-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-3q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng đầu năm 2025 Techcombank – phát hành ngày 21/10/2025 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2025-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-3q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng đầu năm 2025 Techcombank – phát hành ngày 21/10/2025 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-reviewed-2024-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-interim24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2024 đã soát xét – 13/08/2024 | Hợp nhất (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-reviewed-2024-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-interim24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2024 đã soát xét – 13/08/2024 | \n\nRiêng lẻ (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-reviewed-2025-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-interim25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2025 đã soát xét – phát hành ngày 13/08/2025 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-reviewed-2025-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-interim25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2025 đã soát xét – phát hành ngày 13/08/2025 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-reviewed-2026-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-interim26-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2026 đã soát xét – phát hành ngày 14/08/2026  | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-reviewed-2026-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-interim26-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2026 đã soát xét – phát hành ngày 14/08/2026  | Riêng lẻ (Bản tra cứu) ",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2024-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-4q24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2024 Techcombank – phát hành ngày 20/01/2025 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2024-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-4q24.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2024 Techcombank – phát hành ngày 20/01/2025 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-audited-2025",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-ye25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2025 đã kiểm toán Techcombank – phát hành ngày 16/3/2026 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-audited-2025",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-ye25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2025 đã kiểm toán Techcombank – phát hành ngày 16/3/2026 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2025-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-4q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2025 Techcombank – phát hành ngày 20/01/2026 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2025-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-4q25-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2025 Techcombank – phát hành ngày 20/01/2026 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-audited-2023",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-YE-23-searchable-ebc51dbf3e.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2023 đã kiểm toán - 28/03/2024 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-audited-2023",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-YE-23-searchable-77f4926f83.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2023 đã kiểm toán - 28/03/2024 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-audited-2024",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-ye24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2024 đã kiểm toán - 15/03/2025 | Hợp nhất (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-audited-2024",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-ye24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2024 đã kiểm toán - 15/03/2025 | \n\nRiêng lẻ (bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2024-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-hop-nhat-3q24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng năm 2024 Techcombank – phát hành ngày 21/10/2024 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2024-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/documents/techcombank-vas-bao-cao-tai-chinh-rieng-le-3q24-searchable.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng năm 2024 Techcombank – phát hành ngày 21/10/2024 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2022-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/TCB_30_6_2022_VFS_VAS_Conso_final_28560d2abb.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2022 – 21/07/2022 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2022-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/TCB_30_06_2022_VFS_VAS_Single_final_e9fd638992.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2022 – 21/07/2022 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-reviewed-2022-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Interim_2022_VFS_Conso_c6e8dd7153.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2022 đã soát xét – 12/08/2022 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-reviewed-2022-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Interim_2022_VFS_Single_ea3a49c433.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2022 đã soát xét – 12/08/2022 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2023-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-1-Q23-Searchable-dea016fdc9.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2023 Techcombank – phát hành ngày 25/04/2023 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2023-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-1-Q23-Searchable-57c9fc7708.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2023 Techcombank – phát hành ngày 25/04/2023 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-reviewed-2023-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-interim23-searchable-2f1a743387.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2023 đã soát xét – 14/08/2023 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-reviewed-2023-H1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-interim23-searchable-1-634e6a101c-59d8ba1ed1.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC bán niên năm 2023 đã soát xét – 14/08/2023 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2022-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/31_3_2022_BCTC_QUY_1_2022_HN_VIE_6e3a63277c.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2022 – 26/04/2022 | Hợp nhất (Bản ký và đóng dấu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2022-Q1",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/31_3_2022_BCTC_QUY_1_2022_RL_VIE_716e565e31.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 3 tháng đầu năm 2022 – 26/04/2022 | Riêng lẻ (Bản ký và đóng dấu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2022-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank_VAS_bao_cao_tai_chinh_hop_nhat_4_Q22_Searchable_8daf79b1b4.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2022 - 30/01/2023 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2022-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank_VAS_bao_cao_tai_chinh_rieng_le_4_Q22_Searchable_4e51c4e337.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2022 - 30/01/2023 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2022-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/TCB_30_9_2022_VFS_VAS_Conso_7646fcbcd3.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng năm 2022 – 20/10/2022 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2022-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/TCB_30_09_2022_VFS_VAS_Single_final_bc1b7579b7.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng năm 2022 – 20/10/2022 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2023-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-3-Q23-searchable-ae00f5f49a.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng năm 2023 – 23/10/2023 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2023-Q3",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-3-Q23-searchable-96c8039e17.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 9 tháng năm 2023 – 23/10/2023 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-audited-2022",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank_VAS_bao_cao_tai_chinh_hop_nhat_YE_22_1b61069c5d.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2022 đã kiểm toán - 30/03/2023 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-audited-2022",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank_VAS_bao_cao_tai_chinh_rieng_le_YE_22_0130b7c38a.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2022 đã kiểm toán - 30/03/2023 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2023-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-2-Q23-searchable-d7c0bd4dbc.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2023 Techcombank – phát hành ngày 24/07/2023 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2023-Q2",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/imported-assets/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-2-Q23-searchable-aec85249d5.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC 6 tháng đầu năm 2023 Techcombank – phát hành ngày 24/07/2023 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-consolidated-quarterly-2023-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/Techcombank-VAS-bao-cao-tai-chinh-hop-nhat-4-Q23-Searchable-d2a62acdcf.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2023 - 22/01/2024 | Hợp nhất (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "TCB-parent-quarterly-2023-Q4",
+      "source_url": "https://techcombank.com/content/dam/techcombank/public-site/vi/listviewdocument/Techcombank-VAS-bao-cao-tai-chinh-rieng-le-4-Q23-Searchable-c3258e098b.pdf",
+      "listing_url": "https://techcombank.com/graphql/execute.json/techcombank/viewDocumentList%3BcfPath%3D/content/dam/techcombank/master-data/vi/list-view-document/bao-cao-tai-chinh-vas/",
+      "listing_sha256": "0fddb8d3414e922e7e24ccf6a9e2525548f81a70eae5c8088231bc7dfdd25cde",
+      "observed_listing_title": "BCTC năm 2023 - 22/01/2024 | Riêng lẻ (Bản tra cứu)",
+      "discovery_basis": "official_public_listing_api",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "BID-annual-2024-vi",
+      "source_url": "https://bidv.com.vn/wps/wcm/connect/eb7a3711-c73a-4d38-9748-d1af44fe3342/Bao+cao+thuong+nien+BIDV+2024.FNL.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-eb7a3711-c73a-4d38-9748-d1af44fe3342-pt4s4YD",
+      "listing_url": "https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2025/bctn%2B2024",
+      "listing_sha256": "3483e4c51444a37de382a239b9b360e9aa9d3e80b2e5324d7fdf84aa62fd549c",
+      "observed_listing_title": "BIDV annual report 2024 Vietnamese",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    },
+    {
+      "record_id": "HPG-annual-2020-vi",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2021/04/bctn-2020-online.pdf",
+      "listing_url": "https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-thuong-nien",
+      "listing_sha256": "e4103d4e4a673b3cd0bc574b52b4bc1fd914f9c7b3d66500f1e4a4a373a43986",
+      "observed_listing_title": "Báo cáo thường niên năm 2020",
+      "discovery_basis": "official_listing_href",
+      "historical_time_or_revision_proof": false
+    }
+  ],
+  "prior_discovery_index": "data/corpus/v0.2/discovery_index.json",
+  "access_failures": [
+    {
+      "url": "https://sabeco.com.vn/co-dong/bao-cao-thuong-nien/2024-8",
+      "http_status": 403,
+      "action": "not_bypassed"
+    },
+    {
+      "url": "https://fpt.com/vi/nha-dau-tu/bao-cao-tai-chinh",
+      "http_status": 404,
+      "action": "not_configured"
+    }
+  ],
+  "selection_notes": [
+    "TCB financial 2022-2026: one official searchable variant per statement scope/period when available; signed variants not counted separately. Labels are observations, not reviewed historical timing or signature proofs.",
+    "TCB public API date is not treated as reporting end date: year/3/6/9-month, reviewed and audited descriptors in the title determine reporting_period.",
+    "Observed TCB signed Q1 2026 consolidated link points to a filename marked 2q26; selected the separately linked Q1 searchable PDF, subject to text inspection."
+  ]
+}

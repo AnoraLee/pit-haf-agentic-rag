@@ -5,6 +5,7 @@ import copy
 import hashlib
 import json
 import sqlite3
+from collections import Counter, defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -37,9 +38,9 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
     eligible = {delivery.evidence.version_id for delivery in deliver_as_of(
         store, decision_at=summary["created_at"]
     ).deliveries} & set(versions)
-    entries = []
+    entries, blob_sizes = [], {}
     for version in versions.values():
-        store.read_blob(version.content_hash)
+        blob_sizes[version.content_hash] = len(store.read_blob(version.content_hash))
         row = successful[version.version_id]
         if row["record_id"] != version.record_id or row["ticker"] != version.ticker:
             raise ValueError("Summary and registry document identity disagree")
@@ -51,6 +52,7 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
         )})
         entries.append({"metadata": version.model_dump(mode="json"),
                         "registry_metadata_sha256": hashes[version.version_id],
+                        "raw_byte_count": blob_sizes[version.content_hash],
                         "page_status": page_status})
     by_ticker, gaps = [], []
     for issuer in universe["issuers"]:
@@ -65,7 +67,14 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
                           "pages": sum(item["pages"] for item in page_stats),
                           "text_pages": sum(item["text_pages"] for item in page_stats),
                           "annual_years": annual,
+                          "financial_statement_periods": sorted({
+                              item.reporting_period for item in documents
+                              if item.document_type == "financial_statement" and item.reporting_period
+                          }),
                           "strict_eligible": sum(item.version_id in eligible for item in documents)})
+    by_blob = defaultdict(list)
+    for item in versions.values():
+        by_blob[item.content_hash].append(item.record_id)
     coverage = {
         "release_id": universe["release_id"], "run_kind": "development_corpus_coverage",
         "created_at": summary["created_at"], "research_prediction_results": False,
@@ -74,6 +83,16 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
             row["version_id"] for row in summary["documents"] if row.get("version_id")
         })),
         "acquired_documents": len(versions),
+        "unique_pdf_blobs": len(by_blob),
+        "unique_raw_byte_count": sum(blob_sizes.values()),
+        "duplicate_blob_groups": [{"content_hash": content_hash, "record_ids": sorted(records)}
+                                  for content_hash, records in sorted(by_blob.items())
+                                  if len(records) > 1],
+        "document_types": dict(Counter(item.document_type for item in versions.values())),
+        "financial_statement_scopes": dict(Counter(
+            item.statement_scope for item in versions.values()
+            if item.document_type == "financial_statement"
+        )),
         "failed_documents": summary["configured_documents"] - len({v.record_id for v in versions.values()}),
         "parser_failed_documents": summary.get("parser_failed_documents", summary["failed_documents"]),
         "curation_excluded_documents": summary.get("curation_excluded_documents", 0),
@@ -84,6 +103,12 @@ def build_release(store: SnapshotStore, summary: dict, universe: dict) -> tuple[
         "covered_annual_cells": len(tickers) * len(years) - len(gaps),
         "page_count": summary["page_count"], "text_page_count": summary["text_page_count"],
         "empty_page_count_no_ocr": summary["empty_page_count_no_ocr"],
+        "documents_without_extracted_text": sum(row["text_pages"] == 0 for row in successful_rows),
+        "ocr_backlog": sorted([
+            {"record_id": row["record_id"], "ticker": row["ticker"], "pages": row["pages"],
+             "text_pages": row["text_pages"], "pages_without_text": row["pages"] - row["text_pages"]}
+            for row in successful_rows if row["pages"] > row["text_pages"]
+        ], key=lambda row: (row["text_pages"] != 0, -row["pages_without_text"], row["record_id"])),
         "documents_with_parser_warnings": sum(bool(row.get("parser_warning_count"))
                                               for row in successful_rows),
         "documents_with_potentially_partial_text": sum(bool(
@@ -130,10 +155,11 @@ def curate_snapshot(summary_path: Path, output: Path, policy_path: Path) -> Path
     for rule in policy["exclude_versions"]:
         matches = [row for row in summary["documents"] if (
             row.get("version_id") == rule["version_id"] and row.get("content_hash") == rule["content_hash"]
-            and row.get("record_id") == rule["record_id"] and row.get("status") == "extracted"
+            and row.get("record_id") == rule["record_id"]
+            and row.get("status") in {"extracted", "curation_excluded"}
         )]
         if len(matches) != 1 or rule["version_id"] in excluded:
-            raise ValueError("Curation rule must identify exactly one successful immutable version")
+            raise ValueError("Curation rule must identify exactly one extracted/reviewed immutable version")
         excluded[rule["version_id"]] = rule
     output.mkdir(parents=True, exist_ok=False)
     retained = []
@@ -160,7 +186,9 @@ def curate_snapshot(summary_path: Path, output: Path, policy_path: Path) -> Path
         source_pages_sha256=hashlib.sha256(raw_pages).hexdigest(),
         curation_policy_sha256=hashlib.sha256(policy_bytes).hexdigest(),
         curation_created_at=datetime.now(UTC).isoformat(),
-        curation_excluded_documents=len(excluded), parser_failed_documents=summary["failed_documents"],
+        curation_excluded_documents=sum(row.get("status") == "curation_excluded"
+                                        for row in result["documents"]),
+        parser_failed_documents=summary.get("parser_failed_documents", summary["failed_documents"]),
         success_documents=len({row["record_id"] for row in accepted}),
         failed_documents=summary["configured_documents"]-len({row["record_id"] for row in accepted}),
         page_count=sum(row["pages"] for row in accepted),

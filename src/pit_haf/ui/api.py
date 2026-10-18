@@ -108,6 +108,8 @@ def create_app(root: Path | None = None) -> FastAPI:
                              "parser_warning_count": diagnostics.get("parser_warning_count"),
                              "potentially_partial_text_pages": diagnostics.get(
                                  "potentially_partial_text_pages", []),
+                             "potentially_partial_document": diagnostics.get(
+                                 "potentially_partial_document", False),
                              "quarantine_reasons": item.quarantine_reasons("strict")})
         coverage = None
         if data.snapshot:
