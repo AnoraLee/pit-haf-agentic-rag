@@ -99,6 +99,13 @@ không gọi đó là HTML tải trực tiếp từ báo hoặc proof lịch s�
 trang/lọc trên server; SQLite/FTS5 phục vụ truy xuất hiện tại, gateway vẫn lọc
 trước BM25 lịch sử. Xem [quy trình nhập và giới hạn](docs/research/13-large-corpus-v05.md).
 
+Đã có luồng **báo cáo doanh nghiệp một agent** từ tối đa ba đoạn nguồn, đối chiếu
+quote/số và tải Markdown/JSON trên bàn phân tích. Chạy CLI bằng
+`.\run.ps1 company-report --ticker HPG --query "lợi nhuận năm 2024"`.
+[Bộ 24 case phát triển](data/development/v0.1/DATA_CARD.md) cho FPT/HPG/VCB đã
+chuẩn bị phiếu chấm; 0 case được người duyệt. Cấu hình vẫn chưa freeze; chưa
+chạy dự báo lợi suất hoặc backtest. Xem [luồng và kiểm tra](docs/research/14-single-agent-development.md).
+
 Để mở rộng/tái trích corpus v0.2 dùng
 `.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`
 hoặc `--extract-existing` khi chỉ replay local. Công cụ `corpus-coverage` tạo

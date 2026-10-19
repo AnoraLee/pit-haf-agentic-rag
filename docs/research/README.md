@@ -1,6 +1,6 @@
 # Hồ sơ nghiên cứu PiT-HAF
 
-Cập nhật: 18/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
+Cập nhật: 19/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
 không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết quả khoa học.
 
 | Hồ sơ | Nội dung |
@@ -20,6 +20,7 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [11 — Corpus v0.3](11-corpus-v03.md) | Mở rộng nhiều năm/quý, 13 mã, tải theo batch, retry và bộ lọc kho lớn |
 | [12 — Corpus v0.4](12-news-corpus-v04.md) | Bổ sung bài báo, tin chính sách và tin doanh nghiệp; tách HTML/PDF, nguồn đăng và ngày quan sát |
 | [13 — Corpus v0.5](13-large-corpus-v05.md) | Thêm 30.000 bài có join URL/ngày gốc; catalog SQLite/FTS5, phân trang server và provenance bản nhập |
+| [14 — Single-agent development](14-single-agent-development.md) | Báo cáo nhiều đoạn có kiểm quote/số, 24 case chờ annotation và cấu hình phát triển chưa freeze |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

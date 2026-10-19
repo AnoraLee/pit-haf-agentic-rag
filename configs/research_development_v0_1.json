@@ -1,0 +1,31 @@
+{
+  "protocol_id": "pit-haf-development-0.1",
+  "status": "development_not_frozen",
+  "approved_for_final_experiments": false,
+  "pilot_tickers": ["FPT", "HPG", "VCB"],
+  "proposed_primary_task": "Báo cáo doanh nghiệp tại decision_at và hướng lợi suất 5 phiên sau sự kiện BCTC hợp nhất",
+  "proposed_horizon_sessions": 5,
+  "proposed_labels": {"UP": "return > 0", "DOWN": "return <= 0"},
+  "ABSTAIN": "Hành vi từ chối của hệ thống, không phải nhãn thị trường thứ ba",
+  "current_deliverable": "Báo cáo bằng chứng một agent; chưa triển khai dự báo lợi suất",
+  "case_pack_purpose": "Development and human annotation preparation; not held-out test or human gold",
+  "historical_policy": "strict gateway; no inferred availability or revision proof",
+  "case_queries": [
+    {"id": "income", "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?", "query": "lợi nhuận trước thuế sau thuế năm 2024"},
+    {"id": "revenue", "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?", "query": "doanh thu tổng thu nhập lãi thuần năm 2024"},
+    {"id": "growth", "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?", "query": "tăng trưởng cùng kỳ năm 2024"},
+    {"id": "assets", "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?", "query": "tổng tài sản nợ phải trả dư nợ năm 2024"},
+    {"id": "cash", "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?", "query": "tiền lưu chuyển tiền thuần hoạt động kinh doanh năm 2024"},
+    {"id": "operations", "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?", "query": "hoạt động kinh doanh phân khúc sản lượng dịch vụ năm 2024"},
+    {"id": "risk", "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?", "query": "rủi ro khó khăn thách thức năm 2024"},
+    {"id": "outlook", "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?", "query": "kế hoạch mục tiêu triển vọng năm 2025"}
+  ],
+  "report_budget": {"max_passages": 3, "max_context_characters": 2100, "max_passage_characters": 700, "max_llm_calls": 1, "num_ctx": 4096, "num_predict": 1024, "max_retries": 0},
+  "unresolved_before_final_freeze": [
+    "Giảng viên xác nhận tác vụ, universe và khoảng năm",
+    "Timestamp/revision proofs của cohort lịch sử",
+    "Lịch phiên, corporate actions, adjustment và cách tính nhãn",
+    "Chronological split, purge/embargo, gold và số mẫu",
+    "Model/config cuối, baseline và ngân sách thực nghiệm"
+  ]
+}

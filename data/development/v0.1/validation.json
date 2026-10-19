@@ -1,0 +1,184 @@
+{
+  "run_kind": "local_development_validation_not_human_gold_or_predictive_evaluation",
+  "checked_at": "2026-10-19T02:53:12.275445+00:00",
+  "python": "3.12.14",
+  "software_checks": {
+    "pytest_passed": 294,
+    "pytest_failed": 0,
+    "pytest_warnings": 2,
+    "ruff": "passed",
+    "frontend_build": "passed; two existing lucide directive warnings",
+    "prettier_check": "passed",
+    "github_actions": "not_checked_this_run"
+  },
+  "case_pack": {
+    "pack_id": "20261019T024426Z-202a2c66",
+    "cases": 24,
+    "by_ticker": {
+      "FPT": 8,
+      "HPG": 8,
+      "VCB": 8
+    },
+    "human_reviewed_cases": 0,
+    "source_cases_sha256": "427f1fd99d3edf184e6937549496ce103c43873b428d5c1a23e874da775846f3",
+    "public_index_sha256": "e08d4d43b5809fd51dd2460c1fae56eb9af80c7187056df24e325690102e31f4",
+    "no_full_text_or_answers_in_public_index": true,
+    "all_case_contexts_within_budget": true
+  },
+  "real_cli_smoke": {
+    "run_kind": "real_local_development_report_smoke_not_model_evaluation",
+    "created_at": "2026-10-19T02:41:58.577736+00:00",
+    "runs": [
+      {
+        "run_id": "20261019T024037Z-c16f3fe2",
+        "ticker": "FPT",
+        "status": "abstained",
+        "llm_calls": 1,
+        "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T024037Z-c16f3fe2",
+        "claims": 0,
+        "rejected_claims": 2,
+        "wall_seconds": 22.651247700000113,
+        "model_digest_stable": true,
+        "error": null
+      },
+      {
+        "run_id": "20261019T024107Z-199a933a",
+        "ticker": "HPG",
+        "status": "completed_with_citations",
+        "llm_calls": 1,
+        "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T024107Z-199a933a",
+        "claims": 3,
+        "rejected_claims": 0,
+        "wall_seconds": 20.51949999999988,
+        "model_digest_stable": true,
+        "error": null
+      },
+      {
+        "run_id": "20261019T024129Z-901b6827",
+        "ticker": "VCB",
+        "status": "abstained",
+        "llm_calls": 1,
+        "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T024129Z-901b6827",
+        "claims": 0,
+        "rejected_claims": 3,
+        "wall_seconds": 19.061332599999787,
+        "model_digest_stable": true,
+        "error": null
+      }
+    ],
+    "strict_check": {
+      "run_id": "20261019T024157Z-3d4c8313",
+      "status": "abstained",
+      "llm_calls": 0,
+      "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T024157Z-3d4c8313"
+    },
+    "semantic_support": "not_assessed",
+    "prediction_or_backtest_results": false
+  },
+  "post_run_integrity_review": {
+    "run_kind": "post_run_local_integrity_review_not_model_accuracy",
+    "runs": [
+      {
+        "run_id": "20261019T024037Z-c16f3fe2",
+        "ticker": "FPT",
+        "status": "abstained",
+        "llm_calls": 1,
+        "claims": 0,
+        "report_sha256": "cb9206ade5eb67f2ff30f6334e3d54ce9bf6c7d6cfa26273852efec0f0431fd0",
+        "generation_request_sha256": "cbf8b75d4babb3d88e9b5abdfa602005921419f7b13ac333c6df0d919a6a5214",
+        "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "wall_seconds": 22.651247700000113
+      },
+      {
+        "run_id": "20261019T024107Z-199a933a",
+        "ticker": "HPG",
+        "status": "completed_with_citations",
+        "llm_calls": 1,
+        "claims": 3,
+        "report_sha256": "f1adfb51b4b34f0bef3b00e64281176f0d4fb631d89ce506eec4b3b77e80cc42",
+        "generation_request_sha256": "5cef924b0fdf7a5c328ce824241fd7e10fca9714c0e30cc043f8a1cb37cd2b27",
+        "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "wall_seconds": 20.51949999999988
+      },
+      {
+        "run_id": "20261019T024129Z-901b6827",
+        "ticker": "VCB",
+        "status": "abstained",
+        "llm_calls": 1,
+        "claims": 0,
+        "report_sha256": "30f6fa6ab215b76f0ac803044dabcef921f771ac737e0c92d5617f7209777361",
+        "generation_request_sha256": "15cacb5534a04a36eb585fd08d4d10fd0b170b63e03cdf88e3cb000b035e07b4",
+        "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "wall_seconds": 19.061332599999787
+      },
+      {
+        "run_id": "20261019T024157Z-3d4c8313",
+        "ticker": "FPT",
+        "status": "abstained",
+        "llm_calls": 0,
+        "claims": 0,
+        "report_sha256": "4a499a4c82c4d96173a1cffd73d17c76c815bd4c76c43308234a01a0cd4a732b",
+        "generation_request_sha256": null,
+        "model_digest": null,
+        "wall_seconds": null
+      },
+      {
+        "run_id": "20261019T024646Z-a7ed9702",
+        "ticker": "HPG",
+        "status": "abstained",
+        "llm_calls": 1,
+        "claims": 0,
+        "report_sha256": "cbfedb31f7f570f7f0ef9fad7b3ef87b770b9cee7d355f253f848b8ebecd1021",
+        "generation_request_sha256": "5cef924b0fdf7a5c328ce824241fd7e10fca9714c0e30cc043f8a1cb37cd2b27",
+        "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "wall_seconds": 21.345457700000225
+      }
+    ],
+    "all_original_requests_responses_source_blobs_and_quote_checks_match": true,
+    "new_inference_performed": false,
+    "semantic_support": "not_assessed"
+  },
+  "http_checks": {
+    "run_kind": "real_local_http_checks_not_prediction_or_quality_evaluation",
+    "cases": 24,
+    "human_reviewed_cases": 0,
+    "history_count_before_http_strict_run": 5,
+    "saved_report_read_without_inference": "20261019T024107Z-199a933a",
+    "saved_report_claims": 3,
+    "strict_run_id": "20261019T025054Z-bd7a5be3",
+    "strict_llm_calls": 0,
+    "strict_gateway_audit_counts": {
+      "quarantined": 30956
+    },
+    "strict_response_bytes": 2354,
+    "saved_response_bytes": 76723,
+    "workspace_response_bytes": 175976,
+    "active_documents_unchanged": 30939
+  },
+  "browser_checks": {
+    "url": "http://localhost:8501/#analysis",
+    "current_report_run": "20261019T024646Z-a7ed9702",
+    "current_report_status": "abstained",
+    "history_replayed_run": "20261019T024107Z-199a933a",
+    "history_replayed_claims": 3,
+    "all_six_run_statuses_visible_in_history": true,
+    "screenshot_local": "outputs/ui-preview/company-report-v01.png",
+    "screenshot_sha256": "f01913797ae7e7fc85e4df8ce10467fd6d00af9f5ce40c2bb5961c34721ab46a"
+  },
+  "same_request_same_digest_different_hpg_outputs_observed": true,
+  "source_file_sha256": {
+    "src/pit_haf/research/reports.py": "45248a8df9062e942683f151a2c715ae7ca02500a918231a758b765c3bf02424",
+    "src/pit_haf/research/casepack.py": "7746c99b3bc0b0d6e2708b448101095470b061cec8812044cd82b07e6698f9a3",
+    "src/pit_haf/verification/arithmetic.py": "5f161dde585c72189b8a6162afdac5fcb1d966438485f5c9a670abf3c8c6d60e",
+    "src/pit_haf/llm/ollama.py": "d837e929ba0ca002fc2e1a17eb373174f79a8f3650a07e3219d210cf46bbf9a3",
+    "src/pit_haf/ui/api.py": "ef4b6b8affffa5b9bdd51ef870f4f7361ad2ed36679887e55ecd571378a22596",
+    "frontend/src/main.jsx": "680fc2c82b445b8ff5369c936d0aebca32fcae793a664a0cd6cdd7766dc19d18",
+    "tests/test_company_reports.py": "76f6020c335d290c8fc2b25260f618a27f5428b735c468a37480b2088974988f"
+  },
+  "protocol_frozen": false,
+  "semantic_support": "not_assessed",
+  "human_gold_cases": 0,
+  "prediction_or_backtest_results": false,
+  "historical_pit_eligible_documents": 0,
+  "calculations_on_real_reviewed_facts_performed": false
+}

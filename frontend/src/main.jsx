@@ -1063,7 +1063,7 @@ function DocumentDrawer({ doc, onClose }) {
     </div>
   );
 }
-function Analysis({ ticker, initialQuery }) {
+function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
   const [query, setQuery] = useState(
     initialQuery || "doanh thu lợi nhuận năm 2024",
   );
@@ -1075,10 +1075,33 @@ function Analysis({ ticker, initialQuery }) {
   const [result, setResult] = useState(null),
     [busy, setBusy] = useState(""),
     [error, setError] = useState("");
+  const [report, setReport] = useState(null),
+    [development, setDevelopment] = useState(null),
+    [history, setHistory] = useState([]);
+  async function loadHistory() {
+    try {
+      setHistory((await api("research/reports")).reports);
+    } catch {
+      setHistory([]);
+    }
+  }
+  useEffect(() => {
+    let active = true;
+    api("research/development")
+      .then((r) => {
+        if (active) setDevelopment(r);
+      })
+      .catch(() => {});
+    loadHistory();
+    return () => {
+      active = false;
+    };
+  }, []);
   const reset = () => {
     setSearch(null);
     setPayload(null);
     setResult(null);
+    setReport(null);
     setError("");
   };
   useEffect(reset, [ticker]);
@@ -1126,6 +1149,27 @@ function Analysis({ ticker, initialQuery }) {
     }
   }
   const hit = search?.passages[selected];
+  async function createReport() {
+    setBusy("report");
+    setError("");
+    setReport(null);
+    try {
+      setReport(
+        await api("research/report", {
+          query,
+          ticker,
+          mode,
+          decision_at:
+            mode === "strict_point_in_time" ? `${cutoff}+07:00` : null,
+        }),
+      );
+      await loadHistory();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy("");
+    }
+  }
   return (
     <>
       <div className="page-heading">
@@ -1183,6 +1227,24 @@ function Analysis({ ticker, initialQuery }) {
           </label>
           <div className="analysis-options">
             <label>
+              Doanh nghiệp
+              <select
+                aria-label="Doanh nghiệp phân tích"
+                value={ticker}
+                disabled={!!busy}
+                onChange={(e) => onTickerChange(e.target.value)}
+              >
+                <option value="all">Tất cả doanh nghiệp</option>
+                {(tickers || ["FPT", "HPG", "VCB"])
+                  .filter((t) => t !== "MARKET")
+                  .map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+              </select>
+            </label>
+            <label>
               Phạm vi thời gian
               <select
                 aria-label="Chế độ thời gian"
@@ -1230,6 +1292,78 @@ function Analysis({ ticker, initialQuery }) {
           : "Chế độ khám phá nội dung hiện tại. Kết quả không phải phân tích tại thời điểm lịch sử; chưa sinh dự báo hoặc khuyến nghị giao dịch."}
       </Notice>
       {error && <Notice tone="error">{error}</Notice>}
+      <Panel
+        title="Báo cáo doanh nghiệp"
+        subtitle="Một agent tổng hợp tối đa ba đoạn nguồn, kiểm tra trích dẫn và giữ dấu vết lần chạy."
+      >
+        <div className="extract-action">
+          <span>
+            {ticker === "all"
+              ? "Chọn một doanh nghiệp ở bộ lọc bên trên để lập báo cáo."
+              : `${ticker} · báo cáo bằng chứng cho câu hỏi đang nhập`}
+          </span>
+          <button
+            className="button primary"
+            onClick={createReport}
+            disabled={!!busy || ticker === "all" || query.trim().length < 2}
+          >
+            {busy === "report" ? (
+              <Loader2 className="spin" size={16} />
+            ) : (
+              <FileCheck2 size={16} />
+            )}
+            {busy === "report"
+              ? "Đang lập báo cáo…"
+              : "Lập báo cáo doanh nghiệp"}
+          </button>
+        </div>
+        <p className="footnote">
+          Trích dẫn được đối chiếu nguyên văn; diễn giải cần người duyệt. Dự báo
+          lợi suất và chỉ tiêu từ số liệu đã duyệt chưa được chạy.
+          {development?.case_pack &&
+            ` Bộ phát triển có ${development.case_pack.cases} case, ${development.case_pack.human_reviewed_cases} case được người duyệt tại thời điểm tạo bộ.`}
+        </p>
+        {report && <CompanyReportResult result={report} />}
+        {!!history.length && (
+          <details className="audit-details">
+            <summary>Lịch sử báo cáo · gồm cả lượt bị chặn</summary>
+            <p className="footnote">
+              Mở kết quả đã lưu, không gọi lại mô hình. Nội dung thuộc câu hỏi,
+              doanh nghiệp và chế độ của chính lần chạy đó.
+            </p>
+            {history.map((r) => (
+              <div key={r.run_id} className="trace-row">
+                <span>
+                  {r.ticker || "—"} ·{" "}
+                  {r.status === "completed_with_citations"
+                    ? `${r.claims} trích dẫn`
+                    : r.status === "integrity_failed"
+                      ? "Lỗi toàn vẹn"
+                      : "Bị chặn / từ chối"}{" "}
+                  · {r.run_id}
+                </span>
+                <button
+                  className="text-button"
+                  disabled={!!busy || r.status === "integrity_failed"}
+                  onClick={async () => {
+                    setBusy("history");
+                    setError("");
+                    try {
+                      setReport(await api(`research/reports/${r.run_id}`));
+                    } catch (err) {
+                      setError(err.message);
+                    } finally {
+                      setBusy("");
+                    }
+                  }}
+                >
+                  Mở báo cáo {r.run_id}
+                </button>
+              </div>
+            ))}
+          </details>
+        )}
+      </Panel>
       {!search && !busy && (
         <Empty title="Mỗi nhận định bắt đầu từ một nguồn" icon={FileCheck2}>
           Nhập nội dung cần tìm để xem các đoạn phù hợp, đọc nguồn và chạy trích
@@ -1329,6 +1463,96 @@ function Analysis({ ticker, initialQuery }) {
         </div>
       )}
     </>
+  );
+}
+function CompanyReportResult({ result }) {
+  const ready = result.status === "completed_with_citations";
+  function download(kind) {
+    const content =
+      kind === "md" ? result.markdown : JSON.stringify(result, null, 2);
+    const url = URL.createObjectURL(
+      new Blob([content], {
+        type:
+          kind === "md" ? "text/markdown;charset=utf-8" : "application/json",
+      }),
+    );
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${result.ticker}-${result.run_id}.${kind}`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  return (
+    <div className="extraction-result">
+      <div className="result-heading">
+        <h3>Báo cáo bằng chứng {result.ticker}</h3>
+        <Badge tone={ready ? "green" : "amber"}>
+          {ready
+            ? `${result.claims.length} trích dẫn đã đối chiếu`
+            : result.status === "failed"
+              ? "Không chạy được"
+              : "Từ chối vì thiếu bằng chứng"}
+        </Badge>
+      </div>
+      <p className="footnote">
+        Câu hỏi của lần chạy: {result.question} ·{" "}
+        {result.mode === "strict_point_in_time" ? "PiT strict" : "Đọc hiện tại"}
+      </p>
+      {result.error && <Notice tone="error">{result.error}</Notice>}
+      {result.claims.map((claim, i) => (
+        <div key={i} className="report-claim">
+          <p className="summary-label">
+            Diễn giải của mô hình · chưa duyệt ngữ nghĩa
+          </p>
+          <p>{claim.statement}</p>
+          <blockquote>
+            {claim.verification.literal_quote.source_quote}
+          </blockquote>
+          <a
+            className="source-link"
+            href={claim.citation.source_url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {claim.evidence_id} · Trang/mục {claim.citation.page} · ký tự{" "}
+            {claim.citation.start}–{claim.citation.end}{" "}
+            <ExternalLink size={13} />
+          </a>
+        </div>
+      ))}
+      {!!result.missing_information.length && (
+        <Notice>
+          <strong>Mô hình báo còn thiếu · chưa duyệt ngữ nghĩa</strong>
+          <ul>
+            {result.missing_information.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </Notice>
+      )}
+      <p className="footnote">
+        {result.llm_calls} lần gọi mô hình ·{" "}
+        {result.historical_availability_validated
+          ? "Nguồn vượt gateway lịch sử"
+          : "Chưa xác minh khả dụng lịch sử"}{" "}
+        · Chưa sinh dự báo lợi suất.
+      </p>
+      <div className="trace-row">
+        <span>
+          <Clock3 size={13} />{" "}
+          {result.generation
+            ? `${result.generation.wall_seconds.toFixed(1)} giây`
+            : "Chưa có inference"}{" "}
+          · {result.run_id}
+        </span>
+        <button className="text-button" onClick={() => download("md")}>
+          <Download size={14} /> Tải báo cáo
+        </button>
+        <button className="text-button" onClick={() => download("json")}>
+          <Download size={14} /> Tải dấu vết JSON
+        </button>
+      </div>
+    </div>
   );
 }
 function ExtractionResult({ result }) {
@@ -2114,6 +2338,12 @@ function App() {
                 <Analysis
                   key={analysisQuery}
                   ticker={ticker}
+                  onTickerChange={setTicker}
+                  tickers={
+                    data.catalog?.facets?.tickers || [
+                      ...new Set(data.documents.map((d) => d.ticker)),
+                    ]
+                  }
                   initialQuery={analysisQuery}
                 />
               )}

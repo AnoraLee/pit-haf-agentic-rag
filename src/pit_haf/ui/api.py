@@ -21,6 +21,7 @@ from pit_haf.data.gateway import deliver_as_of
 from pit_haf.data.snapshots import SnapshotStore
 from pit_haf.data.vnstock_provider import MarketDataError, VietnamMarketDataProvider
 from pit_haf.llm.ollama import http_request, sha256
+from pit_haf.research.reports import protocol, report_history, run_report, saved_report
 from pit_haf.ui.workspace import (
     extract_passage,
     load_corpus,
@@ -53,6 +54,10 @@ class AnalysisRequest(SearchRequest):
     version_id: str
     page: int = Field(ge=1)
     start: int = Field(ge=0)
+
+
+class CompanyReportRequest(SearchRequest):
+    ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
 
 
 def create_app(root: Path | None = None) -> FastAPI:
@@ -262,6 +267,39 @@ def create_app(root: Path | None = None) -> FastAPI:
                                    })
         finally:
             model_lock.release()
+
+    @app.get("/api/research/development")
+    def development_status():
+        index_path = root / "data/development/v0.1/case_index.json"
+        index = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else None
+        return {"protocol": protocol(root), "case_pack": index}
+
+    @app.post("/api/research/report")
+    def company_report(body: CompanyReportRequest):
+        data, hits, allowed, audit = retrieve(body)
+        if not model_lock.acquire(blocking=False):
+            raise HTTPException(409, "Ollama đang xử lý một yêu cầu. Hãy đợi hoàn tất.")
+        try:
+            return run_report(root, data, hits, query=body.query, ticker=body.ticker, mode=body.mode,
+                              decision_at=body.decision_at.isoformat() if body.decision_at else None,
+                              allowed_versions=allowed, retrieval_audit=audit)
+        except (OSError, ValueError) as exc:
+            raise HTTPException(503, "Không lập được báo cáo: " + str(exc)) from exc
+        finally:
+            model_lock.release()
+
+    @app.get("/api/research/reports")
+    def company_report_history():
+        return {"reports": report_history(root)}
+
+    @app.get("/api/research/reports/{run_id}")
+    def company_saved_report(run_id: str):
+        try:
+            return saved_report(root, run_id)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, "Không tìm thấy báo cáo đã hoàn tất.") from exc
+        except (OSError, ValueError, KeyError) as exc:
+            raise HTTPException(503, "Không đọc được báo cáo toàn vẹn: " + str(exc)) from exc
 
     @app.get("/api/market")
     def market(ticker: str, start: date, end: date, include_index: bool = False):

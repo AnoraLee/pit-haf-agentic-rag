@@ -164,11 +164,12 @@ class OllamaAdapter:
         write_json(destination / "inspection.json", result)
         return result
 
-    def extract(self, messages: list[dict[str, str]], destination: Path) -> dict:
+    def extract(self, messages: list[dict[str, str]], destination: Path, *,
+                schema: type[BaseModel] = Extraction) -> dict:
         destination.mkdir(parents=True, exist_ok=False)
         request = {
             "model": self.config.model, "messages": messages,
-            "format": Extraction.model_json_schema(), "stream": False,
+            "format": schema.model_json_schema(), "stream": False,
             "think": self.config.think, "keep_alive": self.config.keep_alive,
             "options": {"num_ctx": self.config.num_ctx, "num_predict": self.config.num_predict,
                         "temperature": self.config.temperature, "seed": self.config.seed},
@@ -233,7 +234,7 @@ class OllamaAdapter:
                                                     "retryable": True})
                                 else:
                                     try:
-                                        output = Extraction.model_validate(parsed)
+                                        output = schema.model_validate(parsed)
                                     except ValidationError as exc:
                                         attempt.update({"failure": "schema_validation", "error": str(exc),
                                                         "retryable": True})

@@ -6,3 +6,5 @@ configs/universe_v0_4.json -text whitespace=blank-at-eol,blank-at-eof,space-befo
 src/pit_haf/data/*.py text eol=lf
 data/corpus/v0.5/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 configs/dataset_sources_v0_5.json text eol=lf
+configs/research_development_v0_1.json text eol=lf
+data/development/v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
