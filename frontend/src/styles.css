@@ -1,3 +1,66 @@
+.review-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 10px 0;
+}
+.review-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+.review-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  font-size: 13px;
+}
+.review-field input,
+.review-field select,
+.review-field textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--ink);
+  background: white;
+  font: inherit;
+}
+.review-field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.review-answer {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.review-answer legend {
+  font-size: 13px;
+  padding: 0 6px;
+}
+.review-declaration {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+}
+.review-declaration input {
+  width: 16px;
+  min-height: 16px;
+  height: 16px;
+  flex: none;
+}
 :root {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   color: #23382f;

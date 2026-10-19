@@ -1,0 +1,17 @@
+{
+  "run_kind": "development_metadata_scope_diagnostic_not_retrieval_accuracy",
+  "same_question_ids": 24,
+  "same_queries": true,
+  "baseline_pack_id": "20261019T024426Z-202a2c66",
+  "scoped_pack_id": "20261019T030531Z-8ef1bf33",
+  "baseline": {
+    "references": 72,
+    "matching_requested_pdf_issuer_period_metadata": 36
+  },
+  "scoped": {
+    "references": 72,
+    "matching_requested_pdf_issuer_period_metadata": 72
+  },
+  "human_gold_cases": 0,
+  "semantic_relevance_validated": false
+}

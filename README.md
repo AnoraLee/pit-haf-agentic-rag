@@ -106,6 +106,12 @@ quote/số và tải Markdown/JSON trên bàn phân tích. Chạy CLI bằng
 chuẩn bị phiếu chấm; 0 case được người duyệt. Cấu hình vẫn chưa freeze; chưa
 chạy dự báo lợi suất hoặc backtest. Xem [luồng và kiểm tra](docs/research/14-single-agent-development.md).
 
+Luồng báo cáo nay lọc PDF đúng mã chính và kỳ báo cáo trước xếp hạng; tin bài
+không được dùng năm đăng để giả làm kỳ kế toán. Có bộ lọc nguồn/kỳ/hợp nhất,
+màn hình chấm 24 case, mở PDF đã lưu đúng phiên bản và lưu revision chấm local.
+[Bộ case v0.2](data/development/v0.2/DATA_CARD.md) vẫn chờ người duyệt; xem
+[cách dùng và kết quả phát triển](docs/research/15-scoped-retrieval-and-review.md).
+
 Để mở rộng/tái trích corpus v0.2 dùng
 `.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`
 hoặc `--extract-existing` khi chỉ replay local. Công cụ `corpus-coverage` tạo

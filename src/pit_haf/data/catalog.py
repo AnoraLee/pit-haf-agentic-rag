@@ -217,11 +217,14 @@ class Catalog:
         return Corpus(tuple(versions.values()), tuple(pages.values()), snapshot=self.snapshot,
                       document_diagnostics=tuple(diagnostics.values()))
 
-    def search(self, query, *, ticker=None, allowed_versions=None, limit=6):
+    def search(self, query, *, ticker=None, allowed_versions=None, limit=6, scope=None):
+        scope_where, scope_params = scope.sql() if scope else ("1=1", [])
         if allowed_versions is not None:
             identities = []
             with self.connect() as db:
-                for version_id in sorted(allowed_versions):
+                # Intersect metadata before reading pages or computing historical statistics.
+                scoped_ids = {r[0] for r in db.execute("SELECT version_id FROM documents d WHERE " + scope_where, scope_params)}
+                for version_id in sorted(allowed_versions & scoped_ids):
                     identities.extend((version_id, row[0]) for row in db.execute("SELECT page FROM pages WHERE version_id=?", (version_id,)))
             subset = self.subset(identities)
             return subset, search_passages(subset, query, ticker=ticker, allowed_versions=allowed_versions, limit=limit)
@@ -230,9 +233,11 @@ class Catalog:
             return Corpus(snapshot=self.snapshot), []
         expression = " OR ".join('"' + term + '"' for term in terms)
         clause = " AND EXISTS(SELECT 1 FROM links l WHERE l.version_id=passages.version_id AND l.ticker=?)" if ticker else ""
+        if scope:
+            clause += " AND EXISTS(SELECT 1 FROM documents d WHERE d.version_id=passages.version_id AND " + scope_where + ")"
         with self.connect() as db:
             rows = db.execute("SELECT *,bm25(passages) score FROM passages WHERE passages MATCH ?" + clause +
-                              " ORDER BY score,version_id,page,start LIMIT ?", [expression, *([ticker] if ticker else []), limit]).fetchall()
+                              " ORDER BY score,version_id,page,start LIMIT ?", [expression, *([ticker] if ticker else []), *scope_params, limit]).fetchall()
         hits = [Passage(r["version_id"], r["record_id"], r["ticker"], int(r["page"]), int(r["start"]),
                         int(r["end"]), r["text"], r["page_text_hash"], -r["score"]) for r in rows]
         subset = self.subset((h.version_id, h.page) for h in hits)

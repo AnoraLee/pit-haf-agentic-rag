@@ -31,6 +31,7 @@ import {
   Zap,
 } from "lucide-react";
 import "./styles.css";
+import CaseReview from "./CaseReview";
 
 const NAV = [
   ["overview", "Tổng quan", LayoutDashboard],
@@ -1069,6 +1070,9 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
   );
   const [mode, setMode] = useState("exploratory_current");
   const [cutoff, setCutoff] = useState("2025-04-01T16:00");
+  const [reportPeriod, setReportPeriod] = useState("auto"),
+    [reportSources, setReportSources] = useState("issuer_reports"),
+    [reportScope, setReportScope] = useState("all");
   const [search, setSearch] = useState(null),
     [payload, setPayload] = useState(null),
     [selected, setSelected] = useState(0);
@@ -1159,6 +1163,9 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
           query,
           ticker,
           mode,
+          reporting_period: reportPeriod === "auto" ? null : reportPeriod,
+          source_policy: reportSources,
+          statement_scope: reportScope,
           decision_at:
             mode === "strict_point_in_time" ? `${cutoff}+07:00` : null,
         }),
@@ -1296,6 +1303,68 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
         title="Báo cáo doanh nghiệp"
         subtitle="Một agent tổng hợp tối đa ba đoạn nguồn, kiểm tra trích dẫn và giữ dấu vết lần chạy."
       >
+        <div className="analysis-options">
+          <label>
+            Kỳ báo cáo
+            <select
+              aria-label="Kỳ báo cáo của báo cáo doanh nghiệp"
+              value={reportPeriod}
+              disabled={!!busy}
+              onChange={(e) => {
+                setReportPeriod(e.target.value);
+                setReport(null);
+              }}
+            >
+              <option value="auto">Tự nhận diện từ câu hỏi</option>
+              <option value="all">Không lọc kỳ</option>
+              {Array.from({ length: 11 }, (_, i) => 2026 - i).map((y) => (
+                <option key={y} value={String(y)}>
+                  {y}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Nguồn cho báo cáo
+            <select
+              aria-label="Nguồn cho báo cáo"
+              value={reportSources}
+              disabled={!!busy}
+              onChange={(e) => {
+                setReportSources(e.target.value);
+                setReport(null);
+              }}
+            >
+              <option value="issuer_reports">
+                Báo cáo PDF của doanh nghiệp
+              </option>
+              <option value="all_linked">
+                Tất cả nguồn được gắn mã liên quan
+              </option>
+            </select>
+          </label>
+          <label>
+            Phạm vi số liệu
+            <select
+              aria-label="Phạm vi số liệu báo cáo"
+              value={reportScope}
+              disabled={!!busy}
+              onChange={(e) => {
+                setReportScope(e.target.value);
+                setReport(null);
+              }}
+            >
+              <option value="all">Tất cả phạm vi</option>
+              <option value="consolidated">Hợp nhất</option>
+              <option value="parent">Công ty mẹ / riêng lẻ</option>
+            </select>
+          </label>
+        </div>
+        <p className="footnote">
+          Kỳ kế toán lọc theo metadata PDF; năm đăng bài báo không thay thế kỳ
+          báo cáo. Không có nguồn đúng kỳ thì dừng, không tự chuyển sang kỳ
+          khác.
+        </p>
         <div className="extract-action">
           <span>
             {ticker === "all"
@@ -1364,6 +1433,7 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
           </details>
         )}
       </Panel>
+      <CaseReview api={api} Panel={Panel} Notice={Notice} />
       {!search && !busy && (
         <Empty title="Mỗi nhận định bắt đầu từ một nguồn" icon={FileCheck2}>
           Nhập nội dung cần tìm để xem các đoạn phù hợp, đọc nguồn và chạy trích
@@ -1498,6 +1568,47 @@ function CompanyReportResult({ result }) {
         Câu hỏi của lần chạy: {result.question} ·{" "}
         {result.mode === "strict_point_in_time" ? "PiT strict" : "Đọc hiện tại"}
       </p>
+      {result.retrieval_scope && (
+        <p className="footnote">
+          Kỳ được lọc:{" "}
+          {result.retrieval_scope.reporting_period || "Không giới hạn"} ·{" "}
+          {result.retrieval_scope.source_policy === "issuer_reports"
+            ? "Báo cáo của chính doanh nghiệp"
+            : "Nguồn gắn mã liên quan"}{" "}
+          ·{" "}
+          {{
+            all: "Tất cả phạm vi",
+            consolidated: "Hợp nhất",
+            parent: "Công ty mẹ / riêng lẻ",
+          }[result.retrieval_scope.statement_scope] ||
+            result.retrieval_scope.statement_scope}
+        </p>
+      )}
+      {!!result.sources?.length && (
+        <details className="audit-details">
+          <summary>Xem các đoạn nguồn đã giao cho model</summary>
+          {result.sources.map((s) => (
+            <div key={s.evidence_id}>
+              <p>
+                <strong>
+                  {s.evidence_id} · {s.source.ticker} ·{" "}
+                  {s.source.reporting_period || "Chưa rõ kỳ"}
+                </strong>{" "}
+                · {s.source.title}
+              </p>
+              <a
+                className="source-link"
+                href={s.source.source_url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Nguồn gốc · trang/mục {s.passage.page}
+              </a>
+              <pre className="passage-text">{s.passage.text}</pre>
+            </div>
+          ))}
+        </details>
+      )}
       {result.error && <Notice tone="error">{result.error}</Notice>}
       {result.claims.map((claim, i) => (
         <div key={i} className="report-claim">

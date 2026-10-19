@@ -10,12 +10,20 @@ from pathlib import Path
 from pit_haf.data.catalog import Catalog
 from pit_haf.data.evidence import aware
 from pit_haf.data.hub import file_sha
+from pit_haf.data.retrieval_scope import resolve_scope
 from pit_haf.llm.ollama import sha256, write_json
 from pit_haf.research.doctor import capture_repository
-from pit_haf.research.reports import PROTOCOL, ReportDraft, protocol, select_context, verify_claims
+from pit_haf.research.reports import (
+    PROTOCOL,
+    RETRIEVAL_POLICY,
+    ReportDraft,
+    protocol,
+    select_context,
+    verify_claims,
+)
 
 
-def build_pack(root, output_base=None):
+def build_pack(root, output_base=None, *, scoped=False):
     settings = protocol(root)
     paths = sorted(root.glob("outputs/milestone-1/data-pilot/*/summary.json"),
                    key=lambda p: p.stat().st_mtime_ns, reverse=True)
@@ -26,20 +34,26 @@ def build_pack(root, output_base=None):
     destination = (output_base or root / "outputs/development-cases") / pack_id
     destination.mkdir(parents=True, exist_ok=False)
     repository = capture_repository(root, destination)
+    retrieval_policy = json.loads((root / RETRIEVAL_POLICY).read_text(encoding="utf-8")) if scoped else None
     cases, index, annotations = [], [], []
     for ticker in settings["pilot_tickers"]:
         for task in settings["case_queries"]:
-            data, hits = catalog.search(task["query"], ticker=ticker)
-            selected = select_context(data, hits, ticker, mode="exploratory_current")
+            scope = resolve_scope(task["query"], ticker, reporting_period=retrieval_policy["case_pack_reporting_period"]) if scoped else None
+            data, hits = catalog.search(task["query"], ticker=ticker, scope=scope)
+            selected = select_context(data, hits, ticker, mode="exploratory_current", scope=scope)
             case_id = f"dev01-{ticker}-{task['id']}"
             cases.append({"case_id": case_id, "data_kind": "real_document_development_candidate",
                           "ticker": ticker, "question": task["question"], "query": task["query"],
-                          "mode": "exploratory_current", "evidence": selected})
+                          "mode": "exploratory_current", "evidence": selected,
+                          "retrieval_scope": scope.model_dump() if scope else None})
             index.append({"case_id": case_id, "ticker": ticker, "question": task["question"],
-                          "query": task["query"], "review_status": "pending", "references": [{
+                          "query": task["query"], "review_status": "pending",
+                          "retrieval_scope": scope.model_dump() if scope else None, "references": [{
                               "evidence_id": s["evidence_id"], "version_id": s["source"]["version_id"],
                               "content_hash": s["source"]["content_hash"], "source_url": s["source"]["source_url"],
                               "origin": s["source"]["origin"], "page": s["passage"]["page"],
+                              "reporting_period": s["source"]["reporting_period"],
+                              "statement_scope": s["source"]["statement_scope"],
                               "start": s["passage"]["start"], "end": s["passage"]["end"],
                               "page_text_hash": s["passage"]["page_text_hash"],
                               "context_sha256": sha256(s["passage"]["text"].encode()),
@@ -65,10 +79,12 @@ def build_pack(root, output_base=None):
     report = {"pack_id": pack_id, "created_at": datetime.now(UTC).isoformat(),
               "run_kind": "development_annotation_candidates_not_human_gold", "protocol_frozen": False,
               "repository": repository,
+              "retrieval_policy_id": retrieval_policy["policy_id"] if scoped else "legacy_broad_v0.1",
+              "retrieval_policy_sha256": file_sha(root / RETRIEVAL_POLICY) if scoped else None,
               "protocol_id": settings["protocol_id"], "protocol_sha256": file_sha(root / PROTOCOL),
               "snapshot": catalog.snapshot, "summary_sha256": catalog.pointer["summary_sha256"],
               "catalog_sha256": catalog.pointer["catalog_sha256"],
-              "selection": "Eight prespecified topic queries per ticker; current-corpus FTS5 top six; diversify and bound to three passages/2100 characters. No selection by return or model success.",
+              "selection": "Same eight topic queries per ticker; FTS5 top six, diversify to three passages/2100 characters; optional issuer PDF/reporting-period scope before ranking. No selection by return or model success.",
               "cases": len(cases), "cases_with_evidence": sum(bool(c["evidence"]) for c in cases),
               "by_ticker": dict(Counter(c["ticker"] for c in cases)), "human_reviewed_cases": 0,
               "historical_availability_validated": False, "llm_inference_performed": False,
@@ -121,13 +137,14 @@ def main():
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--pack", type=Path)
     parser.add_argument("--check-reviews", type=Path)
+    parser.add_argument("--scoped", action="store_true", help="Use issuer-period v0.2 for a new pack; prior packs remain intact")
     args = parser.parse_args()
     if args.check_reviews:
         if not args.pack:
             parser.error("--check-reviews requires --pack")
         print(json.dumps(check_reviews(args.pack, args.check_reviews), ensure_ascii=False))
     else:
-        destination, report = build_pack(args.root.resolve())
+        destination, report = build_pack(args.root.resolve(), scoped=args.scoped)
         print(json.dumps({"path": str(destination), "cases": report["cases"],
                           "human_reviewed_cases": 0}, ensure_ascii=False))
 

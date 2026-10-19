@@ -1,0 +1,239 @@
+{
+  "run_kind": "local_development_scope_and_review_validation_not_human_gold_or_accuracy",
+  "checked_at": "2026-10-19T03:18:36.801294+00:00",
+  "python": "3.12.14",
+  "software_checks": {
+    "pytest_passed": 308,
+    "pytest_failed": 0,
+    "pytest_warnings": 2,
+    "ruff": "passed",
+    "frontend_build": "passed; two lucide directive warnings",
+    "prettier": "passed",
+    "github_actions": "not_checked_this_run"
+  },
+  "case_pack": {
+    "pack_id": "20261019T030531Z-8ef1bf33",
+    "cases": 24,
+    "human_reviewed_cases": 0,
+    "source_cases_sha256": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "no_full_text_or_answers_in_public_index": true
+  },
+  "metadata_scope_comparison": {
+    "run_kind": "development_metadata_scope_diagnostic_not_retrieval_accuracy",
+    "same_question_ids": 24,
+    "same_queries": true,
+    "baseline_pack_id": "20261019T024426Z-202a2c66",
+    "scoped_pack_id": "20261019T030531Z-8ef1bf33",
+    "baseline": {
+      "references": 72,
+      "matching_requested_pdf_issuer_period_metadata": 36
+    },
+    "scoped": {
+      "references": 72,
+      "matching_requested_pdf_issuer_period_metadata": 72
+    },
+    "human_gold_cases": 0,
+    "semantic_relevance_validated": false
+  },
+  "real_model_smoke": {
+    "not_single_factor_ablation": true,
+    "changes_from_v01": [
+      "issuer-period source filtering",
+      "source metadata in prompt",
+      "observed entity-label guard"
+    ],
+    "runs": [
+      {
+        "run_id": "20261019T030615Z-60035bd3",
+        "ticker": "FPT",
+        "status": "abstained",
+        "llm_calls": 1,
+        "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T030615Z-60035bd3",
+        "retrieval_scope": {
+          "ticker": "FPT",
+          "reporting_period": "2024",
+          "source_policy": "issuer_reports",
+          "statement_scope": "all",
+          "period_basis": "question"
+        },
+        "retrieval_policy_id": "issuer_period_v0.2",
+        "claims": 0,
+        "rejected_claims": 2,
+        "sources": [
+          {
+            "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+            "ticker": "FPT",
+            "period": "2024",
+            "type": "application/pdf"
+          },
+          {
+            "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+            "ticker": "FPT",
+            "period": "2024",
+            "type": "application/pdf"
+          },
+          {
+            "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+            "ticker": "FPT",
+            "period": "2024",
+            "type": "application/pdf"
+          }
+        ],
+        "wall_seconds": 19.341277900000023,
+        "model_digest_stable": true,
+        "error": null,
+        "report_sha256": "1c235114076da847d98ae860081bd6adf544ecae713ad078d19725903115b667"
+      },
+      {
+        "run_id": "20261019T030642Z-ccae97bf",
+        "ticker": "HPG",
+        "status": "completed_with_citations",
+        "llm_calls": 1,
+        "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T030642Z-ccae97bf",
+        "retrieval_scope": {
+          "ticker": "HPG",
+          "reporting_period": "2024",
+          "source_policy": "issuer_reports",
+          "statement_scope": "all",
+          "period_basis": "question"
+        },
+        "retrieval_policy_id": "issuer_period_v0.2",
+        "claims": 3,
+        "rejected_claims": 0,
+        "sources": [
+          {
+            "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+            "ticker": "HPG",
+            "period": "2024",
+            "type": "application/pdf"
+          },
+          {
+            "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+            "ticker": "HPG",
+            "period": "2024",
+            "type": "application/pdf"
+          },
+          {
+            "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+            "ticker": "HPG",
+            "period": "2024",
+            "type": "application/pdf"
+          }
+        ],
+        "wall_seconds": 24.251416000000063,
+        "model_digest_stable": true,
+        "error": null,
+        "report_sha256": "03dfc7c7c37f1fb17f7606f97bfedae91daf6b13800814d3d657db196dae2241"
+      },
+      {
+        "run_id": "20261019T030714Z-2002a470",
+        "ticker": "VCB",
+        "status": "completed_with_citations",
+        "llm_calls": 1,
+        "path": "C:\\Users\\khoik\\Documents\\GitHub\\pit-haf\\outputs\\company-reports\\20261019T030714Z-2002a470",
+        "retrieval_scope": {
+          "ticker": "VCB",
+          "reporting_period": "2024",
+          "source_policy": "issuer_reports",
+          "statement_scope": "all",
+          "period_basis": "question"
+        },
+        "retrieval_policy_id": "issuer_period_v0.2",
+        "claims": 2,
+        "rejected_claims": 1,
+        "sources": [
+          {
+            "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+            "ticker": "VCB",
+            "period": "2024",
+            "type": "application/pdf"
+          },
+          {
+            "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+            "ticker": "VCB",
+            "period": "2024",
+            "type": "application/pdf"
+          },
+          {
+            "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+            "ticker": "VCB",
+            "period": "2024",
+            "type": "application/pdf"
+          }
+        ],
+        "wall_seconds": 18.27315290000024,
+        "model_digest_stable": true,
+        "error": null,
+        "report_sha256": "257535cb3520809d776a9fe457394444a9eb5ce2069fda885cec80e440d005fe"
+      }
+    ],
+    "original_request_response_and_source_blobs_verified": true
+  },
+  "http_checks": {
+    "run_kind": "real_local_http_checks_not_human_annotation_or_prediction",
+    "pack_id": "20261019T030531Z-8ef1bf33",
+    "cases": 24,
+    "declared_reviewed_cases": 0,
+    "all_source_metadata_matches_issuer_period": true,
+    "pinned_pdf_bytes": 16042174,
+    "pinned_pdf_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+    "pdf_source_hash_matches": true,
+    "case_detail_response_bytes": 9547,
+    "export_pending_rows": 24,
+    "strict_report_run_id": "20261019T031047Z-396a31f4",
+    "strict_llm_calls": 0,
+    "missing_period_report_run_id": "20261019T031050Z-83af0129",
+    "missing_period_llm_calls": 0,
+    "no_period_or_current_mode_fallback": true,
+    "no_real_review_written": true,
+    "active_documents_unchanged": 30939
+  },
+  "corpus_preservation": {
+    "catalog_summary_pages_hashes_match_v05": true,
+    "frozen_pilot_registry_versions_unchanged": 11,
+    "active_documents": 30939,
+    "index_build_code_profile_preserved_in_v05": "runtime scope changes recorded separately here"
+  },
+  "browser_checks": {
+    "url": "http://localhost:8501/#analysis",
+    "pending_cases_visible": 24,
+    "review_fields_and_literal_source_visible": true,
+    "answered_form_checked_then_restored_to_pending_without_save": true,
+    "no_real_review_written": true,
+    "screenshot_local": "outputs/ui-preview/scoped-review-v02.png",
+    "screenshot_sha256": "1ed067d05670000814230ddcec9cbcd2113fc493ca48876ffd95b10add52d371"
+  },
+  "source_file_sha256": {
+    "src/pit_haf/data/catalog.py": "d3e8f35bfad3cb7ce6639a89625e4a86b3db070e141cf19a5c99183a2785033b",
+    "src/pit_haf/data/retrieval_scope.py": "63077ecd660bd6cb1cf51f775c09707ad5a35db739bb1eccd6b0361d0ea80233",
+    "src/pit_haf/research/reports.py": "173e5c9c77411b67fc38ab196b467aee0ae9716b417caacb73134b5b6d0df8bb",
+    "src/pit_haf/research/reviews.py": "99a699b9306cded9325d36344da0a2c0b76c6f482ce94c8f64a383fc803c439e",
+    "src/pit_haf/research/casepack.py": "e32b0f3062f3107a3043c3fae6748da7e9467a6ccca9495f4b06074ea865caba",
+    "src/pit_haf/ui/api.py": "e49a952e53b7562ebd10ef68d4ee3fef3e29ba3da7ead442aa998a401f090807",
+    "frontend/src/CaseReview.jsx": "bf956644cfb7e84e8515066e782321ba58a4d7f6bb0843b29dd8a61a36e382d7",
+    "frontend/src/main.jsx": "bf5d66afa082c6a600c3e45d0552c295042a7b6f8ebc0726726c70ed6ba20f73",
+    "frontend/src/styles.css": "1b80b7f285075d9d5249482a536ce7963d8bba8d61205fc2c04beec7d57ba511",
+    "tests/test_case_reviews.py": "5744eb6439b37b388a12eaf48c83dfb2891ebab5437debe73420d4a814029a6c",
+    "tests/test_large_catalog.py": "de965eca50ca8b3857adcfd76609efce2a16006ffebe01e82d817bb94f70debe"
+  },
+  "semantic_support": "not_assessed",
+  "independently_verified_human_gold": 0,
+  "historical_pit_eligible_documents": 0,
+  "prediction_or_backtest_results": false,
+  "final_service_check": {
+    "health": {
+      "status": "ok",
+      "application": "pit-haf",
+      "interface": "react"
+    },
+    "reviews": {
+      "pack_id": "20261019T030531Z-8ef1bf33",
+      "cases": 24,
+      "declared_reviewed_cases": 0
+    },
+    "workspace": {
+      "documents": 30939,
+      "dataset_articles": 30000
+    }
+  }
+}

@@ -9,6 +9,7 @@ from fastapi.testclient import TestClient
 
 from pit_haf.data.catalog import Catalog, build_catalog
 from pit_haf.data.evidence import EvidencePage, EvidenceVersion
+from pit_haf.data.retrieval_scope import ReportScope
 from pit_haf.data.snapshots import SnapshotError, SnapshotStore
 from pit_haf.ui.api import create_app
 
@@ -117,3 +118,36 @@ def test_catalog_accepts_workspace_relative_cli_paths(disk_fixture, monkeypatch)
     monkeypatch.chdir(root)
     relative = Catalog(Path("."), catalog.summary_path.relative_to(root))
     assert relative.stats()["documents"] == 3
+
+
+def test_report_scope_excludes_related_entity_mirror_and_wrong_period(disk_fixture):
+    _, _, versions, catalog = disk_fixture
+    scope = ReportScope(ticker="HPG", reporting_period="2024")
+    data, hits = catalog.search("doanh thu", ticker="HPG", scope=scope)
+    assert hits and {v.version_id for v in data.versions} == {versions[1].version_id}
+    assert catalog.search("doanh thu", ticker="HPG", scope=scope.model_copy(update={"reporting_period": "2023"}))[1] == []
+    # A mirror whose metadata year is 2024 must not masquerade as accounting-period proof.
+    broad = ReportScope(ticker="HPG", source_policy="all_linked")
+    assert versions[2].version_id in {h.version_id for h in catalog.search("doanh thu", ticker="HPG", scope=broad)[1]}
+    assert versions[2].version_id not in {h.version_id for h in catalog.search("doanh thu", ticker="HPG", scope=broad.model_copy(update={"reporting_period": "2024"}))[1]}
+
+
+def test_scoped_strict_retrieval_filters_before_blob_reads_and_statistics(disk_fixture):
+    _, store, versions, catalog = disk_fixture
+    scope = ReportScope(ticker="HPG", reporting_period="2024")
+    _, expected = catalog.search("doanh thu", scope=scope, allowed_versions={versions[1].version_id})
+    store.blob_path(versions[0].content_hash).write_bytes(b"excluded synthetic issuer is corrupt")
+    _, actual = catalog.search("doanh thu", scope=scope, allowed_versions={v.version_id for v in versions})
+    assert actual == expected
+    assert catalog.search("doanh thu", scope=scope, allowed_versions=set())[1] == []
+
+
+def test_local_pdf_route_preserves_snapshot_and_refuses_mirror_or_corruption(disk_fixture):
+    root, store, versions, _ = disk_fixture
+    client = TestClient(create_app(root))
+    response = client.get(f"/api/documents/{versions[0].version_id}/raw")
+    assert response.status_code == 200 and response.content == store.read_blob(versions[0].content_hash)
+    assert response.headers["content-type"] == "application/pdf"
+    assert client.get(f"/api/documents/{versions[2].version_id}/raw").status_code == 415
+    store.blob_path(versions[0].content_hash).write_bytes(b"corrupt synthetic PDF")
+    assert client.get(f"/api/documents/{versions[0].version_id}/raw").status_code == 503

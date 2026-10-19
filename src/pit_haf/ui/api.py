@@ -18,11 +18,22 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pit_haf.data.catalog import Catalog
 from pit_haf.data.evidence import aware
 from pit_haf.data.gateway import deliver_as_of
+from pit_haf.data.retrieval_scope import resolve_scope
 from pit_haf.data.snapshots import SnapshotStore
 from pit_haf.data.vnstock_provider import MarketDataError, VietnamMarketDataProvider
 from pit_haf.llm.ollama import http_request, sha256
 from pit_haf.research.reports import protocol, report_history, run_report, saved_report
+from pit_haf.research.reviews import (
+    ReviewConflict,
+    ReviewInput,
+    active_pack,
+    case_detail,
+    export_reviews,
+    list_cases,
+    save_review,
+)
 from pit_haf.ui.workspace import (
+    Corpus,
     extract_passage,
     load_corpus,
     load_pilot_metrics,
@@ -58,6 +69,9 @@ class AnalysisRequest(SearchRequest):
 
 class CompanyReportRequest(SearchRequest):
     ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
+    reporting_period: str | None = Field(default=None, pattern=r"^(?:(?:19|20)\d{2}(?:-Q[1-4])?|all)$")
+    source_policy: Literal["issuer_reports", "all_linked"] = "issuer_reports"
+    statement_scope: Literal["all", "consolidated", "parent"] = "all"
 
 
 def create_app(root: Path | None = None) -> FastAPI:
@@ -65,6 +79,7 @@ def create_app(root: Path | None = None) -> FastAPI:
     app = FastAPI(title="PiT-HAF workspace", docs_url="/api/docs", redoc_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "testserver"])
     model_lock = threading.Lock()
+    review_lock = threading.Lock()
     corpus_lock = threading.Lock()
     cache = {"fingerprint": None, "corpus": None}
     disk_cache = {"fingerprint": None, "catalog": None}
@@ -109,7 +124,7 @@ def create_app(root: Path | None = None) -> FastAPI:
                 cache.update(fingerprint=fingerprint, corpus=load_corpus(root))
             return cache["corpus"]
 
-    def retrieve(body: SearchRequest):
+    def retrieve(body: SearchRequest, scope=None):
         catalog = disk_catalog()
         data = None if catalog else corpus()
         if data is not None and data.errors:
@@ -122,10 +137,15 @@ def create_app(root: Path | None = None) -> FastAPI:
             audit = list(gate.audit)
         if catalog:
             try:
-                data, hits = catalog.search(body.query, ticker=body.ticker, allowed_versions=allowed)
+                data, hits = catalog.search(body.query, ticker=body.ticker, allowed_versions=allowed, scope=scope)
             except (OSError, ValueError) as exc:
                 raise HTTPException(503, "Bằng chứng không còn toàn vẹn: " + str(exc)) from exc
         else:
+            if scope:
+                versions = tuple(v for v in data.versions if scope.matches(v) and (allowed is None or v.version_id in allowed))
+                ids = {v.version_id for v in versions}
+                data = Corpus(versions, tuple(p for p in data.pages if p.version_id in ids),
+                              snapshot=data.snapshot, document_diagnostics=data.document_diagnostics)
             hits = search_passages(data, body.query, ticker=body.ticker, allowed_versions=allowed)
         return data, hits, allowed, audit
 
@@ -233,6 +253,23 @@ def create_app(root: Path | None = None) -> FastAPI:
         except (OSError, ValueError, KeyError) as exc:
             return {"connected": False, "installed": False, "error": str(exc)}
 
+    @app.get("/api/documents/{version_id}/raw")
+    def raw_document(version_id: str):
+        catalog = disk_catalog()
+        try:
+            version = catalog.page(version_id, 1)[0] if catalog else next(
+                v for v in corpus().versions if v.version_id == version_id)
+            if version.media_type != "application/pdf":
+                raise HTTPException(415, "Chỉ mở PDF qua đường dẫn này.")
+            store = SnapshotStore(root / "data/cache/evidence")
+            store.read_blob(version.content_hash)
+            return FileResponse(store.blob_path(version.content_hash), media_type="application/pdf",
+                                headers={"Content-Disposition": f'inline; filename="{version.content_hash}.pdf"'})
+        except (KeyError, StopIteration) as exc:
+            raise HTTPException(404, "Không tìm thấy phiên bản PDF.") from exc
+        except (OSError, ValueError) as exc:
+            raise HTTPException(503, "PDF không còn toàn vẹn: " + str(exc)) from exc
+
     @app.post("/api/search")
     def search(body: SearchRequest):
         _, hits, allowed, audit = retrieve(body)
@@ -270,19 +307,59 @@ def create_app(root: Path | None = None) -> FastAPI:
 
     @app.get("/api/research/development")
     def development_status():
-        index_path = root / "data/development/v0.1/case_index.json"
-        index = json.loads(index_path.read_text(encoding="utf-8")) if index_path.exists() else None
+        try:
+            index, _ = active_pack(root)
+        except FileNotFoundError:
+            index = None
         return {"protocol": protocol(root), "case_pack": index}
+
+    @app.get("/api/research/cases")
+    def development_cases():
+        try:
+            with review_lock:
+                return list_cases(root)
+        except (OSError, ValueError, KeyError) as exc:
+            raise HTTPException(503, "Không mở được bộ case: " + str(exc)) from exc
+
+    @app.get("/api/research/cases/{case_id}")
+    def development_case(case_id: str):
+        try:
+            with review_lock:
+                return case_detail(root, case_id)
+        except KeyError as exc:
+            raise HTTPException(404, "Không tìm thấy case.") from exc
+        except (OSError, ValueError) as exc:
+            raise HTTPException(503, "Không mở được nguồn case: " + str(exc)) from exc
+
+    @app.post("/api/research/reviews")
+    def development_review(body: ReviewInput):
+        try:
+            with review_lock:
+                return save_review(root, body)
+        except ReviewConflict as exc:
+            raise HTTPException(409, str(exc)) from exc
+        except (OSError, ValueError, KeyError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+
+    @app.get("/api/research/reviews/export")
+    def development_reviews_export():
+        try:
+            with review_lock:
+                return export_reviews(root)
+        except (OSError, ValueError, KeyError) as exc:
+            raise HTTPException(503, "Không xuất được annotation: " + str(exc)) from exc
 
     @app.post("/api/research/report")
     def company_report(body: CompanyReportRequest):
-        data, hits, allowed, audit = retrieve(body)
+        scope = resolve_scope(body.query, body.ticker, reporting_period=body.reporting_period,
+                              source_policy=body.source_policy, statement_scope=body.statement_scope)
+        data, hits, allowed, audit = retrieve(body, scope=scope)
         if not model_lock.acquire(blocking=False):
             raise HTTPException(409, "Ollama đang xử lý một yêu cầu. Hãy đợi hoàn tất.")
         try:
             return run_report(root, data, hits, query=body.query, ticker=body.ticker, mode=body.mode,
                               decision_at=body.decision_at.isoformat() if body.decision_at else None,
-                              allowed_versions=allowed, retrieval_audit=audit)
+                              allowed_versions=allowed, retrieval_audit=audit, scope=scope)
         except (OSError, ValueError) as exc:
             raise HTTPException(503, "Không lập được báo cáo: " + str(exc)) from exc
         finally:

@@ -1,0 +1,14 @@
+{
+  "policy_id": "issuer_period_v0.2",
+  "status": "development_not_frozen",
+  "default_source_policy": "issuer_reports",
+  "default_period": "infer_only_if_one_year_in_question; explicit_override_available",
+  "period_semantics": "Exact PDF reporting_period metadata. News publication year is not an accounting period. A selected accounting period excludes documents lacking PDF period metadata.",
+  "entity_policy": "issuer_reports requires the document primary ticker; all_linked permits explicit related-ticker context. This is a metadata/alias heuristic, not verified ownership or semantic support.",
+  "observed_labels_requiring_entity_review": {
+    "VCB": ["VCBS", "Vietcombank Securities", "Chứng khoán Vietcombank"]
+  },
+  "label_basis": "Observed in the earlier VCB development failure; not a verified corporate ownership graph.",
+  "case_pack_reporting_period": "2024",
+  "historical_policy": "gateway first; scope filtering before historical BM25 statistics; no fallback if scope is empty"
+}

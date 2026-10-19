@@ -1,0 +1,1429 @@
+{
+  "pack_id": "20261019T030531Z-8ef1bf33",
+  "created_at": "2026-10-19T03:06:01.221362+00:00",
+  "run_kind": "development_annotation_candidates_not_human_gold",
+  "protocol_frozen": false,
+  "repository": {
+    "status": "captured",
+    "revision": "06c5011944e96aeaec1a31848f27064e26e6b02f",
+    "dirty": true,
+    "working_tree_hash": "8fdd8ccc13caa846304e75b43dcef566061f1f9fb7ebf4ed7384dca825be5f1b",
+    "patch_sha256": "11203b1154d51dd7ddba7d220f568b79094c171bb61bd1f6da67a6d2420cb11c",
+    "snapshot_sha256": "857814e5d8059054cb4297269425463720e416aef372b562566fd418e365feee",
+    "captured_files": 142
+  },
+  "retrieval_policy_id": "issuer_period_v0.2",
+  "retrieval_policy_sha256": "7e690b7b150fcfa283e6d54a905de7461dfb6f266ffd07f418d5e74a85e6817c",
+  "protocol_id": "pit-haf-development-0.1",
+  "protocol_sha256": "41f6cdf93ded611add96aed45806c0bb2b891b5ab7d1dd12323b0f6278d820cb",
+  "snapshot": "outputs\\milestone-1\\data-pilot\\20261018-corpus-v0.5-scale-curated\\summary.json",
+  "summary_sha256": "e67bf94ffba4dcf0588898d949c3065826252ab1e6a899c2aed4d51a4212ba8c",
+  "catalog_sha256": "c241cac5be754270d2f11737cbaf421a961d53f5b47d67075caacc1d82349c4a",
+  "selection": "Same eight topic queries per ticker; FTS5 top six, diversify to three passages/2100 characters; optional issuer PDF/reporting-period scope before ranking. No selection by return or model success.",
+  "cases": 24,
+  "cases_with_evidence": 24,
+  "by_ticker": {
+    "FPT": 8,
+    "HPG": 8,
+    "VCB": 8
+  },
+  "human_reviewed_cases": 0,
+  "historical_availability_validated": false,
+  "llm_inference_performed": false,
+  "cases_sha256": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+  "annotations_template_sha256": "0c5840825cc0640e1ce495eed41820564a542dccf718ca8e20c469c6c1bf64cb",
+  "index": [
+    {
+      "case_id": "dev01-FPT-income",
+      "ticker": "FPT",
+      "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+      "query": "lợi nhuận trước thuế sau thuế năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 11,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 773,
+          "end": 1473,
+          "page_text_hash": "d3adae2ef0c6f10023fc35ee9109b017c04755de87a06a696b6355203a0b4ac2",
+          "context_sha256": "6f47eab09ebe9db4aa0eed6b4c5c8a3260bfef489bbc746b9095ea934c8139d1"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 50,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2333,
+          "end": 3033,
+          "page_text_hash": "605c445edc354005a02e7e7a913d4b322a9d463a2fe0230d4c4a56115614ab54",
+          "context_sha256": "6080ecbb1954693c0c1acfa5b6c491037c1b52c6466a575023713f9f471ec033"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 193,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1545,
+          "end": 2245,
+          "page_text_hash": "41b6a2e2785306ba78c6d0a3b46932d6f4eac5c63be8a8a47ff498d20d2304b6",
+          "context_sha256": "eba9c8fbfc6b6b761341f1de1e9435511ee6e54f1ea0997ef314f9347e44988e"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-revenue",
+      "ticker": "FPT",
+      "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?",
+      "query": "doanh thu tổng thu nhập lãi thuần năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 164,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "2ada4531ac75711ff64c48ae0147ff7b8ad51dfaca9bf670fb1834212c66f677",
+          "context_sha256": "17ed6f1da87fc376401b2873689bd25a5294ca1070d79bf2ce06e6d97b15f37e"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 171,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1540,
+          "end": 2240,
+          "page_text_hash": "30f6cd36252265ed01e5e0a33a265c3723bb2648b41f95eaf988fd8863c920a8",
+          "context_sha256": "e2c83de54d334de18493af0f967159dbaff79f6d5b6927d6b27dfd7a4dd28329"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 169,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "f9266b9a49ce0de1a0957b4c0efb8a0517c7b54c2ad85407b7f9340b43af3e05",
+          "context_sha256": "afd4248bd8a8445cf10dcd6edd0cbaa1350232da56f3ec5767b51840597173e8"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-growth",
+      "ticker": "FPT",
+      "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?",
+      "query": "tăng trưởng cùng kỳ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 9,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "b758c5c07b4f524a0f504d136ce0011eba28b7dcf33d4d1d8ee851b85fa1f84c",
+          "context_sha256": "4418913e50c984fb3e84a695f9cd88d78a50b7abe89bfb6a024634a9c9c45c5f"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 91,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2332,
+          "end": 3007,
+          "page_text_hash": "752c6d1113862c9d26b9edf97aeb9f439eadca65fa7b5f28ad90da253695a83b",
+          "context_sha256": "69d156977e7091cc0d9222b3e0cbf8daee418b05092da20577d8d03b12189e9a"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 14,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "d23530307bb40e12d402baeede9bccde0aa5d70017396511801b2a4eeaab717f",
+          "context_sha256": "77cf68a38c5fbe6d5e09a7876f0f01a3bb767a2948cb114870e5db9881577ec2"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-assets",
+      "ticker": "FPT",
+      "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?",
+      "query": "tổng tài sản nợ phải trả dư nợ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 165,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "7b238876f279107e2dd7878a1ecb7136b0ac9889366d90ecaf5c50f32d945606",
+          "context_sha256": "bd9a918d53fc196a3bb1d5961dcc8870473ad96a383fc461e9b6db641cf2bf8a"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 149,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "9f50ef49d9e0e656929502d94dba8012aae2867b2ffb9b96dcf933a6b4a296fa",
+          "context_sha256": "efd18c2d7573ef6774cff98c939d9f92b22a2900d17b61ec97fef0421d394e71"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 171,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1540,
+          "end": 2240,
+          "page_text_hash": "30f6cd36252265ed01e5e0a33a265c3723bb2648b41f95eaf988fd8863c920a8",
+          "context_sha256": "e2c83de54d334de18493af0f967159dbaff79f6d5b6927d6b27dfd7a4dd28329"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-cash",
+      "ticker": "FPT",
+      "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?",
+      "query": "tiền lưu chuyển tiền thuần hoạt động kinh doanh năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 154,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "d5e511bdcaaf182d43ffc8141f3127f77a133ea1c774c9ad953fc914be72640b",
+          "context_sha256": "b60adefcde3437975f5b6560803e004a0d15d515d3b43a6bcbe145133dfbcca2"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 153,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 771,
+          "end": 1471,
+          "page_text_hash": "346f25ec1eb39fdcc0bfcf41d35a79156803a3fc183b78766066811edf005a84",
+          "context_sha256": "869c25f206ddb7f34e3725d2397d7bd857bf8072631090eb2af619ae7c4ed843"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 153,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "346f25ec1eb39fdcc0bfcf41d35a79156803a3fc183b78766066811edf005a84",
+          "context_sha256": "e9c64e7b83bd807d0d41d778e26ed27c5f4bf5c5b0a05be78b8196b0da0f4064"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-operations",
+      "ticker": "FPT",
+      "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?",
+      "query": "hoạt động kinh doanh phân khúc sản lượng dịch vụ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 167,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "1765bcea7263031506369ce07df52e32ee15e8a370a4402e5357a6a0b111a94c",
+          "context_sha256": "aa9d06ee17d5772f6288c5d49d344d1c4149cc51a1521281c5eb9a29f809f39f"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 170,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "e3f8c01bb5f8c3353b9bbba442581b02c1e1163546fe0f4697a4400db8309e3f",
+          "context_sha256": "868634d0f8bd7f5400e97fe929e677e866f9548e6392e28219a0e0b47dda707e"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 51,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "ae8ecee735526eb9e2ca672f8563776946543ff7b83dd0d817a2eeb18b9ce6fe",
+          "context_sha256": "3dca6f7d6ee72c16f529494a19946f4d9a4a21f2ba8c20d271eed8f327f7b2d8"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-risk",
+      "ticker": "FPT",
+      "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?",
+      "query": "rủi ro khó khăn thách thức năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 109,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "60e7d9e91eaa486e51159cfeaf941ec4ab6b03d7148a46623831f1d22b3655d3",
+          "context_sha256": "2a3b281f5d7d0d03f5039e59c25b1f180fe269bd3042bda1146d958ba924b928"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 119,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2330,
+          "end": 3019,
+          "page_text_hash": "5b8e9f54d1b6660b7a976964187f8da8e3ca05b596e09dee1d26761616df602a",
+          "context_sha256": "90e7d9815919f452446f70281ccebd61f4d6a938045e7d7ceb5370e33297e2e1"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 119,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "5b8e9f54d1b6660b7a976964187f8da8e3ca05b596e09dee1d26761616df602a",
+          "context_sha256": "5192b2d72de8b7d18b2a5335232515a322bb0347f393a45e1bd75e650bd11afe"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-outlook",
+      "ticker": "FPT",
+      "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?",
+      "query": "kế hoạch mục tiêu triển vọng năm 2025",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "FPT",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 47,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "83a88463166b551b135f23403d3dff91e8f71de394a2c10d7ea5c801c68e8494",
+          "context_sha256": "14a0a1334acb9f3e1e45bb959c9bd834b2f6578184cf10171c0088fcb07def91"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 98,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 775,
+          "end": 1475,
+          "page_text_hash": "9d04df1f835338433e2fe46fa6eabda764b8af438a70af93ec95f1d7c8abf410",
+          "context_sha256": "adc6865dba20a7f6fd7da72eec79ad8273bc77b62a12dc8b89187aafbec83010"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "origin": "publisher_snapshot",
+          "page": 107,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1550,
+          "end": 2250,
+          "page_text_hash": "938f3c5998f1a39a5bbcd8e9e1248e128b828a2345ddce3f5ebc9f1e28711a4c",
+          "context_sha256": "ca389f7f460b968ed6ca09aef8613b2410d753c31915e28eff87266c0c2bbd5a"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-income",
+      "ticker": "HPG",
+      "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+      "query": "lợi nhuận trước thuế sau thuế năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 31,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "1b0bb1131a448cfdede7f209c6031fd00e0595ac27db0e77cd1efb3adca7939d",
+          "context_sha256": "2563be96a0d80f7602a84c54bdd21d4323e256c87227289080edf5ecf601859b"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 12,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "7132f3c4273144f96222675de0ca410c1ab2ffd4a4627cf03ebcdaff55b3e60a",
+          "context_sha256": "0dcda8b6912f43e6ec8b969b490c7a4266b2ee24973ee3221fa8bc2941209230"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 155,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "2f536324ecb3b3a7e09a25491fa8c35c2afe53adee973185ea1c25339db25ed9",
+          "context_sha256": "0dc09bc95b827c5518836aec50c2bdded8649d5388b0dc86b41bf94acf5e129a"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-revenue",
+      "ticker": "HPG",
+      "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?",
+      "query": "doanh thu tổng thu nhập lãi thuần năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 124,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "6b7b84c58269947ab75b8cc7f020126ff5e960988ed77390ab35dc6edebeb5ef",
+          "context_sha256": "acfadaea0c21165ca3b97854f40a227358598bc1a5ba4ee6b51bd1d83d13df3a"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 125,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 779,
+          "end": 1479,
+          "page_text_hash": "e49038f2fb9bc4ec114d9596d7e5cfd351ae675a3d4336c5308ed034582996ba",
+          "context_sha256": "25f238fe3efa07b735f4b5778edb710831b5cee3bab296807214792f4cec5d8e"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 30,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 779,
+          "end": 1479,
+          "page_text_hash": "153f53986cf3ee21aa004b328a4c11d80ac5f7e7c3dc53da50aa0fe3d67765c5",
+          "context_sha256": "2ad73dc61eef00a6be24caaa76ad22c305233b53fa29b17c381109e85e8c91c9"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-growth",
+      "ticker": "HPG",
+      "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?",
+      "query": "tăng trưởng cùng kỳ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 29,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "b629f4e735eedb8559a14d8892672f95401041e0d7cb5df509c58c1f1029c9b9",
+          "context_sha256": "6c097ee3a77e6c6785b2907940d9ff5bcebc7d13bbda1bbee49177c6e6b995c0"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 36,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 777,
+          "end": 1477,
+          "page_text_hash": "23fa49a7159cbc123fb879611836d711e93984ef3da019f3527389e2b2b34a93",
+          "context_sha256": "0090b49b020c6992a1867372d525f1153cd153fc7d1679bcda8c96b2873a6e91"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 31,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "1b0bb1131a448cfdede7f209c6031fd00e0595ac27db0e77cd1efb3adca7939d",
+          "context_sha256": "2563be96a0d80f7602a84c54bdd21d4323e256c87227289080edf5ecf601859b"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-assets",
+      "ticker": "HPG",
+      "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?",
+      "query": "tổng tài sản nợ phải trả dư nợ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 101,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "1de0204c286828623deb660459fd68ba37bdb4dd468e6123685074038be7512a",
+          "context_sha256": "73399b3b01af63e2cf9f662eb9ecf340a42b05df2b01a9a82bc647172581d67c"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 37,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "d682fe82438ba58a4e6df451d295af93f4d2b4205c0af47a698360a91ed25e22",
+          "context_sha256": "b37f4387555af4fe7ac009d4fca6393a4c7bcd140543ae924a780906315f8214"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 105,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "23d27ff31bd2dcae21642ea7290f90c7f3210a1b91df8319e748349cfc96d3b1",
+          "context_sha256": "7432c3d35430a978ff7118f9c0404e1ce273a0bb6973a356966bbbc980931ceb"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-cash",
+      "ticker": "HPG",
+      "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?",
+      "query": "tiền lưu chuyển tiền thuần hoạt động kinh doanh năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 107,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "f2af86c485ecb872ba64713dd15e4c2c16041b2ff8365995a890553d8e146fd0",
+          "context_sha256": "eb15080eff3ed6c474f7340fdeffeda98745880ef9739516a81dbd077e890cd2"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 12,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "7132f3c4273144f96222675de0ca410c1ab2ffd4a4627cf03ebcdaff55b3e60a",
+          "context_sha256": "0dcda8b6912f43e6ec8b969b490c7a4266b2ee24973ee3221fa8bc2941209230"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 106,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "92d3b49f3076b58c0c6f943fcd9d1257cd4ebc3ae9d1d98ed36dcaa9fed02293",
+          "context_sha256": "9b8640d9d76f9d8c2b86330f53512d842cb95519e6c20f04c0ff32a3cee8e5c9"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-operations",
+      "ticker": "HPG",
+      "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?",
+      "query": "hoạt động kinh doanh phân khúc sản lượng dịch vụ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 51,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "f0759d967e66659812d1b4b23084c01d9a531894bce6dae0f5f83daa2f2dae0e",
+          "context_sha256": "8036941e75a9512f713a0b160f912fe8fdebac5f5474fcdbd4f498a55b610441"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 103,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "ac4ec00b4a5c22e47ac82e0a504c2597b6466a18cdd355f8089c5deda575c207",
+          "context_sha256": "910d624f5089f10652bc6f8d34eb1782e69ff4b2bac723bd531e6a52c3a48997"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 113,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "3f4e200e4b5b5d26e29c3eaeff4f39928623ccdbb1521b16ad5763721e779630",
+          "context_sha256": "f4b733719189a2e9a193362f7dd6ecac7c11b4facf07cc9c697f97a02a1b1546"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-risk",
+      "ticker": "HPG",
+      "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?",
+      "query": "rủi ro khó khăn thách thức năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 72,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "0acf5b6ac9fc2ae3db13485688eb065f6ac68af28b7f3fff8411f2e0c38bbc9b",
+          "context_sha256": "344ee2fc695631768e94e4bd04eb674a3bb3548806835e91e0db469abc6f8a30"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 24,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 776,
+          "end": 1476,
+          "page_text_hash": "4afacfab83021f2b7f1b79f2df7d3475fef908918d49b2775a1f439246a4eb10",
+          "context_sha256": "4fcd06c26a177a799ef7d1b8520c5bb913fd24167cd9831440b935d70aeecb45"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 24,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "4afacfab83021f2b7f1b79f2df7d3475fef908918d49b2775a1f439246a4eb10",
+          "context_sha256": "a3cfb0505873446d35814330143ac7cc3422842fbcd1b26a95aa9ea69541b737"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-outlook",
+      "ticker": "HPG",
+      "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?",
+      "query": "kế hoạch mục tiêu triển vọng năm 2025",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "HPG",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 41,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2331,
+          "end": 3031,
+          "page_text_hash": "70b9750fc4de83f559a68557b28eb2aa90cdcdaaa85fc38adfbe734bc28b8a0b",
+          "context_sha256": "9fbb3420edb696753574029ae6582bb6690086b15b1cf32e91ae5353647468a9"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 70,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1548,
+          "end": 2007,
+          "page_text_hash": "784682decb6b1127cc4ca3b8e1ee5b33aa1d5cbad506aecd2b7c829db05c81ed",
+          "context_sha256": "400a2833f02909c966fcb879e9f3b437cec64f546cf590e3ffe88b2e482de094"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "origin": "publisher_snapshot",
+          "page": 76,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "a062b0fd9c525799dd102eaeb33182ba059ca9332fb54ab472b28d12b7a726d0",
+          "context_sha256": "6617eb3aa97041a1fd93536ac861f04d3413ddb7ff8134bb0d218eb72be973f6"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-income",
+      "ticker": "VCB",
+      "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+      "query": "lợi nhuận trước thuế sau thuế năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 18,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1554,
+          "end": 2254,
+          "page_text_hash": "1e2e9bd24d3a5ee872d6ade0dc9fa32d9d908e1002f33d88c1fab11c5f245cf5",
+          "context_sha256": "0c699858b508da25015c2ab9d5323bee3b17e0a1e648767a24af1c11aadb7183"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 18,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2331,
+          "end": 3031,
+          "page_text_hash": "1e2e9bd24d3a5ee872d6ade0dc9fa32d9d908e1002f33d88c1fab11c5f245cf5",
+          "context_sha256": "bc811f327cb6d40322cf149fab8718aa1c9586052d7cf8e1fad78aa2881defc0"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 18,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 3108,
+          "end": 3808,
+          "page_text_hash": "1e2e9bd24d3a5ee872d6ade0dc9fa32d9d908e1002f33d88c1fab11c5f245cf5",
+          "context_sha256": "a7c5c88552a51de2fe90aa24b69986ccc7c19e0d063eb4a440c2448fd892e260"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-revenue",
+      "ticker": "VCB",
+      "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?",
+      "query": "doanh thu tổng thu nhập lãi thuần năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 67,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 778,
+          "end": 1478,
+          "page_text_hash": "70a2d85af3d48e4bd30dd9c6f80c888e40cc225f6cf2c1fc9ee02842edfeb3f2",
+          "context_sha256": "d97b03d42c431e16b03cdb0e0be8dc65f2f599650eee46846a553f1dd4d25501"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 11,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "6a563adf8fb2f5a19c0e602d1b8a2728505c73a1a6442c6b2b922553ef08deec",
+          "context_sha256": "8aa99506c08bef31885380897abd72216a4fd51b90f95b20cb4bf254c70514cf"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 91,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "4c3348e648a281f696e94a4c1dae574fc20c9721c9ec9a8e42fd257b252d0f56",
+          "context_sha256": "2bda35f48039dc5f5ebb3af45ce841e4854924d96f790e27516c51302fc7853e"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-growth",
+      "ticker": "VCB",
+      "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?",
+      "query": "tăng trưởng cùng kỳ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 28,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 3105,
+          "end": 3805,
+          "page_text_hash": "0be0225f4da209b43983a16f4c8c2c196052a7a90f5c6d9f0225cadfb7e56520",
+          "context_sha256": "fe8edb8cc5b02604c4b08f18c79e63dfc17f0cec159c14d2eebc92355faeebfd"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 39,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 3112,
+          "end": 3812,
+          "page_text_hash": "30ee0ed4ccd2548810b40bde4b136b2b41111ec81e64072eebb090a3b9d7046d",
+          "context_sha256": "866fd6ccdd1354ff7de563c9297e9b74e330e769c90e0b2de3f2c46bde29e883"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 28,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2329,
+          "end": 3029,
+          "page_text_hash": "0be0225f4da209b43983a16f4c8c2c196052a7a90f5c6d9f0225cadfb7e56520",
+          "context_sha256": "65279efe8c5b98106499aa588ea38b0d1ae29dae0f424aaf41b7273f9ec43fd1"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-assets",
+      "ticker": "VCB",
+      "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?",
+      "query": "tổng tài sản nợ phải trả dư nợ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 102,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1548,
+          "end": 2248,
+          "page_text_hash": "ab1f5f72cbe0a4f30e6f22bd49fbaac6fdc6546cf2a6bae981d3ae6d1669a705",
+          "context_sha256": "7f45d97cbdc514f175dfdbdbc266a08ee8ecf008cd208093202beaa9b38d49bc"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 101,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1551,
+          "end": 2251,
+          "page_text_hash": "927a124d09f394f143a2e6c49a5ae0561ff531be669e8b307d3153facc4e00c6",
+          "context_sha256": "a87d16c231840e07d79701821ec115ee4fe9c4fb52cc533bbbd5a857b728cfe5"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 100,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1552,
+          "end": 2252,
+          "page_text_hash": "36ac3e2f451df4885aab0d9b1d45650825163fd68d90889c0b6f812f4720cf3a",
+          "context_sha256": "a1469040e49cc38451415ba13ed0a0a87d6afbeddc979e83ea6db02654fdd7ff"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-cash",
+      "ticker": "VCB",
+      "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?",
+      "query": "tiền lưu chuyển tiền thuần hoạt động kinh doanh năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 68,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "1e1c1bb63535b8f96fac65c0ee341ad3b2cecaca8f191e1f111823b1e7d02a97",
+          "context_sha256": "66fc6466592672d2e0492904f25d83cd173d8a30de107c2b6cacfd36fc11c0ad"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 68,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2329,
+          "end": 3029,
+          "page_text_hash": "1e1c1bb63535b8f96fac65c0ee341ad3b2cecaca8f191e1f111823b1e7d02a97",
+          "context_sha256": "5d286863468502c90537dd0699fd5104949225c2c61f17af7c23d87e4e578f23"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 68,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1552,
+          "end": 2252,
+          "page_text_hash": "1e1c1bb63535b8f96fac65c0ee341ad3b2cecaca8f191e1f111823b1e7d02a97",
+          "context_sha256": "da249c96e1ba74af26ba1ac35928a3845a10aa60d48553a7285afb435d2b51b2"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-operations",
+      "ticker": "VCB",
+      "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?",
+      "query": "hoạt động kinh doanh phân khúc sản lượng dịch vụ năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 26,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 778,
+          "end": 1478,
+          "page_text_hash": "cb0f521d415a8ee5829e7fceeb7b57e2fd65377e9950127cc1cce287e56d2fbd",
+          "context_sha256": "48c7dc990a720e605f1bbe41fd804ca8c36c46b76322d14b5d9e660d5e884362"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 22,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 778,
+          "end": 1478,
+          "page_text_hash": "f132215fed5f88da74f53594368ec738585170a5f0e6e5711c3de4506b6013b3",
+          "context_sha256": "9986112fc1863528fc1e48973c14aafff2166a84101544d664c0f75d6fa9faa2"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 22,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 2331,
+          "end": 3031,
+          "page_text_hash": "f132215fed5f88da74f53594368ec738585170a5f0e6e5711c3de4506b6013b3",
+          "context_sha256": "79f98965a494eec78736c7d004a8d03f00c59c19bc17b2f4eaae691a6470cad1"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-risk",
+      "ticker": "VCB",
+      "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?",
+      "query": "rủi ro khó khăn thách thức năm 2024",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 23,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "ad1ad22e9fcb0092b6f859319cbe5244b7dd717447dae450f47f864f2760a502",
+          "context_sha256": "e951848b55f24787770295390e9c054ac344cb5c9877d289c6f5d58b33e9760a"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 23,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 778,
+          "end": 1478,
+          "page_text_hash": "ad1ad22e9fcb0092b6f859319cbe5244b7dd717447dae450f47f864f2760a502",
+          "context_sha256": "5c42ae92484d767d21fe28df4c3e5f7f60ec023cd8d319a2fb64e27680af0b9d"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 42,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 1550,
+          "end": 2250,
+          "page_text_hash": "0f1bebdca58a6193ce0174afb84ed2b1197ad641b65a9b970f56d4d49fc041cc",
+          "context_sha256": "5140aecffe7c50eabd08ccb41c0ae6de701a961ebba818e9a4f646cb101ffbee"
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-outlook",
+      "ticker": "VCB",
+      "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?",
+      "query": "kế hoạch mục tiêu triển vọng năm 2025",
+      "review_status": "pending",
+      "retrieval_scope": {
+        "ticker": "VCB",
+        "reporting_period": "2024",
+        "source_policy": "issuer_reports",
+        "statement_scope": "all",
+        "period_basis": "explicit"
+      },
+      "references": [
+        {
+          "evidence_id": "S1",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 22,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 0,
+          "end": 700,
+          "page_text_hash": "f132215fed5f88da74f53594368ec738585170a5f0e6e5711c3de4506b6013b3",
+          "context_sha256": "b9ffd46133d5a48e751b7071ca7d873a1133727be6bd3fcb795fa139c554fbc5"
+        },
+        {
+          "evidence_id": "S2",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 14,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 3111,
+          "end": 3811,
+          "page_text_hash": "a4b3c37113bd02de8fd69b83330010d119387413343d8782364a12d2002ec126",
+          "context_sha256": "5d9ec58f65368c6ea22d293a9e0569c78d0dbb92052acd9c272f967edc3a727c"
+        },
+        {
+          "evidence_id": "S3",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "origin": "publisher_snapshot",
+          "page": 5,
+          "reporting_period": "2024",
+          "statement_scope": "unknown",
+          "start": 778,
+          "end": 1478,
+          "page_text_hash": "1576e5d95f6cb420f1bb25890e758fb92602b10fbaa3c88b5aca9ce59f89618a",
+          "context_sha256": "91a417b701ac6186ed871a7e5616c5fd8014235a53cfe81c0461d404653420c3"
+        }
+      ]
+    }
+  ]
+}
