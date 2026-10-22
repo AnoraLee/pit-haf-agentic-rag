@@ -238,12 +238,15 @@ def report_history(root):
 
 
 def run_report(root, data, hits, *, query, ticker, mode, decision_at=None,
-               allowed_versions=None, retrieval_audit=None, adapter=None, output_base=None, scope=None):
+               allowed_versions=None, retrieval_audit=None, adapter=None, output_base=None, scope=None,
+               expected_sources=None, expected_model_digest=None):
     if not re.fullmatch(r"[A-Z0-9]{2,12}", ticker) or not 2 <= len(query) <= 300:
         raise ValueError("Invalid company or question")
     settings = protocol(root)
     selected = select_context(data, hits, ticker, mode=mode, decision_at=decision_at,
                               allowed_versions=allowed_versions, scope=scope)
+    if expected_sources is not None and selected != expected_sources:
+        raise ValueError("Pinned case context changed; inference was not started")
     policy = json.loads((root / RETRIEVAL_POLICY).read_text(encoding="utf-8")) if scope else None
     entity_labels = policy["observed_labels_requiring_entity_review"].get(ticker, []) if policy else []
     run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
@@ -279,6 +282,8 @@ def run_report(root, data, hits, *, query, ticker, mode, decision_at=None,
             client = adapter or OllamaAdapter(config)
             before = client.inspect(destination / "model-before")
             result["model_before"] = before
+            if expected_model_digest and before["digest"] != expected_model_digest:
+                raise ModelInspectionError("Batch model digest changed before inference")
             result["llm_calls"] = 1
             generation = client.extract(messages(query, ticker, selected), destination / "generation", schema=ReportDraft)
             result["generation"] = generation

@@ -22,6 +22,7 @@ from pit_haf.data.retrieval_scope import resolve_scope
 from pit_haf.data.snapshots import SnapshotStore
 from pit_haf.data.vnstock_provider import MarketDataError, VietnamMarketDataProvider
 from pit_haf.llm.ollama import http_request, sha256
+from pit_haf.research.evaluation import evaluate_batch
 from pit_haf.research.reports import protocol, report_history, run_report, saved_report
 from pit_haf.research.reviews import (
     ReviewConflict,
@@ -348,6 +349,14 @@ def create_app(root: Path | None = None) -> FastAPI:
                 return export_reviews(root)
         except (OSError, ValueError, KeyError) as exc:
             raise HTTPException(503, "Không xuất được annotation: " + str(exc)) from exc
+
+    @app.get("/api/research/evaluation")
+    def development_evaluation(batch_id: str | None = Query(default=None, pattern=r"^\d{8}T\d{6}Z-[0-9a-f]{8}$")):
+        try:
+            with review_lock:
+                return evaluate_batch(root, batch_id)
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            raise HTTPException(503, "Không đánh giá được bản chạy: " + str(exc)) from exc
 
     @app.post("/api/research/report")
     def company_report(body: CompanyReportRequest):

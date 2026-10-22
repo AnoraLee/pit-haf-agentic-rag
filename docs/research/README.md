@@ -22,6 +22,7 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [13 — Corpus v0.5](13-large-corpus-v05.md) | Thêm 30.000 bài có join URL/ngày gốc; catalog SQLite/FTS5, phân trang server và provenance bản nhập |
 | [14 — Single-agent development](14-single-agent-development.md) | Báo cáo nhiều đoạn có kiểm quote/số, 24 case chờ annotation và cấu hình phát triển chưa freeze |
 | [15 — Scoped retrieval/review](15-scoped-retrieval-and-review.md) | Lọc đúng mã/kỳ trước truy xuất và màn hình chấm case có revision/hash/export, chưa có human gold |
+| [16 — Development batch evaluation](16-development-batch-evaluation.md) | Chạy case trên context cố định, giữ lỗi/ABSTAIN, replay request/response và đối chiếu annotation theo vị trí/chuỗi số |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

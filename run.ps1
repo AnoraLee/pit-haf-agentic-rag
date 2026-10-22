@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases')]
+  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate')]
   [string]$Task = 'app',
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]]$TaskArgs
@@ -49,5 +49,6 @@ switch ($Task) {
   'quote-audit' { & $pythonExe -m pit_haf.research.quote_replay @TaskArgs }
   'company-report' { & $pythonExe -X utf8 -m pit_haf.research.reports @TaskArgs }
   'development-cases' { & $pythonExe -X utf8 -m pit_haf.research.casepack @TaskArgs }
+  'development-evaluate' { & $pythonExe -X utf8 -m pit_haf.research.evaluation @TaskArgs }
 }
 exit $LASTEXITCODE

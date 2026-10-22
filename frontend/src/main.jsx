@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import "./styles.css";
 import CaseReview from "./CaseReview";
+import DevelopmentEvaluation from "./DevelopmentEvaluation";
 
 const NAV = [
   ["overview", "Tổng quan", LayoutDashboard],
@@ -1434,6 +1435,7 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
         )}
       </Panel>
       <CaseReview api={api} Panel={Panel} Notice={Notice} />
+      <DevelopmentEvaluation api={api} Panel={Panel} Notice={Notice} />
       {!search && !busy && (
         <Empty title="Mỗi nhận định bắt đầu từ một nguồn" icon={FileCheck2}>
           Nhập nội dung cần tìm để xem các đoạn phù hợp, đọc nguồn và chạy trích

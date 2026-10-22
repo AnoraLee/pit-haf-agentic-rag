@@ -112,6 +112,12 @@ màn hình chấm 24 case, mở PDF đã lưu đúng phiên bản và lưu revis
 [Bộ case v0.2](data/development/v0.2/DATA_CARD.md) vẫn chờ người duyệt; xem
 [cách dùng và kết quả phát triển](docs/research/15-scoped-retrieval-and-review.md).
 
+Chạy toàn bộ case trên nguồn đã pin bằng `.\run.ps1 development-evaluate`;
+chỉ đánh giá lại bản lưu bằng `--evaluate-only` (không inference). Màn hình
+**Kết quả chạy bộ case** tổng hợp cả lỗi, ABSTAIN và lý do chặn; annotation được
+đối chiếu theo vị trí/chuỗi số, chưa phải semantic accuracy. Xem
+[hướng dẫn batch/evaluator](docs/research/16-development-batch-evaluation.md).
+
 Để mở rộng/tái trích corpus v0.2 dùng
 `.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`
 hoặc `--extract-existing` khi chỉ replay local. Công cụ `corpus-coverage` tạo

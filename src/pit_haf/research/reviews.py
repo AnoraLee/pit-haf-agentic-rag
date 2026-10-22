@@ -108,6 +108,19 @@ def export_reviews(root):
             "human_reviewed_status_is_declared_not_independently_validated": True}
 
 
+def validate_answer(review, case):
+    """Use the same annotation contract on write and when evaluating a saved ledger."""
+    if review.status != "pending" and not review.declaration:
+        raise ValueError("The reviewer must explicitly declare that the source was checked")
+    if review.status == "answered":
+        draft = ReportDraft(claims=review.answers, missing_information=[], insufficient_evidence=False)
+        accepted, rejected = verify_claims(draft, case["evidence"], True)
+        if not accepted or rejected:
+            raise ValueError("Every reviewed answer needs a unique literal quote and supported numbers")
+    elif review.answers or review.status != "pending" and not review.notes.strip():
+        raise ValueError("Non-answer reviews need a reason and no supported answers")
+
+
 def save_review(root, review):
     index, cases = active_pack(root)
     if review.pack_id != index["pack_id"]:
@@ -118,15 +131,7 @@ def save_review(root, review):
     previous = latest.get(review.case_id)
     if review.previous_revision != (previous["revision"] if previous else None):
         raise ReviewConflict("This case has a newer review; reload before saving")
-    if review.status != "pending" and not review.declaration:
-        raise ValueError("The reviewer must explicitly declare that the source was checked")
-    if review.status == "answered":
-        draft = ReportDraft(claims=review.answers, missing_information=[], insufficient_evidence=False)
-        accepted, rejected = verify_claims(draft, cases[review.case_id]["evidence"], True)
-        if not accepted or rejected:
-            raise ValueError("Every reviewed answer needs a unique literal quote and supported numbers")
-    elif review.answers or review.status != "pending" and not review.notes.strip():
-        raise ValueError("Non-answer reviews need a reason and no supported answers")
+    validate_answer(review, cases[review.case_id])
     event = {**review.model_dump(), "reviewed_at": datetime.now(UTC).isoformat(),
              "cases_sha256": index["cases_sha256"], "source": "local_workbench_reviewer_declaration",
              "independent_semantic_validation": False, "historical_availability_validated": False}
