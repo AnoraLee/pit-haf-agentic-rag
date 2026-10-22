@@ -108,13 +108,14 @@ chạy dự báo lợi suất hoặc backtest. Xem [luồng và kiểm tra](docs
 
 Luồng báo cáo nay lọc PDF đúng mã chính và kỳ báo cáo trước xếp hạng; tin bài
 không được dùng năm đăng để giả làm kỳ kế toán. Có bộ lọc nguồn/kỳ/hợp nhất,
-màn hình chấm 24 case, mở PDF đã lưu đúng phiên bản và lưu revision chấm local.
+màn hình **Tạo đáp án tham chiếu**, mở PDF đã lưu đúng phiên bản và lưu revision local.
 [Bộ case v0.2](data/development/v0.2/DATA_CARD.md) vẫn chờ người duyệt; xem
 [cách dùng và kết quả phát triển](docs/research/15-scoped-retrieval-and-review.md).
 
 Chạy toàn bộ case trên nguồn đã pin bằng `.\run.ps1 development-evaluate`;
 chỉ đánh giá lại bản lưu bằng `--evaluate-only` (không inference). Màn hình
-**Kết quả chạy bộ case** tổng hợp cả lỗi, ABSTAIN và lý do chặn; annotation được
+**Câu hỏi và kết quả kiểm tra AI** hiển thị đầy đủ 24 câu hỏi, tổng hợp cả lỗi,
+ABSTAIN và lý do chặn; annotation được
 đối chiếu theo vị trí/chuỗi số, chưa phải semantic accuracy. Xem
 [hướng dẫn batch/evaluator](docs/research/16-development-batch-evaluation.md).
 

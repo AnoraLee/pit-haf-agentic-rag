@@ -1066,9 +1066,7 @@ function DocumentDrawer({ doc, onClose }) {
   );
 }
 function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
-  const [query, setQuery] = useState(
-    initialQuery || "doanh thu lợi nhuận năm 2024",
-  );
+  const [query, setQuery] = useState(initialQuery || "");
   const [mode, setMode] = useState("exploratory_current");
   const [cutoff, setCutoff] = useState("2025-04-01T16:00");
   const [reportPeriod, setReportPeriod] = useState("auto"),
@@ -1205,26 +1203,29 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
         </span>
       </div>
       <Panel
-        title="Bạn muốn tìm hiểu điều gì?"
-        subtitle="Truy xuất từ kho tài liệu tại máy, không tìm kiếm trên Internet."
+        title="Đặt câu hỏi của bạn"
+        subtitle="Nhập nội dung bạn muốn tìm trong kho tài liệu tại máy."
       >
         <form onSubmit={find} className="analysis-form">
           <label className="query-input">
             <Search size={20} />
             <input
-              aria-label="Câu hỏi nghiên cứu"
+              aria-label="Câu hỏi của bạn"
               value={query}
               disabled={!!busy}
               maxLength={300}
               minLength={2}
               required
-              placeholder="Ví dụ: doanh thu và lợi nhuận năm 2024"
+              placeholder="Nhập câu hỏi bạn muốn tìm hiểu…"
               onChange={(e) => {
                 setQuery(e.target.value);
                 reset();
               }}
             />
-            <button className="button primary" disabled={!!busy}>
+            <button
+              className="button primary"
+              disabled={!!busy || query.trim().length < 2}
+            >
               {busy === "search" ? (
                 <Loader2 className="spin" size={16} />
               ) : (
@@ -1293,6 +1294,22 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
             </span>
           </div>
         </form>
+        <div className="evaluation-toolbar question-shortcut">
+          <span className="footnote">
+            Bạn muốn xem bộ câu hỏi đã dùng để kiểm tra AI?
+          </span>
+          <button
+            className="text-button"
+            type="button"
+            onClick={() =>
+              document
+                .getElementById("development-questions")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" })
+            }
+          >
+            Xem {development?.case_pack?.cases || ""} câu hỏi kiểm tra
+          </button>
+        </div>
       </Panel>
       <Notice tone={mode === "strict_point_in_time" ? "green" : "amber"}>
         {mode === "strict_point_in_time"
@@ -1434,8 +1451,8 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
           </details>
         )}
       </Panel>
-      <CaseReview api={api} Panel={Panel} Notice={Notice} />
       <DevelopmentEvaluation api={api} Panel={Panel} Notice={Notice} />
+      <CaseReview api={api} Panel={Panel} Notice={Notice} />
       {!search && !busy && (
         <Empty title="Mỗi nhận định bắt đầu từ một nguồn" icon={FileCheck2}>
           Nhập nội dung cần tìm để xem các đoạn phù hợp, đọc nguồn và chạy trích

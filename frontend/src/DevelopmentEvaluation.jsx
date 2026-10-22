@@ -19,8 +19,8 @@ const reasons = {
   model_digest_changed: "Phiên bản model thay đổi",
 };
 const reviewLabels = {
-  pending: "Chưa chấm",
-  answered: "Có đáp án",
+  pending: "Chưa có đáp án tham chiếu",
+  answered: "Đã có đáp án tham chiếu",
   unanswerable: "Thiếu bằng chứng",
   needs_ocr: "Cần OCR",
   wrong_period: "Sai kỳ",
@@ -33,6 +33,7 @@ const batchLabels = {
 
 export default function DevelopmentEvaluation({ api, Panel, Notice }) {
   const [data, setData] = useState(null);
+  const [ticker, setTicker] = useState("all");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   async function refresh() {
@@ -62,10 +63,14 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
   }
   const counts = data?.diagnostics || {};
   const comparison = data?.annotation_comparison;
+  const tickers = [...new Set((data?.rows || []).map((row) => row.ticker))];
+  const questions = (data?.rows || []).filter(
+    (row) => ticker === "all" || row.ticker === ticker,
+  );
   return (
     <Panel
-      title="Kết quả chạy bộ case"
-      subtitle="Đối chiếu bản chạy đã lưu với nguồn cố định và phiên bản chấm hiện tại."
+      title="Câu hỏi và kết quả kiểm tra AI"
+      subtitle="Xem nội dung từng câu hỏi, doanh nghiệp được hỏi và kết quả trả lời của AI."
     >
       <div className="evaluation-toolbar">
         <button className="text-button" disabled={busy} onClick={refresh}>
@@ -81,13 +86,13 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
       {data && (
         <>
           <p className="footnote">
-            Đã khai báo chấm {data.declared_reviewed_cases}/{data.total_cases}{" "}
-            case.
+            Đã lưu đối chiếu {data.declared_reviewed_cases}/{data.total_cases}{" "}
+            câu hỏi.
             {data.declared_reviewed_cases === 0 &&
-              " Chưa có bản chấm để tính chỉ số đối chiếu."}
+              " Chưa có đáp án tham chiếu để tính chỉ số đối chiếu."}
           </p>
           {!data.batch ? (
-            <p>Chưa có bản chạy hoàn tất cho bộ case hiện tại.</p>
+            <p>Chưa có bộ kết quả đã lưu cho các câu hỏi này.</p>
           ) : (
             <>
               <div className="evaluation-metrics">
@@ -99,11 +104,11 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
                 </div>
                 <div>
                   <strong>{counts.completed_with_citations || 0}</strong>
-                  <span>Case có trích dẫn qua kiểm tra</span>
+                  <span>Câu có trích dẫn qua kiểm tra</span>
                 </div>
                 <div>
                   <strong>{counts.abstained || 0}</strong>
-                  <span>Case từ chối trả lời</span>
+                  <span>Câu từ chối trả lời</span>
                 </div>
                 <div>
                   <strong>
@@ -112,7 +117,7 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
                       (counts.source_or_runner_failed || 0) +
                       (counts.invalid_runs || 0)}
                   </strong>
-                  <span>Case lỗi / không toàn vẹn</span>
+                  <span>Lượt lỗi / chưa hoàn tất</span>
                 </div>
               </div>
               <p className="footnote">
@@ -156,44 +161,62 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
                   ngữ nghĩa.
                 </p>
               )}
-              <details className="audit-details">
-                <summary>Xem trạng thái từng case ({data.rows.length})</summary>
-                <div className="table-scroll">
-                  <table className="data-table">
-                    <thead>
-                      <tr>
-                        <th>Case</th>
-                        <th>Trạng thái chạy</th>
-                        <th>Nhận định qua / bị chặn</th>
-                        <th>Bản chấm</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data.rows.map((row) => (
-                        <tr key={row.case_id}>
-                          <td>{row.case_id}</td>
-                          <td>{statuses[row.status] || row.status}</td>
-                          <td>
-                            {row.accepted_claims ?? "—"} /{" "}
-                            {row.rejected_claims ?? "—"}
-                          </td>
-                          <td>
-                            {reviewLabels[row.review_status] ||
-                              row.review_status}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </details>
               <p className="footnote">
                 {batchLabels[data.batch.status] || data.batch.status} · Chưa
-                chạy: {counts.not_run || 0} case. Bản chạy {data.batch.batch_id}{" "}
-                · Kết quả phát triển, chưa xác nhận PiT lịch sử.
+                chạy: {counts.not_run || 0} câu hỏi. Bản chạy{" "}
+                {data.batch.batch_id} · Kết quả phát triển, chưa xác nhận PiT
+                lịch sử.
               </p>
             </>
           )}
+          <section
+            id="development-questions"
+            className="evaluation-questions"
+            aria-label="Danh sách câu hỏi đánh giá"
+          >
+            <div className="evaluation-question-heading">
+              <h3>Danh sách {data.total_cases} câu hỏi</h3>
+              <label className="review-field">
+                Lọc doanh nghiệp
+                <select
+                  aria-label="Doanh nghiệp của câu hỏi"
+                  value={ticker}
+                  onChange={(e) => setTicker(e.target.value)}
+                >
+                  <option value="all">Tất cả doanh nghiệp</option>
+                  {tickers.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <p className="footnote">
+              Đang hiển thị {questions.length} câu hỏi. Mỗi câu được kiểm tra
+              riêng cho từng doanh nghiệp.
+            </p>
+            <ol className="evaluation-question-list">
+              {questions.map((row) => (
+                <li key={row.case_id}>
+                  <div className="evaluation-question-meta">
+                    <strong>{row.ticker}</strong>
+                    <span>{statuses[row.status] || row.status}</span>
+                  </div>
+                  <p className="evaluation-question-text">{row.question}</p>
+                  <p className="footnote">
+                    {row.accepted_claims != null && (
+                      <>
+                        {row.accepted_claims} nhận định qua kiểm tra ·{" "}
+                        {row.rejected_claims} bị chặn ·{" "}
+                      </>
+                    )}
+                    {reviewLabels[row.review_status] || row.review_status}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </section>
         </>
       )}
     </Panel>

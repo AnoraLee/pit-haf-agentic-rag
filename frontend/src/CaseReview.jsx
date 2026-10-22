@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const labels = {
-  pending: "Chưa duyệt",
+  pending: "Chưa có đáp án",
   answered: "Có đáp án",
   unanswerable: "Thiếu bằng chứng",
   needs_ocr: "Cần OCR / đọc lại bảng",
@@ -133,30 +133,39 @@ export default function CaseReview({ api, Panel, Notice }) {
     (!["pending", "answered"].includes(status) && !notes.trim());
   return (
     <Panel
-      title="Chấm case phát triển"
-      subtitle="Đọc nguồn, nhập đáp án và ghi người chấm. Nội dung chưa được tự động coi là gold độc lập."
+      title="Tạo đáp án tham chiếu"
+      subtitle="Bạn đọc tài liệu và ghi câu trả lời đã kiểm tra để làm mốc đối chiếu với AI."
     >
       <details className="audit-details">
-        <summary>Mở phiếu chấm {list?.cases.length || ""} case</summary>
+        <summary>Chọn câu hỏi và nhập đáp án tham chiếu</summary>
+        <ol className="review-guide">
+          <li>Chọn một câu hỏi trong danh sách bên dưới.</li>
+          <li>Mở PDF đã lưu, tìm và kiểm tra thông tin trả lời câu hỏi.</li>
+          <li>
+            Nhập đáp án cùng trích dẫn nguyên văn; nếu nguồn không đủ, chọn
+            “Thiếu bằng chứng”.
+          </li>
+        </ol>
         {error && <Notice tone="error">{error}</Notice>}
         {message && <Notice tone="green">{message}</Notice>}
         {list && (
           <>
             <p className="footnote">
-              Đã khai báo duyệt {list.declared_reviewed_cases}/
-              {list.cases.length} case · Không thay đổi điều kiện PiT lịch sử.
+              Đã lưu đối chiếu {list.declared_reviewed_cases}/
+              {list.cases.length} câu hỏi. Đây là bản nhập thủ công, cần người
+              đọc kiểm tra nội dung.
             </p>
             <label className="review-field">
-              Case cần chấm
+              Câu hỏi cần đối chiếu
               <select
-                aria-label="Case cần chấm"
+                aria-label="Câu hỏi cần đối chiếu"
                 value={caseId}
                 disabled={busy}
                 onChange={(e) => setCaseId(e.target.value)}
               >
                 {list.cases.map((c) => (
                   <option key={c.case_id} value={c.case_id}>
-                    {c.ticker} · {c.case_id} · {labels[c.status]}
+                    {c.ticker} · {c.question} · {labels[c.status]}
                   </option>
                 ))}
               </select>
@@ -260,7 +269,7 @@ export default function CaseReview({ api, Panel, Notice }) {
                             </select>
                           </label>
                           <label className="review-field">
-                            Câu trả lời đã kiểm tra
+                            Đáp án tham chiếu bạn đã kiểm tra
                             <textarea
                               aria-label={`Câu trả lời ${i + 1}`}
                               maxLength={400}
@@ -349,7 +358,7 @@ export default function CaseReview({ api, Panel, Notice }) {
                       className="button primary"
                       disabled={busy || invalid}
                     >
-                      {busy ? "Đang lưu…" : "Lưu phiên bản chấm"}
+                      {busy ? "Đang lưu…" : "Lưu đáp án tham chiếu"}
                     </button>
                     <button
                       type="button"

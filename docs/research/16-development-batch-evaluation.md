@@ -41,10 +41,19 @@ chạy batch tuần tự và tránh lập báo cáo tương tác cùng lúc.
 .\run.ps1 development-evaluate --evaluate-only --batch-id <batch-id>
 ```
 
-Trên **Phân tích tài liệu → Kết quả chạy bộ case**, bấm **Cập nhật đánh giá**
+Trên **Phân tích tài liệu → Câu hỏi và kết quả kiểm tra AI**, bấm **Cập nhật đánh giá**
 sau khi lưu annotation hoặc chạy CLI. GET `/api/research/evaluation` chỉ đọc,
 không khởi động model. Có thể tải JSON tổng hợp và xem đủ từng case. Bản chạy
 được hiển thị khi có manifest đã seal; batch đang chạy chỉ ghi `progress.json`.
+
+Ô **Đặt câu hỏi của bạn** dùng để tra cứu tự do và mặc định để trống. Nút
+**Xem 24 câu hỏi kiểm tra** cuộn tới danh sách luôn mở, hiển thị câu hỏi đầy đủ
+và có bộ lọc doanh nghiệp. API trả nội dung câu hỏi từ pack đã pin, kể cả khi
+chưa chạy model; không thay bằng mã case kỹ thuật.
+
+Mục **Tạo đáp án tham chiếu** (tên trước đây: “Chấm case phát triển”) giải thích
+cách đọc PDF, nhập đáp án/trích dẫn hoặc chọn thiếu bằng chứng. Đây là ghi đáp
+án tham chiếu thủ công, không phải chấm điểm tự động cho câu trả lời model.
 
 Manifest bind pack/cases/protocol/policy, thứ tự, run ID và hash từng report.
 Replay kiểm seal report/Markdown, context/câu hỏi, request/response raw và đối

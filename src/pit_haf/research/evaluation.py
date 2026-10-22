@@ -227,7 +227,10 @@ def evaluate_batch(root, batch_id=None):
               "pack_id": index["pack_id"], "cases_sha256": index["cases_sha256"],
               "review_snapshot_sha256": digest({c: r["revision"] for c, r in latest.items()}),
               "total_cases": len(cases), "declared_reviewed_cases": sum(r["status"] != "pending" for r in latest.values()),
-              "batch": None, "rows": [], "semantic_accuracy": None,
+              "batch": None, "rows": [{"case_id": c["case_id"], "ticker": c["ticker"],
+                                       "question": c["question"], "status": "not_run", "run_id": None,
+                                       "review_status": latest.get(c["case_id"], {}).get("status", "pending")}
+                                      for c in cases.values()], "semantic_accuracy": None,
               "historical_availability_validated": False, "independently_verified_gold_cases": 0}
     if batch_id is None:
         return output
@@ -238,10 +241,11 @@ def evaluate_batch(root, batch_id=None):
         raise ValueError("Batch must retain every case exactly once in published order")
     counts, reviewed, blocks, failures = Counter(), Counter(), Counter(), Counter()
     latencies = []
+    output["rows"] = []
     for item in batch["cases"]:
         case = cases[item["case_id"]]
         review = latest.get(item["case_id"])
-        row = {"case_id": item["case_id"], "ticker": case["ticker"], "status": item["status"],
+        row = {"case_id": item["case_id"], "ticker": case["ticker"], "question": case["question"], "status": item["status"],
                "run_id": item["run_id"], "review_status": review["status"] if review else "pending"}
         if item.get("error"):
             row["error"] = item["error"]

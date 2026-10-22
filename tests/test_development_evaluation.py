@@ -259,10 +259,14 @@ def test_batch_seal_coverage_and_cross_pack_are_checked(batch_root):
 def test_evaluation_api_does_not_infer_and_reports_integrity_errors(batch_root):
     root, _, _, _, _ = batch_root
     client = TestClient(create_app(root))
-    assert client.get("/api/research/evaluation").json()["batch"] is None
+    ready = client.get("/api/research/evaluation").json()
+    assert ready["batch"] is None
+    assert [row["question"] for row in ready["rows"]] == [c["question"] for c in batch_root[2]]
+    assert all(row["status"] == "not_run" for row in ready["rows"])
     batch = run_batch(root, adapter=adapter())
     response = client.get("/api/research/evaluation").json()
     assert response["diagnostics"]["verified_runs"] == 2
+    assert [row["question"] for row in response["rows"]] == [c["question"] for c in batch_root[2]]
     assert client.get("/api/research/evaluation?batch_id=invalid").status_code == 422
     manifest = folder_for(root, batch["batch_id"]) / "manifest.json"
     manifest.write_bytes(b"invalid")
