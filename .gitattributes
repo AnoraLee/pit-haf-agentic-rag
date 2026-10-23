@@ -12,3 +12,5 @@ configs/report_retrieval_v0_2.json text eol=lf
 data/development/v0.2/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/development/evaluation-v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 run.ps1 text eol=lf
+data/development/source-audit-v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/research/development-source-audit-v0.1.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

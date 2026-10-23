@@ -1,6 +1,6 @@
 # Hồ sơ nghiên cứu PiT-HAF
 
-Cập nhật: 19/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
+Cập nhật: 23/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
 không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết quả khoa học.
 
 | Hồ sơ | Nội dung |
@@ -23,6 +23,8 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [14 — Single-agent development](14-single-agent-development.md) | Báo cáo nhiều đoạn có kiểm quote/số, 24 case chờ annotation và cấu hình phát triển chưa freeze |
 | [15 — Scoped retrieval/review](15-scoped-retrieval-and-review.md) | Lọc đúng mã/kỳ trước truy xuất và màn hình chấm case có revision/hash/export, chưa có human gold |
 | [16 — Development batch evaluation](16-development-batch-evaluation.md) | Chạy case trên context cố định, giữ lỗi/ABSTAIN, replay request/response và đối chiếu annotation theo vị trí/chuỗi số |
+| [Đối chiếu nguồn 24 câu](development-source-audit-v0.1.md) | Đáp án trợ lý soạn từ PDF đầy đủ, tách đánh giá ngữ cảnh và kết quả gốc; chưa là nhãn độc lập |
+| [17 — Tiến độ 23/10/2026](17-progress-20261023.md) | Phần đã triển khai, công việc đang làm và các bước tiếp theo, đối chiếu với artifact hiện có |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

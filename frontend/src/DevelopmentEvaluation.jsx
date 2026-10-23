@@ -19,8 +19,8 @@ const reasons = {
   model_digest_changed: "Phiên bản model thay đổi",
 };
 const reviewLabels = {
-  pending: "Chưa có đáp án tham chiếu",
-  answered: "Đã có đáp án tham chiếu",
+  pending: "Tham chiếu thủ công: chưa xác nhận",
+  answered: "Người dùng đã lưu đáp án tham chiếu",
   unanswerable: "Thiếu bằng chứng",
   needs_ocr: "Cần OCR",
   wrong_period: "Sai kỳ",
@@ -31,17 +31,77 @@ const batchLabels = {
   interrupted: "Bị gián đoạn",
 };
 
+function SourceAuditAnswer({ row, audit }) {
+  return (
+    <details className="source-audit-answer">
+      <summary>Đáp án và đối chiếu nguồn</summary>
+      <div className="source-audit-content">
+        <p className="source-audit-label">
+          Đáp án do trợ lý soạn từ PDF đầy đủ
+        </p>
+        <p>{row.answer}</p>
+        <div className="source-audit-links">
+          {row.citations.map((cite) => (
+            <a
+              key={`${cite.version_id}-${cite.page}`}
+              href={cite.pdf_url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Mở nguồn · trang PDF {cite.page}
+            </a>
+          ))}
+        </div>
+        <p>
+          <strong>Ngữ cảnh model: </strong>
+          {audit.context_labels[row.context_status]}. {row.context_note}
+        </p>
+        <p>
+          <strong>Đối chiếu kết quả: </strong>
+          {audit.verdict_labels[row.verdict]}. {row.model_note}
+        </p>
+        <details className="audit-details">
+          <summary>Xem các đoạn nguồn đã kiểm tra</summary>
+          {row.citations.map((cite) => (
+            <div key={`${cite.version_id}-${cite.page}`}>
+              <p className="footnote">Trang PDF {cite.page}</p>
+              {cite.spans.map((span, i) => (
+                <blockquote key={i}>{span.quote}</blockquote>
+              ))}
+            </div>
+          ))}
+          <p className="footnote">
+            Các đoạn có thể giao nhau. Đọc toàn trang để xác nhận tiêu đề cột,
+            đơn vị và ghi chú; khớp chữ chưa xác nhận đúng ý nghĩa.
+          </p>
+        </details>
+      </div>
+    </details>
+  );
+}
+
 export default function DevelopmentEvaluation({ api, Panel, Notice }) {
   const [data, setData] = useState(null);
+  const [audit, setAudit] = useState(null);
+  const [auditError, setAuditError] = useState("");
   const [ticker, setTicker] = useState("all");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   async function refresh() {
     setBusy(true);
     setError("");
+    setAuditError("");
     setData(null);
+    setAudit(null);
     try {
-      setData(await api("research/evaluation"));
+      const [evaluation, sourceAudit] = await Promise.allSettled([
+        api("research/evaluation"),
+        api("research/source-audit"),
+      ]);
+      if (evaluation.status === "fulfilled") setData(evaluation.value);
+      else setError(evaluation.reason.message);
+      if (sourceAudit.status === "fulfilled") setAudit(sourceAudit.value.audit);
+      else setAuditError(sourceAudit.reason.message);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -51,18 +111,27 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
   useEffect(() => {
     refresh();
   }, []);
-  function download() {
+  function download(value, filename) {
     const url = URL.createObjectURL(
-      new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
+      new Blob([JSON.stringify(value, null, 2)], { type: "application/json" }),
     );
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = `${data.batch.batch_id}-evaluation.json`;
+    anchor.download = filename;
     anchor.click();
     URL.revokeObjectURL(url);
   }
   const counts = data?.diagnostics || {};
   const comparison = data?.annotation_comparison;
+  const matchingAudit =
+    audit?.pack_id === data?.pack_id &&
+    audit?.cases_sha256 === data?.cases_sha256 &&
+    audit?.batch_id === data?.batch?.batch_id
+      ? audit
+      : null;
+  const auditRows = new Map(
+    (matchingAudit?.rows || []).map((row) => [row.case_id, row]),
+  );
   const tickers = [...new Set((data?.rows || []).map((row) => row.ticker))];
   const questions = (data?.rows || []).filter(
     (row) => ticker === "all" || row.ticker === ticker,
@@ -77,20 +146,62 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
           {busy ? "Đang kiểm tra…" : "Cập nhật đánh giá"}
         </button>
         {data?.batch && (
-          <button className="text-button" onClick={download}>
+          <button
+            className="text-button"
+            onClick={() =>
+              download(data, `${data.batch.batch_id}-evaluation.json`)
+            }
+          >
             Tải kết quả đánh giá
+          </button>
+        )}
+        {matchingAudit && (
+          <button
+            className="text-button"
+            onClick={() =>
+              download(
+                matchingAudit,
+                `${matchingAudit.batch_id}-source-audit.json`,
+              )
+            }
+          >
+            Tải 24 đáp án đối chiếu
           </button>
         )}
       </div>
       {error && <Notice tone="error">{error}</Notice>}
+      {auditError && <Notice tone="error">{auditError}</Notice>}
       {data && (
         <>
           <p className="footnote">
-            Đã lưu đối chiếu {data.declared_reviewed_cases}/{data.total_cases}{" "}
-            câu hỏi.
+            Đáp án tham chiếu do người dùng xác nhận:{" "}
+            {data.declared_reviewed_cases}/{data.total_cases} câu hỏi.
             {data.declared_reviewed_cases === 0 &&
               " Chưa có đáp án tham chiếu để tính chỉ số đối chiếu."}
           </p>
+          {matchingAudit && (
+            <div className="source-audit-overview" role="note">
+              <strong>
+                Trợ lý đã trả lời và đối chiếu nguồn cho{" "}
+                {matchingAudit.summary.answered_cases}/{data.total_cases} câu
+              </strong>
+              <p>
+                Mở “Đáp án và đối chiếu nguồn” dưới từng câu để đọc câu trả lời,
+                trang PDF và nhận xét về kết quả AI đã chạy. Ngữ cảnh ghim đủ
+                thông tin cho{" "}
+                {matchingAudit.summary.context_counts.sufficient || 0} câu, hỗ
+                trợ một phần cho{" "}
+                {matchingAudit.summary.context_counts.partial || 0} câu và thiếu
+                thông tin cho{" "}
+                {matchingAudit.summary.context_counts.insufficient || 0} câu.
+              </p>
+              <p className="footnote">
+                Bản đối chiếu do trợ lý thực hiện, chưa được người dùng xác nhận
+                độc lập. Chưa dùng bản này để tính độ chính xác hoặc xác nhận
+                PiT lịch sử. Các kết quả gốc được giữ nguyên.
+              </p>
+            </div>
+          )}
           {!data.batch ? (
             <p>Chưa có bộ kết quả đã lưu cho các câu hỏi này.</p>
           ) : (
@@ -213,6 +324,12 @@ export default function DevelopmentEvaluation({ api, Panel, Notice }) {
                     )}
                     {reviewLabels[row.review_status] || row.review_status}
                   </p>
+                  {auditRows.has(row.case_id) && (
+                    <SourceAuditAnswer
+                      row={auditRows.get(row.case_id)}
+                      audit={matchingAudit}
+                    />
+                  )}
                 </li>
               ))}
             </ol>

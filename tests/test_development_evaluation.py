@@ -271,3 +271,102 @@ def test_evaluation_api_does_not_infer_and_reports_integrity_errors(batch_root):
     manifest = folder_for(root, batch["batch_id"]) / "manifest.json"
     manifest.write_bytes(b"invalid")
     assert client.get("/api/research/evaluation").status_code == 503
+
+
+@pytest.fixture
+def assistant_audit_root(batch_root, monkeypatch):
+    from pit_haf.research import source_audit
+    root, _, cases, summary, catalog = batch_root
+    data = catalog.subset({("fixture-v1", 1)})
+    state = {"page": data.pages[0]}
+    class AuditCatalog:
+        def __init__(self, *args):
+            self.pointer = summary
+        def page(self, version_id, number):
+            assert (version_id, number) == ("fixture-v1", 1)
+            return data.versions[0], state["page"], {}
+    monkeypatch.setattr(source_audit, "Catalog", AuditCatalog)
+    batch = run_batch(root, adapter=adapter())
+    spec = {"provenance": "assistant_source_audit", "independent_human_gold": False,
+            "batch_id": batch["batch_id"], "method": "Synthetic audit fixture only",
+            "rows": [{"case_id": c["case_id"], "answer": "Synthetic assistant answer",
+                      "context_status": "sufficient", "context_note": "Synthetic context note",
+                      "verdict": "useful_claims", "model_note": "Synthetic judgement",
+                      "references": [{"page": 1, "terms": [QUOTE]}]} for c in cases]}
+    folder = root / source_audit.LOCATION
+    folder.mkdir(parents=True)
+    write_json(folder / "answers.json", spec)
+    return root, spec, state, batch
+
+
+def test_assistant_audit_is_bound_read_only_and_does_not_promote_human_reviews(assistant_audit_root):
+    from pit_haf.research.source_audit import REPORT, load_source_audit, publish
+    root, _, _, batch = assistant_audit_root
+    run_files = {p: p.read_bytes() for p in (root / "outputs/company-reports").rglob("*") if p.is_file()}
+    result = publish(root)
+    assert load_source_audit(root) == result
+    assert result["summary"]["answered_cases"] == 2
+    assert result["semantic_accuracy"] is None and not result["independent_human_gold"]
+    span = result["rows"][0]["citations"][0]["spans"][0]
+    assert span["quote"] == QUOTE[span["start"]:span["end"]]
+    assert "trợ lý soạn" in (root / REPORT).read_text(encoding="utf-8")
+    assert all(p.read_bytes() == content for p, content in run_files.items())
+    assert not (root / "outputs/development-reviews").exists()
+    evaluation = evaluate_batch(root, batch["batch_id"])
+    assert evaluation["declared_reviewed_cases"] == 0
+    assert evaluation["independently_verified_gold_cases"] == 0
+    assert evaluation["annotation_comparison"]["reference_span_hit_rate"] is None
+
+
+@pytest.mark.parametrize("change", ["missing_case", "duplicate_case", "foreign_case", "bad_anchor", "human_provenance"])
+def test_assistant_audit_refuses_invalid_coverage_anchors_or_provenance(assistant_audit_root, change):
+    from pit_haf.research.source_audit import LOCATION, publish
+    root, spec, _, _ = assistant_audit_root
+    if change == "missing_case":
+        spec["rows"].pop()
+    elif change == "duplicate_case":
+        spec["rows"][1] = spec["rows"][0]
+    elif change == "foreign_case":
+        spec["rows"][0]["case_id"] = "unrelated-case"
+    elif change == "bad_anchor":
+        spec["rows"][0]["references"][0]["terms"] = ["Invented fixture quote"]
+    else:
+        spec["independent_human_gold"] = True
+    write_json(root / LOCATION / "answers.json", spec)
+    with pytest.raises(ValueError):
+        publish(root)
+
+
+@pytest.mark.parametrize("artifact", ["audit.json", "answers.json", "report", "model_response", "source_page"])
+def test_assistant_audit_detects_drift_in_every_dependency(assistant_audit_root, artifact):
+    from pit_haf.research.source_audit import LOCATION, REPORT, load_source_audit, publish
+    root, _, state, batch = assistant_audit_root
+    publish(root)
+    if artifact == "source_page":
+        text = state["page"].text + " Synthetic changed extraction"
+        state["page"] = state["page"].model_copy(update={"text": text, "text_hash": sha256(text.encode())})
+    else:
+        if artifact == "report":
+            path = root / REPORT
+        elif artifact == "model_response":
+            path = root / "outputs/company-reports" / batch["cases"][0]["run_id"] / "generation/attempt-01/response.raw"
+        else:
+            path = root / LOCATION / artifact
+        path.write_bytes(path.read_bytes() + b" ")
+    with pytest.raises(ValueError):
+        load_source_audit(root)
+
+
+def test_assistant_audit_api_is_optional_and_fails_closed(assistant_audit_root):
+    from pit_haf.research.source_audit import LOCATION, publish
+    root, _, _, _ = assistant_audit_root
+    empty = TestClient(create_app(root / "empty-workspace"))
+    assert empty.get("/api/research/source-audit").json() == {"audit": None}
+    publish(root)
+    client = TestClient(create_app(root))
+    response = client.get("/api/research/source-audit")
+    assert response.status_code == 200
+    assert response.json()["audit"]["provenance"] == "assistant_source_audit"
+    assert client.post("/api/research/source-audit", json={}).status_code == 405
+    (root / LOCATION / "audit.json").write_bytes(b"corrupt")
+    assert client.get("/api/research/source-audit").status_code == 503

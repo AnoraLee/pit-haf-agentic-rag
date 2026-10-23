@@ -33,6 +33,7 @@ from pit_haf.research.reviews import (
     list_cases,
     save_review,
 )
+from pit_haf.research.source_audit import load_source_audit
 from pit_haf.ui.workspace import (
     Corpus,
     extract_passage,
@@ -357,6 +358,13 @@ def create_app(root: Path | None = None) -> FastAPI:
                 return evaluate_batch(root, batch_id)
         except (OSError, ValueError, KeyError, TypeError) as exc:
             raise HTTPException(503, "Không đánh giá được bản chạy: " + str(exc)) from exc
+
+    @app.get("/api/research/source-audit")
+    def development_source_audit():
+        try:
+            return {"audit": load_source_audit(root)}
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            raise HTTPException(503, "Không mở được bản đối chiếu nguồn: " + str(exc)) from exc
 
     @app.post("/api/research/report")
     def company_report(body: CompanyReportRequest):

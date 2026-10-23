@@ -1,170 +1,267 @@
 # PiT-HAF
 
-Đồ án nghiên cứu Point-in-Time Agentic-RAG hỗ trợ phân tích cổ phiếu Việt Nam.
-Trọng tâm là chất lượng bằng chứng, kiểm soát rò rỉ thời gian và khả năng tái lập.
-Dự án dùng LLM có sẵn; dữ liệu phục vụ truy xuất và đánh giá, không dùng để
-huấn luyện một LLM mới.
+Đồ án nghiên cứu **Point-in-Time Hierarchical Agentic Framework** hỗ trợ phân
+tích cổ phiếu Việt Nam bằng bằng chứng có thể truy nguyên. Hệ thống hiện có
+kho tài liệu, truy xuất theo doanh nghiệp/kỳ báo cáo, báo cáo một agent và
+đối soát trích dẫn. Dữ liệu phục vụ truy xuất và đánh giá; dự án dùng LLM có
+sẵn, không huấn luyện một LLM mới.
 
-## Cài đặt và chạy
+**Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
-Yêu cầu Python 3.11 hoặc 3.12 và uv. Giao diện chính dùng React + Vite, backend FastAPI.
-Để build frontend từ source cần Node.js 22.12+ hoặc 24 và pnpm 11.25.0.
-Trong PowerShell tại thư mục dự án:
+[Tiến độ 23/10/2026](docs/research/17-progress-20261023.md) ·
+[Hồ sơ nghiên cứu](docs/research/README.md) ·
+[Đáp án và đối chiếu 24 câu](docs/research/development-source-audit-v0.1.md)
+
+## 1. Yêu cầu trên máy mới
+
+Hướng dẫn dưới đây dành cho **Windows và PowerShell**, chạy tại thư mục gốc
+repository. Các artifact dữ liệu hiện được tạo trên Windows.
+
+| Thành phần | Yêu cầu |
+|---|---|
+| Git | Clone repository; tài khoản cần được cấp quyền nếu repository private |
+| Python | 3.11 hoặc 3.12; hướng dẫn sử dụng 3.12 |
+| uv | Cài dependency Python theo `uv.lock` |
+| Node.js | 22.12+ hoặc 24 |
+| pnpm | 11.25.0 |
+| Ollama | Cần khi chạy trích xuất/báo cáo mới; không bắt buộc để xem PDF và kết quả đã lưu |
+| Dữ liệu local | Tải riêng từ Google Drive ở mục 3 |
+
+Trang cài đặt: [Git](https://git-scm.com/downloads),
+[Python](https://www.python.org/downloads/),
+[uv](https://docs.astral.sh/uv/getting-started/installation/),
+[Node.js](https://nodejs.org/en/download), [Ollama](https://ollama.com/download).
+
+## 2. Clone và cài thư viện
 
 ```powershell
+git clone https://github.com/tuankhoi1205/pit-haf.git
+cd pit-haf
+
 $env:UV_PROJECT_ENVIRONMENT = ".venv312"
-uv sync --locked --python 3.12
+uv sync --locked --dev --python 3.12
+
+npm install --global pnpm@11.25.0
 .\run.ps1 frontend-install
 .\run.ps1 frontend-build
+```
+
+Nếu đã clone, chạy `git pull --ff-only` trong repository trước khi cài/build.
+Bỏ qua lệnh cài pnpm nếu đã có đúng phiên bản. `run.ps1` gọi trực tiếp Python
+trong `.venv312`, hoặc `.venv` nếu không có `.venv312`; không cần activate môi
+trường. Không sao chép môi trường Python hay `node_modules` từ máy khác.
+Giữ `uv.lock` và `frontend/pnpm-lock.yaml` để cài đúng dependency của dự án.
+
+## 3. Tải dữ liệu từ Google Drive
+
+**[Mở thư mục dữ liệu PiT-HAF trên Google Drive](https://drive.google.com/drive/folders/1YIutetuTH-COMZjgbIAand0mwg3hiBr4?usp=sharing)**
+
+Mã nguồn, cấu hình, data card và checksum được lưu trên GitHub. PDF, bài báo,
+SQLite catalog và các artifact chạy local nằm trên Drive, nên **chỉ clone
+repository chưa có đủ dữ liệu để dùng kho tài liệu và bộ 24 câu**.
+Chủ dự án đang tải dữ liệu lên thư mục này ngày 23/10/2026; cần đợi các phần
+liên quan hoàn tất. Nếu Drive yêu cầu quyền truy cập, liên hệ chủ dự án để
+được cấp quyền xem/tải. Repository và Drive có quyền truy cập riêng.
+
+Tải đủ các thư mục hoặc file nén tương ứng, giải nén/copy **vào thư mục gốc
+`pit-haf`**, giữ nguyên cấu trúc sau:
+
+```text
+pit-haf/
+├── README.md
+├── run.ps1
+├── frontend/
+├── src/
+├── data/
+│   ├── development/                    # metadata, cấu hình và đối chiếu từ Git
+│   └── cache/
+│       └── evidence/
+│           ├── registry.sqlite3
+│           └── blobs/
+│               └── <2 ký tự hash>/<SHA-256>
+└── outputs/
+    ├── milestone-1/
+    │   └── data-pilot/
+    │       └── 20261018-corpus-v0.5-scale-curated/
+    │           ├── summary.json
+    │           ├── pages.jsonl
+    │           ├── catalog.json
+    │           └── catalog.sqlite3
+    ├── development-cases/
+    │   └── 20261019T030531Z-8ef1bf33/     # giữ toàn bộ thư mục
+    ├── development-batches/
+    │   └── 20261022T030940Z-22f948f0/    # giữ toàn bộ thư mục
+    └── company-reports/
+        └── <run_id>/                   # giữ các bản chạy từ Drive
+```
+
+| Thư mục cần tải | Dùng để làm gì |
+|---|---|
+| `data/cache/evidence/` | Raw PDF/bài viết theo hash và registry phiên bản |
+| `outputs/milestone-1/data-pilot/20261018-corpus-v0.5-scale-curated/` | Corpus hiện hành, văn bản từng trang và chỉ mục tìm kiếm |
+| `outputs/development-cases/` | 24 câu hỏi với các đoạn bằng chứng cố định |
+| `outputs/development-batches/` | Manifest, trạng thái và liên kết các lượt chạy |
+| `outputs/company-reports/` | Câu trả lời gốc, request/response, nguồn và checksum của từng lượt |
+
+`data/cache/datasets/` chứa CSV gốc để tái nhập/mở rộng corpus, không bắt buộc
+cho giao diện nếu đã có đầy đủ snapshot hiện hành. Nếu Drive có
+`outputs/llm-pilot/` và `outputs/quote-replay/`, có thể copy thêm để xem các
+chỉ số pilot cũ; đây là các artifact riêng với batch 24 câu.
+
+Các đường dẫn trong `.gitignore` vẫn cần giữ: Git bỏ qua chúng khi push,
+nhưng ứng dụng đọc được file đã tải về. `data/development/` trong repository
+chứa metadata/checksum; dữ liệu nguồn đã ghim ở `outputs/development-cases/`
+là phần cần khôi phục thêm từ Drive. Giữ nguyên tên thư mục và tên file hash.
+Tránh giải nén thành `pit-haf/pit-haf-data/data/...` hoặc `data/data/cache/...`.
+
+Kiểm tra nhanh các file bắt buộc:
+
+```powershell
+Test-Path .\data\cache\evidence\registry.sqlite3
+Test-Path .\outputs\milestone-1\data-pilot\20261018-corpus-v0.5-scale-curated\catalog.sqlite3
+Test-Path .\outputs\development-cases\20261019T030531Z-8ef1bf33\cases.jsonl
+Test-Path .\outputs\development-batches\20261022T030940Z-22f948f0\manifest.json
+```
+
+Cả bốn lệnh cần trả `True`. Khi đã tải đủ, kiểm tra sâu bản đối chiếu 24 câu,
+checksum, nguồn PDF và đầu ra gốc bằng:
+
+```powershell
+.\.venv312\Scripts\python.exe -X utf8 -m pit_haf.research.source_audit
+```
+
+Lệnh này đọc dữ liệu đã lưu, không gọi model và không tạo nhãn người duyệt.
+Không dùng `--publish` để sửa lỗi thiếu file/checksum; hãy tải lại đúng file
+hoặc phần dữ liệu còn thiếu từ Drive.
+
+## 4. Chạy ứng dụng
+
+```powershell
+.\run.ps1 app
+```
+
+Mở **[http://localhost:8501](http://localhost:8501)**. Backend phục vụ frontend
+đã build và API trên cùng cổng, chỉ lắng nghe `127.0.0.1`. API docs:
+[http://localhost:8501/api/docs](http://localhost:8501/api/docs).
+
+- **Kho bằng chứng:** duyệt/lọc tài liệu, xem trang và mở PDF đã lưu.
+- **Phân tích tài liệu:** đặt câu hỏi, tìm bằng chứng và lập báo cáo doanh nghiệp.
+- **Câu hỏi và kết quả kiểm tra AI:** xem 24 câu, trạng thái lần chạy và mở
+  **Đáp án và đối chiếu nguồn** dưới từng câu.
+- **Tạo đáp án tham chiếu:** ghi nhận kiểm tra của người dùng; tách khỏi đáp án
+  do trợ lý soạn.
+- **Dữ liệu thị trường:** lấy OHLCV qua provider; cần kết nối Internet.
+
+Không cần chạy lại pilot, thu thập dữ liệu hoặc inference để mở ứng dụng và
+xem các kết quả đã lưu. Nếu đã có server cũ, dừng server bằng `Ctrl+C` tại
+terminal của server rồi chạy lại sau khi cập nhật mã/build frontend.
+
+### Bật Ollama khi cần sinh báo cáo mới
+
+Cài Ollama trên chính máy chạy backend, mở Ollama rồi thực hiện:
+
+```powershell
+ollama pull qwen3:4b
+ollama list
+```
+
+Nếu chưa có dịch vụ lắng nghe ở `localhost:11434`, chạy `ollama serve` trong
+terminal riêng. Nếu cổng đã được Ollama sử dụng thì giữ dịch vụ đang chạy.
+Trên giao diện, chọn **Kiểm tra Ollama** trước khi chạy báo cáo mới.
+Model được tải riêng trên từng máy; không nằm trong gói dữ liệu Drive.
+
+## 5. Phát triển và kiểm tra
+
+```powershell
 .\run.ps1 test
 .\run.ps1 lint
 .\run.ps1 doctor
 .\run.ps1 pit-demo
-.\run.ps1 pilot-data --extract-existing
-.\run.ps1 llm-pilot --cases configs/smoke_cases.jsonl --smoke
-.\run.ps1 app
 ```
 
-Các lệnh `run.ps1` gọi trực tiếp Python trong môi trường của dự án,
-không cần kích hoạt bằng Activate.ps1.
-Đợt v0.5, Python 3.11 trong `.venv` trên máy bị Windows Application Control chặn khởi chạy;
-đã tạo `.venv312` riêng từ Python 3.12.14 có sẵn. `run.ps1` ưu tiên môi trường
-này khi có, giữ nguyên `.venv` cũ và các phiên bản package đã khóa.
+`test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
+`doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **336 test**; lint và
+frontend build đạt. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
+hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
+[offline-checks.yml](.github/workflows/offline-checks.yml).
 
-Frontend React: <http://localhost:8501>. `app` phục vụ bản build frontend và API
-trên cùng cổng, chỉ bind loopback. Máy này đã cài thư viện và build frontend;
-chỉ cần `.\run.ps1 app` sau khi tắt server cũ. Không cần chạy Streamlit.
-Nếu máy khác chưa có pnpm, cài Node.js rồi chạy `npm install --global pnpm@11.25.0`.
-Script tự nhận pnpm trong runtime Node của máy hiện tại nếu chưa có trên PATH.
-Khi sửa giao diện: chạy `frontend-dev` ở terminal thứ hai, truy cập cổng Vite
-hiển thị (mặc định 5173); `/api` được proxy tới backend 8501.
-Giao diện Streamlit cũ được giữ qua `.\run.ps1 streamlit` trên cổng 8502.
+Khi sửa giao diện, chạy backend bằng `app` ở terminal thứ nhất và lệnh sau ở
+terminal thứ hai:
 
-Chạy `.\run.ps1 data` để tải giá FPT từ
-Vnstock/KBS; lệnh này cần Internet. Test, lint và `pit-demo` chạy offline.
-`pit-demo` chỉ dùng ví dụ giả định, không tạo kết quả thực nghiệm tài chính.
-`doctor` lưu số đo môi trường, trạng thái dịch vụ Ollama và snapshot mã nguồn
-tại `outputs/preflight/`. Lệnh này không chạy inference hoặc tải model.
+```powershell
+.\run.ps1 frontend-dev
+```
 
-Các phiên bản chính được khóa trong `uv.lock`: NumPy 2.2.6, Pandas 2.3.3,
-Vnstock 4.0.7. Pilot cũ dùng Python 3.11.17; môi trường local hiện tại dùng
-Python 3.12.14 trong `.venv312`.
+Mở địa chỉ Vite hiển thị trên terminal, thường là `http://localhost:5173`;
+`/api` được proxy về backend 8501. Chạy lại `frontend-build` để cập nhật giao
+diện được phục vụ tại 8501. Streamlit cũ được giữ qua `run.ps1 streamlit` trên
+cổng 8502; giao diện chính là React.
 
-## Những phần đã có
+| Lệnh bổ sung | Chức năng |
+|---|---|
+| `.\run.ps1 company-report --ticker HPG --query "lợi nhuận năm 2024"` | Chạy báo cáo mới qua model local |
+| `.\run.ps1 development-evaluate --evaluate-only --batch-id 20261022T030940Z-22f948f0` | Đánh giá lại batch đã lưu, không inference |
+| `.\run.ps1 development-evaluate` | Chạy inference mới cho 24 case; cần Ollama và có thể tốn thời gian |
+| `.\run.ps1 pilot-data --extract-existing` | Trích lại từ raw snapshot đã lưu; dùng khi phát triển dữ liệu |
 
-- `src/pit_haf/data/vnstock_provider.py`: tải OHLCV cho cổ phiếu Việt Nam/VNINDEX,
-  kiểm tra dữ liệu và chuẩn hóa giá sang VND hoặc điểm chỉ số.
-- `src/pit_haf/data/point_in_time.py`: chọn dữ liệu có `available_at <= decision_at`,
-  xử lý các phiên bản sửa đổi và trả audit về kết quả lọc.
-- `tests/`: kiểm thử offline cho provider, Guard, snapshots/gateway, local adapter,
-  resource sampling, diagnostic và UI; kết quả mới trong báo cáo milestone.
-- `frontend/`: dashboard React responsive gồm tổng quan, kho bằng chứng,
-  bàn phân tích, thị trường và thực nghiệm. Số liệu từ artifact thật trên máy.
-- `src/pit_haf/ui/`: API FastAPI, loader kiểm checksum PDF/trang, BM25 baseline
-  lọc gateway trước khi tính thống kê corpus, trích xuất local có dấu vết và
-  đối chiếu trích dẫn/số liệu. Chưa phải toàn bộ hệ agent phân cấp/backtest.
-- `app.py`: giao diện Streamlit cũ, giữ để đối chiếu provider; không còn là
-  frontend mặc định.
-- `src/pit_haf/research/doctor.py`: kiểm tra môi trường/local service, lưu
-  Git revision, dirty diff, hashes và source snapshot, không trả mock inference.
-- `.github/workflows/offline-checks.yml`: CI test/lint đã push; kết quả GitHub Actions
-  chưa xác nhận qua API. Kết quả local được ghi riêng, không thay kết quả CI.
-- `src/pit_haf/data/`: evidence/snapshots/gateway cho provenance, raw blobs
-  SHA-256, SQLite append-only và giao đúng revision qua Guard. Bằng chứng thiếu
-  thời điểm/phiên bản lịch sử bị quarantine; fixture bị loại theo mặc định.
-- `src/pit_haf/data/pilot.py`: thu thập PDF theo danh sách nguồn official, lưu acquisition
-  failures, trích text theo trang và replay snapshot offline; chưa OCR.
-- `src/pit_haf/llm/`: structured local adapter, retry/timeout hữu hạn,
-  digest/raw outputs và pilot trích xuất; chưa phải Agentic-RAG/dự báo.
-- [Pilot data card](data/pilot/DATA_CARD.md): nguồn, coverage, provenance index,
-  extraction quality, rights và giới hạn chưa có proof lịch sử.
-- [Corpus v0.2](data/corpus/v0.2/DATA_CARD.md): 29 tài liệu được chọn từ 32 raw
-  versions/34 URL cấu hình, 10 mã/8 nhóm ngành, 3.243 trang. Phủ 21/30 ô báo cáo
-  thường niên 2022–2024; vẫn chưa có evidence đủ điều kiện PiT strict. Pilot cũ
-  và kết quả 24 đoạn được giữ nguyên; không phải đánh giá model trên corpus mới.
+Giữ bộ case và kết quả gốc khi xem lại batch đã công bố; tạo pack mới chỉ khi
+chủ ý thay đổi nguồn/cấu hình phát triển. Mẫu tham chiếu và checksum không
+thay thế các file nguồn trong gói Drive.
 
-Corpus báo cáo được mở rộng ở [v0.3](data/corpus/v0.3/DATA_CARD.md): 13 mã,
-264 PDF khác nhau/17.915 trang; manifest gồm 282 báo cáo nhiều năm/quý.
-Số PDF đã chọn, trang có text, lỗi, backlog
-OCR và độ phủ thực tế được ghi trong data card; số URL cấu hình không phải số
-báo cáo đã qua kiểm tra. Có bộ lọc năm/phạm vi và phân trang trong kho tài liệu.
-PDF lưu local; GitHub chứa mã, danh mục và checksum. Xem
-[hướng dẫn batch, retry và ghép snapshot](docs/research/11-corpus-v03.md).
+## 6. Xử lý lỗi thường gặp
 
-Corpus [v0.4](data/corpus/v0.4/DATA_CARD.md) có 264 PDF và 675 bài thu thập trực tiếp.
-Corpus hiện hành [v0.5](data/corpus/v0.5/DATA_CARD.md) mở rộng lên **30.939 tài liệu**,
-thêm **30.000 bài toàn văn** kinh doanh/bất động sản từ VietOnlineNews với URL,
-ngày đăng và nguồn báo ghép theo ID. Bản nhập dataset được ghi provenance riêng;
-không gọi đó là HTML tải trực tiếp từ báo hoặc proof lịch sử. Giao diện phân
-trang/lọc trên server; SQLite/FTS5 phục vụ truy xuất hiện tại, gateway vẫn lọc
-trước BM25 lịch sử. Xem [quy trình nhập và giới hạn](docs/research/13-large-corpus-v05.md).
+| Hiện tượng | Cách xử lý |
+|---|---|
+| Git clone/Drive báo không có quyền | Đăng nhập đúng tài khoản và nhờ chủ dự án cấp quyền cho từng dịch vụ |
+| `Missing .venv` | Chạy lại `uv sync` với `UV_PROJECT_ENVIRONMENT=.venv312` theo mục 2 |
+| Không tìm thấy pnpm | Cài Node.js và pnpm, mở terminal mới rồi kiểm tra `node --version`, `pnpm --version` |
+| `Missing frontend build` hoặc trang chủ trả 503 | Chạy `frontend-install`, sau đó `frontend-build` |
+| Kho trống, báo thiếu snapshot/registry | Khôi phục `data/cache/evidence` và snapshot corpus từ Drive đúng cấu trúc mục 3 |
+| 24 câu/đối chiếu trả lỗi thiếu `cases.jsonl`, manifest hoặc report | Copy đủ ba thư mục `development-cases`, `development-batches`, `company-reports` từ Drive |
+| Checksum không khớp | Kiểm tra tải/giải nén đã hoàn tất; tải lại file nguyên bản, không sửa hash để bỏ qua |
+| Ollama chưa kết nối/model chưa cài | Kiểm tra dịch vụ local 11434 và `ollama list`; tải `qwen3:4b` nếu còn thiếu |
+| Cổng 8501 đã được sử dụng | Dừng đúng server cũ rồi chạy lại ứng dụng |
+| Sửa frontend nhưng giao diện chưa đổi | Build lại, khởi động lại backend nếu đổi API và refresh trình duyệt |
 
-Đã có luồng **báo cáo doanh nghiệp một agent** từ tối đa ba đoạn nguồn, đối chiếu
-quote/số và tải Markdown/JSON trên bàn phân tích. Chạy CLI bằng
-`.\run.ps1 company-report --ticker HPG --query "lợi nhuận năm 2024"`.
-[Bộ 24 case phát triển](data/development/v0.1/DATA_CARD.md) cho FPT/HPG/VCB đã
-chuẩn bị phiếu chấm; 0 case được người duyệt. Cấu hình vẫn chưa freeze; chưa
-chạy dự báo lợi suất hoặc backtest. Xem [luồng và kiểm tra](docs/research/14-single-agent-development.md).
+## 7. Phạm vi hiện tại
 
-Luồng báo cáo nay lọc PDF đúng mã chính và kỳ báo cáo trước xếp hạng; tin bài
-không được dùng năm đăng để giả làm kỳ kế toán. Có bộ lọc nguồn/kỳ/hợp nhất,
-màn hình **Tạo đáp án tham chiếu**, mở PDF đã lưu đúng phiên bản và lưu revision local.
-[Bộ case v0.2](data/development/v0.2/DATA_CARD.md) vẫn chờ người duyệt; xem
-[cách dùng và kết quả phát triển](docs/research/15-scoped-retrieval-and-review.md).
+- Corpus v0.5 có **30.939 tài liệu**: 264 PDF, 675 bài thu thập trực tiếp và
+  30.000 bài nhập từ VietOnlineNews. Giữ riêng provenance bản nhập dataset;
+  nguồn mirror không được gọi là HTML tải trực tiếp từ báo.
+- Bộ phát triển có **24 câu, 72 tham chiếu** cho FPT/HPG/VCB. Batch đã lưu có
+  8 câu với nhận định qua kiểm tra trích dẫn, 15 câu từ chối và 1 lượt sinh
+  đầu ra chưa hợp lệ. Các trạng thái này không phải tỷ lệ trả lời đúng.
+- Đã có bản đối chiếu PDF đủ 24 câu do trợ lý soạn. Ngữ cảnh ghim đủ thông tin
+  cho 8 câu, hỗ trợ một phần cho 12 câu và thiếu/sai chủ đề cho 4 câu theo bản
+  đối chiếu này; chưa có bộ nhãn người dùng xác nhận độc lập.
+- PiT Guard lọc theo timestamp/phiên bản đã cung cấp. Corpus hiện chưa có bằng
+  chứng đủ điều kiện PiT strict; ngày đăng/ngày tải không tự chứng minh
+  `available_at`. Guard không loại bỏ kiến thức tương lai trong trọng số LLM.
+- Quote Resolution kiểm nguyên văn/chuỗi số trên văn bản trích xuất, gắn trang,
+  offset và hash; chưa bảo đảm đúng ngữ nghĩa, chỉ tiêu, đơn vị hoặc loại bỏ
+  mọi ảo giác. Đây chưa phải toàn bộ hệ agent phân cấp PiT-HAF.
+- Backtest, 5 baseline định lượng, graph/peer/memory và ablation đầy đủ còn
+  theo lộ trình; chưa có kết quả dự báo lợi suất hoặc giao dịch để công bố.
 
-Chạy toàn bộ case trên nguồn đã pin bằng `.\run.ps1 development-evaluate`;
-chỉ đánh giá lại bản lưu bằng `--evaluate-only` (không inference). Màn hình
-**Câu hỏi và kết quả kiểm tra AI** hiển thị đầy đủ 24 câu hỏi, tổng hợp cả lỗi,
-ABSTAIN và lý do chặn; annotation được
-đối chiếu theo vị trí/chuỗi số, chưa phải semantic accuracy. Xem
-[hướng dẫn batch/evaluator](docs/research/16-development-batch-evaluation.md).
+## 8. Tài liệu và cấu trúc mã nguồn
 
-Để mở rộng/tái trích corpus v0.2 dùng
-`.\run.ps1 pilot-data --sources configs/corpus_sources_v0_2.json --skip-registered`
-hoặc `--extract-existing` khi chỉ replay local. Công cụ `corpus-coverage` tạo
-bảng coverage và bản lọc theo review có pin hash; xem
-[lệnh và giới hạn v0.2](docs/research/10-corpus-expansion.md).
+| Đường dẫn | Nội dung |
+|---|---|
+| `src/pit_haf/data/` | OHLCV, evidence/registry, PiT gateway, nhập dữ liệu và catalog |
+| `src/pit_haf/llm/` | Adapter Ollama, schema, giới hạn gọi model và pilot trích xuất |
+| `src/pit_haf/verification/` | Đối soát quote và kiểm tra số học |
+| `src/pit_haf/research/` | Case pack, batch/evaluator, review và đối chiếu nguồn |
+| `src/pit_haf/ui/`, `frontend/` | API FastAPI và giao diện React/Vite |
+| `configs/`, `data/development/`, `data/corpus/` | Cấu hình, data card, metadata/checksum |
+| `tests/` | Kiểm thử offline với fixture tách khỏi dữ liệu thực |
+| `docs/research/` | Kiến trúc, protocol, kết quả phát triển và lộ trình |
 
-Ngày 17/10/2026: Ollama 0.40.5 và qwen3:4b Q4_K_M đã cài trên máy này.
-[Báo cáo cài đặt và pilot](docs/research/08-local-pilot-results.md) ghi artifact,
-cấu hình và số đo thực tế; model vẫn là ứng viên phát triển.
-
-Môi trường có thêm pypdf trong `uv.lock`. Registry metadata của Vnstock/vnai/
-ezchart trả 404 lúc cài; project dùng URL wheel bất biến từ files.pythonhosted.org,
-giữ đúng ba phiên bản và SHA-256 của lock cũ. Không thay phiên bản package cũ.
-
-## Giới hạn hiện tại
-
-`session_date` là nhãn phiên, `retrieved_at` là lúc tải dữ liệu. Cả hai không
-thay thế `available_at`, thời điểm phiên bản dữ liệu thực sự có thể quan sát.
-Provider hiện chưa có lịch sử công bố/phiên bản đủ để đưa giá vào Guard; Guard
-sẽ từ chối dữ liệu thiếu các trường bắt buộc. Không tự gán giờ đóng cửa thành
-thời điểm khả dụng đã xác minh.
-
-Guard kiểm soát timestamp được cung cấp, không chứng minh nguồn đã gắn đúng
-timestamp hoặc dữ liệu giá chưa bị điều chỉnh. Lọc dữ liệu ngoài cũng không
-loại bỏ kiến thức tương lai trong trọng số LLM. Đã có adapter và pilot trích xuất
-local; retrieval, graph/agent/memory và backtest đầy đủ còn theo roadmap.
-
-## Hồ sơ nghiên cứu và lộ trình
-
-[Hồ sơ nghiên cứu](docs/research/README.md) tập hợp audit, task/label/timeline,
-literature/contribution, contracts và sơ đồ, experiment matrix/rubric, roadmap
-và data/local feasibility. [Đề cương](docs/de-cuong-nghien-cuu-pit-haf.md) lấy
-Việt Nam làm thị trường chính. Task đề xuất là báo cáo doanh nghiệp có bằng
-chứng tại `decision_at` và dự đoán hướng lợi suất 5 phiên; protocol chưa freeze.
-
-Giữ đầy đủ scope qua 7 mốc: audit/pilot; dữ liệu/gateway/baseline định lượng;
-LLM và PiT single-agent retrieval; graph/peer và phân cấp; verifier/risk/memory/
-audit/UI; full experiment matrix; gói tái lập và luận văn. Khung 8–12 tuần là
-ước lượng ban đầu, không bảo đảm hoàn tất theo lịch hoặc thu gọn thành phần.
-
-Model nhỏ như qwen3:4b đang được đo ở pilot; chưa chốt chất lượng tài chính.
-Dataset phục vụ bằng chứng truy xuất, nhãn đánh giá, split phát triển/test và
-baseline định lượng. Không training LLM vẫn cần những dữ liệu này để kiểm chứng.
-
-Đọc [Bài 1](docs/01-market-data.md), [Bài 2](docs/02-point-in-time.md), rồi
-[hướng dẫn M1](docs/research/07-milestone-1.md) để tự chạy và giải thích thiết kế.
-Các paper/bản dịch là tài liệu tham khảo, không phải kết quả của dự án.
-Lịch sử khôi phục và các kiểm tra cũ nằm trong
-[ghi chú lịch sử](docs/RECOVERY-VERIFICATION.md).
+Đọc [đề cương](docs/de-cuong-nghien-cuu-pit-haf.md),
+[hồ sơ nghiên cứu](docs/research/README.md),
+[data card v0.5](data/corpus/v0.5/DATA_CARD.md),
+[hướng dẫn batch/evaluator](docs/research/16-development-batch-evaluation.md)
+và [bản đối chiếu 24 câu](docs/research/development-source-audit-v0.1.md).
+Ghi chú đọc paper và bản dịch là tài liệu tham khảo, không phải kết quả thực
+nghiệm của đề tài. [Lịch sử khôi phục](docs/RECOVERY-VERIFICATION.md) giữ các
+mốc kiểm tra cũ để truy nguyên.

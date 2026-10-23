@@ -1,0 +1,512 @@
+{
+  "provenance": "assistant_source_audit",
+  "independent_human_gold": false,
+  "batch_id": "20261022T030940Z-22f948f0",
+  "method": "Trợ lý đọc toàn trang PDF, kiểm tra trực quan tiêu đề, cột năm, đơn vị và phạm vi doanh nghiệp; đối chiếu với ngữ cảnh đã ghim và đầu ra đã lưu. Không chạy lại mô hình, không sửa kết quả gốc, không dùng làm nhãn kiểm thử độc lập.",
+  "rows": [
+    {
+      "case_id": "dev01-FPT-income",
+      "answer": "Năm 2024, FPT có lợi nhuận thuần từ hoạt động kinh doanh 11.025 tỷ VNĐ, lợi nhuận trước thuế 11.070 tỷ VNĐ và lợi nhuận sau thuế 9.427 tỷ VNĐ. Lợi nhuận sau thuế thuộc cổ đông công ty mẹ là 7.857 tỷ VNĐ. Đây là số làm tròn trong bảng tổng hợp hợp nhất.",
+      "context_status": "partial",
+      "context_note": "S1 trang 11 có dòng lợi nhuận hoạt động 11.025 và tăng 21,0%, nhưng đoạn cắt không chứa đơn vị và các dòng lợi nhuận trước/sau thuế. S2 có biên lợi nhuận hoạt động 17,5%.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Không có nhận định được chấp nhận. Hai nhận định về lợi nhuận hoạt động và biên lợi nhuận phù hợp với toàn trang, nhưng bộ kiểm tra chặn vì năm 2024 không nằm ngay trong câu trích dẫn. Phần khai báo thiếu thông tin cũng mâu thuẫn với dữ liệu hoạt động đã có.",
+      "references": [
+        {
+          "page": 11,
+          "terms": [
+            "Đơn vị: tỷ VNĐ",
+            "11.025",
+            "11.070",
+            "9.427",
+            "7.857"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-revenue",
+      "answer": "Bảng tổng hợp hợp nhất ghi tổng doanh thu năm 2024 là 62.849 tỷ VNĐ, so với 52.618 tỷ VNĐ năm 2023; mức tăng được báo cáo là 19,4%. Các giá trị trong bảng đã làm tròn đến tỷ VNĐ.",
+      "context_status": "insufficient",
+      "context_note": "Ba đoạn ghim nằm ở chính sách kế toán và bảng tài sản của doanh nghiệp được mua lại, không có chỉ tiêu tổng doanh thu FPT năm 2024.",
+      "verdict": "context_gap",
+      "model_note": "Từ chối trả lời là phù hợp với ba đoạn được cung cấp. Toàn PDF có đáp án, nên lỗi chính ở bước truy xuất/chọn ngữ cảnh.",
+      "references": [
+        {
+          "page": 11,
+          "terms": [
+            "Đơn vị: tỷ VNĐ",
+            "Tổng doanh thu",
+            "62.849 19,4%"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-growth",
+      "answer": "So với năm 2023, năm 2024 FPT tăng tổng doanh thu 19,4%, lợi nhuận trước thuế 20,3%, lợi nhuận sau thuế 21,0% và lợi nhuận sau thuế thuộc cổ đông công ty mẹ 21,5%. Cần phân biệt mức tăng doanh thu với mức tăng lợi nhuận.",
+      "context_status": "partial",
+      "context_note": "S1 trang 9 trộn thứ tự chữ trong đồ họa; S3 trang 14 có tăng trưởng doanh thu CNTT nước ngoài 27,4%, nhưng đây là một lĩnh vực, không phải tổng doanh thu tập đoàn.",
+      "verdict": "blocked_error",
+      "model_note": "Mô hình gán 21% cho tăng trưởng doanh thu, trong khi bảng đầy đủ ghi doanh thu tăng 19,4% và lợi nhuận sau thuế tăng 21,0%. Nhận định sai không đi qua bộ kiểm tra.",
+      "references": [
+        {
+          "page": 11,
+          "terms": [
+            "62.849 19,4%",
+            "11.070 20,3%",
+            "9.427 21,0%",
+            "7.857 21,5%"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-assets",
+      "answer": "Tại 31/12/2024, bảng cân đối kế toán hợp nhất FPT ghi tổng tài sản 71.999.995.678.620 VND và nợ phải trả 36.272.455.573.820 VND. Nợ phải trả gồm nợ ngắn hạn 34.836.184.067.740 VND và nợ dài hạn 1.436.271.506.080 VND.",
+      "context_status": "partial",
+      "context_note": "S2 trang 149 có nợ phải trả và tiêu đề năm/đơn vị. S3 trang 171 là tài sản của doanh nghiệp mua lại, không phải tổng tài sản hợp nhất FPT.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Có thể trả lời phần nợ từ S2, nhưng không có nhận định được chấp nhận do câu trích dẫn ngắn bỏ tiêu đề năm. Không được dùng bảng mua lại ở S3 làm tổng tài sản tập đoàn.",
+      "references": [
+        {
+          "page": 148,
+          "terms": [
+            "2024",
+            "VND",
+            "71.999.995.678.620"
+          ]
+        },
+        {
+          "page": 149,
+          "terms": [
+            "36.272.455.573.820",
+            "34.836.184.067.740",
+            "1.436.271.506.080"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-cash",
+      "answer": "Lưu chuyển tiền thuần từ hoạt động kinh doanh hợp nhất năm 2024 là 11.703.777.188.868 VND, so với 9.517.095.698.405 VND năm 2023. Đây là dòng tiền kinh doanh sau điều chỉnh vốn lưu động và các khoản chi, khác với lợi nhuận trước thay đổi vốn lưu động 13.626.844.968.489 VND.",
+      "context_status": "partial",
+      "context_note": "Các đoạn có đầu bảng dòng tiền kinh doanh và một số dòng đầu tư; dòng tổng tiền thuần hoạt động kinh doanh ở cuối trang 153 nằm ngoài đoạn ghim.",
+      "verdict": "accepted_partial",
+      "model_note": "Nhận định được chấp nhận nói về tiền thu hồi đầu tư góp vốn, phù hợp với đoạn đầu tư nhưng không trả lời dòng tiền hoạt động kinh doanh. Chưa thể coi câu này đã được trả lời đầy đủ.",
+      "references": [
+        {
+          "page": 153,
+          "terms": [
+            "2024",
+            "VND",
+            "13.626.844.968.489",
+            "11.703.777.188.868",
+            "9.517.095.698.405"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-operations",
+      "answer": "FPT phân hoạt động thành ba khối: Công nghệ (CNTT trong nước và nước ngoài), Viễn thông (viễn thông và nội dung số), cùng Giáo dục, Đầu tư và Khác. Năm 2024, doanh thu ba khối tăng lần lượt 24,4%, 11,4% và 14,3% so với năm trước.",
+      "context_status": "partial",
+      "context_note": "S3 trang 51 bắt đầu mô tả ba khối nhưng bị cắt trước danh sách đầy đủ; hai đoạn khác chủ yếu là định nghĩa kế toán về bộ phận kinh doanh.",
+      "verdict": "accepted_partial",
+      "model_note": "Nhận định qua kiểm tra chỉ lặp định nghĩa bộ phận theo kế toán, không nêu ba khối hoạt động hoặc diễn biến năm 2024. Trích dẫn có thật nhưng tính hữu ích cho câu hỏi thấp.",
+      "references": [
+        {
+          "page": 51,
+          "terms": [
+            "ba khối",
+            "Khối Giáo dục, Đầu tư và Khác",
+            "24,4%",
+            "11,4%",
+            "14,3%"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-risk",
+      "answer": "Báo cáo nêu rủi ro tỷ giá đối với dịch vụ CNTT ở thị trường nước ngoài; rủi ro nợ xấu và hàng tồn kho tăng cao; cùng yêu cầu tuân thủ pháp luật, lao động nhập cư và khác biệt văn hóa khi mở rộng quốc tế. Các biện pháp gồm phòng ngừa tỷ giá, kiểm soát công nợ/tồn kho và cập nhật quy định tại nước sở tại.",
+      "context_status": "sufficient",
+      "context_note": "S2 và S3 trang 119 nêu trực tiếp rủi ro tỷ giá, tuân thủ và nội dung quản trị. Có đủ bằng chứng để trả lời ít nhất một rủi ro cụ thể.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Không có nhận định được chấp nhận dù nguồn có nội dung rủi ro rõ. Các trường số trích xuất không được câu trích dẫn hỗ trợ làm bộ kiểm tra chặn nhận định về tỷ giá.",
+      "references": [
+        {
+          "page": 119,
+          "terms": [
+            "Rủi ro tỷ giá",
+            "Rủi ro nợ xấu mất kiểm soát",
+            "lao động nhập cư",
+            "hoán đổi tiền tệ"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-outlook",
+      "answer": "Trong kế hoạch năm 2025, FPT đặt doanh thu 75.400 tỷ VNĐ và lợi nhuận trước thuế 13.395 tỷ VNĐ. Ngân sách đầu tư dự kiến 11.000 tỷ VNĐ, gồm Công nghệ 6.000, Viễn thông 2.500, Giáo dục/Đầu tư/Khác 2.500 tỷ VNĐ. Đây là mục tiêu và dự kiến, không phải kết quả thực hiện năm 2024 hay 2025.",
+      "context_status": "partial",
+      "context_note": "S1 trang 47 có tiêu đề kế hoạch 2025 và ngân sách Công nghệ/Viễn thông; tổng đầu tư, đơn vị và chỉ tiêu doanh thu/lợi nhuận nằm ngoài đoạn cắt.",
+      "verdict": "accepted_partial",
+      "model_note": "Nhận định được chấp nhận nêu 6.000 và 2.500 nhưng bỏ đơn vị và kỳ ngay trong phát biểu. Nội dung có cơ sở, song cần bổ sung năm 2025 và tỷ VNĐ để sử dụng được.",
+      "references": [
+        {
+          "page": 47,
+          "terms": [
+            "KẾ HOẠCH NĂM 2025",
+            "6.000",
+            "2.500",
+            "11.000",
+            "75.400 TỶ VNĐ",
+            "13.395 TỶ VNĐ"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-income",
+      "answer": "Bảng tổng hợp hợp nhất ghi năm 2024 Hòa Phát có lợi nhuận trước thuế 13.694 tỷ đồng và lợi nhuận sau thuế 12.020 tỷ đồng. Lợi nhuận sau thuế tăng 77% so với năm 2023; biên lợi nhuận sau thuế/doanh thu thuần là 8,7%. Các giá trị tiền đã làm tròn đến tỷ đồng.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 31 có lợi nhuận sau thuế 12.020 tỷ đồng, tăng 77% và biên lợi nhuận 8,7%. Có thể trả lời câu hỏi lợi nhuận từ chính ngữ cảnh ghim.",
+      "verdict": "useful_claims",
+      "model_note": "Ba nhận định được chấp nhận phù hợp với nguồn: lợi nhuận sau thuế, biên lợi nhuận và EBITDA. Đây là trường hợp trả lời hữu ích; kiểm tra này vẫn do trợ lý thực hiện.",
+      "references": [
+        {
+          "page": 12,
+          "terms": [
+            "Lợi nhuận trước thuế",
+            "13.694",
+            "12.020",
+            "8,7%",
+            "2024"
+          ]
+        },
+        {
+          "page": 29,
+          "terms": [
+            "tăng 77% so với cùng kỳ 2023"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-revenue",
+      "answer": "Năm 2024, Hòa Phát ghi doanh thu bán hàng và cung cấp dịch vụ 140.561 tỷ đồng, còn doanh thu thuần là 138.855 tỷ đồng trong bảng tổng hợp hợp nhất. Đây là hai chỉ tiêu khác nhau; không lấy doanh thu của riêng phân khúc thép làm doanh thu toàn tập đoàn.",
+      "context_status": "partial",
+      "context_note": "S3 trang 30 có doanh thu thuần xuất khẩu 43.340 tỷ đồng và tỷ trọng 31%. Các bảng phân khúc ở S1/S2 bị cắt và tách cột, khó dùng cho tổng doanh thu tập đoàn.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Không có nhận định qua kiểm tra. Một phần dữ liệu xuất khẩu có thể dùng, nhưng đầu ra còn ghép số bị cắt và gán số phân khúc cho toàn tập đoàn; việc khai báo thiếu bằng chứng khiến mọi nhận định bị chặn.",
+      "references": [
+        {
+          "page": 12,
+          "terms": [
+            "Doanh thu bán hàng & cung cấp dịch vụ",
+            "Doanh thu thuần",
+            "140.561",
+            "138.855",
+            "2024"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-growth",
+      "answer": "Báo cáo ghi doanh thu năm 2024 tăng 17% và lợi nhuận tăng 77% so với năm 2023. Riêng doanh thu lĩnh vực thép tăng 16%, lợi nhuận lĩnh vực thép tăng 64% so với cùng kỳ. Cần giữ rõ phạm vi toàn tập đoàn và riêng ngành thép.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 29 và đoạn lợi nhuận trang 31 nêu rõ tỷ lệ tăng và mốc so sánh 2023.",
+      "verdict": "useful_claims",
+      "model_note": "Hai nhận định được chấp nhận nêu đúng mức tăng doanh thu 17% và lợi nhuận 77% so với 2023. Tuy nhiên, phần thiếu thông tin lại nói chưa có thông tin tăng trưởng, mâu thuẫn với chính các nhận định.",
+      "references": [
+        {
+          "page": 29,
+          "terms": [
+            "tăng 17% so với năm 2023",
+            "tăng 16%",
+            "tăng 77% so với cùng kỳ 2023",
+            "tăng 64%"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-assets",
+      "answer": "Bảng tổng hợp hợp nhất cuối năm 2024 ghi tổng tài sản 224.490 tỷ đồng, nợ phải trả 109.842 tỷ đồng và vốn chủ sở hữu 114.647 tỷ đồng. Các số đã làm tròn theo từng dòng nên phép cộng có thể lệch 1 tỷ đồng.",
+      "context_status": "partial",
+      "context_note": "S1 trang 101 có tổng tài sản nhưng nhãn và số bị tách trong quá trình trích văn bản. Các đoạn còn lại nêu tỷ số tài chính/vốn chủ, chưa cung cấp đủ bảng tài sản và nợ có tiêu đề.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Mô hình tìm được giá trị tài sản nhưng ghép câu trích dẫn không có nguyên văn liền nhau và khai báo thiếu bằng chứng, nên không nhận định nào được chấp nhận. Cần truy xuất bảng cùng tiêu đề thay vì ghép hàng theo suy đoán.",
+      "references": [
+        {
+          "page": 12,
+          "terms": [
+            "Tổng Tài sản",
+            "Nợ phải trả",
+            "Vốn chủ sở hữu",
+            "224.490",
+            "109.842",
+            "114.647",
+            "2024"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-cash",
+      "answer": "Năm 2024, tiền thuần từ hoạt động kinh doanh hợp nhất là 6.608 tỷ đồng. Tiền thuần đầu tư âm 29.788 tỷ đồng, tiền thuần tài chính dương 17.815 tỷ đồng; lưu chuyển tiền thuần trong kỳ âm 5.365 tỷ đồng. Tiền và tương đương tiền cuối kỳ là 6.888 tỷ đồng. Đây là các số làm tròn trong bảng tổng hợp.",
+      "context_status": "insufficient",
+      "context_note": "Ba đoạn ghim chủ yếu có tiêu đề, nhãn chỉ tiêu và thông tin bộ máy; không chứa giá trị tiền thuần kinh doanh dùng được.",
+      "verdict": "context_gap",
+      "model_note": "Từ chối trả lời phù hợp với ngữ cảnh. Toàn PDF có bảng trả lời được; cần sửa truy xuất vùng bảng, không kết luận rằng tài liệu không có số liệu.",
+      "references": [
+        {
+          "page": 12,
+          "terms": [
+            "Tiền thuần từ hoạt động kinh doanh",
+            "6.608",
+            "(29.788)",
+            "17.815",
+            "(5.365)",
+            "6.888",
+            "2024"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-operations",
+      "answer": "Thép là hoạt động cốt lõi, đóng góp 93% doanh thu và 86% lợi nhuận sau thuế toàn tập đoàn năm 2024. Sản lượng bán HRC, thép xây dựng, thép chất lượng cao và phôi đạt 8,11 triệu tấn, tăng 21%. Nông nghiệp đóng góp 5% doanh thu và 8% lợi nhuận; lợi nhuận nhóm này gấp 4,6 lần năm 2023.",
+      "context_status": "partial",
+      "context_note": "Ngữ cảnh có hoạt động thức ăn chăn nuôi của công ty thành viên, không bao quát mảng thép và cơ cấu kinh doanh toàn Hòa Phát.",
+      "verdict": "accepted_partial",
+      "model_note": "Hai nhận định được chấp nhận đúng cho hoạt động thức ăn chăn nuôi, nhưng thiếu chỉ rõ phạm vi công ty thành viên và bỏ mảng thép cốt lõi. Câu trả lời chưa đại diện toàn tập đoàn.",
+      "references": [
+        {
+          "page": 29,
+          "terms": [
+            "93% và 86%",
+            "8,11 triệu tấn",
+            "tăng 21%",
+            "5% doanh thu và 8%",
+            "4,6 lần"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-risk",
+      "answer": "Hòa Phát chịu rủi ro tỷ giá và lãi suất. Nhập khẩu chiếm hơn 70% tổng giá vốn năm 2024; than, quặng phụ thuộc nguồn nước ngoài, nên tỷ giá tăng làm tăng chi phí nguyên liệu và tài chính. Các khoản vay/công cụ có lãi suất tạo thêm rủi ro chi phí trong bối cảnh tiền tệ thắt chặt.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 24 nêu trực tiếp nhập khẩu, biến động tỷ giá, lãi suất và cách quản trị.",
+      "verdict": "useful_claims",
+      "model_note": "Nhận định được chấp nhận nêu đúng việc quản trị rủi ro tỷ giá và lãi suất, nhưng chưa giải thích cơ chế tác động. Phần thiếu thông tin lại cho rằng chưa rõ rủi ro cụ thể, mâu thuẫn với nguồn và nhận định.",
+      "references": [
+        {
+          "page": 24,
+          "terms": [
+            "hơn 70%",
+            "năm 2024",
+            "Tỷ giá tăng",
+            "rủi ro lãi suất"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-outlook",
+      "answer": "Ban Tổng Giám đốc trình Đại hội đồng cổ đông kế hoạch hợp nhất năm 2025: doanh thu 170.000 tỷ đồng và lợi nhuận sau thuế 15.000 tỷ đồng. Định hướng gồm vận hành ổn định phân kỳ 1 Dung Quất 2, hoàn thành phân kỳ 2 vào quý 4/2025 và phát triển thép chất lượng cao. Đây là kế hoạch được trình, không phải kết quả đã đạt.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 41 có tiêu đề kế hoạch năm 2025 và hai mục tiêu doanh thu/lợi nhuận. S3 nêu định hướng tăng trưởng giai đoạn 2025–2030.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Mô hình khai báo không xác định được kỳ dù tiêu đề kế hoạch năm 2025 nằm trong ngữ cảnh. Không có nhận định được chấp nhận; đây là bỏ sót bằng chứng có sẵn.",
+      "references": [
+        {
+          "page": 41,
+          "terms": [
+            "KINH DOANH NĂM 2025",
+            "quý 4 năm 2025",
+            "170.000 tỷ đồng",
+            "15.000 tỷ đồng",
+            "trình Đại hội đồng cổ đông"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-income",
+      "answer": "Báo cáo kết quả hoạt động hợp nhất năm 2024 ghi lợi nhuận trước thuế 42.236.135 triệu VND và lợi nhuận sau thuế 33.853.117 triệu VND. Không dùng lợi nhuận của VCBL, VCBS hay công ty con khác thay cho kết quả hợp nhất Vietcombank.",
+      "context_status": "insufficient",
+      "context_note": "Cả ba đoạn trang 18 đều nói về công ty thành viên như VCBL, VCBS, VCBR và VCB Lào; không có lợi nhuận hợp nhất VCB.",
+      "verdict": "context_gap",
+      "model_note": "Không xuất bản nhận định lợi nhuận hợp nhất từ các số công ty con là phù hợp. Truy xuất đã chọn sai cấp doanh nghiệp dù đúng mã VCB trong metadata.",
+      "references": [
+        {
+          "page": 67,
+          "terms": [
+            "2024",
+            "Triệu VND",
+            "42.236.135",
+            "33.853.117"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-revenue",
+      "answer": "Với ngân hàng cần gọi đúng từng chỉ tiêu: năm 2024 thu nhập lãi và các khoản tương tự là 93.654.841 triệu VND; chi phí lãi 38.249.106 triệu VND; thu nhập lãi thuần 55.405.735 triệu VND. Tổng thu nhập hoạt động hợp nhất là 68.578.496 triệu VND. Thu nhập lãi gộp và thu nhập lãi thuần không thể dùng thay nhau.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 67 chứa cột năm 2024, đơn vị triệu VND và các dòng thu nhập lãi/chi phí lãi/thu nhập lãi thuần.",
+      "verdict": "blocked_error",
+      "model_note": "Mô hình gọi 55.405.735 là thu nhập lãi và khoản tương tự, trong khi đó là thu nhập lãi thuần. Một phát biểu khác gắn 55.406 với triệu VND từ bảng tóm tắt làm sai đơn vị. Các nhận định này đã bị chặn.",
+      "references": [
+        {
+          "page": 67,
+          "terms": [
+            "2024",
+            "Triệu VND",
+            "93.654.841",
+            "38.249.106",
+            "55.405.735",
+            "68.578.496"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-growth",
+      "answer": "Phần đánh giá hoạt động 2024 nêu tổng tài sản khoảng 2,1 triệu tỷ đồng, tăng xấp xỉ 13,4% so với 2023; huy động vốn khoảng 1,5 triệu tỷ đồng, tăng xấp xỉ 8%; tín dụng khoảng 1,5 triệu tỷ đồng, tăng xấp xỉ 14%. Lợi nhuận trước thuế 42.236 tỷ đồng tăng khoảng 2,2% so với năm trước. Đây là số làm tròn trong phần thuyết minh hoạt động.",
+      "context_status": "insufficient",
+      "context_note": "Các đoạn ghim nói về bổ nhiệm nhân sự và giao dịch/quan hệ với công ty liên quan, không có tăng trưởng tài chính năm 2024.",
+      "verdict": "context_gap",
+      "model_note": "Từ chối trả lời phù hợp với ngữ cảnh bị truy xuất sai chủ đề. Cần chọn đoạn đánh giá kết quả 2024, không bổ sung tỷ lệ bằng suy đoán.",
+      "references": [
+        {
+          "page": 23,
+          "terms": [
+            "13,4%",
+            "2,2%",
+            "42.236",
+            "2023"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-assets",
+      "answer": "Tại 31/12/2024, báo cáo tình hình tài chính hợp nhất ghi tổng tài sản có 2.085.873.522 triệu VND; tổng nợ phải trả 1.889.664.354 triệu VND; vốn chủ sở hữu 196.209.168 triệu VND. Bảng phân tích rủi ro ở trang 100/102 trình bày nhiều khoản tài sản gộp trước dự phòng, nên không dùng tổng 2.118.424.116 trong bảng đó thay cho tổng tài sản có trên báo cáo tình hình tài chính.",
+      "context_status": "partial",
+      "context_note": "S1 trang 102 và S3 trang 100 có tổng nợ phải trả 1.889.664.354 cùng mốc 31/12/2024; tiêu đề đơn vị ở đầu bảng ngoài đoạn cắt. Các bảng này phục vụ phân tích thanh khoản/lãi suất, không phải bảng cân đối theo giá trị ghi sổ.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Không có nhận định được chấp nhận. Ngữ cảnh có thể hỗ trợ phần nợ khi bổ sung tiêu đề đơn vị, nhưng cần phân biệt bảng rủi ro với báo cáo tình hình tài chính để tránh nhầm tổng tài sản.",
+      "references": [
+        {
+          "page": 66,
+          "terms": [
+            "31/12/2024",
+            "Triệu VND",
+            "2.085.873.522",
+            "1.889.664.354",
+            "196.209.168"
+          ]
+        },
+        {
+          "page": 100,
+          "terms": [
+            "Cho vay khách hàng – gộp",
+            "2.118.424.116",
+            "31 tháng 12 năm 2024"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-cash",
+      "answer": "Năm 2024, lưu chuyển tiền thuần từ hoạt động kinh doanh hợp nhất là 59.122.831 triệu VND, so với âm 38.541.530 triệu VND năm 2023. Tiền và các khoản tương đương tiền cuối năm 2024 là 430.614.185 triệu VND. Không nhầm dòng tiền lãi thực nhận với thu nhập lãi dồn tích trong báo cáo kết quả kinh doanh.",
+      "context_status": "sufficient",
+      "context_note": "S3 trang 68 có dòng tiền thuần kinh doanh 59.122.831 và năm/đơn vị. Giá trị tiền cuối năm nằm ngoài đoạn ghim, nhưng đủ để trả lời phần dòng tiền kinh doanh.",
+      "verdict": "technical_failure",
+      "model_note": "Lượt sinh không hoàn tất (incomplete_generation), không tạo được đầu ra hợp lệ. Đây là lỗi kỹ thuật, không phải quyết định từ chối vì thiếu bằng chứng.",
+      "references": [
+        {
+          "page": 68,
+          "terms": [
+            "59.122.831",
+            "(38.541.530)",
+            "430.614.185",
+            "Triệu VND",
+            "2024"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-operations",
+      "answer": "Hoạt động 2024 tập trung tăng trưởng tín dụng an toàn, điều chỉnh giảm lãi suất cho vay để hỗ trợ doanh nghiệp, cung cấp giải pháp ngân hàng bán buôn/bán lẻ và mở rộng dịch vụ số. Vietcombank triển khai xác thực sinh trắc học và ra mắt New Digibank với phiên bản cho các nhóm khách hàng. Nội dung này mô tả hoạt động đã triển khai năm 2024.",
+      "context_status": "partial",
+      "context_note": "S1 trang 26 mô tả chiến lược; S2/S3 trang 22 là kế hoạch 2025, không phải đánh giá kết quả hoạt động 2024.",
+      "verdict": "accepted_misleading",
+      "model_note": "Hai nhận định qua kiểm tra chủ yếu là kế hoạch tín dụng và số hóa 2025. Phát biểu tín dụng 16,28% bỏ điều kiện tối đa và không nêu kỳ 2025, dễ khiến người đọc hiểu là kết quả 2024. Kiểm tra nguyên văn chưa ngăn được nhầm kỳ/trạng thái kế hoạch.",
+      "references": [
+        {
+          "page": 21,
+          "terms": [
+            "đầu năm 2024",
+            "giảm lãi suất cho vay",
+            "ngân hàng bán buôn và ngân hàng bán lẻ",
+            "New",
+            "sinh trắc học"
+          ]
+        },
+        {
+          "page": 22,
+          "terms": [
+            "2025",
+            "16,28%"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-risk",
+      "answer": "Báo cáo đánh giá bối cảnh 2024 có khó khăn từ lạm phát, xung đột địa chính trị và sự phục hồi chậm của các nền kinh tế lớn. Các yếu tố này tạo bất định cho môi trường hoạt động; đây là mô tả khó khăn vĩ mô trong nguồn, không phải dự báo xác suất tổn thất của ngân hàng.",
+      "context_status": "sufficient",
+      "context_note": "S2 trang 23 nói trực tiếp về lạm phát, địa chính trị và kinh tế thế giới; đủ trả lời khó khăn cụ thể.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Không có nhận định được chấp nhận vì mô hình khai báo thiếu bằng chứng và có số không được hỗ trợ. Phần khó khăn vĩ mô thực tế đã có trong ngữ cảnh.",
+      "references": [
+        {
+          "page": 23,
+          "terms": [
+            "lạm phát",
+            "địa chính trị",
+            "2024"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-outlook",
+      "answer": "Kế hoạch 2025 nêu tổng tài sản tăng 10%, huy động vốn thị trường 1 tăng 8%, tín dụng tăng tối đa 16,28% theo giao của NHNN, nợ xấu dưới 1,5% và lợi nhuận trước thuế tăng 3,5%. Các chỉ tiêu còn phụ thuộc phê duyệt/điều chỉnh kế hoạch theo chú thích của báo cáo. Đây là mục tiêu 2025, không phải số thực hiện 2024.",
+      "context_status": "partial",
+      "context_note": "S1 trang 22 có tiêu đề kế hoạch 2025 và mục tiêu tài sản tăng 10%; các chỉ tiêu khác nằm ngoài đoạn cắt. S2 nói mục tiêu GDP của nền kinh tế, không phải doanh thu hay lợi nhuận VCB.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Mô hình bỏ qua tiêu đề kỳ 2025, khai báo thiếu thông tin và đưa mục tiêu GDP vĩ mô vào bản nháp. Không có nhận định được chấp nhận; có thể trả lời ít nhất phần mục tiêu tài sản từ S1.",
+      "references": [
+        {
+          "page": 22,
+          "terms": [
+            "2025",
+            "10%",
+            "8%",
+            "16,28%",
+            "1,5%",
+            "3,5%"
+          ]
+        }
+      ]
+    }
+  ]
+}

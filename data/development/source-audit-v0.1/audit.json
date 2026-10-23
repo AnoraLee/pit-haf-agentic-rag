@@ -1,0 +1,1481 @@
+{
+  "schema_version": 1,
+  "provenance": "assistant_source_audit",
+  "independent_human_gold": false,
+  "semantic_accuracy": null,
+  "historical_availability_validated": false,
+  "method": "Trợ lý đọc toàn trang PDF, kiểm tra trực quan tiêu đề, cột năm, đơn vị và phạm vi doanh nghiệp; đối chiếu với ngữ cảnh đã ghim và đầu ra đã lưu. Không chạy lại mô hình, không sửa kết quả gốc, không dùng làm nhãn kiểm thử độc lập.",
+  "created_at": "2026-10-22T08:17:49.778655+00:00",
+  "pack_id": "20261019T030531Z-8ef1bf33",
+  "cases_sha256": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+  "batch_id": "20261022T030940Z-22f948f0",
+  "batch_manifest_sha256": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389",
+  "answers_sha256": "e266f4557d15aac29f45612910b325b0b86eab9dc17d722e8243fb7b78a7da51",
+  "summary": {
+    "answered_cases": 24,
+    "context_counts": {
+      "partial": 12,
+      "insufficient": 4,
+      "sufficient": 8
+    },
+    "verdict_counts": {
+      "unnecessary_abstention": 4,
+      "context_gap": 4,
+      "blocked_error": 2,
+      "no_answer_partial_context": 5,
+      "accepted_partial": 4,
+      "useful_claims": 3,
+      "technical_failure": 1,
+      "accepted_misleading": 1
+    }
+  },
+  "context_labels": {
+    "sufficient": "Đủ để trả lời",
+    "partial": "Hỗ trợ một phần",
+    "insufficient": "Thiếu/sai chủ đề"
+  },
+  "verdict_labels": {
+    "useful_claims": "Có nhận định hữu ích, có cơ sở",
+    "accepted_partial": "Có trích dẫn nhưng trả lời chưa đầy đủ/đúng trọng tâm",
+    "accepted_misleading": "Có trích dẫn nhưng dễ hiểu sai kỳ hoặc điều kiện",
+    "context_gap": "Thiếu ngữ cảnh; từ chối phù hợp",
+    "no_answer_partial_context": "Không có đáp án; ngữ cảnh mới hỗ trợ một phần",
+    "blocked_error": "Bản nháp có sai sót đã bị chặn",
+    "unnecessary_abstention": "Bỏ sót bằng chứng có thể dùng",
+    "technical_failure": "Lỗi sinh đầu ra"
+  },
+  "rows": [
+    {
+      "case_id": "dev01-FPT-income",
+      "answer": "Năm 2024, FPT có lợi nhuận thuần từ hoạt động kinh doanh 11.025 tỷ VNĐ, lợi nhuận trước thuế 11.070 tỷ VNĐ và lợi nhuận sau thuế 9.427 tỷ VNĐ. Lợi nhuận sau thuế thuộc cổ đông công ty mẹ là 7.857 tỷ VNĐ. Đây là số làm tròn trong bảng tổng hợp hợp nhất.",
+      "context_status": "partial",
+      "context_note": "S1 trang 11 có dòng lợi nhuận hoạt động 11.025 và tăng 21,0%, nhưng đoạn cắt không chứa đơn vị và các dòng lợi nhuận trước/sau thuế. S2 có biên lợi nhuận hoạt động 17,5%.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Không có nhận định được chấp nhận. Hai nhận định về lợi nhuận hoạt động và biên lợi nhuận phù hợp với toàn trang, nhưng bộ kiểm tra chặn vì năm 2024 không nằm ngay trong câu trích dẫn. Phần khai báo thiếu thông tin cũng mâu thuẫn với dữ liệu hoạt động đã có.",
+      "ticker": "FPT",
+      "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+      "run_id": "20261022T030942Z-a339ea46",
+      "report_sha256": "6fe160340f6399aef854b5e05cb59711562e99e347be8171ade59ea40380ba4a",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 2,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 11,
+          "page_text_sha256": "d3adae2ef0c6f10023fc35ee9109b017c04755de87a06a696b6355203a0b4ac2",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=11",
+          "spans": [
+            {
+              "anchor": "Đơn vị: tỷ VNĐ",
+              "start": 677,
+              "end": 841,
+              "quote": "lại của năm liền trước và tạm ứng cổ tức tiền mặt của năm hiện tại nếu có.\nĐơn vị: tỷ VNĐ\nSTT Chỉ tiêu 2020 +/- 2021 +/- 2022 +/- 2023 +/- 2024 +/-\n1 Vốn chủ sở hữu"
+            },
+            {
+              "anchor": "11.025",
+              "start": 1169,
+              "end": 1325,
+              "quote": "ần từ hoạt động kinh doanh 5.191 12,6% 6.228 20,0% 7.589 21,8% 9.112 20,1% 11.025 21,0%\n6 Lợi nhuận trước thuế, lãi vay và khấu hao 6.754 12,2% 7.981 18,2% "
+            },
+            {
+              "anchor": "11.070",
+              "start": 1370,
+              "end": 1526,
+              "quote": "huận trước thuế và lãi vay 5.263 12,8% 6.337 20,4% 7.662 20,9% 9.203 20,1% 11.070 20,3%\n8 Lợi nhuận trước thuế 5.263 12,8% 6.337 20,4% 7.662 20,9% 9.203 20,"
+            },
+            {
+              "anchor": "9.427",
+              "start": 1536,
+              "end": 1691,
+              "quote": "20,3%\n9 Lợi nhuận sau thuế 4.424 13,1% 5.349 20,9% 6.491 21,3% 7.788 20,0% 9.427 21,0%\n10 Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ 3.538 12,8% 4.337 "
+            },
+            {
+              "anchor": "7.857",
+              "start": 1646,
+              "end": 1801,
+              "quote": "huộc về cổ đông công ty mẹ 3.538 12,8% 4.337 22,6% 5.310 22,4% 6.465 21,8% 7.857 21,5%\n11 Lịch sử chi trả cổ tức bằng tiền mặt (*) 1.466 13,2% 1.697 15,8% "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-revenue",
+      "answer": "Bảng tổng hợp hợp nhất ghi tổng doanh thu năm 2024 là 62.849 tỷ VNĐ, so với 52.618 tỷ VNĐ năm 2023; mức tăng được báo cáo là 19,4%. Các giá trị trong bảng đã làm tròn đến tỷ VNĐ.",
+      "context_status": "insufficient",
+      "context_note": "Ba đoạn ghim nằm ở chính sách kế toán và bảng tài sản của doanh nghiệp được mua lại, không có chỉ tiêu tổng doanh thu FPT năm 2024.",
+      "verdict": "context_gap",
+      "model_note": "Từ chối trả lời là phù hợp với ba đoạn được cung cấp. Toàn PDF có đáp án, nên lỗi chính ở bước truy xuất/chọn ngữ cảnh.",
+      "ticker": "FPT",
+      "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?",
+      "run_id": "20261022T031020Z-2ab30456",
+      "report_sha256": "79ad7ec698da44c95c9750e96b0b9fb3531a8f4bfdc0afcc07a63b3bddd86a42",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 11,
+          "page_text_sha256": "d3adae2ef0c6f10023fc35ee9109b017c04755de87a06a696b6355203a0b4ac2",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=11",
+          "spans": [
+            {
+              "anchor": "Đơn vị: tỷ VNĐ",
+              "start": 677,
+              "end": 841,
+              "quote": "lại của năm liền trước và tạm ứng cổ tức tiền mặt của năm hiện tại nếu có.\nĐơn vị: tỷ VNĐ\nSTT Chỉ tiêu 2020 +/- 2021 +/- 2022 +/- 2023 +/- 2024 +/-\n1 Vốn chủ sở hữu"
+            },
+            {
+              "anchor": "Tổng doanh thu",
+              "start": 1000,
+              "end": 1164,
+              "quote": "tài sản 41.734 25,0% 53.698 28,7% 51.650 -3,8% 60.283 16,7% 72.000 19,4%\n4 Tổng doanh thu 29.830 7,6% 35.657 19,5% 44.010 23,4% 52.618 19,6% 62.849 19,4%\n5 Lợi nhuậ"
+            },
+            {
+              "anchor": "62.849 19,4%",
+              "start": 1066,
+              "end": 1228,
+              "quote": " 19,4%\n4 Tổng doanh thu 29.830 7,6% 35.657 19,5% 44.010 23,4% 52.618 19,6% 62.849 19,4%\n5 Lợi nhuận thuần từ hoạt động kinh doanh 5.191 12,6% 6.228 20,0% 7.589 21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-growth",
+      "answer": "So với năm 2023, năm 2024 FPT tăng tổng doanh thu 19,4%, lợi nhuận trước thuế 20,3%, lợi nhuận sau thuế 21,0% và lợi nhuận sau thuế thuộc cổ đông công ty mẹ 21,5%. Cần phân biệt mức tăng doanh thu với mức tăng lợi nhuận.",
+      "context_status": "partial",
+      "context_note": "S1 trang 9 trộn thứ tự chữ trong đồ họa; S3 trang 14 có tăng trưởng doanh thu CNTT nước ngoài 27,4%, nhưng đây là một lĩnh vực, không phải tổng doanh thu tập đoàn.",
+      "verdict": "blocked_error",
+      "model_note": "Mô hình gán 21% cho tăng trưởng doanh thu, trong khi bảng đầy đủ ghi doanh thu tăng 19,4% và lợi nhuận sau thuế tăng 21,0%. Nhận định sai không đi qua bộ kiểm tra.",
+      "ticker": "FPT",
+      "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?",
+      "run_id": "20261022T031100Z-4920a4f9",
+      "report_sha256": "93b705c2994db9c260cba8803a7ba8c432f1cd0dc0cd4b87e40482cd277946ee",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 11,
+          "page_text_sha256": "d3adae2ef0c6f10023fc35ee9109b017c04755de87a06a696b6355203a0b4ac2",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=11",
+          "spans": [
+            {
+              "anchor": "62.849 19,4%",
+              "start": 1066,
+              "end": 1228,
+              "quote": " 19,4%\n4 Tổng doanh thu 29.830 7,6% 35.657 19,5% 44.010 23,4% 52.618 19,6% 62.849 19,4%\n5 Lợi nhuận thuần từ hoạt động kinh doanh 5.191 12,6% 6.228 20,0% 7.589 21"
+            },
+            {
+              "anchor": "11.070 20,3%",
+              "start": 1370,
+              "end": 1532,
+              "quote": "huận trước thuế và lãi vay 5.263 12,8% 6.337 20,4% 7.662 20,9% 9.203 20,1% 11.070 20,3%\n8 Lợi nhuận trước thuế 5.263 12,8% 6.337 20,4% 7.662 20,9% 9.203 20,1% 11."
+            },
+            {
+              "anchor": "9.427 21,0%",
+              "start": 1536,
+              "end": 1697,
+              "quote": "20,3%\n9 Lợi nhuận sau thuế 4.424 13,1% 5.349 20,9% 6.491 21,3% 7.788 20,0% 9.427 21,0%\n10 Lợi nhuận sau thuế thuộc về cổ đông công ty mẹ 3.538 12,8% 4.337 22,6% "
+            },
+            {
+              "anchor": "7.857 21,5%",
+              "start": 1646,
+              "end": 1807,
+              "quote": "huộc về cổ đông công ty mẹ 3.538 12,8% 4.337 22,6% 5.310 22,4% 6.465 21,8% 7.857 21,5%\n11 Lịch sử chi trả cổ tức bằng tiền mặt (*) 1.466 13,2% 1.697 15,8% 2.011 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-assets",
+      "answer": "Tại 31/12/2024, bảng cân đối kế toán hợp nhất FPT ghi tổng tài sản 71.999.995.678.620 VND và nợ phải trả 36.272.455.573.820 VND. Nợ phải trả gồm nợ ngắn hạn 34.836.184.067.740 VND và nợ dài hạn 1.436.271.506.080 VND.",
+      "context_status": "partial",
+      "context_note": "S2 trang 149 có nợ phải trả và tiêu đề năm/đơn vị. S3 trang 171 là tài sản của doanh nghiệp mua lại, không phải tổng tài sản hợp nhất FPT.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Có thể trả lời phần nợ từ S2, nhưng không có nhận định được chấp nhận do câu trích dẫn ngắn bỏ tiêu đề năm. Không được dùng bảng mua lại ở S3 làm tổng tài sản tập đoàn.",
+      "ticker": "FPT",
+      "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?",
+      "run_id": "20261022T031124Z-bc8b89b7",
+      "report_sha256": "c61b69942737c95f23870b25e304cb6afb43486063d54aa41bac176acd19c720",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 148,
+          "page_text_sha256": "9a4ded1b3cbbe41d7f5c71329d459caa99867a3e1fd40420aabbb886c9766c0e",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=148",
+          "spans": [
+            {
+              "anchor": "2024",
+              "start": 0,
+              "end": 144,
+              "quote": "148\n07\n07 BÁO CÁO TÀI CHÍNH\n01 THÔNG ĐIỆP BAN LÃNH ĐẠO\n02 DẤU ẤN 2024 & TỔNG QUAN VỀ FPT\n04 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH\n06 BÁO CÁO ESG\n05 QUẢ"
+            },
+            {
+              "anchor": "VND",
+              "start": 165,
+              "end": 318,
+              "quote": " THƯỜNG NIÊN 2024\n03 CHIẾN LƯỢC PHÁT TRIỂN\nMã số Tài sản Thuyết minh 2024 \nVND\n2023 \nVND\n260 Tài sản dài hạn khác 5.438.413.518.284 5.036.171.784.305\n261"
+            },
+            {
+              "anchor": "71.999.995.678.620",
+              "start": 462,
+              "end": 630,
+              "quote": "ợi thế thương mại 16 1.097.458.206.678 1.283.790.079.129\n270 TỔNG TÀI SẢN  71.999.995.678.620 60.282.827.532.899\nBẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT (tiếp theo) MẪU SỐ B 01 –"
+            }
+          ]
+        },
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 149,
+          "page_text_sha256": "9f50ef49d9e0e656929502d94dba8012aae2867b2ffb9b96dcf933a6b4a296fa",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=149",
+          "spans": [
+            {
+              "anchor": "36.272.455.573.820",
+              "start": 197,
+              "end": 365,
+              "quote": "PHÁT TRIỂN\nMã số Nguồn vốn Thuyết minh 2024 \nVND\n2023 \nVND\n300 NỢ PHẢI TRẢ 36.272.455.573.820 30.349.816.316.666 \n310 Nợ ngắn hạn 34.836.184.067.740 29.651.673.556.227 "
+            },
+            {
+              "anchor": "34.836.184.067.740",
+              "start": 252,
+              "end": 420,
+              "quote": "VND\n300 NỢ PHẢI TRẢ 36.272.455.573.820 30.349.816.316.666 \n310 Nợ ngắn hạn 34.836.184.067.740 29.651.673.556.227 \n311 Phải trả người bán ngắn hạn 17 4.423.912.840.298 2"
+            },
+            {
+              "anchor": "1.436.271.506.080",
+              "start": 1101,
+              "end": 1268,
+              "quote": "ỹ khen thưởng, phúc lợi 1.835.037.318.363 1.462.636.131.060\n330 Nợ dài hạn 1.436.271.506.080 698.142.760.439\n336 Doanh thu chưa thực hiện dài hạn 20(b) 131.344.534.204"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-cash",
+      "answer": "Lưu chuyển tiền thuần từ hoạt động kinh doanh hợp nhất năm 2024 là 11.703.777.188.868 VND, so với 9.517.095.698.405 VND năm 2023. Đây là dòng tiền kinh doanh sau điều chỉnh vốn lưu động và các khoản chi, khác với lợi nhuận trước thay đổi vốn lưu động 13.626.844.968.489 VND.",
+      "context_status": "partial",
+      "context_note": "Các đoạn có đầu bảng dòng tiền kinh doanh và một số dòng đầu tư; dòng tổng tiền thuần hoạt động kinh doanh ở cuối trang 153 nằm ngoài đoạn ghim.",
+      "verdict": "accepted_partial",
+      "model_note": "Nhận định được chấp nhận nói về tiền thu hồi đầu tư góp vốn, phù hợp với đoạn đầu tư nhưng không trả lời dòng tiền hoạt động kinh doanh. Chưa thể coi câu này đã được trả lời đầy đủ.",
+      "ticker": "FPT",
+      "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?",
+      "run_id": "20261022T031226Z-3215ceee",
+      "report_sha256": "81f894f0711a72b1e2758a44ad779b84a40a3da6b97d77e42d3cded5eb861bcb",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 1,
+      "rejected_claims": 2,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 153,
+          "page_text_sha256": "346f25ec1eb39fdcc0bfcf41d35a79156803a3fc183b78766066811edf005a84",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=153",
+          "spans": [
+            {
+              "anchor": "2024",
+              "start": 0,
+              "end": 144,
+              "quote": "153\n07\n07 BÁO CÁO TÀI CHÍNH\n01 THÔNG ĐIỆP BAN LÃNH ĐẠO\n02 DẤU ẤN 2024 & TỔNG QUAN VỀ FPT\n04 PHÂN TÍCH HOẠT ĐỘNG KINH DOANH\n06 BÁO CÁO ESG\n05 QUẢ"
+            },
+            {
+              "anchor": "VND",
+              "start": 286,
+              "end": 439,
+              "quote": " DN/HN\nNăm tài chính kết thúc ngày 31 tháng 12 năm\nMã số Thuyết minh 2024 \nVND\n2023 \nVND\nLƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH\n01 Lợi nhuận kế toán trư"
+            },
+            {
+              "anchor": "13.626.844.968.489",
+              "start": 922,
+              "end": 1090,
+              "quote": "1 \n08 Lợi nhuận từ hoạt động kinh doanh trước những thay đổi vốn lưu động  13.626.844.968.489 10.989.758.903.879  \n09 Tăng các khoản phải thu  (1.913.663.012.505) (1.16"
+            },
+            {
+              "anchor": "11.703.777.188.868",
+              "start": 1479,
+              "end": 1647,
+              "quote": ".961) (347.735.082.564) \n20 Lưu chuyển tiền thuần từ hoạt động kinh doanh  11.703.777.188.868 9.517.095.698.405 \nLƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ\n21 Tiền chi để mua "
+            },
+            {
+              "anchor": "9.517.095.698.405",
+              "start": 1498,
+              "end": 1665,
+              "quote": "564) \n20 Lưu chuyển tiền thuần từ hoạt động kinh doanh  11.703.777.188.868 9.517.095.698.405 \nLƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ\n21 Tiền chi để mua sắm, xây dựng TSCĐ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-operations",
+      "answer": "FPT phân hoạt động thành ba khối: Công nghệ (CNTT trong nước và nước ngoài), Viễn thông (viễn thông và nội dung số), cùng Giáo dục, Đầu tư và Khác. Năm 2024, doanh thu ba khối tăng lần lượt 24,4%, 11,4% và 14,3% so với năm trước.",
+      "context_status": "partial",
+      "context_note": "S3 trang 51 bắt đầu mô tả ba khối nhưng bị cắt trước danh sách đầy đủ; hai đoạn khác chủ yếu là định nghĩa kế toán về bộ phận kinh doanh.",
+      "verdict": "accepted_partial",
+      "model_note": "Nhận định qua kiểm tra chỉ lặp định nghĩa bộ phận theo kế toán, không nêu ba khối hoạt động hoặc diễn biến năm 2024. Trích dẫn có thật nhưng tính hữu ích cho câu hỏi thấp.",
+      "ticker": "FPT",
+      "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?",
+      "run_id": "20261022T031316Z-7cb76f1b",
+      "report_sha256": "75000386a2eae398a2196d929e2b545f42402d8db03fb46195f8e903492bce39",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 1,
+      "rejected_claims": 2,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 51,
+          "page_text_sha256": "ae8ecee735526eb9e2ca672f8563776946543ff7b83dd0d817a2eeb18b9ce6fe",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=51",
+          "spans": [
+            {
+              "anchor": "ba khối",
+              "start": 583,
+              "end": 740,
+              "quote": "ng của Tập đoàn. Cụ thể, hoạt động kinh doanh của Tập đoàn được chia thành ba khối \nchính, bao gồm: Khối Công nghệ với hai lĩnh vực là Dịch vụ CNTT cho thị t"
+            },
+            {
+              "anchor": "Khối Giáo dục, Đầu tư và Khác",
+              "start": 802,
+              "end": 981,
+              "quote": "ối Viễn thông với hai lĩnh vực Dịch vụ Viễn \nthông và Dịch vụ Nội dung số; Khối Giáo dục, Đầu tư và Khác.\nTrước những biến động khó lường của nền kinh tế toàn cầu trong năm 2024, "
+            },
+            {
+              "anchor": "24,4%",
+              "start": 1379,
+              "end": 1534,
+              "quote": "khối kinh doanh cốt lõi. Khối Công nghệ ghi nhận mức tăng trưởng doanh thu 24,4%, tiếp tục đóng vai trò động lực dẫn \ndắt. Khối Viễn thông duy trì mức tăng"
+            },
+            {
+              "anchor": "11,4%",
+              "start": 1477,
+              "end": 1632,
+              "quote": "i trò động lực dẫn \ndắt. Khối Viễn thông duy trì mức tăng trưởng doanh thu 11,4%, trong khi khối Giáo dục, Đầu tư và Khác đạt mức tăng trưởng doanh thu 14,"
+            },
+            {
+              "anchor": "14,3%",
+              "start": 1554,
+              "end": 1709,
+              "quote": ",4%, trong khi khối Giáo dục, Đầu tư và Khác đạt mức tăng trưởng doanh thu 14,3%. Những kết quả tích cực này khẳng định \nbản lĩnh và khả năng thích ứng của"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-risk",
+      "answer": "Báo cáo nêu rủi ro tỷ giá đối với dịch vụ CNTT ở thị trường nước ngoài; rủi ro nợ xấu và hàng tồn kho tăng cao; cùng yêu cầu tuân thủ pháp luật, lao động nhập cư và khác biệt văn hóa khi mở rộng quốc tế. Các biện pháp gồm phòng ngừa tỷ giá, kiểm soát công nợ/tồn kho và cập nhật quy định tại nước sở tại.",
+      "context_status": "sufficient",
+      "context_note": "S2 và S3 trang 119 nêu trực tiếp rủi ro tỷ giá, tuân thủ và nội dung quản trị. Có đủ bằng chứng để trả lời ít nhất một rủi ro cụ thể.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Không có nhận định được chấp nhận dù nguồn có nội dung rủi ro rõ. Các trường số trích xuất không được câu trích dẫn hỗ trợ làm bộ kiểm tra chặn nhận định về tỷ giá.",
+      "ticker": "FPT",
+      "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?",
+      "run_id": "20261022T031353Z-d6755189",
+      "report_sha256": "011f52ca6cef3b57ce99438a4fd2a1548986d43d04d65c507b2ba08b1e59122e",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 2,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 119,
+          "page_text_sha256": "5b8e9f54d1b6660b7a976964187f8da8e3ca05b596e09dee1d26761616df602a",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=119",
+          "spans": [
+            {
+              "anchor": "Rủi ro tỷ giá",
+              "start": 345,
+              "end": 508,
+              "quote": " NIÊN 2024\n03 CHIẾN LƯỢC PHÁT TRIỂN\nTên rủi ro Nội dung Biện pháp quản trị\nRủi ro tỷ giá Biến động tỷ giá là rủi ro tiềm ẩn đối \nvới mảng hoạt động cung cấp dịch v"
+            },
+            {
+              "anchor": "Rủi ro nợ xấu mất kiểm soát",
+              "start": 848,
+              "end": 1025,
+              "quote": " hàng linh hoạt dựa trên biến động tỷ giá.\nRủi ro kinh doanh \nthông thường\nRủi ro nợ xấu mất kiểm soát, hàng \ntồn tăng cao.\n• Xây dựng và tuân thủ các quy trình về mua bán hàng,"
+            },
+            {
+              "anchor": "lao động nhập cư",
+              "start": 2358,
+              "end": 2524,
+              "quote": "t tại các quốc gia mà Tập đoàn có \nhoạt động, đặc biệt là các quy định về \nlao động nhập cư. Bên cạnh đó là thách \nthức về khác biệt văn hóa, thông lệ lao \nđộng, văn "
+            },
+            {
+              "anchor": "hoán đổi tiền tệ",
+              "start": 667,
+              "end": 833,
+              "quote": "hính sách phòng ngừa tỷ giá, đặc biệt với Yên Nhật;\n• Áp dụng các hợp đồng hoán đổi tiền tệ để phòng ngừa rủi ro tỷ giá với các khoản vay bằng ngoại tệ;\n• Áp dụng các"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-FPT-outlook",
+      "answer": "Trong kế hoạch năm 2025, FPT đặt doanh thu 75.400 tỷ VNĐ và lợi nhuận trước thuế 13.395 tỷ VNĐ. Ngân sách đầu tư dự kiến 11.000 tỷ VNĐ, gồm Công nghệ 6.000, Viễn thông 2.500, Giáo dục/Đầu tư/Khác 2.500 tỷ VNĐ. Đây là mục tiêu và dự kiến, không phải kết quả thực hiện năm 2024 hay 2025.",
+      "context_status": "partial",
+      "context_note": "S1 trang 47 có tiêu đề kế hoạch 2025 và ngân sách Công nghệ/Viễn thông; tổng đầu tư, đơn vị và chỉ tiêu doanh thu/lợi nhuận nằm ngoài đoạn cắt.",
+      "verdict": "accepted_partial",
+      "model_note": "Nhận định được chấp nhận nêu 6.000 và 2.500 nhưng bỏ đơn vị và kỳ ngay trong phát biểu. Nội dung có cơ sở, song cần bổ sung năm 2025 và tỷ VNĐ để sử dụng được.",
+      "ticker": "FPT",
+      "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?",
+      "run_id": "20261022T031415Z-00125581",
+      "report_sha256": "7c8c6b4a543bd3e2878c7af32c9d8c532320386d83ac9af22cc53c56fc848839",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 1,
+      "rejected_claims": 0,
+      "citations": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 47,
+          "page_text_sha256": "83a88463166b551b135f23403d3dff91e8f71de394a2c10d7ea5c801c68e8494",
+          "content_sha256": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "source_url": "https://fpt.com/api/media/bao_cao_thuong_nien_fpt_2024_883024f1dd.pdf",
+          "pdf_url": "/api/documents/e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2/raw#page=47",
+          "spans": [
+            {
+              "anchor": "KẾ HOẠCH NĂM 2025",
+              "start": 245,
+              "end": 412,
+              "quote": " TY\n07 BÁO CÁO TÀI CHÍNH\nBÁO CÁO THƯỜNG NIÊN 2024\n03 CHIẾN LƯỢC PHÁT TRIỂN\nKẾ HOẠCH NĂM 2025\nKế hoạch đầu tư dự kiến\nCác mục tiêu chủ yếu\nKhối Ngân sách đầu tư Chú thí"
+            },
+            {
+              "anchor": "6.000",
+              "start": 355,
+              "end": 510,
+              "quote": "ự kiến\nCác mục tiêu chủ yếu\nKhối Ngân sách đầu tư Chú thích\nKhối Công nghệ 6.000 Đầu tư mở rộng các khu tổ hợp văn phòng tại các thành phố lớn như Hà Nội, "
+            },
+            {
+              "anchor": "2.500",
+              "start": 525,
+              "end": 680,
+              "quote": " Nhơn; Đầu tư dự án Nhà máy AI tại  \nViệt Nam và Nhật Bản.\nKhối Viễn thông 2.500 Đầu tư các trục cáp chính, cáp biển, nâng cấp chất lượng hạ tầng viễn thôn"
+            },
+            {
+              "anchor": "11.000",
+              "start": 844,
+              "end": 1000,
+              "quote": " thêm các cơ sở đào tạo mới tại các \ntỉnh, thành trên toàn quốc.\nTổng cộng 11.000\nNăm 2024\nNăm 2025\nĐơn vị: tỷ VNĐ\nDoanh thu năm 2025\n75.400 TỶ VNĐ\nKhối Côn"
+            },
+            {
+              "anchor": "75.400 TỶ VNĐ",
+              "start": 903,
+              "end": 1066,
+              "quote": "quốc.\nTổng cộng 11.000\nNăm 2024\nNăm 2025\nĐơn vị: tỷ VNĐ\nDoanh thu năm 2025\n75.400 TỶ VNĐ\nKhối Công nghệ Khối Viễn thông Khối Giáo dục, \nĐầu tư và Khác\n20,0% so với"
+            },
+            {
+              "anchor": "13.395 TỶ VNĐ",
+              "start": 1047,
+              "end": 1210,
+              "quote": "à Khác\n20,0% so với cùng kỳ\nNăm 2024\nNăm 2025\nĐơn vị: tỷ VNĐ\nLNTT năm 2025\n13.395 TỶ VNĐ\nKhối Công nghệ Khối Viễn thông Khối Giáo dục, \nĐầu tư và Khác\n21,0% so với"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-income",
+      "answer": "Bảng tổng hợp hợp nhất ghi năm 2024 Hòa Phát có lợi nhuận trước thuế 13.694 tỷ đồng và lợi nhuận sau thuế 12.020 tỷ đồng. Lợi nhuận sau thuế tăng 77% so với năm 2023; biên lợi nhuận sau thuế/doanh thu thuần là 8,7%. Các giá trị tiền đã làm tròn đến tỷ đồng.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 31 có lợi nhuận sau thuế 12.020 tỷ đồng, tăng 77% và biên lợi nhuận 8,7%. Có thể trả lời câu hỏi lợi nhuận từ chính ngữ cảnh ghim.",
+      "verdict": "useful_claims",
+      "model_note": "Ba nhận định được chấp nhận phù hợp với nguồn: lợi nhuận sau thuế, biên lợi nhuận và EBITDA. Đây là trường hợp trả lời hữu ích; kiểm tra này vẫn do trợ lý thực hiện.",
+      "ticker": "HPG",
+      "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+      "run_id": "20261022T031436Z-550b5fa9",
+      "report_sha256": "a473ed509ed05c1cfda76b2f45ec6280bb0aeea955a4f971df6c72f374c75bc7",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 3,
+      "rejected_claims": 0,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "page_text_sha256": "7132f3c4273144f96222675de0ca410c1ab2ffd4a4627cf03ebcdaff55b3e60a",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=12",
+          "spans": [
+            {
+              "anchor": "Lợi nhuận trước thuế",
+              "start": 138,
+              "end": 308,
+              "quote": "ài chính ròng\nChi phí bán hàng\nChi phí quản lý doanh nghiệp\nLợi nhuận khác\nLợi nhuận trước thuế\nThuế TNDN\nLợi nhuận sau thuế\nLợi nhuận Cổ đông công ty mẹ\nChi phí khấu hao"
+            },
+            {
+              "anchor": "13.694",
+              "start": 1224,
+              "end": 1380,
+              "quote": "%\n3,6%\n6,6%\n12.984\n19.758\n \n140.561\n138.855\n18.498\n(1.348)\n2.337\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6."
+            },
+            {
+              "anchor": "12.020",
+              "start": 1237,
+              "end": 1393,
+              "quote": "2.984\n19.758\n \n140.561\n138.855\n18.498\n(1.348)\n2.337\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n"
+            },
+            {
+              "anchor": "8,7%",
+              "start": 1350,
+              "end": 1504,
+              "quote": ".411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồng) 2023 2024BÁO CÁO T"
+            },
+            {
+              "anchor": "2024",
+              "start": 1416,
+              "end": 1570,
+              "quote": ".888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồng) 2023 2024BÁO CÁO THƯỜNG NIÊN - 2024\nThông tin cơ bản\nThông tin cổ phiếu\nNgành nghề k"
+            }
+          ]
+        },
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 29,
+          "page_text_sha256": "b629f4e735eedb8559a14d8892672f95401041e0d7cb5df509c58c1f1029c9b9",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=29",
+          "spans": [
+            {
+              "anchor": "tăng 77% so với cùng kỳ 2023",
+              "start": 290,
+              "end": 468,
+              "quote": " lĩnh vực bất động sản tăng 123%. Lợi nhuận \nnăm 2024 đạt 120% kế hoạch và tăng 77% so với cùng kỳ 2023, trong đó lĩnh \nvực tạo nên sự tăng trưởng này chủ yếu là nhờ ngành thép t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-revenue",
+      "answer": "Năm 2024, Hòa Phát ghi doanh thu bán hàng và cung cấp dịch vụ 140.561 tỷ đồng, còn doanh thu thuần là 138.855 tỷ đồng trong bảng tổng hợp hợp nhất. Đây là hai chỉ tiêu khác nhau; không lấy doanh thu của riêng phân khúc thép làm doanh thu toàn tập đoàn.",
+      "context_status": "partial",
+      "context_note": "S3 trang 30 có doanh thu thuần xuất khẩu 43.340 tỷ đồng và tỷ trọng 31%. Các bảng phân khúc ở S1/S2 bị cắt và tách cột, khó dùng cho tổng doanh thu tập đoàn.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Không có nhận định qua kiểm tra. Một phần dữ liệu xuất khẩu có thể dùng, nhưng đầu ra còn ghép số bị cắt và gán số phân khúc cho toàn tập đoàn; việc khai báo thiếu bằng chứng khiến mọi nhận định bị chặn.",
+      "ticker": "HPG",
+      "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?",
+      "run_id": "20261022T031516Z-a41f8057",
+      "report_sha256": "b01bbca88263185fb9d5fc621a0186f4309ad46270b709b3bc6d01ab7effa41e",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "page_text_sha256": "7132f3c4273144f96222675de0ca410c1ab2ffd4a4627cf03ebcdaff55b3e60a",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=12",
+          "spans": [
+            {
+              "anchor": "Doanh thu bán hàng & cung cấp dịch vụ",
+              "start": 0,
+              "end": 173,
+              "quote": "12\nTÓM TẮT CÁC CHỈ SỐ TÀI CHÍNH\nKẾT QUẢ HOẠT ĐỘNG KINH DOANH\nDoanh thu bán hàng & cung cấp dịch vụ\nDoanh thu thuần\nLợi nhuận gộp\nChi phí tài chính ròng\nChi phí bán hàng\nChi "
+            },
+            {
+              "anchor": "Doanh thu thuần",
+              "start": 24,
+              "end": 189,
+              "quote": "I CHÍNH\nKẾT QUẢ HOẠT ĐỘNG KINH DOANH\nDoanh thu bán hàng & cung cấp dịch vụ\nDoanh thu thuần\nLợi nhuận gộp\nChi phí tài chính ròng\nChi phí bán hàng\nChi phí quản lý doan"
+            },
+            {
+              "anchor": "140.561",
+              "start": 1177,
+              "end": 1334,
+              "quote": "9.472\n(12.801)\n7.273\n3.944\n8.325\n12.252\n11%\n5,7%\n3,6%\n6,6%\n12.984\n19.758\n \n140.561\n138.855\n18.498\n(1.348)\n2.337\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n22"
+            },
+            {
+              "anchor": "138.855",
+              "start": 1185,
+              "end": 1342,
+              "quote": "2.801)\n7.273\n3.944\n8.325\n12.252\n11%\n5,7%\n3,6%\n6,6%\n12.984\n19.758\n \n140.561\n138.855\n18.498\n(1.348)\n2.337\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n224.490\n87"
+            },
+            {
+              "anchor": "2024",
+              "start": 1416,
+              "end": 1570,
+              "quote": ".888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồng) 2023 2024BÁO CÁO THƯỜNG NIÊN - 2024\nThông tin cơ bản\nThông tin cổ phiếu\nNgành nghề k"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-growth",
+      "answer": "Báo cáo ghi doanh thu năm 2024 tăng 17% và lợi nhuận tăng 77% so với năm 2023. Riêng doanh thu lĩnh vực thép tăng 16%, lợi nhuận lĩnh vực thép tăng 64% so với cùng kỳ. Cần giữ rõ phạm vi toàn tập đoàn và riêng ngành thép.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 29 và đoạn lợi nhuận trang 31 nêu rõ tỷ lệ tăng và mốc so sánh 2023.",
+      "verdict": "useful_claims",
+      "model_note": "Hai nhận định được chấp nhận nêu đúng mức tăng doanh thu 17% và lợi nhuận 77% so với 2023. Tuy nhiên, phần thiếu thông tin lại nói chưa có thông tin tăng trưởng, mâu thuẫn với chính các nhận định.",
+      "ticker": "HPG",
+      "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?",
+      "run_id": "20261022T031612Z-5815bccc",
+      "report_sha256": "2e2645923f9aa2465c4e0db536de09701af902df41edfdd7784d42e499fec104",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 2,
+      "rejected_claims": 1,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 29,
+          "page_text_sha256": "b629f4e735eedb8559a14d8892672f95401041e0d7cb5df509c58c1f1029c9b9",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=29",
+          "spans": [
+            {
+              "anchor": "tăng 17% so với năm 2023",
+              "start": 0,
+              "end": 170,
+              "quote": "29\n  DOANH THU – LỢI NHUẬN\nDoanh thu năm 2024 đạt 100% kế hoạch đề ra, tăng 17% so với năm 2023. Trong \nđó, thép đóng góp 93% doanh thu toàn Tập đoàn. Doanh thu của lĩnh "
+            },
+            {
+              "anchor": "tăng 16%",
+              "start": 105,
+              "end": 263,
+              "quote": "ó, thép đóng góp 93% doanh thu toàn Tập đoàn. Doanh thu của lĩnh vực thép \ntăng 16% do nhu cầu tiêu thụ thép của thị trường tăng cùng với giá bán thép \nổn địn"
+            },
+            {
+              "anchor": "tăng 77% so với cùng kỳ 2023",
+              "start": 290,
+              "end": 468,
+              "quote": " lĩnh vực bất động sản tăng 123%. Lợi nhuận \nnăm 2024 đạt 120% kế hoạch và tăng 77% so với cùng kỳ 2023, trong đó lĩnh \nvực tạo nên sự tăng trưởng này chủ yếu là nhờ ngành thép t"
+            },
+            {
+              "anchor": "tăng 64%",
+              "start": 392,
+              "end": 550,
+              "quote": "3, trong đó lĩnh \nvực tạo nên sự tăng trưởng này chủ yếu là nhờ ngành thép tăng 64% lợi nhuận \nso với cùng kỳ.\nNăm 2024, ngành thép có sự khởi sắc cả về doanh"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-assets",
+      "answer": "Bảng tổng hợp hợp nhất cuối năm 2024 ghi tổng tài sản 224.490 tỷ đồng, nợ phải trả 109.842 tỷ đồng và vốn chủ sở hữu 114.647 tỷ đồng. Các số đã làm tròn theo từng dòng nên phép cộng có thể lệch 1 tỷ đồng.",
+      "context_status": "partial",
+      "context_note": "S1 trang 101 có tổng tài sản nhưng nhãn và số bị tách trong quá trình trích văn bản. Các đoạn còn lại nêu tỷ số tài chính/vốn chủ, chưa cung cấp đủ bảng tài sản và nợ có tiêu đề.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Mô hình tìm được giá trị tài sản nhưng ghép câu trích dẫn không có nguyên văn liền nhau và khai báo thiếu bằng chứng, nên không nhận định nào được chấp nhận. Cần truy xuất bảng cùng tiêu đề thay vì ghép hàng theo suy đoán.",
+      "ticker": "HPG",
+      "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?",
+      "run_id": "20261022T031653Z-b1a824d5",
+      "report_sha256": "8f6289baff7ff4af88cbb704611f9664e85e764b7e9d189400ae456e70fa0f48",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "page_text_sha256": "7132f3c4273144f96222675de0ca410c1ab2ffd4a4627cf03ebcdaff55b3e60a",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=12",
+          "spans": [
+            {
+              "anchor": "Tổng Tài sản",
+              "start": 255,
+              "end": 417,
+              "quote": "au thuế\nLợi nhuận Cổ đông công ty mẹ\nChi phí khấu hao\nBẢNG CÂN ĐỐI KẾ TOÁN\nTổng Tài sản\nTài sản ngắn hạn\nTài sản dài hạn\nNợ phải trả\nVốn chủ sở hữu\nVốn điều lệ\nBẢ"
+            },
+            {
+              "anchor": "Nợ phải trả",
+              "start": 301,
+              "end": 462,
+              "quote": "hấu hao\nBẢNG CÂN ĐỐI KẾ TOÁN\nTổng Tài sản\nTài sản ngắn hạn\nTài sản dài hạn\nNợ phải trả\nVốn chủ sở hữu\nVốn điều lệ\nBẢNG LƯU CHUYỂN TIỀN TỆ\nTiền thuần từ hoạt động"
+            },
+            {
+              "anchor": "Vốn chủ sở hữu",
+              "start": 313,
+              "end": 477,
+              "quote": " CÂN ĐỐI KẾ TOÁN\nTổng Tài sản\nTài sản ngắn hạn\nTài sản dài hạn\nNợ phải trả\nVốn chủ sở hữu\nVốn điều lệ\nBẢNG LƯU CHUYỂN TIỀN TỆ\nTiền thuần từ hoạt động kinh doanh\nTiề"
+            },
+            {
+              "anchor": "224.490",
+              "start": 1257,
+              "end": 1414,
+              "quote": "61\n138.855\n18.498\n(1.348)\n2.337\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252"
+            },
+            {
+              "anchor": "109.842",
+              "start": 1280,
+              "end": 1437,
+              "quote": "8)\n2.337\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10"
+            },
+            {
+              "anchor": "114.647",
+              "start": 1288,
+              "end": 1445,
+              "quote": "\n1.546\n426\n13.694\n1.673\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.6"
+            },
+            {
+              "anchor": "2024",
+              "start": 1416,
+              "end": 1570,
+              "quote": ".888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồng) 2023 2024BÁO CÁO THƯỜNG NIÊN - 2024\nThông tin cơ bản\nThông tin cổ phiếu\nNgành nghề k"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-cash",
+      "answer": "Năm 2024, tiền thuần từ hoạt động kinh doanh hợp nhất là 6.608 tỷ đồng. Tiền thuần đầu tư âm 29.788 tỷ đồng, tiền thuần tài chính dương 17.815 tỷ đồng; lưu chuyển tiền thuần trong kỳ âm 5.365 tỷ đồng. Tiền và tương đương tiền cuối kỳ là 6.888 tỷ đồng. Đây là các số làm tròn trong bảng tổng hợp.",
+      "context_status": "insufficient",
+      "context_note": "Ba đoạn ghim chủ yếu có tiêu đề, nhãn chỉ tiêu và thông tin bộ máy; không chứa giá trị tiền thuần kinh doanh dùng được.",
+      "verdict": "context_gap",
+      "model_note": "Từ chối trả lời phù hợp với ngữ cảnh. Toàn PDF có bảng trả lời được; cần sửa truy xuất vùng bảng, không kết luận rằng tài liệu không có số liệu.",
+      "ticker": "HPG",
+      "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?",
+      "run_id": "20261022T031738Z-2a50ac10",
+      "report_sha256": "daab6b8b33c41fafe7a84b0164bf93bdddc28f86c1bfd9ae89299c86e19a1b01",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "page_text_sha256": "7132f3c4273144f96222675de0ca410c1ab2ffd4a4627cf03ebcdaff55b3e60a",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=12",
+          "spans": [
+            {
+              "anchor": "Tiền thuần từ hoạt động kinh doanh",
+              "start": 364,
+              "end": 548,
+              "quote": "sản dài hạn\nNợ phải trả\nVốn chủ sở hữu\nVốn điều lệ\nBẢNG LƯU CHUYỂN TIỀN TỆ\nTiền thuần từ hoạt động kinh doanh\nTiền thuần từ hoạt động đầu tư\nTiền thuần từ hoạt động tài chính\nLưu chuyể"
+            },
+            {
+              "anchor": "6.608",
+              "start": 1303,
+              "end": 1458,
+              "quote": "94\n1.673\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n202"
+            },
+            {
+              "anchor": "(29.788)",
+              "start": 1309,
+              "end": 1467,
+              "quote": "73\n12.020\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu"
+            },
+            {
+              "anchor": "17.815",
+              "start": 1318,
+              "end": 1474,
+              "quote": "\n12.021\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn v"
+            },
+            {
+              "anchor": "(5.365)",
+              "start": 1325,
+              "end": 1482,
+              "quote": "\n6.928\n224.490\n87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồ"
+            },
+            {
+              "anchor": "6.888",
+              "start": 1340,
+              "end": 1495,
+              "quote": "87.079\n137.411\n109.842\n114.647\n63.963\n6.608\n(29.788)\n17.815\n(5.365)\n12.252\n6.888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồng) 2023 2024"
+            },
+            {
+              "anchor": "2024",
+              "start": 1416,
+              "end": 1570,
+              "quote": ".888\n13%\n8,7%\n5,4%\n10,5%\n17.660\n24.588\n2022Chỉ tiêu (Đơn vị: Tỷ đồng) 2023 2024BÁO CÁO THƯỜNG NIÊN - 2024\nThông tin cơ bản\nThông tin cổ phiếu\nNgành nghề k"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-operations",
+      "answer": "Thép là hoạt động cốt lõi, đóng góp 93% doanh thu và 86% lợi nhuận sau thuế toàn tập đoàn năm 2024. Sản lượng bán HRC, thép xây dựng, thép chất lượng cao và phôi đạt 8,11 triệu tấn, tăng 21%. Nông nghiệp đóng góp 5% doanh thu và 8% lợi nhuận; lợi nhuận nhóm này gấp 4,6 lần năm 2023.",
+      "context_status": "partial",
+      "context_note": "Ngữ cảnh có hoạt động thức ăn chăn nuôi của công ty thành viên, không bao quát mảng thép và cơ cấu kinh doanh toàn Hòa Phát.",
+      "verdict": "accepted_partial",
+      "model_note": "Hai nhận định được chấp nhận đúng cho hoạt động thức ăn chăn nuôi, nhưng thiếu chỉ rõ phạm vi công ty thành viên và bỏ mảng thép cốt lõi. Câu trả lời chưa đại diện toàn tập đoàn.",
+      "ticker": "HPG",
+      "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?",
+      "run_id": "20261022T031834Z-56237c04",
+      "report_sha256": "5d495bc68c94a9b1b37ce2f26ead383e91ad6b59ad9486aa160cd348da830a36",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 2,
+      "rejected_claims": 1,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 29,
+          "page_text_sha256": "b629f4e735eedb8559a14d8892672f95401041e0d7cb5df509c58c1f1029c9b9",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=29",
+          "spans": [
+            {
+              "anchor": "93% và 86%",
+              "start": 1044,
+              "end": 1204,
+              "quote": "của Tập đoàn. Doanh thu và lợi \nnhuận sau thuế của mảng này lần lượt chiếm 93% và 86% của toàn Tập đoàn. Năm \n2024, sản lượng bán hàng các sản phẩm thép cuộn cá"
+            },
+            {
+              "anchor": "8,11 triệu tấn",
+              "start": 1196,
+              "end": 1360,
+              "quote": " cuộn cán nóng (HRC), thép xây dựng, \nthép chất lượng cao và phôi thép đạt 8,11 triệu tấn, tăng 21%. Trong đó, Hòa Phát \ncung cấp ra thị trường 2,9 triệu tấn HRC, t"
+            },
+            {
+              "anchor": "tăng 21%",
+              "start": 1212,
+              "end": 1370,
+              "quote": "HRC), thép xây dựng, \nthép chất lượng cao và phôi thép đạt 8,11 triệu tấn, tăng 21%. Trong đó, Hòa Phát \ncung cấp ra thị trường 2,9 triệu tấn HRC, tăng 3% so "
+            },
+            {
+              "anchor": "5% doanh thu và 8%",
+              "start": 1777,
+              "end": 1945,
+              "quote": " 5 doanh nghiệp có \nthị phần lớn nhất.\nLĩnh vực nông nghiệp chiếm tỷ trọng 5% doanh thu và 8% lợi nhuận của Tập đoàn. \nLợi nhuận nhóm này cao gấp 4,6 lần so với năm 202"
+            },
+            {
+              "anchor": "4,6 lần",
+              "start": 1848,
+              "end": 2005,
+              "quote": "ọng 5% doanh thu và 8% lợi nhuận của Tập đoàn. \nLợi nhuận nhóm này cao gấp 4,6 lần so với năm 2023. Sau gần 10 năm hoạt động \ntrong lĩnh vực nông nghiệp, Hòa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-risk",
+      "answer": "Hòa Phát chịu rủi ro tỷ giá và lãi suất. Nhập khẩu chiếm hơn 70% tổng giá vốn năm 2024; than, quặng phụ thuộc nguồn nước ngoài, nên tỷ giá tăng làm tăng chi phí nguyên liệu và tài chính. Các khoản vay/công cụ có lãi suất tạo thêm rủi ro chi phí trong bối cảnh tiền tệ thắt chặt.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 24 nêu trực tiếp nhập khẩu, biến động tỷ giá, lãi suất và cách quản trị.",
+      "verdict": "useful_claims",
+      "model_note": "Nhận định được chấp nhận nêu đúng việc quản trị rủi ro tỷ giá và lãi suất, nhưng chưa giải thích cơ chế tác động. Phần thiếu thông tin lại cho rằng chưa rõ rủi ro cụ thể, mâu thuẫn với nguồn và nhận định.",
+      "ticker": "HPG",
+      "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?",
+      "run_id": "20261022T031918Z-0f86deb9",
+      "report_sha256": "ffe0abc8fc632db53e26805efb4e46ce8d533d7792884ca7ae6857a3f06d44ea",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 1,
+      "rejected_claims": 2,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 24,
+          "page_text_sha256": "4afacfab83021f2b7f1b79f2df7d3475fef908918d49b2775a1f439246a4eb10",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=24",
+          "spans": [
+            {
+              "anchor": "hơn 70%",
+              "start": 363,
+              "end": 520,
+              "quote": " các chỉ số vĩ mô của nền kinh tế. \nVới Hòa Phát, tỷ trọng nhập khẩu chiếm hơn 70% tổng giá vốn toàn Tập đoàn năm 2024 cho thấy \nlượng nguyên vật liệu đầu và"
+            },
+            {
+              "anchor": "năm 2024",
+              "start": 398,
+              "end": 556,
+              "quote": "\nVới Hòa Phát, tỷ trọng nhập khẩu chiếm hơn 70% tổng giá vốn toàn Tập đoàn năm 2024 cho thấy \nlượng nguyên vật liệu đầu vào của Tập đoàn như than, quặng,… phụ"
+            },
+            {
+              "anchor": "Tỷ giá tăng",
+              "start": 632,
+              "end": 793,
+              "quote": "hiều hơn xuất khẩu, vì vậy tỷ giá ảnh hưởng rất lớn tới chi \nphí sản xuất. Tỷ giá tăng dẫn tới chi phí mua nguyên liệu tăng, chi phí tài chính tăng. Do vậy quản "
+            },
+            {
+              "anchor": "rủi ro lãi suất",
+              "start": 923,
+              "end": 1088,
+              "quote": "m phái sinh có lãi suất, đặt ra \nnhững thách thức cho Hòa Phát về quản trị rủi ro lãi suất, đặc biệt là trong bối cảnh lạm phát tăng cao, \nnền kinh tế chịu tác động "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-HPG-outlook",
+      "answer": "Ban Tổng Giám đốc trình Đại hội đồng cổ đông kế hoạch hợp nhất năm 2025: doanh thu 170.000 tỷ đồng và lợi nhuận sau thuế 15.000 tỷ đồng. Định hướng gồm vận hành ổn định phân kỳ 1 Dung Quất 2, hoàn thành phân kỳ 2 vào quý 4/2025 và phát triển thép chất lượng cao. Đây là kế hoạch được trình, không phải kết quả đã đạt.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 41 có tiêu đề kế hoạch năm 2025 và hai mục tiêu doanh thu/lợi nhuận. S3 nêu định hướng tăng trưởng giai đoạn 2025–2030.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Mô hình khai báo không xác định được kỳ dù tiêu đề kế hoạch năm 2025 nằm trong ngữ cảnh. Không có nhận định được chấp nhận; đây là bỏ sót bằng chứng có sẵn.",
+      "ticker": "HPG",
+      "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?",
+      "run_id": "20261022T031948Z-2fdda64c",
+      "report_sha256": "37e5e71c1cbaad83da41dc53b4c84da15703015dcb42e86646f3209cc6f4aa1b",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 41,
+          "page_text_sha256": "70b9750fc4de83f559a68557b28eb2aa90cdcdaaa85fc38adfbe734bc28b8a0b",
+          "content_sha256": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/04/bao-cao-thuong-nien-hpg-2024.pdf",
+          "pdf_url": "/api/documents/7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952/raw#page=41",
+          "spans": [
+            {
+              "anchor": "KINH DOANH NĂM 2025",
+              "start": 257,
+              "end": 426,
+              "quote": "uất kinh doanh \nnăm 2025\nPHẦN 2\nBÁO CÁO\nBAN GIÁM ĐỐC\n  KẾ HOẠCH SẢN XUẤT\n  KINH DOANH NĂM 2025\nNgày 27/12/2024, Thủ tướng Chính phủ đã ban hành Công điện số 140/CĐ-TTg v"
+            },
+            {
+              "anchor": "quý 4 năm 2025",
+              "start": 1948,
+              "end": 2112,
+              "quote": "át Dung Quất 2 và tiếp \ntục đầu tư hoàn thành phân kỳ  2 của Dự án này vào quý 4 năm 2025;\n• Nghiên cứu, đầu tư dự án sản xuất thép đường ray, thép làm trục bánh xe"
+            },
+            {
+              "anchor": "170.000 tỷ đồng",
+              "start": 2900,
+              "end": 3035,
+              "quote": "h kinh \ndoanh hợp nhất toàn Tập đoàn năm 2025 như sau:\nKế hoạch doanh thu: 170.000 tỷ đồng\nKế hoạch lợi nhuận sau thuế: 15.000 tỷ đồng\n"
+            },
+            {
+              "anchor": "15.000 tỷ đồng",
+              "start": 2945,
+              "end": 3035,
+              "quote": " như sau:\nKế hoạch doanh thu: 170.000 tỷ đồng\nKế hoạch lợi nhuận sau thuế: 15.000 tỷ đồng\n"
+            },
+            {
+              "anchor": "trình Đại hội đồng cổ đông",
+              "start": 2781,
+              "end": 2957,
+              "quote": "ung toàn Tập đoàn.\nVới những mục tiêu, nhận định trên, , Ban Tổng Giám đốc trình Đại hội đồng cổ đông phê duyệt kế hoạch kinh \ndoanh hợp nhất toàn Tập đoàn năm 2025 như sau:\nKế"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-income",
+      "answer": "Báo cáo kết quả hoạt động hợp nhất năm 2024 ghi lợi nhuận trước thuế 42.236.135 triệu VND và lợi nhuận sau thuế 33.853.117 triệu VND. Không dùng lợi nhuận của VCBL, VCBS hay công ty con khác thay cho kết quả hợp nhất Vietcombank.",
+      "context_status": "insufficient",
+      "context_note": "Cả ba đoạn trang 18 đều nói về công ty thành viên như VCBL, VCBS, VCBR và VCB Lào; không có lợi nhuận hợp nhất VCB.",
+      "verdict": "context_gap",
+      "model_note": "Không xuất bản nhận định lợi nhuận hợp nhất từ các số công ty con là phù hợp. Truy xuất đã chọn sai cấp doanh nghiệp dù đúng mã VCB trong metadata.",
+      "ticker": "VCB",
+      "question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+      "run_id": "20261022T032014Z-4f9403cf",
+      "report_sha256": "8084de3405a2cfa65fe2bd4248282f5b83eaada51a60af9105df33c53a90b95b",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67,
+          "page_text_sha256": "70a2d85af3d48e4bd30dd9c6f80c888e40cc225f6cf2c1fc9ee02842edfeb3f2",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=67",
+          "spans": [
+            {
+              "anchor": "2024",
+              "start": 0,
+              "end": 110,
+              "quote": "STT Chỉ tiêu Thuyết minh 31/12/2024  \nTriệu VND\n31/12/2023 \nTriệu VND \n(trình bày lại)\nCÁC CHỈ TIÊU NGOÀI BÁO "
+            },
+            {
+              "anchor": "Triệu VND",
+              "start": 0,
+              "end": 122,
+              "quote": "STT Chỉ tiêu Thuyết minh 31/12/2024  \nTriệu VND\n31/12/2023 \nTriệu VND \n(trình bày lại)\nCÁC CHỈ TIÊU NGOÀI BÁO CÁO TÌNH HÌN"
+            },
+            {
+              "anchor": "42.236.135",
+              "start": 1858,
+              "end": 2018,
+              "quote": "ng rủi ro tín dụng 32 (3.314.998) (4.529.947)\nXI TỔNG LỢI NHUẬN TRƯỚC THUẾ 42.236.135 41.328.467\n7 Chi phí thuế thu nhập doanh nghiệp hiện hành 33(a)  (8.526.49"
+            },
+            {
+              "anchor": "33.853.117",
+              "start": 2127,
+              "end": 2287,
+              "quote": "thuế thu nhập doanh nghiệp (8.383.018) (8.206.195)\nXIII LỢI NHUẬN SAU THUẾ 33.853.117 33.122.272\nXIV Lợi ích của cổ đông không kiểm soát (21.731) (21.245) \nXV L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-revenue",
+      "answer": "Với ngân hàng cần gọi đúng từng chỉ tiêu: năm 2024 thu nhập lãi và các khoản tương tự là 93.654.841 triệu VND; chi phí lãi 38.249.106 triệu VND; thu nhập lãi thuần 55.405.735 triệu VND. Tổng thu nhập hoạt động hợp nhất là 68.578.496 triệu VND. Thu nhập lãi gộp và thu nhập lãi thuần không thể dùng thay nhau.",
+      "context_status": "sufficient",
+      "context_note": "S1 trang 67 chứa cột năm 2024, đơn vị triệu VND và các dòng thu nhập lãi/chi phí lãi/thu nhập lãi thuần.",
+      "verdict": "blocked_error",
+      "model_note": "Mô hình gọi 55.405.735 là thu nhập lãi và khoản tương tự, trong khi đó là thu nhập lãi thuần. Một phát biểu khác gắn 55.406 với triệu VND từ bảng tóm tắt làm sai đơn vị. Các nhận định này đã bị chặn.",
+      "ticker": "VCB",
+      "question": "Nguồn công bố chỉ tiêu doanh thu hoặc thu nhập nào cho năm 2024?",
+      "run_id": "20261022T032044Z-10ecaef1",
+      "report_sha256": "7f6d775993287e8e634bebd0e169de94744a80749028bb2b7a6e5bdea167a6b6",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67,
+          "page_text_sha256": "70a2d85af3d48e4bd30dd9c6f80c888e40cc225f6cf2c1fc9ee02842edfeb3f2",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=67",
+          "spans": [
+            {
+              "anchor": "2024",
+              "start": 0,
+              "end": 110,
+              "quote": "STT Chỉ tiêu Thuyết minh 31/12/2024  \nTriệu VND\n31/12/2023 \nTriệu VND \n(trình bày lại)\nCÁC CHỈ TIÊU NGOÀI BÁO "
+            },
+            {
+              "anchor": "Triệu VND",
+              "start": 0,
+              "end": 122,
+              "quote": "STT Chỉ tiêu Thuyết minh 31/12/2024  \nTriệu VND\n31/12/2023 \nTriệu VND \n(trình bày lại)\nCÁC CHỈ TIÊU NGOÀI BÁO CÁO TÌNH HÌN"
+            },
+            {
+              "anchor": "93.654.841",
+              "start": 863,
+              "end": 1023,
+              "quote": "iệu VND \n(trình bày lại)\n1 Thu nhập lãi và các khoản thu nhập tương tự 23  93.654.841 108.115.840\n2 Chi phí lãi và các chi phí tương tự 24  (38.249.106) (54.501"
+            },
+            {
+              "anchor": "38.249.106",
+              "start": 929,
+              "end": 1089,
+              "quote": "g tự 23  93.654.841 108.115.840\n2 Chi phí lãi và các chi phí tương tự 24  (38.249.106) (54.501.409)\nI Thu nhập lãi thuần  55.405.735 53.614.431\n3 Thu nhập từ ho"
+            },
+            {
+              "anchor": "55.405.735",
+              "start": 976,
+              "end": 1136,
+              "quote": "à các chi phí tương tự 24  (38.249.106) (54.501.409)\nI Thu nhập lãi thuần  55.405.735 53.614.431\n3 Thu nhập từ hoạt động dịch vụ  13.143.005 12.698.083\n4 Chi ph"
+            },
+            {
+              "anchor": "68.578.496",
+              "start": 1588,
+              "end": 1748,
+              "quote": "hu nhập từ góp vốn, mua cổ phần 30 307.179 266.456\nTỔNG THU NHẬP HOẠT ĐỘNG 68.578.496 67.764.326\nVIII CHI PHÍ HOẠT ĐỘNG 31 (23.027.363) (21.905.912)\nIX Lợi nhuậ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-growth",
+      "answer": "Phần đánh giá hoạt động 2024 nêu tổng tài sản khoảng 2,1 triệu tỷ đồng, tăng xấp xỉ 13,4% so với 2023; huy động vốn khoảng 1,5 triệu tỷ đồng, tăng xấp xỉ 8%; tín dụng khoảng 1,5 triệu tỷ đồng, tăng xấp xỉ 14%. Lợi nhuận trước thuế 42.236 tỷ đồng tăng khoảng 2,2% so với năm trước. Đây là số làm tròn trong phần thuyết minh hoạt động.",
+      "context_status": "insufficient",
+      "context_note": "Các đoạn ghim nói về bổ nhiệm nhân sự và giao dịch/quan hệ với công ty liên quan, không có tăng trưởng tài chính năm 2024.",
+      "verdict": "context_gap",
+      "model_note": "Từ chối trả lời phù hợp với ngữ cảnh bị truy xuất sai chủ đề. Cần chọn đoạn đánh giá kết quả 2024, không bổ sung tỷ lệ bằng suy đoán.",
+      "ticker": "VCB",
+      "question": "Nguồn nêu mức tăng trưởng và kỳ so sánh nào?",
+      "run_id": "20261022T032115Z-230d525e",
+      "report_sha256": "07860dbe027fc22178a5ce29f1c87f47b89871eabea0af7ae4bd1cd66f7a197a",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 23,
+          "page_text_sha256": "ad1ad22e9fcb0092b6f859319cbe5244b7dd717447dae450f47f864f2760a502",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=23",
+          "spans": [
+            {
+              "anchor": "13,4%",
+              "start": 1271,
+              "end": 1426,
+              "quote": "t Ngân hàng chủ lực và vai \n • Tổng tài sản đạt ~2,1 triệu tỷ đồng, tăng \n~13,4% so với năm 2023.\n • Huy động vốn tăng trưởng đều qua các \nnăm và được điều"
+            },
+            {
+              "anchor": "2,2%",
+              "start": 3420,
+              "end": 3574,
+              "quote": "ược ĐHĐCĐ và NHNN giao, cụ \nthể như sau.\n • LNTT đạt 42.236 tỷ đồng, tăng ~2,2% \nso với năm 2023, thiết lập kỷ lục mới và \ntiếp tục là ngân hàng có quy mô"
+            },
+            {
+              "anchor": "42.236",
+              "start": 3398,
+              "end": 3554,
+              "quote": "hoàn thành \nkế hoạch được ĐHĐCĐ và NHNN giao, cụ \nthể như sau.\n • LNTT đạt 42.236 tỷ đồng, tăng ~2,2% \nso với năm 2023, thiết lập kỷ lục mới và \ntiếp tục là"
+            },
+            {
+              "anchor": "2023",
+              "start": 1288,
+              "end": 1442,
+              "quote": "ực và vai \n • Tổng tài sản đạt ~2,1 triệu tỷ đồng, tăng \n~13,4% so với năm 2023.\n • Huy động vốn tăng trưởng đều qua các \nnăm và được điều hành linh hoạt "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-assets",
+      "answer": "Tại 31/12/2024, báo cáo tình hình tài chính hợp nhất ghi tổng tài sản có 2.085.873.522 triệu VND; tổng nợ phải trả 1.889.664.354 triệu VND; vốn chủ sở hữu 196.209.168 triệu VND. Bảng phân tích rủi ro ở trang 100/102 trình bày nhiều khoản tài sản gộp trước dự phòng, nên không dùng tổng 2.118.424.116 trong bảng đó thay cho tổng tài sản có trên báo cáo tình hình tài chính.",
+      "context_status": "partial",
+      "context_note": "S1 trang 102 và S3 trang 100 có tổng nợ phải trả 1.889.664.354 cùng mốc 31/12/2024; tiêu đề đơn vị ở đầu bảng ngoài đoạn cắt. Các bảng này phục vụ phân tích thanh khoản/lãi suất, không phải bảng cân đối theo giá trị ghi sổ.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Không có nhận định được chấp nhận. Ngữ cảnh có thể hỗ trợ phần nợ khi bổ sung tiêu đề đơn vị, nhưng cần phân biệt bảng rủi ro với báo cáo tình hình tài chính để tránh nhầm tổng tài sản.",
+      "ticker": "VCB",
+      "question": "Nguồn nêu thông tin nào về tài sản và nghĩa vụ nợ?",
+      "run_id": "20261022T032151Z-9a8e05dc",
+      "report_sha256": "8142cf223e4c2d4177ea5ff5c5fffb151ba4310348514131928f83add78a1239",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 66,
+          "page_text_sha256": "9ef35652b066b92d0f9f94a711a1b58c0971841019ec1d8b42bb0158614b1722",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=66",
+          "spans": [
+            {
+              "anchor": "31/12/2024",
+              "start": 166,
+              "end": 326,
+              "quote": " năm 2014)\nSố tham chiếu: \n12163420/E-67794777-HN\nSTT Chỉ tiêu Thuyết minh 31/12/2024  \nTriệu VND\n31/12/2023 \nTriệu VND \n(trình bày lại)\nA TÀI SẢN\nI Tiền mặt, v"
+            },
+            {
+              "anchor": "Triệu VND",
+              "start": 179,
+              "end": 338,
+              "quote": " tham chiếu: \n12163420/E-67794777-HN\nSTT Chỉ tiêu Thuyết minh 31/12/2024  \nTriệu VND\n31/12/2023 \nTriệu VND \n(trình bày lại)\nA TÀI SẢN\nI Tiền mặt, vàng bạc, đá "
+            },
+            {
+              "anchor": "2.085.873.522",
+              "start": 2323,
+              "end": 2486,
+              "quote": " cho các tài sản Có nội bảng khác 15(d)  (14.037) (15.463)\nTỔNG TÀI SẢN CÓ 2.085.873.522 1.839.724.560  \nB NỢ PHẢI TRẢ VÀ VỐN CHỦ SỞ HỮU\nI Các khoản nợ Chính phủ v"
+            },
+            {
+              "anchor": "1.889.664.354",
+              "start": 3162,
+              "end": 3325,
+              "quote": "hoản phải trả và công nợ khác 21(b) 24.112.345 23.878.874\nTỔNG NỢ PHẢI TRẢ 1.889.664.354 1.674.644.070\nVIII Vốn chủ sở hữu 22\n1 Vốn của tổ chức tín dụng  61.696.13"
+            },
+            {
+              "anchor": "196.209.168",
+              "start": 3717,
+              "end": 3878,
+              "quote": "ích của cổ đông không kiểm soát  96.261  93.990 \nTỔNG VỐN CHỦ SỞ HỮU 22(a) 196.209.168 165.080.490\nTỔNG NỢ PHẢI TRẢ VÀ VỐN CHỦ SỞ HỮU 2.085.873.522 1.839.724.560"
+            }
+          ]
+        },
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 100,
+          "page_text_sha256": "36ac3e2f451df4885aab0d9b1d45650825163fd68d90889c0b6f812f4720cf3a",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=100",
+          "spans": [
+            {
+              "anchor": "Cho vay khách hàng – gộp",
+              "start": 588,
+              "end": 762,
+              "quote": "i sinh và các \ntài sản tài chính khác\n- 1.314.434 - - - - - - 1.314.434\nVI Cho vay khách hàng – gộp 27.994.464 - 222.597.618 538.648.214 408.625.864 110.153.604 140.238.369 9"
+            },
+            {
+              "anchor": "2.118.424.116",
+              "start": 1106,
+              "end": 1269,
+              "quote": "910 660.675.227 566.272.873 458.087.633 141.405.660 182.011.829 25.036.520 2.118.424.116\nNợ phải trả\nI Các khoản nợ Chính phủ và NHNN \nvà tiền gửi và vay các TCTD "
+            },
+            {
+              "anchor": "31 tháng 12 năm 2024",
+              "start": 2213,
+              "end": 2383,
+              "quote": "đây trình bày kỳ định lại lãi suất của các tài sản và nợ phải trả tại ngày 31 tháng 12 năm 2024:\nRủi ro tiền tệ\nRủi ro tiền tệ là rủi ro mà giá trị của các công cụ tài ch"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-cash",
+      "answer": "Năm 2024, lưu chuyển tiền thuần từ hoạt động kinh doanh hợp nhất là 59.122.831 triệu VND, so với âm 38.541.530 triệu VND năm 2023. Tiền và các khoản tương đương tiền cuối năm 2024 là 430.614.185 triệu VND. Không nhầm dòng tiền lãi thực nhận với thu nhập lãi dồn tích trong báo cáo kết quả kinh doanh.",
+      "context_status": "sufficient",
+      "context_note": "S3 trang 68 có dòng tiền thuần kinh doanh 59.122.831 và năm/đơn vị. Giá trị tiền cuối năm nằm ngoài đoạn ghim, nhưng đủ để trả lời phần dòng tiền kinh doanh.",
+      "verdict": "technical_failure",
+      "model_note": "Lượt sinh không hoàn tất (incomplete_generation), không tạo được đầu ra hợp lệ. Đây là lỗi kỹ thuật, không phải quyết định từ chối vì thiếu bằng chứng.",
+      "ticker": "VCB",
+      "question": "Nguồn có thông tin gì về tiền và dòng tiền hoạt động?",
+      "run_id": "20261022T032240Z-4bc17eac",
+      "report_sha256": "017441bc866811f8f668f5c465745c133c4015ed5692d31215986c0cdfb5f2ec",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 0,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 68,
+          "page_text_sha256": "1e1c1bb63535b8f96fac65c0ee341ad3b2cecaca8f191e1f111823b1e7d02a97",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=68",
+          "spans": [
+            {
+              "anchor": "59.122.831",
+              "start": 2040,
+              "end": 2200,
+              "quote": "876.726) (2.802.834)\nI Lưu chuyển tiền thuần từ/(cho) hoạt động kinh doanh 59.122.831 (38.541.530)\nSTT Chỉ tiêu 2024  \nTriệu VND\n2023 \nTriệu VND \n(trình bày lại"
+            },
+            {
+              "anchor": "(38.541.530)",
+              "start": 2051,
+              "end": 2213,
+              "quote": ".802.834)\nI Lưu chuyển tiền thuần từ/(cho) hoạt động kinh doanh 59.122.831 (38.541.530)\nSTT Chỉ tiêu 2024  \nTriệu VND\n2023 \nTriệu VND \n(trình bày lại)\nLƯU CHUYỂN "
+            },
+            {
+              "anchor": "430.614.185",
+              "start": 3025,
+              "end": 3186,
+              "quote": "Tiền và các khoản tương đương tiền tại thời điểm cuối năm (Thuyết minh 35) 430.614.185 372.818.730\nCho năm kết thúc  ngày 31 tháng 12 năm 2024\nNgười lập: Người d"
+            },
+            {
+              "anchor": "Triệu VND",
+              "start": 76,
+              "end": 235,
+              "quote": "ng tư số \n49/2014/TT-NHNN  \nngày 31 tháng 12 năm 2014)\nSTT Chỉ tiêu 2024  \nTriệu VND\n2023 \nTriệu VND \n(trình bày lại)\nLƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH\n0"
+            },
+            {
+              "anchor": "2024",
+              "start": 69,
+              "end": 223,
+              "quote": "heo Thông tư số \n49/2014/TT-NHNN  \nngày 31 tháng 12 năm 2014)\nSTT Chỉ tiêu 2024  \nTriệu VND\n2023 \nTriệu VND \n(trình bày lại)\nLƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-operations",
+      "answer": "Hoạt động 2024 tập trung tăng trưởng tín dụng an toàn, điều chỉnh giảm lãi suất cho vay để hỗ trợ doanh nghiệp, cung cấp giải pháp ngân hàng bán buôn/bán lẻ và mở rộng dịch vụ số. Vietcombank triển khai xác thực sinh trắc học và ra mắt New Digibank với phiên bản cho các nhóm khách hàng. Nội dung này mô tả hoạt động đã triển khai năm 2024.",
+      "context_status": "partial",
+      "context_note": "S1 trang 26 mô tả chiến lược; S2/S3 trang 22 là kế hoạch 2025, không phải đánh giá kết quả hoạt động 2024.",
+      "verdict": "accepted_misleading",
+      "model_note": "Hai nhận định qua kiểm tra chủ yếu là kế hoạch tín dụng và số hóa 2025. Phát biểu tín dụng 16,28% bỏ điều kiện tối đa và không nêu kỳ 2025, dễ khiến người đọc hiểu là kết quả 2024. Kiểm tra nguyên văn chưa ngăn được nhầm kỳ/trạng thái kế hoạch.",
+      "ticker": "VCB",
+      "question": "Hoạt động kinh doanh chính và diễn biến phân khúc được mô tả thế nào?",
+      "run_id": "20261022T032411Z-ac5ab8c9",
+      "report_sha256": "9c7dc80cc8d360824400cfc0a6b6f876435c387da0138e033388e2da24e4adeb",
+      "original_status": "completed_with_citations",
+      "accepted_claims": 2,
+      "rejected_claims": 1,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 21,
+          "page_text_sha256": "dba9de50e22a94db1f1c3f8f075bd3798e6995e90b8ac75c4c45995f02813cdc",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=21",
+          "spans": [
+            {
+              "anchor": "đầu năm 2024",
+              "start": 45,
+              "end": 207,
+              "quote": "liệt triển khai các giải pháp \nnhằm thúc đẩy tăng trưởng tín dụng \nngay từ đầu năm 2024. Tiếp tục điều \nhành tín dụng tăng trưởng an toàn, cơ \ncấu tín dụng chuyển"
+            },
+            {
+              "anchor": "giảm lãi suất cho vay",
+              "start": 332,
+              "end": 503,
+              "quote": "huộc các \nngành định hướng mở rộng.\n • Chủ động và trách nhiệm điều chỉnh \ngiảm lãi suất cho vay để hỗ trợ doanh \nnghiệp phục hồi sản xuất kinh doanh. \nVietcombank nghiêm "
+            },
+            {
+              "anchor": "ngân hàng bán buôn và ngân hàng bán lẻ",
+              "start": 757,
+              "end": 945,
+              "quote": "Vietcombank cung cấp giải pháp tài \nchính tổng thể và chuyên biệt dịch vụ \nngân hàng bán buôn và ngân hàng bán lẻ.\n • Tổ chức diễn đàn về phát triển dịch vụ sản \nphẩm tại nước ngoài trong "
+            },
+            {
+              "anchor": "New",
+              "start": 2089,
+              "end": 2242,
+              "quote": "à vị thế của Vietcombank \ntrên thị trường.\n • Vietcombank ra mắt phiên bản New \nDigibank thay đổi hoàn toàn, khác biệt, \nđột phá về giao diện, trải nghiệ"
+            },
+            {
+              "anchor": "sinh trắc học",
+              "start": 1587,
+              "end": 1750,
+              "quote": "tcombank cũng là \nNgân hàng duy nhất cung cấp đầy đủ \nphương thức xác thực sinh trắc học (qua \nCCCD gắn chip và ứng dụng VneID) ngay \ntừ ngày hiệu lực 01/07/2024, "
+            }
+          ]
+        },
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 22,
+          "page_text_sha256": "f132215fed5f88da74f53594368ec738585170a5f0e6e5711c3de4506b6013b3",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=22",
+          "spans": [
+            {
+              "anchor": "2025",
+              "start": 0,
+              "end": 125,
+              "quote": "Bám sát nhiệm vụ trọng tâm của Chính phủ năm \n2025 và NHNN về việc tổ chức thực hiện các nhiệm \nvụ của ngành ngân hàng, kết n"
+            },
+            {
+              "anchor": "16,28%",
+              "start": 804,
+              "end": 960,
+              "quote": "ụng được giao\nTín dụng (đã gồm bán nợ cho \nNgân hàng Xây dựng)\nTăng tối đa 16,28% và thực hiện theo thông báo  \ncủa NHNN\nTỉ lệ nợ xấu < 1,5%\nLợi nhuận trước"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-risk",
+      "answer": "Báo cáo đánh giá bối cảnh 2024 có khó khăn từ lạm phát, xung đột địa chính trị và sự phục hồi chậm của các nền kinh tế lớn. Các yếu tố này tạo bất định cho môi trường hoạt động; đây là mô tả khó khăn vĩ mô trong nguồn, không phải dự báo xác suất tổn thất của ngân hàng.",
+      "context_status": "sufficient",
+      "context_note": "S2 trang 23 nói trực tiếp về lạm phát, địa chính trị và kinh tế thế giới; đủ trả lời khó khăn cụ thể.",
+      "verdict": "unnecessary_abstention",
+      "model_note": "Không có nhận định được chấp nhận vì mô hình khai báo thiếu bằng chứng và có số không được hỗ trợ. Phần khó khăn vĩ mô thực tế đã có trong ngữ cảnh.",
+      "ticker": "VCB",
+      "question": "Nguồn nêu rủi ro hoặc khó khăn cụ thể nào?",
+      "run_id": "20261022T032454Z-636036b0",
+      "report_sha256": "a34e4d278968f62fe4784cf21ca57fcf3cfc49a56fe83bd4f69fe629bda72eb0",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 1,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 23,
+          "page_text_sha256": "ad1ad22e9fcb0092b6f859319cbe5244b7dd717447dae450f47f864f2760a502",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=23",
+          "spans": [
+            {
+              "anchor": "lạm phát",
+              "start": 860,
+              "end": 1018,
+              "quote": " khó \nlường và tiềm ẩn nhiều rủi ro từ những yếu \ntố tiêu cực toàn cầu như lạm phát tăng cao, \nxung đột địa chính trị kéo dài, các nền kinh \ntế lớn tăng trưởn"
+            },
+            {
+              "anchor": "địa chính trị",
+              "start": 889,
+              "end": 1052,
+              "quote": "rủi ro từ những yếu \ntố tiêu cực toàn cầu như lạm phát tăng cao, \nxung đột địa chính trị kéo dài, các nền kinh \ntế lớn tăng trưởng chậm lại. Tuy nhiên, với \nsự chỉ"
+            },
+            {
+              "anchor": "2024",
+              "start": 668,
+              "end": 822,
+              "quote": "gười có vợ, chồng, cha, mẹ, \ncon, anh, chị, em và vợ, chồng của những \nNăm 2024, nền kinh tế nói chung và ngành \nngân hàng nói riêng vẫn còn gặp nhiều khó"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "dev01-VCB-outlook",
+      "answer": "Kế hoạch 2025 nêu tổng tài sản tăng 10%, huy động vốn thị trường 1 tăng 8%, tín dụng tăng tối đa 16,28% theo giao của NHNN, nợ xấu dưới 1,5% và lợi nhuận trước thuế tăng 3,5%. Các chỉ tiêu còn phụ thuộc phê duyệt/điều chỉnh kế hoạch theo chú thích của báo cáo. Đây là mục tiêu 2025, không phải số thực hiện 2024.",
+      "context_status": "partial",
+      "context_note": "S1 trang 22 có tiêu đề kế hoạch 2025 và mục tiêu tài sản tăng 10%; các chỉ tiêu khác nằm ngoài đoạn cắt. S2 nói mục tiêu GDP của nền kinh tế, không phải doanh thu hay lợi nhuận VCB.",
+      "verdict": "no_answer_partial_context",
+      "model_note": "Mô hình bỏ qua tiêu đề kỳ 2025, khai báo thiếu thông tin và đưa mục tiêu GDP vĩ mô vào bản nháp. Không có nhận định được chấp nhận; có thể trả lời ít nhất phần mục tiêu tài sản từ S1.",
+      "ticker": "VCB",
+      "question": "Nguồn nêu kế hoạch hay mục tiêu gì, và đó thuộc kỳ nào?",
+      "run_id": "20261022T032517Z-930f9547",
+      "report_sha256": "e68128b20b60fd67e3ea891d96752ebe290d1d471f65859e38abf94d8c8bcafc",
+      "original_status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "citations": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 22,
+          "page_text_sha256": "f132215fed5f88da74f53594368ec738585170a5f0e6e5711c3de4506b6013b3",
+          "content_sha256": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "source_url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/VN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+          "pdf_url": "/api/documents/eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae/raw#page=22",
+          "spans": [
+            {
+              "anchor": "2025",
+              "start": 0,
+              "end": 125,
+              "quote": "Bám sát nhiệm vụ trọng tâm của Chính phủ năm \n2025 và NHNN về việc tổ chức thực hiện các nhiệm \nvụ của ngành ngân hàng, kết n"
+            },
+            {
+              "anchor": "10%",
+              "start": 590,
+              "end": 743,
+              "quote": " phê duyệt\nMột số \nchỉ tiêu chính\nChỉ tiêu Kế hoạch 2025\nTổng tài sản Tăng 10% và điều chỉnh phù hợp với mức tăng \ntrưởng tín dụng được giao\nHuy động vốn"
+            },
+            {
+              "anchor": "8%",
+              "start": 678,
+              "end": 830,
+              "quote": "hỉnh phù hợp với mức tăng \ntrưởng tín dụng được giao\nHuy động vốn TT1 Tăng 8% và điều chỉnh phù hợp với mức tăng trưởng \ntín dụng được giao\nTín dụng (đã"
+            },
+            {
+              "anchor": "16,28%",
+              "start": 804,
+              "end": 960,
+              "quote": "ụng được giao\nTín dụng (đã gồm bán nợ cho \nNgân hàng Xây dựng)\nTăng tối đa 16,28% và thực hiện theo thông báo  \ncủa NHNN\nTỉ lệ nợ xấu < 1,5%\nLợi nhuận trước"
+            },
+            {
+              "anchor": "1,5%",
+              "start": 865,
+              "end": 1019,
+              "quote": ")\nTăng tối đa 16,28% và thực hiện theo thông báo  \ncủa NHNN\nTỉ lệ nợ xấu < 1,5%\nLợi nhuận trước thuế Tăng 3,5%\nNhiệm vụ trọng tâm triển khai \nthực hiện cá"
+            },
+            {
+              "anchor": "3,5%",
+              "start": 896,
+              "end": 1050,
+              "quote": "ện theo thông báo  \ncủa NHNN\nTỉ lệ nợ xấu < 1,5%\nLợi nhuận trước thuế Tăng 3,5%\nNhiệm vụ trọng tâm triển khai \nthực hiện các mục tiêu\nVề chỉ đạo hoạt động"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
