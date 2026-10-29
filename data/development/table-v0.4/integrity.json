@@ -1,0 +1,11 @@
+{
+  "files": {
+    "hash_refs.json": "f93362e73a9973f58c6ad5c19a9e920038f6cc0000a81d6174650f75a347570d",
+    "short_refs.json": "54aa8161032da260830f52485ab7e1f62be198d6351f399388f9ddd06d9e417c",
+    "validation.json": "f0415f5188f2569dc0c535fdc90daccd5583e0f73d2dd7151faa3fff47525d62"
+  },
+  "configs": {
+    "configs/table_evidence_v0_4.json": "62d77ddb2affee15be8d04a4ccd076431f8ad08c0600d6c44cf5dd2740391b2d",
+    "configs/table_selector_v0_4_1.json": "a3d84fb42086fe8def47c81472fea4bbf1580d32760662c15daf0c7ad0566240"
+  }
+}

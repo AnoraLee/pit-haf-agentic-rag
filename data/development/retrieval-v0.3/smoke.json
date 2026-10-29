@@ -1,0 +1,31 @@
+{
+  "selection": "First income case for each ticker, before inference outcomes",
+  "study_id": "20261023T133509Z-75d1ccc1",
+  "runs": [
+    {
+      "case_id": "dev01-FPT-income",
+      "run_id": "20261023T134026Z-f33896ab",
+      "status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "report_sha256": "0fee1bf0028b7cc4f262a273c8f0d69ba16fe4840bab283208ca02fc4e0284b9"
+    },
+    {
+      "case_id": "dev01-HPG-income",
+      "run_id": "20261023T134116Z-c381db3a",
+      "status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "report_sha256": "3f21efe51bf51312ac1d83ea231dea5f8ccc24ea9d53b68102ac8bd87c32b50d"
+    },
+    {
+      "case_id": "dev01-VCB-income",
+      "run_id": "20261023T134155Z-392396cc",
+      "status": "abstained",
+      "accepted_claims": 0,
+      "rejected_claims": 3,
+      "report_sha256": "ca0bda941b8aa69e9ff4ca066b9996806640bdba7832d3e5238b0894ca645843"
+    }
+  ],
+  "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7"
+}

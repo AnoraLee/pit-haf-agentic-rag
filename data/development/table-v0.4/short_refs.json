@@ -1,0 +1,69 @@
+{
+  "kind": "development_not_held_out",
+  "selector_id": "short_cell_refs_v0.4.1",
+  "prior_study": "outputs\\table-development\\20261024T014351Z-e0143234\\manifest.json",
+  "reason": "Short model refs replace long hashes; no repair or deletion of old generations. Same candidate context and selected tickers.",
+  "selection_before_outcomes": [
+    "FPT",
+    "HPG",
+    "VCB"
+  ],
+  "model_question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+  "max_new_model_calls": 3,
+  "protected_before": {
+    "data/development/v0.2/case_index.json": "585b1f680b22e3fa586881a48575bd51b228395ec7a83f1d468f1ee13965499e",
+    "data/development/evaluation-v0.1/validation.json": "bfda7b2bc44842d044bd8bc527caf9dbc2ebea7e58a4b45acd977541a7dd63f8",
+    "data/development/source-audit-v0.1/integrity.json": "135224d6b2d86b7526284a91cae5e8ab9c5d30ae2b346c20b19e2bb7bf80edb5",
+    "outputs/development-cases/20261019T030531Z-8ef1bf33/cases.jsonl": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "outputs/development-batches/20261022T030940Z-22f948f0/manifest.json": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389"
+  },
+  "runs": [
+    {
+      "ticker": "FPT",
+      "run_id": "20261024T015111Z-17b4dda5",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 55,
+      "context_cells": 6,
+      "selected_candidates": 3,
+      "rejected_selections": 0,
+      "llm_calls": 1,
+      "result_sha256": "5f23a79ffc1aa8a79641d869db13af130c59fbab0210d462f2f40a3b4b1e8b2f",
+      "candidate_context_unchanged": true,
+      "replay": "passed"
+    },
+    {
+      "ticker": "HPG",
+      "run_id": "20261024T015135Z-3671037b",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 69,
+      "context_cells": 7,
+      "selected_candidates": 3,
+      "rejected_selections": 0,
+      "llm_calls": 1,
+      "result_sha256": "aa3b744526f33f849b00649fc7bb599acfc16b0d8df4ed758e5342a9a90000db",
+      "candidate_context_unchanged": true,
+      "replay": "passed"
+    },
+    {
+      "ticker": "VCB",
+      "run_id": "20261024T015146Z-73323f4d",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 68,
+      "context_cells": 10,
+      "selected_candidates": 3,
+      "rejected_selections": 0,
+      "llm_calls": 1,
+      "result_sha256": "ffbba4566ad65726c4c131a4b8beea2c49d3e1a63b02d9c66c01e35640466d35",
+      "candidate_context_unchanged": true,
+      "replay": "passed"
+    }
+  ],
+  "protected_after": {
+    "data/development/v0.2/case_index.json": "585b1f680b22e3fa586881a48575bd51b228395ec7a83f1d468f1ee13965499e",
+    "data/development/evaluation-v0.1/validation.json": "bfda7b2bc44842d044bd8bc527caf9dbc2ebea7e58a4b45acd977541a7dd63f8",
+    "data/development/source-audit-v0.1/integrity.json": "135224d6b2d86b7526284a91cae5e8ab9c5d30ae2b346c20b19e2bb7bf80edb5",
+    "outputs/development-cases/20261019T030531Z-8ef1bf33/cases.jsonl": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "outputs/development-batches/20261022T030940Z-22f948f0/manifest.json": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389"
+  },
+  "original_artifacts_unchanged": true
+}

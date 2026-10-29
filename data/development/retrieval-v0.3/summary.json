@@ -1,0 +1,499 @@
+{
+  "study_id": "20261023T133509Z-75d1ccc1",
+  "run_kind": "retrieval_development_not_final_experiment",
+  "created_at": "2026-10-23T13:35:33.903697+00:00",
+  "repository": {
+    "status": "captured",
+    "revision": "d1a4e88919f584f3d1704b833e1b2d86da5c4c9b",
+    "dirty": true,
+    "working_tree_hash": "32bdac1f94776854a4e609d2ad94ec4f7ea4ec58f2561621f04d7fa77546a303",
+    "patch_sha256": "fad63882e1a49d212500456b087c8d41191ad889225cfe3437180e26841c6a11",
+    "snapshot_sha256": "3630a8e100943682fc1434453c747d87e72a5a647e334df1fc65668ced2f474a",
+    "captured_files": 163
+  },
+  "baseline_pack_id": "20261019T030531Z-8ef1bf33",
+  "baseline_cases_sha256": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+  "profile_file": "configs/financial_sections_v0_3.json",
+  "profile_sha256": "efae7bc35a6dfaab18b1946cb7292cc77d2fec66fce51101e59e0052d10efd3e",
+  "protocol_sha256": "41f6cdf93ded611add96aed45806c0bb2b891b5ab7d1dd12323b0f6278d820cb",
+  "retrieval_policy_sha256": "7e690b7b150fcfa283e6d54a905de7461dfb6f266ffd07f418d5e74a85e6817c",
+  "snapshot": "outputs\\milestone-1\\data-pilot\\20261018-corpus-v0.5-scale-curated\\summary.json",
+  "summary_sha256": "e67bf94ffba4dcf0588898d949c3065826252ab1e6a899c2aed4d51a4212ba8c",
+  "catalog_sha256": "c241cac5be754270d2f11737cbaf421a961d53f5b47d67075caacc1d82349c4a",
+  "cases_sha256": "bd8ccf7dadc144eb9b296fb7fcd00d7d62a32be3a00ced0189e5eca1de68b860",
+  "cases": 24,
+  "diagnostics": [
+    {
+      "case_id": "dev01-FPT-income",
+      "ticker": "FPT",
+      "old_pages": [
+        11,
+        50,
+        193
+      ],
+      "new_pages": [
+        11,
+        11,
+        11
+      ],
+      "references": 3,
+      "context_characters": 1837,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 2,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-FPT-revenue",
+      "ticker": "FPT",
+      "old_pages": [
+        164,
+        171,
+        169
+      ],
+      "new_pages": [
+        11,
+        151,
+        11
+      ],
+      "references": 3,
+      "context_characters": 1943,
+      "assistant_audit_anchors": 3,
+      "old_anchor_hits": 0,
+      "new_anchor_hits": 3
+    },
+    {
+      "case_id": "dev01-FPT-growth",
+      "ticker": "FPT",
+      "old_pages": [
+        9,
+        91,
+        14
+      ],
+      "new_pages": [
+        58,
+        51,
+        51
+      ],
+      "references": 3,
+      "context_characters": 1975,
+      "assistant_audit_anchors": 4,
+      "old_anchor_hits": 0,
+      "new_anchor_hits": 0
+    },
+    {
+      "case_id": "dev01-FPT-assets",
+      "ticker": "FPT",
+      "old_pages": [
+        165,
+        149,
+        171
+      ],
+      "new_pages": [
+        149,
+        149,
+        169
+      ],
+      "references": 3,
+      "context_characters": 1987,
+      "assistant_audit_anchors": 6,
+      "old_anchor_hits": 4,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-FPT-cash",
+      "ticker": "FPT",
+      "old_pages": [
+        154,
+        153,
+        153
+      ],
+      "new_pages": [
+        153,
+        153,
+        141
+      ],
+      "references": 3,
+      "context_characters": 1938,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 3,
+      "new_anchor_hits": 4
+    },
+    {
+      "case_id": "dev01-FPT-operations",
+      "ticker": "FPT",
+      "old_pages": [
+        167,
+        170,
+        51
+      ],
+      "new_pages": [
+        51,
+        117,
+        51
+      ],
+      "references": 3,
+      "context_characters": 1672,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 1,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-FPT-risk",
+      "ticker": "FPT",
+      "old_pages": [
+        109,
+        119,
+        119
+      ],
+      "new_pages": [
+        117,
+        77,
+        119
+      ],
+      "references": 3,
+      "context_characters": 2000,
+      "assistant_audit_anchors": 4,
+      "old_anchor_hits": 2,
+      "new_anchor_hits": 3
+    },
+    {
+      "case_id": "dev01-FPT-outlook",
+      "ticker": "FPT",
+      "old_pages": [
+        47,
+        98,
+        107
+      ],
+      "new_pages": [
+        106,
+        47,
+        47
+      ],
+      "references": 3,
+      "context_characters": 1880,
+      "assistant_audit_anchors": 6,
+      "old_anchor_hits": 3,
+      "new_anchor_hits": 6
+    },
+    {
+      "case_id": "dev01-HPG-income",
+      "ticker": "HPG",
+      "old_pages": [
+        31,
+        12,
+        155
+      ],
+      "new_pages": [
+        12,
+        12,
+        12
+      ],
+      "references": 3,
+      "context_characters": 1781,
+      "assistant_audit_anchors": 6,
+      "old_anchor_hits": 5,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-HPG-revenue",
+      "ticker": "HPG",
+      "old_pages": [
+        124,
+        125,
+        30
+      ],
+      "new_pages": [
+        12,
+        12,
+        12
+      ],
+      "references": 3,
+      "context_characters": 1781,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 2,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-HPG-growth",
+      "ticker": "HPG",
+      "old_pages": [
+        29,
+        36,
+        31
+      ],
+      "new_pages": [
+        29,
+        29,
+        33
+      ],
+      "references": 3,
+      "context_characters": 1830,
+      "assistant_audit_anchors": 4,
+      "old_anchor_hits": 4,
+      "new_anchor_hits": 4
+    },
+    {
+      "case_id": "dev01-HPG-assets",
+      "ticker": "HPG",
+      "old_pages": [
+        101,
+        37,
+        105
+      ],
+      "new_pages": [
+        12,
+        12,
+        12
+      ],
+      "references": 3,
+      "context_characters": 1781,
+      "assistant_audit_anchors": 7,
+      "old_anchor_hits": 3,
+      "new_anchor_hits": 7
+    },
+    {
+      "case_id": "dev01-HPG-cash",
+      "ticker": "HPG",
+      "old_pages": [
+        107,
+        12,
+        106
+      ],
+      "new_pages": [
+        12,
+        12,
+        12
+      ],
+      "references": 3,
+      "context_characters": 1781,
+      "assistant_audit_anchors": 7,
+      "old_anchor_hits": 2,
+      "new_anchor_hits": 7
+    },
+    {
+      "case_id": "dev01-HPG-operations",
+      "ticker": "HPG",
+      "old_pages": [
+        51,
+        103,
+        113
+      ],
+      "new_pages": [
+        29,
+        13,
+        20
+      ],
+      "references": 3,
+      "context_characters": 2021,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 0,
+      "new_anchor_hits": 1
+    },
+    {
+      "case_id": "dev01-HPG-risk",
+      "ticker": "HPG",
+      "old_pages": [
+        72,
+        24,
+        24
+      ],
+      "new_pages": [
+        24,
+        24,
+        24
+      ],
+      "references": 3,
+      "context_characters": 1840,
+      "assistant_audit_anchors": 4,
+      "old_anchor_hits": 3,
+      "new_anchor_hits": 3
+    },
+    {
+      "case_id": "dev01-HPG-outlook",
+      "ticker": "HPG",
+      "old_pages": [
+        41,
+        70,
+        76
+      ],
+      "new_pages": [
+        41,
+        41,
+        41
+      ],
+      "references": 3,
+      "context_characters": 1568,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 2,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-VCB-income",
+      "ticker": "VCB",
+      "old_pages": [
+        18,
+        18,
+        18
+      ],
+      "new_pages": [
+        67,
+        67,
+        67
+      ],
+      "references": 3,
+      "context_characters": 2051,
+      "assistant_audit_anchors": 4,
+      "old_anchor_hits": 1,
+      "new_anchor_hits": 4
+    },
+    {
+      "case_id": "dev01-VCB-revenue",
+      "ticker": "VCB",
+      "old_pages": [
+        67,
+        11,
+        91
+      ],
+      "new_pages": [
+        67,
+        67,
+        67
+      ],
+      "references": 3,
+      "context_characters": 2004,
+      "assistant_audit_anchors": 6,
+      "old_anchor_hits": 5,
+      "new_anchor_hits": 6
+    },
+    {
+      "case_id": "dev01-VCB-growth",
+      "ticker": "VCB",
+      "old_pages": [
+        28,
+        39,
+        28
+      ],
+      "new_pages": [
+        16,
+        23,
+        16
+      ],
+      "references": 3,
+      "context_characters": 2052,
+      "assistant_audit_anchors": 4,
+      "old_anchor_hits": 1,
+      "new_anchor_hits": 3
+    },
+    {
+      "case_id": "dev01-VCB-assets",
+      "ticker": "VCB",
+      "old_pages": [
+        102,
+        101,
+        100
+      ],
+      "new_pages": [
+        66,
+        66,
+        66
+      ],
+      "references": 3,
+      "context_characters": 1974,
+      "assistant_audit_anchors": 8,
+      "old_anchor_hits": 3,
+      "new_anchor_hits": 6
+    },
+    {
+      "case_id": "dev01-VCB-cash",
+      "ticker": "VCB",
+      "old_pages": [
+        68,
+        68,
+        68
+      ],
+      "new_pages": [
+        68,
+        68,
+        68
+      ],
+      "references": 3,
+      "context_characters": 1919,
+      "assistant_audit_anchors": 5,
+      "old_anchor_hits": 4,
+      "new_anchor_hits": 5
+    },
+    {
+      "case_id": "dev01-VCB-operations",
+      "ticker": "VCB",
+      "old_pages": [
+        26,
+        22,
+        22
+      ],
+      "new_pages": [
+        23,
+        21,
+        16
+      ],
+      "references": 3,
+      "context_characters": 2043,
+      "assistant_audit_anchors": 7,
+      "old_anchor_hits": 1,
+      "new_anchor_hits": 2
+    },
+    {
+      "case_id": "dev01-VCB-risk",
+      "ticker": "VCB",
+      "old_pages": [
+        23,
+        23,
+        42
+      ],
+      "new_pages": [
+        23,
+        99,
+        44
+      ],
+      "references": 3,
+      "context_characters": 2066,
+      "assistant_audit_anchors": 3,
+      "old_anchor_hits": 2,
+      "new_anchor_hits": 3
+    },
+    {
+      "case_id": "dev01-VCB-outlook",
+      "ticker": "VCB",
+      "old_pages": [
+        22,
+        14,
+        5
+      ],
+      "new_pages": [
+        22,
+        97,
+        22
+      ],
+      "references": 3,
+      "context_characters": 1990,
+      "assistant_audit_anchors": 6,
+      "old_anchor_hits": 3,
+      "new_anchor_hits": 6
+    }
+  ],
+  "totals": {
+    "references": 72,
+    "assistant_audit_anchors": 124,
+    "old_anchor_hits": 56,
+    "new_anchor_hits": 103
+  },
+  "assistant_audit_is_not_independent_gold": true,
+  "semantic_accuracy": null,
+  "historical_availability_validated": false,
+  "llm_inference_performed": false,
+  "active_pack_changed": false,
+  "limitations": [
+    "Development heuristics informed by prior errors; not held-out retrieval evaluation.",
+    "Anchor hits mean string presence only, not correct row/column/period or semantic support.",
+    "Same legacy 3 passages/2100 chars, prompt, schema and numeric verifier; header/quote limitations remain."
+  ]
+}

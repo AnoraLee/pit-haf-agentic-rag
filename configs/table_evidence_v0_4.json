@@ -1,0 +1,15 @@
+{
+  "profile_id": "table_cells_v0.4",
+  "status": "development_not_frozen",
+  "max_pdf_pages": 3,
+  "max_model_cells": 18,
+  "max_model_context_characters": 9000,
+  "max_llm_calls": 1,
+  "max_retries": 0,
+  "num_ctx": 4096,
+  "num_predict": 512,
+  "extractor": "pdf_word_cells_v0.4",
+  "annual_columns_only": true,
+  "human_review_required": true,
+  "limitations": "A new task: local model selects cell IDs, code renders unreviewed candidates. Not equivalent to legacy free-form quote extraction or a valid ablation comparison. No semantic accuracy or historical-availability claim."
+}

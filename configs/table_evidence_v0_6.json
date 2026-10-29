@@ -1,0 +1,17 @@
+{
+  "profile_id": "table_cells_v0.6",
+  "status": "development_not_frozen",
+  "max_pdf_pages": 3,
+  "max_model_cells": 18,
+  "max_model_context_characters": 9000,
+  "max_llm_calls": 1,
+  "max_retries": 0,
+  "num_ctx": 4096,
+  "num_predict": 512,
+  "extractor": "pdf_word_cells_v0.5",
+  "annual_columns_only": true,
+  "human_review_required": true,
+  "scoped_lexical_fallback": true,
+  "context_policy": "financial_cell_context_v0.6",
+  "limitations": "Same v0.5 geometry; new phrase relevance, conservative duplicate grouping and conflict blocking. Source alternatives retained. Not semantic gold, final accuracy or a fair comparison with free-form quote reports."
+}

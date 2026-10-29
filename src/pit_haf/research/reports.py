@@ -12,8 +12,10 @@ from pathlib import Path
 from pydantic import BaseModel, ConfigDict, Field
 
 from pit_haf.data.evidence import aware
+from pit_haf.data.financial_sections import search_financial
 from pit_haf.data.gateway import deliver_as_of
 from pit_haf.data.hub import file_sha
+from pit_haf.data.pdf_text import search_pdf_text
 from pit_haf.data.retrieval_scope import resolve_scope
 from pit_haf.data.snapshots import SnapshotStore
 from pit_haf.llm.ollama import ModelInspectionError, OllamaAdapter, OllamaConfig, sha256, write_json
@@ -52,7 +54,7 @@ def protocol(root):
     return settings
 
 
-def retrieve(root, query, ticker, mode, decision_at=None, scope=None):
+def retrieve(root, query, ticker, mode, decision_at=None, scope=None, *, retrieval_profile="lexical_v0.2", retrieval_trace=None):
     """Shared CLI retrieval: historical filtering happens before reading/indexing text."""
     from pit_haf.data.catalog import Catalog
 
@@ -68,8 +70,18 @@ def retrieve(root, query, ticker, mode, decision_at=None, scope=None):
                        key=lambda p: p.stat().st_mtime_ns, reverse=True)
     if summaries and (summaries[0].parent / "catalog.json").exists():
         catalog = Catalog(root, summaries[0])
-        data, hits = catalog.search(query, ticker=ticker, allowed_versions=allowed, scope=scope)
+        if retrieval_profile in {"financial_sections_v0.3", "financial_pdf_text_v0.7"}:
+            search = search_pdf_text if retrieval_profile == "financial_pdf_text_v0.7" else search_financial
+            data, hits, trace = search(catalog, query, scope=scope, allowed_versions=allowed)
+            if retrieval_trace is not None:
+                retrieval_trace.update(trace)
+        elif retrieval_profile == "lexical_v0.2":
+            data, hits = catalog.search(query, ticker=ticker, allowed_versions=allowed, scope=scope)
+        else:
+            raise ValueError("Unknown report retrieval profile")
     else:
+        if retrieval_profile != "lexical_v0.2":
+            raise ValueError("Financial section retrieval requires the published disk catalog")
         data = load_corpus(root)
         if data.errors:
             raise ValueError("; ".join(data.errors))
@@ -239,7 +251,7 @@ def report_history(root):
 
 def run_report(root, data, hits, *, query, ticker, mode, decision_at=None,
                allowed_versions=None, retrieval_audit=None, adapter=None, output_base=None, scope=None,
-               expected_sources=None, expected_model_digest=None):
+               expected_sources=None, expected_model_digest=None, retrieval_trace=None):
     if not re.fullmatch(r"[A-Z0-9]{2,12}", ticker) or not 2 <= len(query) <= 300:
         raise ValueError("Invalid company or question")
     settings = protocol(root)
@@ -273,6 +285,11 @@ def run_report(root, data, hits, *, query, ticker, mode, decision_at=None,
               "semantic_support": "not_assessed", "historical_availability_validated": bool(selected) and mode == "strict_point_in_time",
               "research_prediction_results": False, "path": str(destination.resolve())}
     result["repository"] = capture_repository(root, destination)
+    if retrieval_trace is not None:
+        write_json(destination / "retrieval-trace.json", retrieval_trace)
+        result["retrieval_profile_id"] = retrieval_trace.get("profile_id")
+        result["retrieval_trace_evaluator_only"] = {"file": "retrieval-trace.json",
+                                                   "sha256": file_sha(destination / "retrieval-trace.json")}
     write_json(destination / "report.json", result)
     try:
         if not selected:
@@ -318,13 +335,17 @@ def main():
     parser.add_argument("--reporting-period", help="YYYY / YYYY-Qn; all disables the period filter; omitted infers a unique question year")
     parser.add_argument("--source-policy", choices=["issuer_reports", "all_linked"], default="issuer_reports")
     parser.add_argument("--statement-scope", choices=["all", "consolidated", "parent"], default="all")
+    parser.add_argument("--retrieval-profile", choices=["lexical_v0.2", "financial_sections_v0.3"], default="lexical_v0.2")
     args = parser.parse_args()
     root = args.root.resolve()
     scope = resolve_scope(args.query, args.ticker, reporting_period=args.reporting_period,
                           source_policy=args.source_policy, statement_scope=args.statement_scope)
-    data, hits, allowed, audit = retrieve(root, args.query, args.ticker, args.mode, args.decision_at, scope=scope)
+    trace = {} if args.retrieval_profile == "financial_sections_v0.3" else None
+    data, hits, allowed, audit = retrieve(root, args.query, args.ticker, args.mode, args.decision_at, scope=scope,
+                                        retrieval_profile=args.retrieval_profile, retrieval_trace=trace)
     result = run_report(root, data, hits, query=args.query, ticker=args.ticker, mode=args.mode,
-                        decision_at=args.decision_at, allowed_versions=allowed, retrieval_audit=audit, scope=scope)
+                        decision_at=args.decision_at, allowed_versions=allowed, retrieval_audit=audit, scope=scope,
+                        retrieval_trace=trace)
     print(json.dumps({k: result[k] for k in ("run_id", "status", "llm_calls", "path")}, ensure_ascii=False))
 
 

@@ -1,0 +1,39 @@
+{
+  "development_only": true,
+  "independent_gold": false,
+  "semantic_accuracy": null,
+  "human_reviewed_facts": 0,
+  "new_model_calls": 0,
+  "software_tests_passed": 426,
+  "ruff": "passed",
+  "frontend_build": "passed",
+  "frontend_format": "passed",
+  "sealed_new_runs_replay_passed": 6,
+  "all_study_runs_replay_passed": 34,
+  "pre_run_failures": 1,
+  "original_artifacts_unchanged": true,
+  "v06_context_cells": {
+    "FPT": 6,
+    "HPG": 7,
+    "VCB": 3,
+    "ACB": 0,
+    "BID": 4,
+    "MWG": 0,
+    "VNM": 4
+  },
+  "v07_context_cells": {
+    "FPT": null,
+    "HPG": 7,
+    "VCB": 0,
+    "ACB": 2,
+    "BID": 4,
+    "MWG": 0,
+    "VNM": 4
+  },
+  "notes": [
+    "FPT exceeded the 400-page alternate parsing budget; failure is retained in the manifest and excluded from replay counts.",
+    "ACB adds two unreviewed candidates; VCB regresses to no context. Default stays v0.6.",
+    "MWG has no extracted text on 96 pages; OCR not performed.",
+    "Additional parsing work means retrieval compute budgets differ from v0.6."
+  ]
+}

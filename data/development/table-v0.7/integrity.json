@@ -1,0 +1,10 @@
+{
+  "files": {
+    "manifest.json": "ebf739e16a675bda462bd020d1d81dc3b6bcd51eb5cffac4a7cfc9bf55e8fa17",
+    "validation.json": "bdea7e696f955e8ab26a7dce9fb136d50d058e3a4cd83201e73cdd47e5aab5d8"
+  },
+  "configs": {
+    "configs/table_evidence_v0_7.json": "2ae9cf2f108fe5f9774ce6a9de3d042e2fb9136fac9bcbc8d116c374f83d47f5",
+    "configs/pdf_text_v0_7.json": "b92eb3a7d0bf54cd1182f3c81a27bd279291a4c695d5911e84862f22f34897ea"
+  }
+}

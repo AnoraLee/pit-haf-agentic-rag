@@ -1,0 +1,10 @@
+{
+  "profile_id": "financial_pdf_text_v0.7",
+  "status": "development_not_frozen",
+  "pdfplumber_version": "0.11.9",
+  "extractor": "pdfplumber_text_v0.7",
+  "max_reparsed_pages": 400,
+  "base_retrieval": "financial_sections_v0.3",
+  "ocr_performed": false,
+  "limitations": "Opt-in raw-PDF text re-extraction before the same section ranking. Adds a separate 400-page parsing budget; not compute-equivalent to legacy retrieval. No OCR, glyph substitution, gold lookup or semantic verification."
+}

@@ -1,6 +1,6 @@
 # Hồ sơ nghiên cứu PiT-HAF
 
-Cập nhật: 23/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
+Cập nhật: 29/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
 không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết quả khoa học.
 
 | Hồ sơ | Nội dung |
@@ -25,6 +25,12 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [16 — Development batch evaluation](16-development-batch-evaluation.md) | Chạy case trên context cố định, giữ lỗi/ABSTAIN, replay request/response và đối chiếu annotation theo vị trí/chuỗi số |
 | [Đối chiếu nguồn 24 câu](development-source-audit-v0.1.md) | Đáp án trợ lý soạn từ PDF đầy đủ, tách đánh giá ngữ cảnh và kết quả gốc; chưa là nhãn độc lập |
 | [17 — Tiến độ 23/10/2026](17-progress-20261023.md) | Phần đã triển khai, công việc đang làm và các bước tiếp theo, đối chiếu với artifact hiện có |
+| [18 — Truy xuất mục báo cáo tài chính](18-financial-section-retrieval.md) | Profile thử nghiệm, chẩn đoán 24 câu và ba lượt Qwen bị chặn; chưa thay mặc định |
+| [19 — Bằng chứng theo ô PDF](19-table-cell-evidence.md) | Locator hàng/cột/năm/đơn vị, selector mã ngắn, sáu lượt Qwen và giới hạn trên bốn mã bổ sung |
+| [20 — Đối chiếu bảng trên giao diện](20-table-source-viewer.md) | Parser v0.5 cho tiêu đề/nhãn mới, ảnh PDF có vùng tô, study bảy mã và các kết quả chưa đạt |
+| [21 — Chọn và gộp ô theo chỉ tiêu](21-cell-relevance-and-grouping.md) | Lọc cụm chỉ tiêu, gộp bảo thủ có giữ nguồn, chặn số mâu thuẫn và mười lượt phát triển v0.6 |
+| [22 — Duyệt từng vị trí ô bảng](22-table-location-reviews.md) | Xác nhận năm phần bằng chứng, lịch sử revision, phát hiện lưu cũ và export; chưa có nhãn thật |
+| [23 — Lớp chữ PDF thay thế](23-alternate-pdf-text.md) | Truy xuất từ lớp chữ đọc lại, ACB có ứng viên mới nhưng VCB hồi quy/FPT vượt ngân sách; chưa đổi mặc định |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

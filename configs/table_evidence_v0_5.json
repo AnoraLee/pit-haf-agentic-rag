@@ -1,0 +1,16 @@
+{
+  "profile_id": "table_cells_v0.5",
+  "status": "development_not_frozen",
+  "max_pdf_pages": 3,
+  "max_model_cells": 18,
+  "max_model_context_characters": 9000,
+  "max_llm_calls": 1,
+  "max_retries": 0,
+  "num_ctx": 4096,
+  "num_predict": 512,
+  "extractor": "pdf_word_cells_v0.5",
+  "annual_columns_only": true,
+  "human_review_required": true,
+  "scoped_lexical_fallback": true,
+  "limitations": "Experimental currency-table geometry, at least three aligned rows and a currency qualifier. Implicit headers and lowercase wrapped labels; no semantic gold, OCR or graph interpretation. Fallback keeps the same issuer, period and PiT restrictions."
+}

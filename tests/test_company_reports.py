@@ -77,6 +77,19 @@ def test_single_agent_report_preserves_locators_and_keeps_audit_out_of_context(r
     assert (Path(result["path"]) / "report.md").is_file()
 
 
+def test_section_ranking_trace_is_saved_but_never_sent_to_model(report_source):
+    root, data, hits = report_source
+    adapter = FixtureAdapter()
+    trace = {"profile_id": "financial_sections_v0.3", "evaluator_only": "EVALUATOR-ONLY-PAGE-RANKING"}
+    result = run_report(root, data, hits, query="doanh thu", ticker="FPT", mode="exploratory_current",
+                        adapter=adapter, retrieval_trace=trace)
+    assert "EVALUATOR-ONLY-PAGE-RANKING" not in json.dumps(adapter.calls)
+    saved = json.loads((Path(result["path"]) / "retrieval-trace.json").read_text(encoding="utf-8"))
+    assert saved == trace
+    assert result["retrieval_profile_id"] == "financial_sections_v0.3"
+    assert saved_report(root, result["run_id"]) == result
+
+
 @pytest.mark.parametrize("override", [
     {"statement": "Doanh thu năm 2024 đạt 999 tỷ đồng."},
     {"statement": "Lợi nhuận là 12 tỷ đồng.", "quote": "Lợi nhuận là (12) tỷ đồng."},

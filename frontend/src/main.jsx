@@ -33,6 +33,7 @@ import {
 import "./styles.css";
 import CaseReview from "./CaseReview";
 import DevelopmentEvaluation from "./DevelopmentEvaluation";
+import TableEvidence from "./TableEvidence";
 
 const NAV = [
   ["overview", "Tổng quan", LayoutDashboard],
@@ -1071,7 +1072,8 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
   const [cutoff, setCutoff] = useState("2025-04-01T16:00");
   const [reportPeriod, setReportPeriod] = useState("auto"),
     [reportSources, setReportSources] = useState("issuer_reports"),
-    [reportScope, setReportScope] = useState("all");
+    [reportScope, setReportScope] = useState("all"),
+    [reportRetrieval, setReportRetrieval] = useState("lexical_v0.2");
   const [search, setSearch] = useState(null),
     [payload, setPayload] = useState(null),
     [selected, setSelected] = useState(0);
@@ -1165,6 +1167,7 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
           reporting_period: reportPeriod === "auto" ? null : reportPeriod,
           source_policy: reportSources,
           statement_scope: reportScope,
+          retrieval_profile: reportRetrieval,
           decision_at:
             mode === "strict_point_in_time" ? `${cutoff}+07:00` : null,
         }),
@@ -1321,7 +1324,7 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
         title="Báo cáo doanh nghiệp"
         subtitle="Một agent tổng hợp tối đa ba đoạn nguồn, kiểm tra trích dẫn và giữ dấu vết lần chạy."
       >
-        <div className="analysis-options">
+        <div className="analysis-options report-options">
           <label>
             Kỳ báo cáo
             <select
@@ -1377,11 +1380,30 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
               <option value="parent">Công ty mẹ / riêng lẻ</option>
             </select>
           </label>
+          <label>
+            Cách tìm bằng chứng
+            <select
+              aria-label="Cách tìm bằng chứng cho báo cáo"
+              value={reportRetrieval}
+              disabled={!!busy}
+              onChange={(e) => {
+                setReportRetrieval(e.target.value);
+                setReport(null);
+              }}
+            >
+              <option value="lexical_v0.2">Theo từ khóa</option>
+              <option value="financial_sections_v0.3">
+                Ưu tiên mục báo cáo và bảng số liệu · thử nghiệm
+              </option>
+            </select>
+          </label>
         </div>
         <p className="footnote">
           Kỳ kế toán lọc theo metadata PDF; năm đăng bài báo không thay thế kỳ
           báo cáo. Không có nguồn đúng kỳ thì dừng, không tự chuyển sang kỳ
           khác.
+          {reportRetrieval === "financial_sections_v0.3" &&
+            " Cách thử nghiệm ưu tiên mục báo cáo tài chính và các đoạn bổ sung chỉ tiêu, năm, đơn vị; vẫn cần kiểm tra ý nghĩa và phạm vi số liệu."}
         </p>
         <div className="extract-action">
           <span>
@@ -1451,6 +1473,18 @@ function Analysis({ ticker, initialQuery, onTickerChange, tickers }) {
           </details>
         )}
       </Panel>
+      <TableEvidence
+        api={api}
+        Panel={Panel}
+        Notice={Notice}
+        ticker={ticker}
+        query={query}
+        mode={mode}
+        cutoff={cutoff}
+        reportingPeriod={reportPeriod}
+        busy={busy}
+        setBusy={setBusy}
+      />
       <DevelopmentEvaluation api={api} Panel={Panel} Notice={Notice} />
       <CaseReview api={api} Panel={Panel} Notice={Notice} />
       {!search && !busy && (
@@ -1587,6 +1621,11 @@ function CompanyReportResult({ result }) {
         Câu hỏi của lần chạy: {result.question} ·{" "}
         {result.mode === "strict_point_in_time" ? "PiT strict" : "Đọc hiện tại"}
       </p>
+      {result.retrieval_profile_id === "financial_sections_v0.3" && (
+        <p className="footnote">
+          Cách tìm bằng chứng: ưu tiên mục báo cáo và bảng số liệu · thử nghiệm.
+        </p>
+      )}
       {result.retrieval_scope && (
         <p className="footnote">
           Kỳ được lọc:{" "}

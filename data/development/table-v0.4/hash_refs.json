@@ -1,0 +1,119 @@
+{
+  "kind": "development_not_held_out",
+  "selection_before_outcomes": {
+    "model": [
+      "FPT",
+      "HPG",
+      "VCB"
+    ],
+    "extraction_only": [
+      "ACB",
+      "BID",
+      "MWG",
+      "VNM"
+    ]
+  },
+  "model_question": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+  "max_new_model_calls": 3,
+  "protected_before": {
+    "data/development/v0.2/case_index.json": "585b1f680b22e3fa586881a48575bd51b228395ec7a83f1d468f1ee13965499e",
+    "data/development/evaluation-v0.1/validation.json": "bfda7b2bc44842d044bd8bc527caf9dbc2ebea7e58a4b45acd977541a7dd63f8",
+    "data/development/source-audit-v0.1/integrity.json": "135224d6b2d86b7526284a91cae5e8ab9c5d30ae2b346c20b19e2bb7bf80edb5",
+    "outputs/development-cases/20261019T030531Z-8ef1bf33/cases.jsonl": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "outputs/development-batches/20261022T030940Z-22f948f0/manifest.json": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389"
+  },
+  "runs": [
+    {
+      "ticker": "FPT",
+      "with_model": true,
+      "run_id": "20261024T014354Z-393d7cf3",
+      "status": "abstained",
+      "extracted_cells": 55,
+      "context_cells": 6,
+      "selected_candidates": 0,
+      "llm_calls": 1,
+      "result_sha256": "61af16af5839ea704d1968347abcdf6e7dff5e64cb13c5518516a116b6338522",
+      "replay": "passed"
+    },
+    {
+      "ticker": "HPG",
+      "with_model": true,
+      "run_id": "20261024T014442Z-ebda193b",
+      "status": "abstained",
+      "extracted_cells": 69,
+      "context_cells": 7,
+      "selected_candidates": 0,
+      "llm_calls": 1,
+      "result_sha256": "71661617f330d8b24dad3b14b00c2b0bb327fd6b106e7cb6f4a7daf83bc71bb4",
+      "replay": "passed"
+    },
+    {
+      "ticker": "VCB",
+      "with_model": true,
+      "run_id": "20261024T014512Z-82e20fd1",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 68,
+      "context_cells": 10,
+      "selected_candidates": 1,
+      "llm_calls": 1,
+      "result_sha256": "27614325be400d60db321d2f5105285db6064c26908f7ddda995787d2411c3ef",
+      "replay": "passed"
+    },
+    {
+      "ticker": "ACB",
+      "with_model": false,
+      "run_id": "20261024T014544Z-fdc9957c",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 0,
+      "context_cells": 0,
+      "selected_candidates": 0,
+      "llm_calls": 0,
+      "result_sha256": "1e45a749a2abce7010f1d9087d2bf69deecd4b14fdbc78f5525809dd4bd125e5",
+      "replay": "passed"
+    },
+    {
+      "ticker": "BID",
+      "with_model": false,
+      "run_id": "20261024T014550Z-f80fab32",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 0,
+      "context_cells": 0,
+      "selected_candidates": 0,
+      "llm_calls": 0,
+      "result_sha256": "8b64ebcf66b1bc8bdd1b151fedb4a82812098eece621e50b83f2aff517cdd8e8",
+      "replay": "passed"
+    },
+    {
+      "ticker": "MWG",
+      "with_model": false,
+      "run_id": "20261024T014558Z-4328e059",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 0,
+      "context_cells": 0,
+      "selected_candidates": 0,
+      "llm_calls": 0,
+      "result_sha256": "2cb95eee45fb00e1050f18ebf37dfb79c1a9cfc7cfcc1d7d2cad0cbf2bf52a43",
+      "replay": "passed"
+    },
+    {
+      "ticker": "VNM",
+      "with_model": false,
+      "run_id": "20261024T014603Z-093cb6e5",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 20,
+      "context_cells": 0,
+      "selected_candidates": 0,
+      "llm_calls": 0,
+      "result_sha256": "993bcf87ee9b769fbae080ff61d2aa79f3d8560a60e675b75a6726adaa4b75ad",
+      "replay": "passed"
+    }
+  ],
+  "protected_after": {
+    "data/development/v0.2/case_index.json": "585b1f680b22e3fa586881a48575bd51b228395ec7a83f1d468f1ee13965499e",
+    "data/development/evaluation-v0.1/validation.json": "bfda7b2bc44842d044bd8bc527caf9dbc2ebea7e58a4b45acd977541a7dd63f8",
+    "data/development/source-audit-v0.1/integrity.json": "135224d6b2d86b7526284a91cae5e8ab9c5d30ae2b346c20b19e2bb7bf80edb5",
+    "outputs/development-cases/20261019T030531Z-8ef1bf33/cases.jsonl": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "outputs/development-batches/20261022T030940Z-22f948f0/manifest.json": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389"
+  },
+  "original_artifacts_unchanged": true
+}

@@ -1,0 +1,7 @@
+{
+  "selector_id": "short_cell_refs_v0.4.1",
+  "status": "development_not_frozen",
+  "model_refs": "C1 through C18; maps to full candidate IDs in saved context",
+  "schema": "ShortCellSelection",
+  "reason": "Avoid asking the model to copy 64-character hashes. Keep legacy hash-selector runs replayable; do not treat this as semantic verification."
+}

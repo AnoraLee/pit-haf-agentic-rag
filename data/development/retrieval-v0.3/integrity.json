@@ -1,0 +1,11 @@
+{
+  "study_id": "20261023T133509Z-75d1ccc1",
+  "files": {
+    "summary.json": "d58421317e68ab1e75cd8054e719f116e1860611a45fb818ef360762f4dca557",
+    "smoke.json": "9b152c848b5c874307f4a25086f719985153c33e1ad0783460ae2701142926d5",
+    "validation.json": "79c0e7c542eb97c7d27405a111c6a6b356bd736c148980243e03a08690ac398f"
+  },
+  "source_study_folder": "outputs\\retrieval-development\\20261023T133509Z-75d1ccc1",
+  "source_summary_sha256": "d58421317e68ab1e75cd8054e719f116e1860611a45fb818ef360762f4dca557",
+  "source_smoke_sha256": "9b152c848b5c874307f4a25086f719985153c33e1ad0783460ae2701142926d5"
+}

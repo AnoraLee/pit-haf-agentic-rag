@@ -1,0 +1,518 @@
+{
+  "development_only": true,
+  "selection_and_context_changed": false,
+  "note": "The second study changes selector representation/schema/prompt. Candidate context is identical; not a held-out experiment or comparison against legacy free-form reports.",
+  "local_checks": {
+    "offline_tests_passed": 356,
+    "ruff": "passed",
+    "legacy_24_case_source_audit": "passed",
+    "raw_replays": 10,
+    "manual_review_entries_created": 0
+  },
+  "new_model_calls_total": 6,
+  "raw_extraction_only_runs": 4,
+  "semantic_accuracy": null,
+  "human_reviewed_facts": 0,
+  "default_changed": false,
+  "frontend_table_flow_implemented": false,
+  "runs": [
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "FPT",
+      "run_id": "20261024T014354Z-393d7cf3",
+      "status": "abstained",
+      "source_pages": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "page": 11,
+          "cells": 55,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                99,
+                101,
+                103,
+                105,
+                107
+              ],
+              "unit_values": [
+                "tỷ VNĐ"
+              ],
+              "scope_values": [
+                "consolidated"
+              ]
+            }
+          ],
+          "skipped_rows": 0
+        }
+      ],
+      "selected_candidates": [],
+      "rejection_reasons": {
+        "unknown_cell_id": 3
+      },
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "source_run_integrity_sha256": "691c8df6ecd29b241afab0c36becbdee2ad08b1293b8a959bc57aec27b84808c"
+    },
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "HPG",
+      "run_id": "20261024T014442Z-ebda193b",
+      "status": "abstained",
+      "source_pages": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "page": 12,
+          "cells": 69,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                13,
+                14,
+                15
+              ],
+              "unit_values": [
+                "tỷ đồng"
+              ],
+              "scope_values": []
+            }
+          ],
+          "skipped_rows": 3
+        }
+      ],
+      "selected_candidates": [],
+      "rejection_reasons": {
+        "unknown_cell_id": 3
+      },
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "source_run_integrity_sha256": "1113493334cd985a4f922a1004bc2097b0c967d96d8fb0902d4f1db08eef9003"
+    },
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "VCB",
+      "run_id": "20261024T014512Z-82e20fd1",
+      "status": "selected_candidates_unreviewed",
+      "source_pages": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "page": 67,
+          "cells": 68,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                57,
+                58
+              ],
+              "unit_values": [
+                "triệu VND"
+              ],
+              "scope_values": []
+            },
+            {
+              "header_index": 1,
+              "year_word_ids": [
+                64,
+                65
+              ],
+              "unit_values": [
+                "triệu VND"
+              ],
+              "scope_values": [
+                "consolidated"
+              ]
+            }
+          ],
+          "skipped_rows": 5
+        }
+      ],
+      "selected_candidates": [
+        {
+          "candidate_id": "79bdb1a2322c7d0acdbf9312612628520ae195cd6fdc2704ab52730584af89e7",
+          "cell_id": "42d6d85593c02316f47ffbe14f4fa9a53751f85b2edc0fa10704b7ac8001f99b",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67,
+          "label": "Lợi ích của cổ đông không kiểm soát",
+          "value": "(21.731)",
+          "year": "2024",
+          "unit": "Triệu VND",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed"
+        }
+      ],
+      "rejection_reasons": {
+        "unknown_cell_id": 2
+      },
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "source_run_integrity_sha256": "7e7d52223f9289e8bf8b72b50c2c2c6ef0b77a23a799aa6ac88b8c7b2bdc6535"
+    },
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "ACB",
+      "run_id": "20261024T014544Z-fdc9957c",
+      "status": "abstained_no_table_context",
+      "source_pages": [],
+      "selected_candidates": [],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": null,
+      "source_run_integrity_sha256": "6ff429ff2cc68b0b415767e1378e7cdf1f49e1b116a0ed59cb3c9a4b1b45e103"
+    },
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "BID",
+      "run_id": "20261024T014550Z-f80fab32",
+      "status": "abstained_no_table_context",
+      "source_pages": [
+        {
+          "version_id": "9e33249772ed7cba285a65b9f176a73a2d58412521fa01b9c356599ccbf2fc00",
+          "content_hash": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+          "page": 76,
+          "cells": 0,
+          "headers": [],
+          "skipped_rows": 0
+        }
+      ],
+      "selected_candidates": [],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": null,
+      "source_run_integrity_sha256": "edeaa10b476eb60db51af6eb5d6d1ed163b4019de03958d9979c8391fa10be05"
+    },
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "MWG",
+      "run_id": "20261024T014558Z-4328e059",
+      "status": "abstained_no_table_context",
+      "source_pages": [],
+      "selected_candidates": [],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": null,
+      "source_run_integrity_sha256": "941f8ff64dd2ecc579170348f5409cff6532f5bf7faa455b39b98eb021ff22c1"
+    },
+    {
+      "study": "20261024T014351Z-e0143234",
+      "ticker": "VNM",
+      "run_id": "20261024T014603Z-093cb6e5",
+      "status": "abstained_no_table_context",
+      "source_pages": [
+        {
+          "version_id": "969d6a75f362cd4c4bc044e6cfea47c7dcf171b93c2d36d84b884824c49a7fea",
+          "content_hash": "f0d99c9a6650e5f718f098784de037b342a5b9fff4184f5fd00ef7f8656c774a",
+          "page": 92,
+          "cells": 0,
+          "headers": [],
+          "skipped_rows": 0
+        },
+        {
+          "version_id": "969d6a75f362cd4c4bc044e6cfea47c7dcf171b93c2d36d84b884824c49a7fea",
+          "content_hash": "f0d99c9a6650e5f718f098784de037b342a5b9fff4184f5fd00ef7f8656c774a",
+          "page": 15,
+          "cells": 20,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                25,
+                26,
+                27,
+                28,
+                29
+              ],
+              "unit_values": [],
+              "scope_values": []
+            }
+          ],
+          "skipped_rows": 0
+        }
+      ],
+      "selected_candidates": [],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": null,
+      "source_run_integrity_sha256": "514ce74873b1b9e3fe4d842923c492e8c586f16171d670f6d250a03b13427b9a"
+    },
+    {
+      "study": "20261024T015107Z-9bc42a6e",
+      "ticker": "FPT",
+      "run_id": "20261024T015111Z-17b4dda5",
+      "status": "selected_candidates_unreviewed",
+      "source_pages": [
+        {
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "page": 11,
+          "cells": 55,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                99,
+                101,
+                103,
+                105,
+                107
+              ],
+              "unit_values": [
+                "tỷ VNĐ"
+              ],
+              "scope_values": [
+                "consolidated"
+              ]
+            }
+          ],
+          "skipped_rows": 0
+        }
+      ],
+      "selected_candidates": [
+        {
+          "candidate_id": "5dc49b3969ab949b7d679e01a008e1f27a06cf27b6cb7c0f09bef6f19c874d51",
+          "cell_id": "e107df55ed4bf7513eba3c093fda6e19d1bd98bfc720d5e3456095192558d9a1",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 11,
+          "label": "Lợi nhuận trước thuế",
+          "value": "11.070",
+          "year": "2024",
+          "unit": "tỷ VNĐ",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C1"
+        },
+        {
+          "candidate_id": "5eb463abff8222c405ca20cf72d853864523ca2ccf9de09ce1966aaeb780da3d",
+          "cell_id": "e12e9df50cc5906c7bdf7f11e9a47e87502c756fe0aaf28936d9f459ec66a99a",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 11,
+          "label": "Lợi nhuận trước thuế và lãi vay",
+          "value": "11.070",
+          "year": "2024",
+          "unit": "tỷ VNĐ",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C2"
+        },
+        {
+          "candidate_id": "808bed0ccc4150bb4428a13000b36adb4b0ab6fa2dcae75785c56dc0010c5291",
+          "cell_id": "8af1fd4543e7bcf8fd33fa0636103fa6b7ac66fd693c56a9efc8b4ab9fab73ec",
+          "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+          "page": 11,
+          "label": "Lợi nhuận trước thuế, lãi vay và khấu hao",
+          "value": "13.605",
+          "year": "2024",
+          "unit": "tỷ VNĐ",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C3"
+        }
+      ],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "source_run_integrity_sha256": "711e67e436c9a08fbd1142030aa9aa544570c6796a88f2e98e7a6e1b4180b3a7"
+    },
+    {
+      "study": "20261024T015107Z-9bc42a6e",
+      "ticker": "HPG",
+      "run_id": "20261024T015135Z-3671037b",
+      "status": "selected_candidates_unreviewed",
+      "source_pages": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "page": 12,
+          "cells": 69,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                13,
+                14,
+                15
+              ],
+              "unit_values": [
+                "tỷ đồng"
+              ],
+              "scope_values": []
+            }
+          ],
+          "skipped_rows": 3
+        }
+      ],
+      "selected_candidates": [
+        {
+          "candidate_id": "13d163338fae043f414b36cc5f19e5ea6260cd0aab06a1aede2ac165f1493f33",
+          "cell_id": "05d88720f9147ad0876bf69cf12da25407b15b1a5d49a6e24169e2484b9a5e0b",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "label": "Lợi nhuận trước thuế",
+          "value": "13.694",
+          "year": "2024",
+          "unit": "Tỷ đồng)",
+          "observed_statement_scope": null,
+          "review_reasons": [
+            "missing_or_ambiguous_statement_scope"
+          ],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C1"
+        },
+        {
+          "candidate_id": "d791e09e4614bfe6d0a97aa27530a367915835102be90cde7f1b5b0ceb80e00c",
+          "cell_id": "b95259858283735b1657d275683daa190790e18620fc42756cf933dadc3bf3f1",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "label": "Lợi nhuận Cổ đông công ty mẹ",
+          "value": "12.021",
+          "year": "2024",
+          "unit": "Tỷ đồng)",
+          "observed_statement_scope": null,
+          "review_reasons": [
+            "missing_or_ambiguous_statement_scope"
+          ],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C2"
+        },
+        {
+          "candidate_id": "f680032dae22a94985527f33634d423403c2bc7be4c6ece4193c13b076ee15ed",
+          "cell_id": "1893d5ae48f8ad1d9da109b55a64647e8586e7c61c8528ffaec451baf65f68f7",
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12,
+          "label": "Lợi nhuận sau thuế",
+          "value": "12.020",
+          "year": "2024",
+          "unit": "Tỷ đồng)",
+          "observed_statement_scope": null,
+          "review_reasons": [
+            "missing_or_ambiguous_statement_scope"
+          ],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C3"
+        }
+      ],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "source_run_integrity_sha256": "891bf93ee95262196e25bc801cc780599ae6b33f0da4e191a79016db32444f3b"
+    },
+    {
+      "study": "20261024T015107Z-9bc42a6e",
+      "ticker": "VCB",
+      "run_id": "20261024T015146Z-73323f4d",
+      "status": "selected_candidates_unreviewed",
+      "source_pages": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "page": 67,
+          "cells": 68,
+          "headers": [
+            {
+              "header_index": 0,
+              "year_word_ids": [
+                57,
+                58
+              ],
+              "unit_values": [
+                "triệu VND"
+              ],
+              "scope_values": []
+            },
+            {
+              "header_index": 1,
+              "year_word_ids": [
+                64,
+                65
+              ],
+              "unit_values": [
+                "triệu VND"
+              ],
+              "scope_values": [
+                "consolidated"
+              ]
+            }
+          ],
+          "skipped_rows": 5
+        }
+      ],
+      "selected_candidates": [
+        {
+          "candidate_id": "e2d6d4212cdf4681b65165fd24be5fedc891d4c28f50e65936929ba3c225333f",
+          "cell_id": "b3004da90fe66c4f11720d328a52f891eccab92efd0b1870613b517253a0688e",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67,
+          "label": "LỢI NHUẬN SAU THUẾ",
+          "value": "33.853.117",
+          "year": "2024",
+          "unit": "Triệu VND",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C1"
+        },
+        {
+          "candidate_id": "f3ab81befb7b7d15f725499bf1cd9b5ad4a92c4955ca29027e87771148efb9a4",
+          "cell_id": "e5f762e84f1f5bcf462a0f636a67d4afc712a3ca763c1724f7bb7151de74679b",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67,
+          "label": "Lợi nhuận thuần của cổ đông Ngân hàng",
+          "value": "33.831.386",
+          "year": "2024",
+          "unit": "Triệu VND",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C2"
+        },
+        {
+          "candidate_id": "79bdb1a2322c7d0acdbf9312612628520ae195cd6fdc2704ab52730584af89e7",
+          "cell_id": "42d6d85593c02316f47ffbe14f4fa9a53751f85b2edc0fa10704b7ac8001f99b",
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67,
+          "label": "Lợi ích của cổ đông không kiểm soát",
+          "value": "(21.731)",
+          "year": "2024",
+          "unit": "Triệu VND",
+          "observed_statement_scope": "consolidated",
+          "review_reasons": [],
+          "human_reviewed": false,
+          "semantic_support": "not_assessed",
+          "model_cell_id": "C7"
+        }
+      ],
+      "rejection_reasons": {},
+      "human_reviewed_facts": 0,
+      "semantic_accuracy": null,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "source_run_integrity_sha256": "115a815363b52e47fd42a8cd916e2073582ae5088c97ee5f1dc70ae71ea0513e"
+    }
+  ]
+}

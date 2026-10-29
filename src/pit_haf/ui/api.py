@@ -2,6 +2,7 @@
 
 import json
 import re
+import sqlite3
 import threading
 from dataclasses import asdict
 from datetime import date, datetime
@@ -10,13 +11,14 @@ from typing import Literal
 from urllib.parse import urlsplit
 
 from fastapi import FastAPI, HTTPException, Query, Request
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from pit_haf.data.catalog import Catalog
 from pit_haf.data.evidence import aware
+from pit_haf.data.financial_sections import search_financial
 from pit_haf.data.gateway import deliver_as_of
 from pit_haf.data.retrieval_scope import resolve_scope
 from pit_haf.data.snapshots import SnapshotStore
@@ -34,6 +36,13 @@ from pit_haf.research.reviews import (
     save_review,
 )
 from pit_haf.research.source_audit import load_source_audit
+from pit_haf.research.table_evidence import run as run_table_evidence
+from pit_haf.research.table_reviews import TableReviewInput
+from pit_haf.research.table_reviews import save as save_table_review
+from pit_haf.research.table_reviews import state as table_review_state
+from pit_haf.research.table_views import detail as table_detail
+from pit_haf.research.table_views import history as table_history
+from pit_haf.research.table_views import page_image as table_page_image
 from pit_haf.ui.workspace import (
     Corpus,
     extract_passage,
@@ -74,6 +83,14 @@ class CompanyReportRequest(SearchRequest):
     reporting_period: str | None = Field(default=None, pattern=r"^(?:(?:19|20)\d{2}(?:-Q[1-4])?|all)$")
     source_policy: Literal["issuer_reports", "all_linked"] = "issuer_reports"
     statement_scope: Literal["all", "consolidated", "parent"] = "all"
+    retrieval_profile: Literal["lexical_v0.2", "financial_sections_v0.3"] = "lexical_v0.2"
+
+
+class TableEvidenceRequest(SearchRequest):
+    ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
+    reporting_period: str | None = Field(default=None, pattern=r"^(?:19|20)\d{2}$")
+    profile_id: Literal["table_cells_v0.4", "table_cells_v0.5", "table_cells_v0.6", "table_cells_v0.7"] = "table_cells_v0.6"
+    use_model: bool = False
 
 
 def create_app(root: Path | None = None) -> FastAPI:
@@ -126,7 +143,7 @@ def create_app(root: Path | None = None) -> FastAPI:
                 cache.update(fingerprint=fingerprint, corpus=load_corpus(root))
             return cache["corpus"]
 
-    def retrieve(body: SearchRequest, scope=None):
+    def retrieve(body: SearchRequest, scope=None, retrieval_trace=None):
         catalog = disk_catalog()
         data = None if catalog else corpus()
         if data is not None and data.errors:
@@ -139,10 +156,17 @@ def create_app(root: Path | None = None) -> FastAPI:
             audit = list(gate.audit)
         if catalog:
             try:
-                data, hits = catalog.search(body.query, ticker=body.ticker, allowed_versions=allowed, scope=scope)
+                if getattr(body, "retrieval_profile", "lexical_v0.2") == "financial_sections_v0.3":
+                    data, hits, trace = search_financial(catalog, body.query, scope=scope, allowed_versions=allowed)
+                    if retrieval_trace is not None:
+                        retrieval_trace.update(trace)
+                else:
+                    data, hits = catalog.search(body.query, ticker=body.ticker, allowed_versions=allowed, scope=scope)
             except (OSError, ValueError) as exc:
                 raise HTTPException(503, "Bằng chứng không còn toàn vẹn: " + str(exc)) from exc
         else:
+            if getattr(body, "retrieval_profile", "lexical_v0.2") != "lexical_v0.2":
+                raise HTTPException(503, "Cách tìm theo mục báo cáo cần disk catalog. Khôi phục dữ liệu trước.")
             if scope:
                 versions = tuple(v for v in data.versions if scope.matches(v) and (allowed is None or v.version_id in allowed))
                 ids = {v.version_id for v in versions}
@@ -370,13 +394,14 @@ def create_app(root: Path | None = None) -> FastAPI:
     def company_report(body: CompanyReportRequest):
         scope = resolve_scope(body.query, body.ticker, reporting_period=body.reporting_period,
                               source_policy=body.source_policy, statement_scope=body.statement_scope)
-        data, hits, allowed, audit = retrieve(body, scope=scope)
+        trace = {} if body.retrieval_profile == "financial_sections_v0.3" else None
+        data, hits, allowed, audit = retrieve(body, scope=scope, retrieval_trace=trace)
         if not model_lock.acquire(blocking=False):
             raise HTTPException(409, "Ollama đang xử lý một yêu cầu. Hãy đợi hoàn tất.")
         try:
             return run_report(root, data, hits, query=body.query, ticker=body.ticker, mode=body.mode,
                               decision_at=body.decision_at.isoformat() if body.decision_at else None,
-                              allowed_versions=allowed, retrieval_audit=audit, scope=scope)
+                              allowed_versions=allowed, retrieval_audit=audit, scope=scope, retrieval_trace=trace)
         except (OSError, ValueError) as exc:
             raise HTTPException(503, "Không lập được báo cáo: " + str(exc)) from exc
         finally:
@@ -385,6 +410,77 @@ def create_app(root: Path | None = None) -> FastAPI:
     @app.get("/api/research/reports")
     def company_report_history():
         return {"reports": report_history(root)}
+
+    @app.get("/api/research/table-evidence")
+    def table_runs(ticker: str | None = Query(default=None, pattern=r"^[A-Z0-9]{2,12}$")):
+        return {"runs": table_history(root, ticker)}
+
+    @app.post("/api/research/table-evidence")
+    def create_table_run(body: TableEvidenceRequest):
+        if not model_lock.acquire(blocking=False):
+            raise HTTPException(409, "Một tác vụ phân tích đang chạy. Hãy đợi hoàn tất.")
+        try:
+            _, result = run_table_evidence(root, query=body.query, ticker=body.ticker, mode=body.mode,
+                                          decision_at=body.decision_at.isoformat() if body.decision_at else None,
+                                          reporting_period=body.reporting_period, use_model=body.use_model,
+                                          profile_id=body.profile_id)
+            if result["status"] == "failed":
+                raise HTTPException(503, f"Không hoàn tất đọc bảng. Lượt lỗi đã lưu: {result['run_id']}.")
+            return reviewed_table_detail(result["run_id"])
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không đọc được bằng chứng theo ô: " + str(exc)) from exc
+        finally:
+            model_lock.release()
+
+    def reviewed_table_detail(run_id):
+        view = table_detail(root, run_id)
+        return {**view, "reviews": table_review_state(root, view)}
+
+    @app.get("/api/research/table-evidence/{run_id}")
+    def saved_table_run(run_id: str):
+        try:
+            return reviewed_table_detail(run_id)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, "Không tìm thấy lượt đọc bảng.") from exc
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không mở được lượt đọc bảng toàn vẹn: " + str(exc)) from exc
+
+    @app.post("/api/research/table-evidence/{run_id}/reviews")
+    def table_review(run_id: str, body: TableReviewInput):
+        if run_id != body.run_id:
+            raise HTTPException(422, "Mã lượt chạy trong đường dẫn và đánh giá không khớp.")
+        try:
+            view = table_detail(root, run_id)
+            table_review_state(root, view)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, "Không tìm thấy lượt đọc bảng.") from exc
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Nguồn hoặc lịch sử đánh giá không còn toàn vẹn: " + str(exc)) from exc
+        try:
+            return save_table_review(root, view, body)
+        except ReviewConflict as exc:
+            raise HTTPException(409, "Đánh giá hoặc nguồn đã thay đổi. Tải lại trước khi lưu: " + str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(422, "Chưa lưu đánh giá: " + str(exc)) from exc
+        except (OSError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không lưu được đánh giá: " + str(exc)) from exc
+
+    @app.get("/api/research/table-evidence/{run_id}/reviews/export")
+    def table_review_export(run_id: str):
+        data = saved_table_run(run_id)
+        return JSONResponse(data["reviews"], headers={
+            "Content-Disposition": f'attachment; filename="table-reviews-{run_id}.json"',
+            "Cache-Control": "no-store"})
+
+    @app.get("/api/research/table-evidence/{run_id}/pages/{index}/image")
+    def table_source_image(run_id: str, index: int):
+        try:
+            return Response(table_page_image(root, run_id, index), media_type="image/png",
+                            headers={"Cache-Control": "no-store"})
+        except (FileNotFoundError, KeyError, IndexError) as exc:
+            raise HTTPException(404, "Không tìm thấy trang PDF của lượt đọc bảng.") from exc
+        except (OSError, ValueError, TypeError) as exc:
+            raise HTTPException(503, "Không render được PDF toàn vẹn: " + str(exc)) from exc
 
     @app.get("/api/research/reports/{run_id}")
     def company_saved_report(run_id: str):

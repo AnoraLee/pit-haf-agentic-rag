@@ -102,11 +102,18 @@ pit-haf/
 | `outputs/development-cases/` | 24 câu hỏi với các đoạn bằng chứng cố định |
 | `outputs/development-batches/` | Manifest, trạng thái và liên kết các lượt chạy |
 | `outputs/company-reports/` | Câu trả lời gốc, request/response, nguồn và checksum của từng lượt |
+| `outputs/table-evidence/` | Lượt đọc ô bảng, locator và context; tải thêm nếu cần xem lịch sử bảng |
 
 `data/cache/datasets/` chứa CSV gốc để tái nhập/mở rộng corpus, không bắt buộc
 cho giao diện nếu đã có đầy đủ snapshot hiện hành. Nếu Drive có
 `outputs/llm-pilot/` và `outputs/quote-replay/`, có thể copy thêm để xem các
 chỉ số pilot cũ; đây là các artifact riêng với batch 24 câu.
+
+`outputs/table-reviews/reviews.sqlite3` được tạo khi bạn lưu đánh giá ô bảng
+đầu tiên, không bắt buộc để khởi động ứng dụng. Đây là lịch sử duyệt tại máy,
+cần sao lưu riêng nếu muốn chuyển sang máy khác; dừng backend trước khi copy
+file. Có thể tải lịch sử JSON của từng lượt ngay trên giao diện. JSON hiện
+dùng để đối chiếu/lưu trữ, chưa có chức năng nhập lại.
 
 Các đường dẫn trong `.gitignore` vẫn cần giữ: Git bỏ qua chúng khi push,
 nhưng ứng dụng đọc được file đã tải về. `data/development/` trong repository
@@ -150,6 +157,8 @@ Mở **[http://localhost:8501](http://localhost:8501)**. Backend phục vụ fro
   **Đáp án và đối chiếu nguồn** dưới từng câu.
 - **Tạo đáp án tham chiếu:** ghi nhận kiểm tra của người dùng; tách khỏi đáp án
   do trợ lý soạn.
+- **Đối chiếu ô bảng với PDF:** đọc bảng, mở lượt đã lưu và chọn vùng chỉ tiêu,
+  số, năm, đơn vị trên PDF; mặc định không gọi AI, chưa tạo facts đã duyệt.
 - **Dữ liệu thị trường:** lấy OHLCV qua provider; cần kết nối Internet.
 
 Không cần chạy lại pilot, thu thập dữ liệu hoặc inference để mở ứng dụng và
@@ -181,7 +190,7 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **336 test**; lint và
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **426 test**; lint và
 frontend build đạt. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
 [offline-checks.yml](.github/workflows/offline-checks.yml).
@@ -201,6 +210,13 @@ cổng 8502; giao diện chính là React.
 | Lệnh bổ sung | Chức năng |
 |---|---|
 | `.\run.ps1 company-report --ticker HPG --query "lợi nhuận năm 2024"` | Chạy báo cáo mới qua model local |
+| `.\run.ps1 company-report --ticker HPG --query "lợi nhuận năm 2024" --retrieval-profile financial_sections_v0.3` | Dùng truy xuất mục báo cáo/bảng số liệu đang thử nghiệm |
+| `.\run.ps1 retrieval-study` | Tạo chẩn đoán truy xuất riêng cho 24 câu, không inference hoặc thay bộ case gốc |
+| `.\run.ps1 table-evidence --ticker HPG --query "lợi nhuận năm 2024"` | Trích ô bảng kèm locator nguồn, chưa gọi model hoặc xác nhận facts |
+| `.\run.ps1 table-evidence --ticker HPG --query "lợi nhuận năm 2024" --model` | Một lượt Qwen chọn mã ô; ứng viên vẫn cần người duyệt |
+| `.\run.ps1 table-evidence --ticker BID --query "lợi nhuận năm 2024" --profile table_cells_v0.5` | Parser mới cho một tập con tiêu đề/nhãn bảng, chưa gọi model |
+| `.\run.ps1 table-evidence --ticker BID --query "lợi nhuận năm 2024" --profile table_cells_v0.6` | Lọc theo cụm chỉ tiêu, gộp ô trùng và giữ các vị trí nguồn; chưa gọi model |
+| `.\run.ps1 table-evidence --ticker ACB --query "lợi nhuận năm 2024" --profile table_cells_v0.7` | Đọc lại lớp chữ PDF trước truy xuất; thử nghiệm chậm hơn, chưa gọi model/OCR |
 | `.\run.ps1 development-evaluate --evaluate-only --batch-id 20261022T030940Z-22f948f0` | Đánh giá lại batch đã lưu, không inference |
 | `.\run.ps1 development-evaluate` | Chạy inference mới cho 24 case; cần Ollama và có thể tốn thời gian |
 | `.\run.ps1 pilot-data --extract-existing` | Trích lại từ raw snapshot đã lưu; dùng khi phát triển dữ liệu |
@@ -208,6 +224,37 @@ cổng 8502; giao diện chính là React.
 Giữ bộ case và kết quả gốc khi xem lại batch đã công bố; tạo pack mới chỉ khi
 chủ ý thay đổi nguồn/cấu hình phát triển. Mẫu tham chiếu và checksum không
 thay thế các file nguồn trong gói Drive.
+
+Trên giao diện báo cáo doanh nghiệp có tùy chọn **Cách tìm bằng chứng** mới.
+Profile tài chính vẫn ở chế độ thử nghiệm: chẩn đoán chuỗi nguồn cải thiện,
+nhưng cả ba lượt Qwen thử mới đều bị chặn. Chưa chứng minh tăng độ chính xác,
+nên luồng theo từ khóa vẫn là mặc định. Xem
+[kết quả và giới hạn thử nghiệm](docs/research/18-financial-section-retrieval.md).
+
+Lớp bảng bổ sung locator riêng cho chỉ tiêu, ô số, cột năm, đơn vị và phạm vi.
+Phần **Đối chiếu ô bảng với PDF** trên frontend cho phép chọn ô để tô vị trí
+nguồn, mở lịch sử hoặc đọc bảng mới. Frontend/API hiện dùng profile thử nghiệm
+v0.6, mặc định không gọi model: lọc theo cụm chỉ tiêu, gộp cùng nhãn/năm/số khi
+đủ đơn vị và phạm vi, giữ toàn bộ vị trí nguồn để đổi bằng **Vị trí nguồn của
+nhóm ô**. Nhóm cùng nhãn nhưng khác số được giữ để kiểm tra và bị chặn khi AI
+chọn. CLI vẫn mặc định v0.4 để giữ hành vi cũ; truyền profile rõ ràng để thử v0.6.
+Đây là ứng viên chưa duyệt, chưa phải bộ số liệu chuẩn hóa hoặc kết quả accuracy.
+Xem [kết quả và giới hạn v0.6](docs/research/21-cell-relevance-and-grouping.md),
+[giao diện v0.5](docs/research/20-table-source-viewer.md) và
+[lịch sử v0.4](docs/research/19-table-cell-evidence.md).
+
+Ngay dưới các phần bằng chứng của ô có **Duyệt vị trí nguồn đang chọn**:
+ghi người duyệt, kết luận và chỉ tiêu diễn giải, đối chiếu đủ năm mục rồi lưu.
+Mỗi lần sửa hoặc rút xác nhận tạo phiên bản riêng; vị trí trùng không được xác
+nhận theo. Đánh giá là người dùng tự khai báo, chưa tự trở thành nhãn độc lập,
+đầu vào model hay dữ liệu backtest. Xem
+[quy trình duyệt và giới hạn](docs/research/22-table-location-reviews.md).
+
+Tùy chọn **Đọc lại lớp chữ PDF · thử nghiệm** bật profile v0.7; mặc định vẫn
+tắt. Bản này đọc raw PDF lại bằng pdfplumber, không sửa corpus hoặc ký hiệu
+font bằng phép thay chuỗi. Lượt thử tìm được hai ô ứng viên cho ACB, nhưng
+VCB mất context và FPT vượt giới hạn 400 trang, nên chưa thay mặc định v0.6.
+MWG vẫn cần OCR. Xem [kết quả đầy đủ và giới hạn](docs/research/23-alternate-pdf-text.md).
 
 ## 6. Xử lý lỗi thường gặp
 

@@ -1,0 +1,96 @@
+{
+  "study_id": "20261023T133509Z-75d1ccc1",
+  "development_only": true,
+  "same_legacy_context_budget": {
+    "passages": 3,
+    "characters_per_passage": 700,
+    "characters_total": 2100
+  },
+  "string_presence_only": {
+    "cases_improved": 20,
+    "cases_unchanged": 4,
+    "cases_regressed": 0,
+    "semantic_accuracy": null,
+    "independent_gold": false
+  },
+  "three_income_cases": [
+    {
+      "case_id": "dev01-FPT-income",
+      "original_batch": {
+        "run_id": "20261022T030942Z-a339ea46",
+        "status": "abstained",
+        "accepted_claims": 0,
+        "rejected_claims": 2,
+        "report_sha256": "6fe160340f6399aef854b5e05cb59711562e99e347be8171ade59ea40380ba4a"
+      },
+      "new_smoke": {
+        "case_id": "dev01-FPT-income",
+        "run_id": "20261023T134026Z-f33896ab",
+        "status": "abstained",
+        "accepted_claims": 0,
+        "rejected_claims": 3,
+        "report_sha256": "0fee1bf0028b7cc4f262a273c8f0d69ba16fe4840bab283208ca02fc4e0284b9"
+      }
+    },
+    {
+      "case_id": "dev01-HPG-income",
+      "original_batch": {
+        "run_id": "20261022T031436Z-550b5fa9",
+        "status": "completed_with_citations",
+        "accepted_claims": 3,
+        "rejected_claims": 0,
+        "report_sha256": "a473ed509ed05c1cfda76b2f45ec6280bb0aeea955a4f971df6c72f374c75bc7"
+      },
+      "new_smoke": {
+        "case_id": "dev01-HPG-income",
+        "run_id": "20261023T134116Z-c381db3a",
+        "status": "abstained",
+        "accepted_claims": 0,
+        "rejected_claims": 3,
+        "report_sha256": "3f21efe51bf51312ac1d83ea231dea5f8ccc24ea9d53b68102ac8bd87c32b50d"
+      }
+    },
+    {
+      "case_id": "dev01-VCB-income",
+      "original_batch": {
+        "run_id": "20261022T032014Z-4f9403cf",
+        "status": "abstained",
+        "accepted_claims": 0,
+        "rejected_claims": 3,
+        "report_sha256": "8084de3405a2cfa65fe2bd4248282f5b83eaada51a60af9105df33c53a90b95b"
+      },
+      "new_smoke": {
+        "case_id": "dev01-VCB-income",
+        "run_id": "20261023T134155Z-392396cc",
+        "status": "abstained",
+        "accepted_claims": 0,
+        "rejected_claims": 3,
+        "report_sha256": "ca0bda941b8aa69e9ff4ca066b9996806640bdba7832d3e5238b0894ca645843"
+      }
+    }
+  ],
+  "new_rejection_reasons": {
+    "quote_ambiguous": 1,
+    "numbers_not_supported_by_quote": 8,
+    "model_abstained": 6,
+    "quote_not_found": 2
+  },
+  "model_calls_new": 3,
+  "default_promoted": false,
+  "manual_review_entries_created": 0,
+  "old_pack_changed": false,
+  "old_batch_changed": false,
+  "checks": {
+    "offline_tests_passed": 345,
+    "ruff": "passed",
+    "frontend_build": "passed",
+    "original_24_case_source_audit": "passed",
+    "three_smoke_raw_request_response_verifier_replays": "passed"
+  },
+  "notes": [
+    "A diagnostic and three single runs cannot establish model accuracy or a general performance difference.",
+    "Old and new runs share model digest, prompt, schema and context budget; generation is not assumed deterministic.",
+    "Retrieval heuristics were developed after inspecting development errors; these cases are not held out.",
+    "No historical availability validation, forecast, backtest or Full PiT-HAF result."
+  ]
+}

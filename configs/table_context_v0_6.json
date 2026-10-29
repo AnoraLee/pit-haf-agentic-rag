@@ -1,0 +1,38 @@
+{
+  "policy_id": "financial_cell_context_v0.6",
+  "status": "development_not_frozen",
+  "unsupported_queries": ["kế hoạch", "mục tiêu", "dự báo", "biên lợi nhuận", "tỷ suất", "tỷ lệ", "tăng trưởng", "so với", "cùng kỳ", "rủi ro"],
+  "excluded_labels": ["kế hoạch", "mục tiêu", "tỷ suất", "biên lợi nhuận", "tỷ lệ"],
+  "ratio_denominators": ["doanh thu", "tổng tài sản", "vốn chủ sở hữu", "cổ phiếu", "cổ phần"],
+  "domains": {
+    "income": {
+      "query": ["lợi nhuận", "lntt", "lnst", "lãi trước thuế", "lãi sau thuế", "ebit", "ebitda"],
+      "labels": ["lợi nhuận", "lãi trước thuế", "lãi sau thuế"]
+    },
+    "revenue": {
+      "query": ["doanh thu", "thu nhập"],
+      "labels": ["doanh thu", "thu nhập lãi", "thu nhập hoạt động", "thu nhập từ hoạt động"],
+      "exclude": ["thuế thu nhập", "doanh thu chưa thực hiện", "chi phí"]
+    },
+    "assets": {
+      "query": ["tài sản", "nợ phải trả", "nghĩa vụ nợ", "vốn chủ sở hữu", "dư nợ"],
+      "labels": ["tài sản", "nợ phải trả", "vốn chủ sở hữu", "dư nợ"]
+    },
+    "cash": {
+      "query": ["dòng tiền", "lưu chuyển", "tiền thuần", "tiền và tương đương"],
+      "labels": ["tiền thuần", "lưu chuyển tiền", "tiền và tương đương", "tiền và các khoản tương đương"]
+    }
+  },
+  "income_intents": {
+    "parent": {"query": ["cổ đông công ty mẹ", "thuộc về công ty mẹ", "cổ đông ngân hàng"], "labels": ["cổ đông công ty mẹ", "cổ đông của ngân hàng", "cổ đông ngân hàng", "cổ đông của công ty", "chủ sở hữu công ty"]},
+    "ebitda": {"query": ["ebitda", "khấu hao"], "labels": ["khấu hao"]},
+    "ebit": {"query": ["ebit", "thuế và lãi vay"], "labels": ["lãi vay", "chi phí tài chính"]},
+    "operating": {"query": ["lợi nhuận hoạt động", "lợi nhuận từ hoạt động", "lợi nhuận thuần từ hoạt động"], "labels": ["hoạt động kinh doanh"]},
+    "gross": {"query": ["lợi nhuận gộp"], "labels": ["lợi nhuận gộp"]},
+    "before_tax": {"query": ["trước thuế", "lntt"], "labels": ["lợi nhuận trước thuế", "lãi trước thuế"]},
+    "after_tax": {"query": ["sau thuế", "lnst"], "labels": ["lợi nhuận sau thuế", "lãi sau thuế"]}
+  },
+  "net_profit_exact_label_aliases": ["lợi nhuận thuần"],
+  "merge_requirements": "Same version, ticker, full normalized label, year, known unit and known observed statement scope; exact numeric token. Keep all source references. Unknown scope/unit stays separate. Conflicting values remain visible and cannot be selected as usable candidates by the new verifier.",
+  "limitations": "Generic development phrase rules, not learned gold labels or semantic verification. No issuer/page/case/answer lookup; no held-out accuracy claim."
+}

@@ -1,0 +1,60 @@
+{
+  "profile_id": "financial_sections_v0.3",
+  "status": "development_not_frozen",
+  "max_pages": 4000,
+  "max_passages": 3,
+  "max_passage_characters": 700,
+  "max_context_characters": 2100,
+  "boilerplate_fraction": 0.3,
+  "limitations": "Generic Vietnamese document-section heuristics, not semantic verification or independent retrieval accuracy. No issuer/page/answer lookup. Gateway and metadata scope apply before page text or statistics.",
+  "topics": {
+    "outlook": {
+      "query": ["kế hoạch", "mục tiêu", "triển vọng", "định hướng"],
+      "anchors": ["kế hoạch doanh thu", "kế hoạch lợi nhuận", "lợi nhuận trước thuế", "lợi nhuận sau thuế", "mục tiêu", "chỉ tiêu kế hoạch", "kế hoạch đầu tư"],
+      "headings": ["kế hoạch năm", "kinh doanh năm", "định hướng hoạt động", "kế hoạch sản xuất"],
+      "penalties": ["chính sách kế toán", "nguyên tắc ghi nhận"]
+    },
+    "risk": {
+      "query": ["rủi ro", "khó khăn", "thách thức"],
+      "anchors": ["rủi ro tỷ giá", "rủi ro lãi suất", "rủi ro tín dụng", "rủi ro thanh khoản", "khó khăn", "thách thức", "xung đột", "lạm phát"],
+      "headings": ["quản trị rủi ro", "quản lý rủi ro", "các rủi ro", "rủi ro chính sách"],
+      "penalties": []
+    },
+    "cash": {
+      "query": ["dòng tiền", "lưu chuyển", "tiền thuần", "tiền và tương đương"],
+      "anchors": ["lưu chuyển tiền thuần từ hoạt động kinh doanh", "lưu chuyển tiền thuần từ cho hoạt động kinh doanh", "tiền thuần từ hoạt động kinh doanh", "tiền và tương đương tiền cuối kỳ", "tiền và các khoản tương đương tiền"],
+      "headings": ["báo cáo lưu chuyển", "bảng lưu chuyển tiền tệ"],
+      "penalties": ["chính sách kế toán", "nguyên tắc ghi nhận", "danh sách ban điều hành"]
+    },
+    "assets": {
+      "query": ["tài sản", "nợ phải trả", "nghĩa vụ nợ", "vốn chủ sở hữu", "dư nợ"],
+      "anchors": ["tổng tài sản", "tổng nợ phải trả", "nợ phải trả", "vốn chủ sở hữu", "nợ ngắn hạn", "nợ dài hạn"],
+      "headings": ["bảng cân đối kế toán", "báo cáo tình hình tài chính", "tóm tắt các chỉ số tài chính"],
+      "penalties": ["kỳ định lại lãi suất", "thời gian đáo hạn còn lại", "tài sản và nợ phải trả bằng các đơn vị tiền tệ", "giá phí hợp nhất", "lợi thế thương mại phát sinh"]
+    },
+    "growth": {
+      "query": ["tăng trưởng", "cùng kỳ", "so với", "tốc độ tăng"],
+      "anchors": ["so với năm", "so với cùng kỳ", "tăng trưởng doanh thu", "tăng trưởng lợi nhuận", "doanh thu", "lợi nhuận"],
+      "headings": ["doanh thu lợi nhuận", "đánh giá kết quả", "kết quả hoạt động kinh doanh", "phân tích kết quả kinh doanh", "tình hình tài chính và kết quả kinh doanh"],
+      "penalties": ["bổ nhiệm", "chính sách kế toán", "danh sách thành viên", "giao dịch với các bên liên quan"]
+    },
+    "income": {
+      "query": ["lợi nhuận", "lntt", "lnst", "lãi trước thuế", "lãi sau thuế"],
+      "anchors": ["lợi nhuận trước thuế", "lợi nhuận sau thuế", "lợi nhuận thuần", "lợi nhuận cổ đông công ty mẹ"],
+      "headings": ["báo cáo kết quả hoạt động", "báo cáo kết quả kinh doanh", "tóm tắt các chỉ số tài chính", "tình hình tài chính và kết quả kinh doanh"],
+      "penalties": ["chính sách kế toán", "nguyên tắc ghi nhận", "công ty thành viên", "đơn vị thành viên"]
+    },
+    "revenue": {
+      "query": ["doanh thu", "thu nhập"],
+      "anchors": ["tổng doanh thu", "doanh thu thuần", "doanh thu bán hàng", "thu nhập lãi thuần", "thu nhập lãi và các khoản", "tổng thu nhập hoạt động"],
+      "headings": ["báo cáo kết quả hoạt động", "báo cáo kết quả kinh doanh", "tóm tắt các chỉ số tài chính", "tình hình tài chính và kết quả kinh doanh"],
+      "penalties": ["chính sách kế toán", "nguyên tắc ghi nhận", "doanh thu chưa thực hiện", "giá phí hợp nhất"]
+    },
+    "operations": {
+      "query": ["hoạt động kinh doanh", "phân khúc", "sản lượng", "ngành nghề", "lĩnh vực"],
+      "anchors": ["khối công nghệ", "khối viễn thông", "lĩnh vực", "mảng kinh doanh", "sản lượng", "dịch vụ ngân hàng", "tín dụng", "bán buôn", "bán lẻ"],
+      "headings": ["phân tích kết quả kinh doanh theo khối", "kết quả công tác điều hành", "doanh thu lợi nhuận", "ngành nghề kinh doanh", "kết quả hoạt động kinh doanh"],
+      "penalties": ["bộ phận kinh doanh là", "chính sách kế toán", "nguyên tắc ghi nhận", "kế hoạch năm", "kế hoạch kinh doanh"]
+    }
+  }
+}

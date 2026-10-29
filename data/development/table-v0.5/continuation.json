@@ -1,0 +1,56 @@
+{
+  "kind": "development_not_held_out",
+  "profile_id": "table_cells_v0.5",
+  "prior_study": "outputs\\table-development\\20261025T160453Z-4b798bb3\\manifest.json",
+  "reason": "Prior model inspection was denied socket access in sandbox, before any generation; preserved as failure. This continuation runs remaining tickers with loopback access.",
+  "selection_before_outcomes": [
+    "BID",
+    "MWG",
+    "VNM"
+  ],
+  "model_tickers_before_outcomes": [
+    "BID",
+    "VNM"
+  ],
+  "max_new_model_calls": 2,
+  "query": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+  "runs": [
+    {
+      "ticker": "BID",
+      "run_id": "20261025T162303Z-a21ab94f",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 78,
+      "context_cells": 12,
+      "selected_candidates": 3,
+      "llm_calls": 1,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "result_sha256": "e7e8ff96591162b5e63b6e2911a47325735e403362502771ca5dbab4a0725c87",
+      "replay": "passed"
+    },
+    {
+      "ticker": "MWG",
+      "run_id": "20261025T162447Z-046f7495",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 0,
+      "context_cells": 0,
+      "selected_candidates": 0,
+      "llm_calls": 0,
+      "model_digest": null,
+      "result_sha256": "9528809df7d414e93e8ae011ac9cc3da127582876a60a10947f91ec528e6373d",
+      "replay": "passed"
+    },
+    {
+      "ticker": "VNM",
+      "run_id": "20261025T162449Z-fa1333fb",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 50,
+      "context_cells": 7,
+      "selected_candidates": 3,
+      "llm_calls": 1,
+      "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "result_sha256": "3058454c8c81dc524c103adfb50cf5766932b82c1f5dac12e068c2eb40f235e9",
+      "replay": "passed"
+    }
+  ],
+  "original_artifacts_unchanged": true
+}

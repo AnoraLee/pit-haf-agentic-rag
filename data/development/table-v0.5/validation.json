@@ -1,0 +1,300 @@
+{
+  "development_only": true,
+  "cases_not_held_out": true,
+  "study_runs": [
+    {
+      "ticker": "FPT",
+      "run_id": "20261025T160457Z-5f504b71",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 55,
+      "context_cells": 6,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "page": 11,
+          "cells": 55
+        }
+      ],
+      "result_sha256": "0fb3082f1cb01d1a1a2eda92b77eacedf2608b1f8ab4a4a52445e37468ee3f6c"
+    },
+    {
+      "ticker": "HPG",
+      "run_id": "20261025T160509Z-f0667281",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 78,
+      "context_cells": 7,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "page": 12,
+          "cells": 78
+        }
+      ],
+      "result_sha256": "028c556877016f7e902c2f4a9b7cc548c7bdac0ac0c4d62069e3bbf47c144247"
+    },
+    {
+      "ticker": "VCB",
+      "run_id": "20261025T160518Z-5ef2c043",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 70,
+      "context_cells": 11,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "page": 67,
+          "cells": 70
+        }
+      ],
+      "result_sha256": "0ed4920f41a70bd7cb3ed169d31af0f5111c9835a3e1ee0106f77f7eb2b2e66a"
+    },
+    {
+      "ticker": "ACB",
+      "run_id": "20261025T160533Z-261b4e01",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 18,
+      "context_cells": 1,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "c242e8c075b28b49028e9946f3c43c581444dbdda14b5078729fa28e3991389e",
+          "page": 57,
+          "cells": 0
+        },
+        {
+          "content_hash": "c242e8c075b28b49028e9946f3c43c581444dbdda14b5078729fa28e3991389e",
+          "page": 21,
+          "cells": 0
+        },
+        {
+          "content_hash": "c242e8c075b28b49028e9946f3c43c581444dbdda14b5078729fa28e3991389e",
+          "page": 97,
+          "cells": 18
+        }
+      ],
+      "result_sha256": "a085f33cbd8850eddb1db0685a70dc870c5f26f64aac6eea89f1cb68bc08a840"
+    },
+    {
+      "ticker": "BID",
+      "run_id": "20261025T160553Z-a55aea2f",
+      "status": "failed",
+      "extracted_cells": 78,
+      "context_cells": 12,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+          "page": 76,
+          "cells": 78
+        }
+      ],
+      "result_sha256": "dba759d9c87a766291449ddf9ba5bb68ad1bf4781151bff02425a9300b5bc408"
+    },
+    {
+      "ticker": "BID",
+      "run_id": "20261025T162303Z-a21ab94f",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 78,
+      "context_cells": 12,
+      "llm_calls": 1,
+      "selected_candidates": 3,
+      "source_pages": [
+        {
+          "content_hash": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+          "page": 76,
+          "cells": 78
+        }
+      ],
+      "result_sha256": "e7e8ff96591162b5e63b6e2911a47325735e403362502771ca5dbab4a0725c87"
+    },
+    {
+      "ticker": "MWG",
+      "run_id": "20261025T162447Z-046f7495",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 0,
+      "context_cells": 0,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [],
+      "result_sha256": "9528809df7d414e93e8ae011ac9cc3da127582876a60a10947f91ec528e6373d"
+    },
+    {
+      "ticker": "VNM",
+      "run_id": "20261025T162449Z-fa1333fb",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 50,
+      "context_cells": 7,
+      "llm_calls": 1,
+      "selected_candidates": 3,
+      "source_pages": [
+        {
+          "content_hash": "f0d99c9a6650e5f718f098784de037b342a5b9fff4184f5fd00ef7f8656c774a",
+          "page": 92,
+          "cells": 50
+        },
+        {
+          "content_hash": "f0d99c9a6650e5f718f098784de037b342a5b9fff4184f5fd00ef7f8656c774a",
+          "page": 15,
+          "cells": 0
+        }
+      ],
+      "result_sha256": "3058454c8c81dc524c103adfb50cf5766932b82c1f5dac12e068c2eb40f235e9"
+    }
+  ],
+  "latest_descriptive_runs_by_ticker": {
+    "FPT": {
+      "ticker": "FPT",
+      "run_id": "20261025T160457Z-5f504b71",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 55,
+      "context_cells": 6,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "041c5a2ac49f0e8f4a29f2b1fdb82aea00608579ad33c0606adf9ad06dd8da40",
+          "page": 11,
+          "cells": 55
+        }
+      ],
+      "result_sha256": "0fb3082f1cb01d1a1a2eda92b77eacedf2608b1f8ab4a4a52445e37468ee3f6c"
+    },
+    "HPG": {
+      "ticker": "HPG",
+      "run_id": "20261025T160509Z-f0667281",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 78,
+      "context_cells": 7,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d",
+          "page": 12,
+          "cells": 78
+        }
+      ],
+      "result_sha256": "028c556877016f7e902c2f4a9b7cc548c7bdac0ac0c4d62069e3bbf47c144247"
+    },
+    "VCB": {
+      "ticker": "VCB",
+      "run_id": "20261025T160518Z-5ef2c043",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 70,
+      "context_cells": 11,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "9deccc3518e23302d00353b4d371a9dd251b67b12f9fe58a4da4ad3c727e99f8",
+          "page": 67,
+          "cells": 70
+        }
+      ],
+      "result_sha256": "0ed4920f41a70bd7cb3ed169d31af0f5111c9835a3e1ee0106f77f7eb2b2e66a"
+    },
+    "ACB": {
+      "ticker": "ACB",
+      "run_id": "20261025T160533Z-261b4e01",
+      "status": "extracted_unreviewed",
+      "extracted_cells": 18,
+      "context_cells": 1,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [
+        {
+          "content_hash": "c242e8c075b28b49028e9946f3c43c581444dbdda14b5078729fa28e3991389e",
+          "page": 57,
+          "cells": 0
+        },
+        {
+          "content_hash": "c242e8c075b28b49028e9946f3c43c581444dbdda14b5078729fa28e3991389e",
+          "page": 21,
+          "cells": 0
+        },
+        {
+          "content_hash": "c242e8c075b28b49028e9946f3c43c581444dbdda14b5078729fa28e3991389e",
+          "page": 97,
+          "cells": 18
+        }
+      ],
+      "result_sha256": "a085f33cbd8850eddb1db0685a70dc870c5f26f64aac6eea89f1cb68bc08a840"
+    },
+    "BID": {
+      "ticker": "BID",
+      "run_id": "20261025T162303Z-a21ab94f",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 78,
+      "context_cells": 12,
+      "llm_calls": 1,
+      "selected_candidates": 3,
+      "source_pages": [
+        {
+          "content_hash": "6b7b841b9db815df68cc79f029702084d96d38f51b52f8dca3351830caf7a86f",
+          "page": 76,
+          "cells": 78
+        }
+      ],
+      "result_sha256": "e7e8ff96591162b5e63b6e2911a47325735e403362502771ca5dbab4a0725c87"
+    },
+    "MWG": {
+      "ticker": "MWG",
+      "run_id": "20261025T162447Z-046f7495",
+      "status": "abstained_no_table_context",
+      "extracted_cells": 0,
+      "context_cells": 0,
+      "llm_calls": 0,
+      "selected_candidates": 0,
+      "source_pages": [],
+      "result_sha256": "9528809df7d414e93e8ae011ac9cc3da127582876a60a10947f91ec528e6373d"
+    },
+    "VNM": {
+      "ticker": "VNM",
+      "run_id": "20261025T162449Z-fa1333fb",
+      "status": "selected_candidates_unreviewed",
+      "extracted_cells": 50,
+      "context_cells": 7,
+      "llm_calls": 1,
+      "selected_candidates": 3,
+      "source_pages": [
+        {
+          "content_hash": "f0d99c9a6650e5f718f098784de037b342a5b9fff4184f5fd00ef7f8656c774a",
+          "page": 92,
+          "cells": 50
+        },
+        {
+          "content_hash": "f0d99c9a6650e5f718f098784de037b342a5b9fff4184f5fd00ef7f8656c774a",
+          "page": 15,
+          "cells": 0
+        }
+      ],
+      "result_sha256": "3058454c8c81dc524c103adfb50cf5766932b82c1f5dac12e068c2eb40f235e9"
+    }
+  },
+  "accuracy": null,
+  "human_reviewed_facts": 0,
+  "manual_reviews_created": 0,
+  "new_generation_calls": 2,
+  "retained_model_inspection_failures_before_generation": 1,
+  "ui_extraction_only_run": "20261025T163954Z-974ed34b",
+  "checks": {
+    "offline_tests_passed": 363,
+    "ruff": "passed",
+    "frontend_build": "passed",
+    "legacy_and_new_runs_replayed": 18,
+    "legacy_24_source_audit": "passed"
+  },
+  "limitations": [
+    "ACB candidate is off-topic (off-balance commitments); not a successful profit answer.",
+    "MWG has no table context after the same scoped fallback.",
+    "VNM selection contains duplicate labels from separate table panels; no semantic accuracy claim.",
+    "Do not compare candidate counts with legacy accepted quote claims or call this a final ablation."
+  ]
+}
