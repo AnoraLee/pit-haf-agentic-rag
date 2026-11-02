@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-02",
+  "kind": "real_market_snapshot_quality_diagnostic",
+  "protocol": "market_price_snapshot_v0.1",
+  "research_result": false,
+  "study": {
+    "path": "outputs/market-data-development/20261102T145138Z-a8e21549",
+    "seal_sha256": "fd97cb3b7b41089f1d89d49f38102c6902f30a4a926c865e65e309e0500670c2"
+  },
+  "snapshot": {
+    "path": "outputs/market-snapshots/20261102T145138Z-21243d88",
+    "seal_sha256": "d37d8cf13df76dcd508d80ba179886b2489cb31a039194d12fbc44c7a14148f5"
+  },
+  "source_ohlc_inspection": {
+    "path": "outputs/market-quality-investigation/20261102T145526Z-1e247b2d",
+    "seal_sha256": "9e873eaae700e45af2cebf23ad213f72850dd399379777f293cf9cda14a050f8"
+  },
+  "upstream_adapter_reference": {
+    "path": "outputs/market-quality-investigation/20261102T145526Z-1e247b2d-adapter-reference",
+    "seal_sha256": "a83017c704a7d1a481a21503722c2d8d0cdc9802dc7f2aea322320af92fcb0a8"
+  },
+  "config_path": "configs/market_snapshot_v0_1.json",
+  "config_sha256": "57eef377d623d22ba00cd258fd1160ba81bcffa646fbc98899fb628c3fbff606",
+  "window": {
+    "start": "2021-01-01",
+    "end": "2024-12-31"
+  },
+  "assets": [
+    {
+      "symbol": "FPT",
+      "asset_type": "equity",
+      "price_unit": "VND",
+      "rows": 998,
+      "first_session": "2021-01-04",
+      "last_session": "2024-12-31",
+      "sessions_by_year": {
+        "2021": 250,
+        "2022": 249,
+        "2023": 249,
+        "2024": 250
+      },
+      "zero_volume_count": 0,
+      "weekend_dates": [],
+      "outside_range_count": 0,
+      "missing_vs_observed_index": null,
+      "extra_vs_observed_index": null,
+      "adjustment_status": "unknown",
+      "eligible_for_execution": false
+    },
+    {
+      "symbol": "HPG",
+      "asset_type": "equity",
+      "price_unit": "VND",
+      "rows": 998,
+      "first_session": "2021-01-04",
+      "last_session": "2024-12-31",
+      "sessions_by_year": {
+        "2021": 250,
+        "2022": 249,
+        "2023": 249,
+        "2024": 250
+      },
+      "zero_volume_count": 0,
+      "weekend_dates": [],
+      "outside_range_count": 0,
+      "missing_vs_observed_index": null,
+      "extra_vs_observed_index": null,
+      "adjustment_status": "unknown",
+      "eligible_for_execution": false
+    },
+    {
+      "symbol": "VCB",
+      "asset_type": "equity",
+      "price_unit": "VND",
+      "rows": 998,
+      "first_session": "2021-01-04",
+      "last_session": "2024-12-31",
+      "sessions_by_year": {
+        "2021": 250,
+        "2022": 249,
+        "2023": 249,
+        "2024": 250
+      },
+      "zero_volume_count": 0,
+      "weekend_dates": [],
+      "outside_range_count": 0,
+      "missing_vs_observed_index": null,
+      "extra_vs_observed_index": null,
+      "adjustment_status": "unknown",
+      "eligible_for_execution": false
+    }
+  ],
+  "normalized_equity_bars": 2994,
+  "captured_http_instruments": 4,
+  "normalized_instruments": 3,
+  "quarantined_index": {
+    "symbol": "VNINDEX",
+    "raw_rows": 998,
+    "ohlc_inconsistent_rows": 3,
+    "dates": [
+      "2021-02-17",
+      "2021-12-10",
+      "2023-05-15"
+    ],
+    "repaired_rows": 0,
+    "normalized_rows": 0
+  },
+  "source_evidence": [
+    {
+      "id": "upstream-market-docs",
+      "url": "https://www.vnstocks.com/docs/vnstock/thi-truong-market",
+      "status": "captured",
+      "sha256": "5bf9856742ca51adc67328765d2bed9b2ac1dc9a0d01ed61b21236afc55ef7cd"
+    },
+    {
+      "id": "vsdc-initial-2024-calendar",
+      "url": "https://vsdc.vn/vi/ad/159293",
+      "status": "failed",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+    },
+    {
+      "id": "vsdc-2022-settlement-change",
+      "url": "https://vsdc.vn/vi/ad/155750",
+      "status": "failed",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+    },
+    {
+      "id": "hnx-april-2024-calendar-amendment",
+      "url": "https://www.hnx.vn/vi-vn/chi-tiet-lich-nghi-gd-60018631.html?_page=1",
+      "status": "failed",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+    }
+  ],
+  "eligible_for_execution": false,
+  "historical_availability_validated": false,
+  "strategy_returns_computed": false,
+  "independent_gold": false
+}

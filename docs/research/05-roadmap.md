@@ -24,6 +24,10 @@ Ngày 02/11/2026 bổ sung `backtest-synthetic`: động cơ thực thi và lị
 Q0/Q1 trên kịch bản tự tạo, có ledger/replay. Đây mới là nền tảng M2;
 chưa đạt tiêu chí calendar/settlement/giá thật hoặc đủ năm baseline.
 Xem [mốc 33](33-synthetic-execution-engine.md).
+`market-snapshot` ở [mốc 34](34-market-price-snapshots.md) lưu phản hồi
+giá KBS 2021–2024 và kiểm chất lượng/replay; ba mã có 2.994 bar, VNINDEX
+bị chặn vì quan hệ OHLC. Chưa chuyển các bar vào thực thi hoặc coi lịch,
+adjustment và tính khả dụng là đã xác minh.
 
 ```mermaid
 flowchart LR

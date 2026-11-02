@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate','retrieval-study','table-evidence','ocr-preview','ocr-numeric-audit','ocr-cell-links','backtest-synthetic')]
+  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate','retrieval-study','table-evidence','ocr-preview','ocr-numeric-audit','ocr-cell-links','backtest-synthetic','market-snapshot')]
   [string]$Task = 'app',
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]]$TaskArgs
@@ -56,5 +56,6 @@ switch ($Task) {
   'ocr-numeric-audit' { & $pythonExe -X utf8 -m pit_haf.research.ocr_numeric @TaskArgs }
   'ocr-cell-links' { & $pythonExe -X utf8 -m pit_haf.research.ocr_cell_links @TaskArgs }
   'backtest-synthetic' { & $pythonExe -X utf8 -m pit_haf.backtest.runner @TaskArgs }
+  'market-snapshot' { & $pythonExe -X utf8 -m pit_haf.research.market_snapshot @TaskArgs }
 }
 exit $LASTEXITCODE

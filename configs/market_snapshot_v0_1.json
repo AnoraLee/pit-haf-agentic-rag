@@ -1,0 +1,11 @@
+{
+  "protocol": "market_price_snapshot_v0.1",
+  "start": "2021-01-01",
+  "end": "2024-12-31",
+  "instruments": [
+    {"symbol": "FPT", "asset_type": "equity"},
+    {"symbol": "HPG", "asset_type": "equity"},
+    {"symbol": "VCB", "asset_type": "equity"},
+    {"symbol": "VNINDEX", "asset_type": "index"}
+  ]
+}

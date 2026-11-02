@@ -8,7 +8,8 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
-[Backtest giả lập 02/11/2026](docs/research/33-synthetic-execution-engine.md) ·
+[Snapshot giá 2021–2024](docs/research/34-market-price-snapshots.md) ·
+[Backtest giả lập](docs/research/33-synthetic-execution-engine.md) ·
 [Phiếu đối chiếu OCR](docs/research/32-ocr-source-review.md) ·
 [Tiến độ 29/10/2026](docs/research/27-progress-20261029.md) ·
 [Hồ sơ nghiên cứu](docs/research/README.md) ·
@@ -209,9 +210,9 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **645 test** và lint.
-Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc backtest
-giả lập. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **682 test** và lint.
+Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc snapshot
+giá. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
 [offline-checks.yml](.github/workflows/offline-checks.yml).
 
@@ -351,6 +352,24 @@ hai baseline nghiên cứu. Runner chưa nhận giá thị trường, chưa xác
 lịch/điều chỉnh giá/quy tắc thực thi sàn hoặc chạy đủ năm baseline.
 Xem [quy tắc, kiểm chứng và giới hạn](docs/research/33-synthetic-execution-engine.md).
 
+### Snapshot giá thị trường
+
+```powershell
+.\run.ps1 market-snapshot --capture
+.\run.ps1 market-snapshot --replay outputs/market-snapshots/<run-id>
+```
+
+Capture cần Internet, mặc định bốn nguồn FPT/HPG/VCB/VNINDEX giai đoạn
+2021–2024. Lưu raw HTTP, normalized JSON, CSV, nguồn/hash và quality report
+ở `outputs/market-snapshots/`, ngoài Git. Replay không tải lại dữ liệu.
+Không cần Ollama hoặc cài thêm thư viện.
+
+Mốc đã lưu có **2.994 bar** của ba cổ phiếu. VNINDEX có ba hàng không thỏa
+quan hệ OHLC nên bị chặn chuẩn hóa, raw vẫn giữ. CLI trả exit 2 khi có
+nguồn lỗi chất lượng, kể cả khi replay khớp. Giá điều chỉnh, availability,
+lịch sở và quy tắc thực thi chưa được xác nhận; snapshot chưa chuyển sang
+engine hoặc tạo lợi suất. Xem [kết quả và giới hạn](docs/research/34-market-price-snapshots.md).
+
 ## 6. Xử lý lỗi thường gặp
 
 | Hiện tượng | Cách xử lý |
@@ -387,6 +406,9 @@ Xem [quy tắc, kiểm chứng và giới hạn](docs/research/33-synthetic-exec
   và ledger; chưa có backtest giá thật hoặc kết quả đủ 5 baseline. Phần
   graph/peer/memory và ablation đầy đủ còn theo lộ trình; chưa có kết quả
   dự báo lợi suất hoặc giao dịch thực nghiệm để công bố.
+- Có snapshot giá KBS 2021–2024 cho ba mã phát triển và raw VNINDEX bị
+  chặn chất lượng. Chưa xác minh điều chỉnh giá/phiên bản khả dụng, chưa
+  dùng các bar này làm cohort PiT strict hoặc dữ liệu thực thi.
 
 ## 8. Tài liệu và cấu trúc mã nguồn
 
