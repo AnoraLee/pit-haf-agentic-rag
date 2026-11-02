@@ -109,7 +109,7 @@ def windows(page, topic, boilerplate):
     return [(*key, candidates[key][1]) for key in ranked]
 
 
-def search_financial(catalog, query, *, scope, allowed_versions=None, page_loader=None):
+def search_financial(catalog, query, *, scope, allowed_versions=None, page_loader=None, page_policy=None):
     """Filter metadata/allowlist before loading text or computing per-document repeats.
 
     Returns a bounded source preview plus an evaluator-only ranking trace. It never
@@ -156,10 +156,20 @@ def search_financial(catalog, query, *, scope, allowed_versions=None, page_loade
     ranked = []
     expected_year = (scope.reporting_period or "")[:4]
     numeric_topics = {"income", "revenue", "assets", "cash"}
+    observations = {}
+    if page_policy:
+        trace["page_year_checks"] = []
     for page in rows:
         clean = " ".join(line for _, _, line in lines(page.text) if line not in repeated[page.version_id])
         score = score_text(clean, topic)
         observed_years = header_years(page.text)
+        if page_policy:
+            check = page_policy(page, expected_year, topic_name)
+            observations[(page.version_id, page.page)] = check
+            trace["page_year_checks"].append({"version_id": page.version_id, "page": page.page, **check})
+            if not check["eligible"]:
+                continue
+            observed_years = set(check["years"])
         if topic_name in numeric_topics and observed_years and expected_year and expected_year not in observed_years:
             continue
         if score <= 0:
@@ -171,7 +181,8 @@ def search_financial(catalog, query, *, scope, allowed_versions=None, page_loade
     ranked.sort(key=lambda item: (-item[0], item[1].version_id, item[1].page))
     trace["pages_scored"] = len(rows)
     trace["ranked_pages"] = [{"version_id": p.version_id, "page": p.page, "score": s,
-                              "observed_header_years": sorted(header_years(p.text))} for s, p in ranked[:12]]
+                              "observed_header_years": (observations[(p.version_id, p.page)]["years"] if page_policy else
+                                                        sorted(header_years(p.text)))} for s, p in ranked[:12]]
     candidates = []
     wanted_years = set(re.findall(r"\b(?:19|20)\d{2}\b", query)) | ({expected_year} if expected_year else set())
     for score, page in ranked[:8]:

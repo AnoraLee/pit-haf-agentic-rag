@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-02",
+  "software_tests_passed": 601,
+  "new_tests_passed": 27,
+  "targeted_tests_passed": 74,
+  "ruff": "passed",
+  "prettier": "passed",
+  "frontend_build": "passed",
+  "test_dependency_warnings": 2,
+  "bundler_directive_warnings": 2,
+  "new_native_ocr_calls": 0,
+  "new_llm_calls": 0,
+  "protected_artifact_count": 81,
+  "protected_artifacts_unchanged": true,
+  "real_review_database_created": false,
+  "real_review_revisions": 0,
+  "human_confirmed_cells": 0,
+  "independent_gold": false,
+  "semantic_accuracy": null,
+  "eligible_for_answer_context": false,
+  "strict_pit_eligibility_added": 0,
+  "ui": {
+    "browser": "Chrome",
+    "url": "http://localhost:8501/#analysis",
+    "reviewer_and_year_initially_blank": true,
+    "checkboxes_initially_unchecked": true,
+    "save_disabled_without_requirements": true,
+    "source_image_and_locator_visible": true,
+    "review_post_performed": false,
+    "console_errors": 0,
+    "screenshot": "outputs/ui-preview/ocr-review-form-mwg-20261102.jpg"
+  },
+  "limitations": [
+    "Local self-declaration without reviewer authentication or independent adjudication",
+    "Relative-year mapping requires manual calendar review and an annual period ending 31 December on the same page",
+    "Revision hashes are not tamper-proof against a database administrator rewriting the whole history",
+    "No cross-page context, answer-context integration, independent accuracy or backtest result"
+  ]
+}

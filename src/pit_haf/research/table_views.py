@@ -71,9 +71,13 @@ def detail(root, run_id):
     for i, name in enumerate(result["source_files"], 1):
         b = bundles[i - 1]
         source, table = b["source"], b["table"]
+        stops = sorted({d["stop_reason"] for d in table["header_diagnostics"] if d.get("stop_reason")})
+        if not table["cells"] and not stops:
+            stops = ["no_supported_annual_cells" if table["words"] else "no_word_text"]
         sources.append({"index": i, "page": table["page"], "version_id": source["version_id"],
                         "title": source["title"], "width": table["width"], "height": table["height"],
                         "content_hash": source["content_hash"], "extractor": table["extractor"],
+                        "extracted_cells": len(table["cells"]), "stop_reasons": stops,
                         "image_url": f"/api/research/table-evidence/{run_id}/pages/{i}/image",
                         "raw_url": f"/api/documents/{quote(source['version_id'], safe='')}/raw#page={table['page']}"})
         lookup = {c["cell_id"]: c for c in table["cells"]}
@@ -96,8 +100,23 @@ def detail(root, run_id):
         audit = {"policy_id": raw["policy_id"], "filtered_cells": len(raw["excluded"]),
                  "duplicate_groups": len(raw["duplicate_groups"]), "grouped_duplicate_cells": raw["grouped_duplicate_cells"],
                  "conflict_groups": len(raw["conflict_groups"]), "query_supported": raw["query_supported"]}
+    page_selection = None
+    if result.get("annual_page_policy_sha256"):
+        trace = json.loads((folder / "retrieval-trace.json").read_text(encoding="utf-8"))
+        checks = trace.get("page_year_checks", [])
+        page_selection = {"policy_id": trace["annual_page_policy"]["policy_id"],
+                          "requested_year": result["scope"]["reporting_period"], "pages_checked": len(checks),
+                          "wrong_period_pages": sum(p["reason"] == "header_period_mismatch" for p in checks),
+                          "missing_header_pages": sum(p["reason"] == "missing_year_header" for p in checks)}
+    document_selection = None
+    if result["scope"].get("version_id"):
+        document_selection = {"version_id": result["scope"]["version_id"],
+                              "title": sources[0]["title"] if sources else None,
+                              "reporting_period": result["scope"]["reporting_period"]}
     return {"run": {k: result[k] for k in ("run_id", "ticker", "question", "status", "mode", "profile_id", "llm_calls")},
-            "cells": cells, "sources": sources, "context_audit": audit, "replay": "passed", "human_reviewed_facts": 0,
+            "document_selection": document_selection,
+            "cells": cells, "sources": sources, "context_audit": audit, "page_selection": page_selection,
+            "replay": "passed", "human_reviewed_facts": 0,
             "semantic_accuracy": None, "historical_availability_validated": False,
             "missing_information": ((result.get("generation") or {}).get("output") or {}).get("missing_information", [])}
 

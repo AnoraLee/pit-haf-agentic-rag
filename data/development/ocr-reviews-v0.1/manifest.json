@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-02",
+  "kind": "read_only_development_not_gold",
+  "protocol": "ocr_cell_reviews_v0.1",
+  "study": {
+    "path": "outputs/ocr-review-development/20261102T135328Z-f23153f3",
+    "seal_sha256": "0dd4193a18cf1622e6460a5c0957f53d0fb27acc94c214e4c73e774a11c3bd0c",
+    "plan_sha256": "decee6709148d893f0822e5f28990f3bc667bf1b9938e4c4dd2221fe460625a1"
+  },
+  "cases": [
+    {
+      "body": "20261102T100603Z-536212bf",
+      "header": "20261102T101117Z-565444da",
+      "policy": "ocr_cell_links_v0.2",
+      "source_version": "d4886fc5337ce1d593ed8a3a09f4ae0c73a228d70bad66854dbbeca816d78acf",
+      "source_content_hash": "e98227cb400d043c1a0e95eaa2706b397fb61001c342713e27b49ad04c17fca7",
+      "cells": 19,
+      "can_open_confirmation_form": 13,
+      "missing_fields": {
+        "label": 6
+      },
+      "review_revisions": 0,
+      "human_confirmed": 0,
+      "semantic_accuracy": null
+    },
+    {
+      "body": "20261030T015504Z-6d5f47c2",
+      "header": "20261102T101123Z-fc4bf688",
+      "policy": "ocr_cell_links_v0.2",
+      "source_version": "d4886fc5337ce1d593ed8a3a09f4ae0c73a228d70bad66854dbbeca816d78acf",
+      "source_content_hash": "e98227cb400d043c1a0e95eaa2706b397fb61001c342713e27b49ad04c17fca7",
+      "cells": 24,
+      "can_open_confirmation_form": 0,
+      "missing_fields": {
+        "label": 6,
+        "numeric_value_not_dash": 1,
+        "statement_scope": 24,
+        "supported_year_basis": 24
+      },
+      "review_revisions": 0,
+      "human_confirmed": 0,
+      "semantic_accuracy": null
+    },
+    {
+      "body": "20261030T015504Z-6d5f47c2",
+      "header": null,
+      "policy": "ocr_cell_links_v0.1",
+      "source_version": "d4886fc5337ce1d593ed8a3a09f4ae0c73a228d70bad66854dbbeca816d78acf",
+      "source_content_hash": "e98227cb400d043c1a0e95eaa2706b397fb61001c342713e27b49ad04c17fca7",
+      "cells": 24,
+      "can_open_confirmation_form": 0,
+      "missing_fields": {
+        "numeric_value_not_dash": 1,
+        "period": 24,
+        "statement_scope": 24,
+        "supported_year_basis": 24
+      },
+      "review_revisions": 0,
+      "human_confirmed": 0,
+      "semantic_accuracy": null
+    }
+  ],
+  "review_store": "outputs/ocr-reviews/reviews.sqlite3",
+  "independent_gold": false
+}

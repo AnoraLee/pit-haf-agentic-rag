@@ -1,0 +1,192 @@
+{
+  "development_only": true,
+  "independent_gold": false,
+  "human_reviewed_facts": 0,
+  "semantic_accuracy": null,
+  "new_model_calls": 0,
+  "historical_availability_validated": false,
+  "checks": {
+    "software_tests_passed": 474,
+    "ruff": "passed",
+    "frontend_formatting": "passed",
+    "frontend_build": "passed",
+    "previous_raw_replays_passed": 44,
+    "new_raw_runs_replayed": 8,
+    "total_raw_replays_passed": 52,
+    "original_artifacts_unchanged": true,
+    "configs_unchanged_during_study": true,
+    "other_six_issuers_same_context_fields_as_v08": true
+  },
+  "runs": [
+    {
+      "ticker": "FPT",
+      "version_id": "0a8c4da3523844123fb636ff8c29bb099379cc8b7a2a3ca12ab66fb64f6d5d58",
+      "title": "FPT annual report 2024",
+      "baseline_run_id": "20261029T080737Z-9f70783b",
+      "run_id": "20261029T152632Z-dad65562",
+      "status": "abstained_no_table_context",
+      "context_cells": 0,
+      "extracted_cells": 0,
+      "llm_calls": 0,
+      "reparsed_pages": 213,
+      "source_pages": [],
+      "unit_binding_bases": [],
+      "replay": "passed",
+      "elapsed_seconds": 100.29,
+      "result_sha256": "6da5897f5992238c79f86e45c4028ed760d7267d779cf5e976fcb4729450eab4",
+      "integrity_sha256": "d07970775f03e5b52d1c2149ec2dbd8da9fbb35576c75b628ce44dc0fd2529ca"
+    },
+    {
+      "ticker": "FPT",
+      "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+      "title": "FPT bao cao thuong nien 2024 Vietnamese",
+      "baseline_run_id": "20261029T080853Z-9628ff81",
+      "run_id": "20261029T152809Z-d6a89a33",
+      "status": "extracted_unreviewed",
+      "context_cells": 4,
+      "extracted_cells": 36,
+      "llm_calls": 0,
+      "reparsed_pages": 213,
+      "source_pages": [
+        50,
+        151
+      ],
+      "unit_binding_bases": [
+        "aligned_year_column"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 109.06,
+      "result_sha256": "07aed86031a4f4d5def2ba8db7efa7545c4a7a89b2c9fde8433baad58a8a1f7c",
+      "integrity_sha256": "9cf1bc11502249f3a70de29fc6afcf0eddad52c5fddece925cf70a7e91cce3e5"
+    },
+    {
+      "ticker": "HPG",
+      "version_id": null,
+      "run_id": "20261029T152926Z-13228ced",
+      "status": "extracted_unreviewed",
+      "context_cells": 7,
+      "extracted_cells": 78,
+      "llm_calls": 0,
+      "reparsed_pages": 263,
+      "source_pages": [
+        12
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 64.25,
+      "result_sha256": "7bb8d7c590ef263b5cbbdc43b7cdad5a8539bb1bf890465bf02f06443363a5fd",
+      "integrity_sha256": "4cbac90955d5aff599df42f7aa4b261c638305d8b154c7cfa0de0e2a08143880",
+      "same_context_labels_values_units_scopes_as_v08": true
+    },
+    {
+      "ticker": "VCB",
+      "version_id": null,
+      "run_id": "20261029T153020Z-10f69baa",
+      "status": "extracted_unreviewed",
+      "context_cells": 5,
+      "extracted_cells": 90,
+      "llm_calls": 0,
+      "reparsed_pages": 106,
+      "source_pages": [
+        67,
+        16
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 56.62,
+      "result_sha256": "59bd7b224e4dd2ea698676e9a97f2b444a8938df7cd7c3e5c48e66d266e03fc4",
+      "integrity_sha256": "e92b81c7e9b9ceb66bea4836325fb1da4168236f8e41a8486f4c8f618e199d83",
+      "same_context_labels_values_units_scopes_as_v08": true
+    },
+    {
+      "ticker": "ACB",
+      "version_id": null,
+      "run_id": "20261029T153132Z-c1fbb3df",
+      "status": "extracted_unreviewed",
+      "context_cells": 2,
+      "extracted_cells": 64,
+      "llm_calls": 0,
+      "reparsed_pages": 142,
+      "source_pages": [
+        64
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 68.42,
+      "result_sha256": "72fd0df99fcc327d79ef3355c31ae43b89895f29c22b72cda14bcc6a8468c19f",
+      "integrity_sha256": "59e174e601d898b6d83f420a7896d986e5082331c7572127f4ce6cb6972f1dd8",
+      "same_context_labels_values_units_scopes_as_v08": true
+    },
+    {
+      "ticker": "BID",
+      "version_id": null,
+      "run_id": "20261029T153243Z-943d6c42",
+      "status": "extracted_unreviewed",
+      "context_cells": 4,
+      "extracted_cells": 110,
+      "llm_calls": 0,
+      "reparsed_pages": 91,
+      "source_pages": [
+        76,
+        80
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 81.96,
+      "result_sha256": "551f73ff93ee15b190a056ec09c59fab114c234a8f0f11195e593c3ea53b78a3",
+      "integrity_sha256": "037453ca1c79721b66c23c0c5addb0458800bd3072d55c3a3ccea951f0d77685",
+      "same_context_labels_values_units_scopes_as_v08": true
+    },
+    {
+      "ticker": "MWG",
+      "version_id": null,
+      "run_id": "20261029T153301Z-2f36e523",
+      "status": "abstained_no_table_context",
+      "context_cells": 0,
+      "extracted_cells": 0,
+      "llm_calls": 0,
+      "reparsed_pages": 96,
+      "source_pages": [],
+      "unit_binding_bases": [],
+      "replay": "passed",
+      "elapsed_seconds": 4.43,
+      "result_sha256": "d0b9cc282755945008a50e7aa3d515a801edb3c3dc6e4f974543eb8b64684d1b",
+      "integrity_sha256": "3dd20521c87eaa819a51b94e8e58ee2a371fda53016af59c131d92ac5bbb4a8b",
+      "same_context_labels_values_units_scopes_as_v08": true
+    },
+    {
+      "ticker": "VNM",
+      "version_id": null,
+      "run_id": "20261029T153338Z-8f78b9cd",
+      "status": "extracted_unreviewed",
+      "context_cells": 4,
+      "extracted_cells": 50,
+      "llm_calls": 0,
+      "reparsed_pages": 96,
+      "source_pages": [
+        92
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 39.19,
+      "result_sha256": "e96c260a2bee2a365baa71bb4b2f006682dc7f85d4b57c889ef65dd3f571865c",
+      "integrity_sha256": "9964fc9b55a98a3ecafb116e7302958abefa6dc6cc0d72966b7ace89dd64e90c",
+      "same_context_labels_values_units_scopes_as_v08": true
+    }
+  ],
+  "limitations": [
+    "FPT Vietnamese has four unreviewed profit candidates, not a verified answer or independent gold.",
+    "English retrieval still finds no selected page; MWG still needs OCR.",
+    "Replays and tests do not measure semantic accuracy or historical availability."
+  ]
+}

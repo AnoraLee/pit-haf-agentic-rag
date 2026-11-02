@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-02",
+  "kind": "development_not_gold",
+  "policy_id": "ocr_cell_links_v0.2",
+  "ocr_profile_id": "pdf_ocr_sparse_v0.3",
+  "studies": {
+    "sparse": {
+      "path": "outputs/ocr-sparse-development/20261102T100600Z-a0b46ce3",
+      "seal_sha256": "24b28943f62d963af996783293be14268364a8b91d6b83cd818b9d651fdd232d",
+      "plan_sha256": "bd7132a01c2269922e33616f72aaf82c95445aa6b4a8423d856bd742823a255f"
+    },
+    "headers": {
+      "path": "outputs/ocr-header-development/20261102T101114Z-260a2263",
+      "seal_sha256": "8a6430f1ff795d1e96954af50a747aaac51b10984c2b671611eb9a47402b1bf0",
+      "plan_sha256": "2ebae85f7e8527b0833c415119bc1eccbac830299b18f2590a71a69da820ab94"
+    },
+    "links": {
+      "path": "outputs/ocr-spatial-development/20261102T102708Z-bf83edf9",
+      "seal_sha256": "8c2e19105db4bb397ec984978f8fad3696f7f44085fc6cb060ad8579e15455c0",
+      "plan_sha256": "1942cbfbd327eef38a19ee0d2b91ca2ac21ed93428f27619cad315a494a32374"
+    }
+  },
+  "configuration_hashes": {
+    "src/pit_haf/data/ocr_cells_v02.py": "76688d8e50014f7dd89078e55e13c30bb66debb8567f6ed378099783cf9c8401",
+    "src/pit_haf/research/ocr_cell_links.py": "d97bcf93c111d6eb2ff27914b1ea5dbc4f2a1cfec5846848c5a43a6a6941e7e1",
+    "configs/ocr_cell_links_v0_2.json": "30f515cd8173d48b95dc7ed96361a5e72e83904e959ae66b0e0f2fe40a6d5888"
+  },
+  "ocr_runs": [
+    {
+      "page": 93,
+      "run_id": "20261102T100603Z-536212bf",
+      "status": "ocr_unreviewed",
+      "pages": [
+        {
+          "page": 93,
+          "folder": "page-0093",
+          "status": "ocr_unreviewed",
+          "word_count": 150,
+          "low_confidence_words": 9
+        }
+      ]
+    },
+    {
+      "page": 94,
+      "run_id": "20261102T100612Z-960dcd83",
+      "status": "ocr_unreviewed",
+      "pages": [
+        {
+          "page": 94,
+          "folder": "page-0094",
+          "status": "ocr_unreviewed",
+          "word_count": 181,
+          "low_confidence_words": 39
+        }
+      ]
+    },
+    {
+      "page": 93,
+      "run_id": "20261102T101117Z-565444da",
+      "status": "ocr_unreviewed",
+      "pages": [
+        {
+          "page": 93,
+          "folder": "page-0093",
+          "status": "ocr_unreviewed",
+          "word_count": 6,
+          "low_confidence_words": 0
+        }
+      ]
+    },
+    {
+      "page": 94,
+      "run_id": "20261102T101123Z-fc4bf688",
+      "status": "ocr_unreviewed",
+      "pages": [
+        {
+          "page": 94,
+          "folder": "page-0094",
+          "status": "ocr_unreviewed",
+          "word_count": 6,
+          "low_confidence_words": 0
+        }
+      ]
+    }
+  ],
+  "link_cases": [
+    {
+      "body": "20261102T100603Z-536212bf",
+      "policy": "ocr_cell_links_v0.2",
+      "header": null,
+      "snapshot_path": "outputs/ocr-cell-links/20261102T102712Z-5b111418",
+      "snapshot_seal_sha256": "b87bc73c036dd9079239972e5c71f176e8dac3014a3945ee593f955675d08d60",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 93,
+          "cells": 19,
+          "fields": {
+            "label": 13,
+            "value": 19,
+            "period": 0,
+            "unit": 19,
+            "statement_scope": 19,
+            "statement_period": 19
+          },
+          "wrapped_labels": 7,
+          "low_confidence_candidates": 4,
+          "resolved_years": 0
+        }
+      ]
+    },
+    {
+      "body": "20261102T100603Z-536212bf",
+      "policy": "ocr_cell_links_v0.2",
+      "header": "20261102T101117Z-565444da",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T102717Z-f2d5a41f",
+      "snapshot_seal_sha256": "12b3e39a36c9f7a34ddd71a5a3cd76c79ea7e51fa933ac8905653153216735f6",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 93,
+          "cells": 19,
+          "fields": {
+            "label": 13,
+            "value": 19,
+            "period": 19,
+            "unit": 19,
+            "statement_scope": 19,
+            "statement_period": 19
+          },
+          "wrapped_labels": 7,
+          "low_confidence_candidates": 4,
+          "resolved_years": 0
+        }
+      ]
+    },
+    {
+      "body": "20261030T015504Z-6d5f47c2",
+      "policy": "ocr_cell_links_v0.1",
+      "header": null,
+      "snapshot_path": "outputs/ocr-cell-links/20261102T102722Z-30308ba8",
+      "snapshot_seal_sha256": "790f125ebed3e86573af1246d701197568eaf8273b184258c77b6dc177c0391a",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 94,
+          "cells": 24,
+          "fields": {
+            "label": 24,
+            "value": 24,
+            "period": 0,
+            "unit": 24,
+            "statement_scope": 0,
+            "statement_period": 0
+          },
+          "wrapped_labels": 0,
+          "low_confidence_candidates": 13,
+          "resolved_years": 0
+        }
+      ]
+    },
+    {
+      "body": "20261030T015504Z-6d5f47c2",
+      "policy": "ocr_cell_links_v0.2",
+      "header": null,
+      "snapshot_path": "outputs/ocr-cell-links/20261102T102726Z-98e4707e",
+      "snapshot_seal_sha256": "8ee4e5bc925065c24a4373724d6e0cfe147440dc2b602a670ece9f62412ed259",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 94,
+          "cells": 24,
+          "fields": {
+            "label": 18,
+            "value": 24,
+            "period": 0,
+            "unit": 24,
+            "statement_scope": 0,
+            "statement_period": 0
+          },
+          "wrapped_labels": 4,
+          "low_confidence_candidates": 7,
+          "resolved_years": 0
+        }
+      ]
+    },
+    {
+      "body": "20261030T015504Z-6d5f47c2",
+      "policy": "ocr_cell_links_v0.2",
+      "header": "20261102T101123Z-fc4bf688",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T102730Z-84816459",
+      "snapshot_seal_sha256": "e30c857a02831f809a245381cadb4917f92b25af015c48c329739e532697c89e",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 94,
+          "cells": 24,
+          "fields": {
+            "label": 18,
+            "value": 24,
+            "period": 24,
+            "unit": 24,
+            "statement_scope": 0,
+            "statement_period": 0
+          },
+          "wrapped_labels": 4,
+          "low_confidence_candidates": 7,
+          "resolved_years": 0
+        }
+      ]
+    },
+    {
+      "body": "20261102T100612Z-960dcd83",
+      "policy": "ocr_cell_links_v0.2",
+      "header": "20261102T101123Z-fc4bf688",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T102736Z-f4b43978",
+      "snapshot_seal_sha256": "d796f413c70cf4d56dc3736e937eb2af79926915ae61ec1746a281f210a5606e",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 94,
+          "cells": 13,
+          "fields": {
+            "label": 10,
+            "value": 13,
+            "period": 13,
+            "unit": 13,
+            "statement_scope": 0,
+            "statement_period": 0
+          },
+          "wrapped_labels": 8,
+          "low_confidence_candidates": 4,
+          "resolved_years": 0
+        }
+      ]
+    }
+  ],
+  "legacy_replays": [
+    {
+      "path": "outputs/ocr-cell-links/20261102T093936Z-119fc4ae",
+      "status": "passed"
+    },
+    {
+      "path": "outputs/ocr-cell-links/20261102T093938Z-6da59bc5",
+      "status": "passed"
+    },
+    {
+      "path": "outputs/ocr-cell-links/20261102T093942Z-e9da4e71",
+      "status": "passed"
+    },
+    {
+      "path": "outputs/ocr-cell-links/20261102T093944Z-6e037216",
+      "status": "passed"
+    }
+  ],
+  "numeric_diagnostic": {
+    "path": "outputs/ocr-numeric-audits/20261102T102500Z-2419bb38",
+    "seal_sha256": "811600584e68193a3c3e5186677cecdf408fa27a9988a01399612462c2263c17",
+    "reference_provenance": "assistant_visual_transcription",
+    "references_sha256": "44f5720ee7a1017fd9530cf21026fa2ca7ad2c74a49452b80a22c5bd187959eb",
+    "comparisons": [
+      {
+        "run_id": "20261030T015504Z-6d5f47c2",
+        "cells_checked": 24,
+        "literal_matches": 24,
+        "whitespace_only_matches": 24
+      },
+      {
+        "run_id": "20261102T100612Z-960dcd83",
+        "cells_checked": 24,
+        "literal_matches": 13,
+        "whitespace_only_matches": 16
+      }
+    ]
+  },
+  "reference_answers_used_by_linker": false,
+  "independent_gold": false,
+  "human_confirmed": false,
+  "selection": "Development inspection and sparse results preceded header-strip selection; not held out.",
+  "ui_verification_path": "outputs/ocr-spatial-development/ui-verification-20261102.json",
+  "ui_verification_sha256": "feb3b22455e736cb439387685774bfeaa18c1a52fb11160e1174f90bff8bea19"
+}

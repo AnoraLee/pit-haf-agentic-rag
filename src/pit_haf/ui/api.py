@@ -7,7 +7,7 @@ import threading
 from dataclasses import asdict
 from datetime import date, datetime
 from pathlib import Path
-from typing import Literal
+from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
 from fastapi import FastAPI, HTTPException, Query, Request
@@ -25,6 +25,14 @@ from pit_haf.data.snapshots import SnapshotStore
 from pit_haf.data.vnstock_provider import MarketDataError, VietnamMarketDataProvider
 from pit_haf.llm.ollama import http_request, sha256
 from pit_haf.research.evaluation import evaluate_batch
+from pit_haf.research.ocr_cell_links import detail as ocr_cell_detail
+from pit_haf.research.ocr_preview import detail as ocr_detail
+from pit_haf.research.ocr_preview import history as ocr_history
+from pit_haf.research.ocr_preview import page_image as ocr_page_image
+from pit_haf.research.ocr_preview import run as run_ocr_preview
+from pit_haf.research.ocr_reviews import OcrReviewInput
+from pit_haf.research.ocr_reviews import save as save_ocr_review
+from pit_haf.research.ocr_reviews import state as ocr_review_state
 from pit_haf.research.reports import protocol, report_history, run_report, saved_report
 from pit_haf.research.reviews import (
     ReviewConflict,
@@ -36,6 +44,7 @@ from pit_haf.research.reviews import (
     save_review,
 )
 from pit_haf.research.source_audit import load_source_audit
+from pit_haf.research.table_documents import document_options
 from pit_haf.research.table_evidence import run as run_table_evidence
 from pit_haf.research.table_reviews import TableReviewInput
 from pit_haf.research.table_reviews import save as save_table_review
@@ -89,8 +98,18 @@ class CompanyReportRequest(SearchRequest):
 class TableEvidenceRequest(SearchRequest):
     ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
     reporting_period: str | None = Field(default=None, pattern=r"^(?:19|20)\d{2}$")
-    profile_id: Literal["table_cells_v0.4", "table_cells_v0.5", "table_cells_v0.6", "table_cells_v0.7"] = "table_cells_v0.6"
+    profile_id: Literal["table_cells_v0.4", "table_cells_v0.5", "table_cells_v0.6", "table_cells_v0.7", "table_cells_v0.8", "table_cells_v0.9"] = "table_cells_v0.6"
     use_model: bool = False
+    document_version_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
+
+
+class OcrPreviewRequest(SearchRequest):
+    ticker: str = Field(pattern=r"^[A-Z0-9]{2,12}$")
+    document_version_id: str = Field(pattern=r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
+    reporting_period: str | None = Field(default=None, pattern=r"^(?:19|20)\d{2}$")
+    pages: list[Annotated[int, Field(strict=True, ge=1, le=10000)]] = Field(min_length=1, max_length=4)
+    profile_id: Literal["pdf_ocr_preview_v0.1", "pdf_ocr_region_v0.2", "pdf_ocr_sparse_v0.3"] = "pdf_ocr_preview_v0.1"
+    region: list[Annotated[float, Field(strict=True, ge=0, le=1)]] | None = Field(default=None, min_length=4, max_length=4)
 
 
 def create_app(root: Path | None = None) -> FastAPI:
@@ -415,6 +434,103 @@ def create_app(root: Path | None = None) -> FastAPI:
     def table_runs(ticker: str | None = Query(default=None, pattern=r"^[A-Z0-9]{2,12}$")):
         return {"runs": table_history(root, ticker)}
 
+    @app.get("/api/research/ocr-previews")
+    def ocr_runs(version_id: str | None = Query(default=None, pattern=r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")):
+        return {"runs": ocr_history(root, version_id)}
+
+    @app.post("/api/research/ocr-previews")
+    def create_ocr_run(body: OcrPreviewRequest):
+        if not model_lock.acquire(blocking=False):
+            raise HTTPException(409, "Một tác vụ phân tích đang chạy. Hãy đợi hoàn tất.")
+        try:
+            _, result = run_ocr_preview(root, query=body.query, ticker=body.ticker, version_id=body.document_version_id,
+                                       pages=body.pages, reporting_period=body.reporting_period, mode=body.mode,
+                                       decision_at=body.decision_at.isoformat() if body.decision_at else None,
+                                       profile_id=body.profile_id, region=body.region)
+            return ocr_detail(root, result["run_id"])
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không tạo được bản xem OCR: " + str(exc)) from exc
+        finally:
+            model_lock.release()
+
+    @app.get("/api/research/ocr-previews/{run_id}")
+    def saved_ocr_run(run_id: str):
+        try:
+            return ocr_detail(root, run_id)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, "Không tìm thấy lượt OCR.") from exc
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không mở được bản OCR toàn vẹn: " + str(exc)) from exc
+
+    @app.get("/api/research/ocr-previews/{run_id}/pages/{number}/image")
+    def ocr_image(run_id: str, number: int):
+        try:
+            return Response(ocr_page_image(root, run_id, number), media_type="image/png")
+        except (FileNotFoundError, KeyError) as exc:
+            raise HTTPException(404, "Không tìm thấy ảnh trang OCR.") from exc
+        except (OSError, ValueError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Ảnh OCR không qua kiểm tra nguồn: " + str(exc)) from exc
+
+    @app.get("/api/research/ocr-previews/{run_id}/cell-links")
+    def ocr_cells(run_id: str, policy_id: Literal["ocr_cell_links_v0.1", "ocr_cell_links_v0.2"] = "ocr_cell_links_v0.1",
+                  header_run_id: str | None = Query(default=None, pattern=r"^\d{8}T\d{6}Z-[0-9a-f]{8}$")):
+        try:
+            return ocr_cell_detail(root, run_id, policy_id, header_run_id)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, "Không tìm thấy lượt OCR hoặc cấu hình liên kết ô.") from exc
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không đối chiếu được ô OCR với nguồn: " + str(exc)) from exc
+
+    def ocr_review_view(run_id, policy_id, header_run_id):
+        try:
+            return ocr_cell_detail(root, run_id, policy_id, header_run_id)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, "Không tìm thấy nguồn OCR để đối chiếu.") from exc
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Nguồn OCR không còn toàn vẹn: " + str(exc)) from exc
+
+    @app.get("/api/research/ocr-previews/{run_id}/cell-links/reviews")
+    def ocr_reviews(run_id: str, policy_id: Literal["ocr_cell_links_v0.1", "ocr_cell_links_v0.2"] = "ocr_cell_links_v0.1",
+                    header_run_id: str | None = Query(default=None, pattern=r"^\d{8}T\d{6}Z-[0-9a-f]{8}$")):
+        view = ocr_review_view(run_id, policy_id, header_run_id)
+        try:
+            return ocr_review_state(root, view)
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không mở được lịch sử đối chiếu OCR: " + str(exc)) from exc
+
+    @app.post("/api/research/ocr-previews/{run_id}/cell-links/reviews")
+    def ocr_review(run_id: str, body: OcrReviewInput):
+        if run_id != body.run_id:
+            raise HTTPException(422, "Mã lượt OCR trong đường dẫn và phiếu không khớp.")
+        view = ocr_review_view(run_id, body.policy_id, body.header_run_id)
+        try:
+            return save_ocr_review(root, view, body)
+        except ReviewConflict as exc:
+            raise HTTPException(409, "Nguồn hoặc phiếu đã thay đổi; mở lại phiếu trước khi lưu: " + str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(422, "Chưa lưu phiếu OCR: " + str(exc)) from exc
+        except (OSError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không lưu được phiếu OCR: " + str(exc)) from exc
+
+    @app.get("/api/research/ocr-previews/{run_id}/cell-links/reviews/export")
+    def ocr_review_export(run_id: str, policy_id: Literal["ocr_cell_links_v0.1", "ocr_cell_links_v0.2"] = "ocr_cell_links_v0.1",
+                          header_run_id: str | None = Query(default=None, pattern=r"^\d{8}T\d{6}Z-[0-9a-f]{8}$")):
+        data = ocr_reviews(run_id, policy_id, header_run_id)
+        return JSONResponse(data, headers={"Content-Disposition": f'attachment; filename="ocr-reviews-{run_id}.json"',
+                                           "Cache-Control": "no-store"})
+
+    @app.post("/api/research/table-evidence/documents")
+    def table_document_options(body: TableEvidenceRequest):
+        catalog = disk_catalog()
+        if catalog is None:
+            raise HTTPException(503, "Cần khôi phục disk catalog để xem tài liệu trước khi đọc bảng.")
+        try:
+            return document_options(catalog, query=body.query, ticker=body.ticker,
+                                    reporting_period=body.reporting_period, profile_id=body.profile_id,
+                                    mode=body.mode, decision_at=body.decision_at.isoformat() if body.decision_at else None)
+        except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
+            raise HTTPException(503, "Không xem được tài liệu phù hợp: " + str(exc)) from exc
+
     @app.post("/api/research/table-evidence")
     def create_table_run(body: TableEvidenceRequest):
         if not model_lock.acquire(blocking=False):
@@ -423,7 +539,7 @@ def create_app(root: Path | None = None) -> FastAPI:
             _, result = run_table_evidence(root, query=body.query, ticker=body.ticker, mode=body.mode,
                                           decision_at=body.decision_at.isoformat() if body.decision_at else None,
                                           reporting_period=body.reporting_period, use_model=body.use_model,
-                                          profile_id=body.profile_id)
+                                          profile_id=body.profile_id, version_id=body.document_version_id)
             if result["status"] == "failed":
                 raise HTTPException(503, f"Không hoàn tất đọc bảng. Lượt lỗi đã lưu: {result['run_id']}.")
             return reviewed_table_detail(result["run_id"])

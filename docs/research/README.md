@@ -31,6 +31,15 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [21 — Chọn và gộp ô theo chỉ tiêu](21-cell-relevance-and-grouping.md) | Lọc cụm chỉ tiêu, gộp bảo thủ có giữ nguồn, chặn số mâu thuẫn và mười lượt phát triển v0.6 |
 | [22 — Duyệt từng vị trí ô bảng](22-table-location-reviews.md) | Xác nhận năm phần bằng chứng, lịch sử revision, phát hiện lưu cũ và export; chưa có nhãn thật |
 | [23 — Lớp chữ PDF thay thế](23-alternate-pdf-text.md) | Truy xuất từ lớp chữ đọc lại, ACB có ứng viên mới nhưng VCB hồi quy/FPT vượt ngân sách; chưa đổi mặc định |
+| [24 — Chọn trang theo cột năm](24-annual-table-page-gate.md) | Nhận diện cột ngày lặp, chặn trang thiếu/sai năm, phục hồi ứng viên VCB và hiển thị đơn vị từng dòng |
+| [25 — Chọn tài liệu trước khi đọc bảng](25-table-document-scope.md) | Xem metadata/ngân sách, ghim một version trong phạm vi doanh nghiệp/kỳ/PiT, hai lượt FPT và lý do dừng có link PDF |
+| [26 — Đơn vị tiền tệ theo cột năm](26-table-currency-units.md) | Parser v0.9 giữ locator VND của từng cột, chặn đơn vị thiếu/mâu thuẫn và so sánh trên cohort phát triển |
+| [27 — Tiến độ 29/10/2026](27-progress-20261029.md) | Phần sử dụng được, bằng chứng còn thiếu và thứ tự từ cohort/OCR đến backtest, Full PiT-HAF và khóa luận |
+| [28 — OCR local có locator](28-local-ocr-preview.md) | Tùy chọn Tesseract vie/eng, worker có giới hạn, xem từng từ trên PDF, lưu lỗi và replay OCR bốn trang MWG |
+| [29 — OCR vùng và đối chiếu chuỗi số](29-ocr-region-numeric-diagnostic.md) | Chọn vùng một trang, khôi phục tọa độ toàn trang, so sánh 24 chuỗi do trợ lý chép; chưa là nhãn độc lập |
+| [30 — Ô OCR và ngữ cảnh nguồn](30-ocr-cell-context.md) | Liên kết số/nhãn/đơn vị, chặn năm điều hướng và số bị tách, hiển thị trường thiếu và hộp từ để đối chiếu |
+| [31 — Tiêu đề OCR và nhãn nhiều dòng](31-ocr-header-spatial-links.md) | Ghép nguồn tiêu đề cùng trang, giữ số từ thân bảng, đọc kỳ tài chính/phạm vi và kiểm nhãn xuống dòng; chưa xác nhận facts |
+| [32 — Phiếu đối chiếu OCR](32-ocr-source-review.md) | Bản chép có lý do sửa, năm tự nhập theo nguồn, điều kiện xác nhận, revision/conflict và export; chưa là nhãn độc lập |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

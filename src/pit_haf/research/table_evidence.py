@@ -10,25 +10,38 @@ from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from pit_haf.data.evidence import EvidenceVersion
 from pit_haf.data.financial_sections import contains, load_profile, normalized, topic_for
 from pit_haf.data.hub import file_sha
 from pit_haf.data.pdf_tables import EXTRACTOR, extract_page, replay_page
 from pit_haf.data.pdf_tables_v05 import EXTRACTOR as EXTRACTOR_V05
 from pit_haf.data.pdf_tables_v05 import extract_page as extract_page_v05
 from pit_haf.data.pdf_tables_v05 import replay_page as replay_page_v05
+from pit_haf.data.pdf_tables_v09 import EXTRACTOR as EXTRACTOR_V09
+from pit_haf.data.pdf_tables_v09 import POLICY as UNIT_POLICY
+from pit_haf.data.pdf_tables_v09 import extract_page as extract_page_v09
+from pit_haf.data.pdf_tables_v09 import load_policy as load_unit_policy
+from pit_haf.data.pdf_tables_v09 import replay_page as replay_page_v09
 from pit_haf.data.pdf_text import PROFILE as TEXT_PROFILE
 from pit_haf.data.pdf_text import replay_selected_text
-from pit_haf.data.retrieval_scope import resolve_scope
+from pit_haf.data.retrieval_scope import DocumentReportScope
 from pit_haf.data.snapshots import SnapshotStore, canonical
+from pit_haf.data.table_page_policy import POLICY as PAGE_POLICY
+from pit_haf.data.table_page_policy import verify_selected as verify_annual_pages
 from pit_haf.llm.ollama import OllamaAdapter, OllamaConfig, sha256, write_json
 from pit_haf.research.doctor import capture_repository
 from pit_haf.research.reports import retrieve, select_context
 from pit_haf.research.table_context import POLICY as CONTEXT_POLICY
 from pit_haf.research.table_context import build_context, load_policy
+from pit_haf.research.table_documents import annual_scope, document_options
 
 PROFILE = "configs/table_evidence_v0_4.json"
 PROFILES = {"table_cells_v0.4": PROFILE, "table_cells_v0.5": "configs/table_evidence_v0_5.json",
-            "table_cells_v0.6": "configs/table_evidence_v0_6.json", "table_cells_v0.7": "configs/table_evidence_v0_7.json"}
+            "table_cells_v0.6": "configs/table_evidence_v0_6.json", "table_cells_v0.7": "configs/table_evidence_v0_7.json",
+            "table_cells_v0.8": "configs/table_evidence_v0_8.json", "table_cells_v0.9": "configs/table_evidence_v0_9.json"}
+CONTEXT_PROFILES = {f"table_cells_v0.{n}" for n in range(6, 10)}
+TEXT_PROFILES = {f"table_cells_v0.{n}" for n in range(7, 10)}
+ANNUAL_PROFILES = {"table_cells_v0.8", "table_cells_v0.9"}
 SELECTOR = "configs/table_selector_v0_4_1.json"
 BUDGET = {"max_pdf_pages": 3, "max_model_cells": 18, "max_model_context_characters": 9000,
           "max_llm_calls": 1, "max_retries": 0, "num_ctx": 4096, "num_predict": 512}
@@ -52,16 +65,21 @@ def settings(root, profile_id="table_cells_v0.4"):
     if profile_id not in PROFILES:
         raise ValueError("Unknown table evidence profile")
     value = json.loads((root / PROFILES[profile_id]).read_text(encoding="utf-8"))
-    expected_extractor = EXTRACTOR if profile_id == "table_cells_v0.4" else EXTRACTOR_V05
+    expected_extractor = {"table_cells_v0.4": EXTRACTOR, "table_cells_v0.9": EXTRACTOR_V09}.get(profile_id, EXTRACTOR_V05)
     if (value["profile_id"] != profile_id or value["status"] != "development_not_frozen" or
             value["extractor"] != expected_extractor or not value["annual_columns_only"] or
             not value["human_review_required"] or any(value.get(k) != v for k, v in BUDGET.items())):
         raise ValueError("Untested table evidence profile/budget")
+    if profile_id == "table_cells_v0.9":
+        if (value.get("unit_policy") != load_unit_policy(root)["policy_id"] or
+                value.get("retrieval_profile") != "financial_pdf_text_v0.8" or
+                value.get("page_policy") != "annual_table_pages_v0.8"):
+            raise ValueError("Untested currency unit retrieval/policy")
     return value
 
 
 def run_context(root, bundles, *, query, year, profile_id):
-    if profile_id in {"table_cells_v0.6", "table_cells_v0.7"}:
+    if profile_id in CONTEXT_PROFILES:
         return build_context(bundles, query=query, year=year, policy=load_policy(root),
                              max_cells=BUDGET["max_model_cells"], max_characters=BUDGET["max_model_context_characters"])
     return context_cells(bundles, query=query, year=year, retrieval_profile=load_profile(root)), None
@@ -179,20 +197,16 @@ def verify_contextual_selection(draft, context, stable):
 
 
 def run(root, *, query, ticker, mode="exploratory_current", decision_at=None, reporting_period=None,
-        use_model=False, adapter=None, profile_id="table_cells_v0.4"):
+        use_model=False, adapter=None, profile_id="table_cells_v0.4", version_id=None):
     if not re.fullmatch(r"[A-Z0-9]{2,12}", ticker) or not 2 <= len(query) <= 300:
         raise ValueError("Invalid ticker/question")
     profile = settings(root, profile_id)
-    extractor = extract_page if profile_id == "table_cells_v0.4" else extract_page_v05
+    extractor = {"table_cells_v0.4": extract_page, "table_cells_v0.9": extract_page_v09}.get(profile_id, extract_page_v05)
     selector = json.loads((root / SELECTOR).read_text(encoding="utf-8"))
     if (selector["selector_id"] != "short_cell_refs_v0.4.1" or
             selector["status"] != "development_not_frozen" or selector["schema"] != "ShortCellSelection"):
         raise ValueError("Unknown/unfrozen table selector required")
-    scope = resolve_scope(query, ticker, reporting_period=reporting_period,
-                          source_policy="issuer_reports", statement_scope="all")
-    if (not re.fullmatch(r"(?:19|20)\d{2}", scope.reporting_period or "") or
-            re.search(r"\b(?:quy\s*(?:iv|iii|ii|i|[1-4])|q[1-4]|quarter\s*[1-4])\b", normalized(query))):
-        raise ValueError("Table v0.4 requires an explicit annual period YYYY; quarter columns are unsupported")
+    scope = annual_scope(query, ticker, reporting_period=reporting_period, version_id=version_id)
     trace = {}
     retrieval_profile = profile.get("retrieval_profile", "financial_sections_v0.3")
     data, hits, allowed, audit = retrieve(root, query, ticker, mode, decision_at, scope=scope,
@@ -224,12 +238,16 @@ def run(root, *, query, ticker, mode="exploratory_current", decision_at=None, re
     write_json(folder / "retrieval-trace.json", trace)
     bundles = []
     try:
-        if profile_id == "table_cells_v0.7":
+        if profile_id in TEXT_PROFILES:
             keys = {(p["source"]["version_id"], p["passage"]["page"]) for p in passages}
             write_json(folder / "selected-text-pages.json", [p.model_dump(mode="json") for p in data.pages
                                                             if (p.version_id, p.page) in keys])
             result.update(alternate_text_profile_sha256=file_sha(root / TEXT_PROFILE),
                           selected_text_pages_sha256=file_sha(folder / "selected-text-pages.json"))
+            if profile_id in ANNUAL_PROFILES:
+                result["annual_page_policy_sha256"] = file_sha(root / PAGE_POLICY)
+            if profile_id == "table_cells_v0.9":
+                result["unit_policy_sha256"] = file_sha(root / UNIT_POLICY)
         seen = set()
         store = SnapshotStore(root / "data/cache/evidence") if passages else None
         for p in passages:
@@ -268,7 +286,8 @@ def run(root, *, query, ticker, mode="exploratory_current", decision_at=None, re
             if gen["output"] is None:
                 result["status"] = "invalid_generation"
             else:
-                check = verify_contextual_selection if profile_id in {"table_cells_v0.6", "table_cells_v0.7"} else verify_short_selection
+                check = (verify_contextual_selection if profile_id in CONTEXT_PROFILES
+                         else verify_short_selection)
                 picked, blocked = check(ShortCellSelection.model_validate(gen["output"]), context, stable)
                 result.update(selected_candidates=picked, rejected_selections=blocked,
                               status="selected_candidates_unreviewed" if picked else "abstained")
@@ -294,6 +313,13 @@ def replay(root, folder):
     result = json.loads((folder / "result.json").read_text(encoding="utf-8"))
     profile_id = result["profile_id"]
     profile = settings(root, profile_id)
+    if profile_id == "table_cells_v0.9" and result.get("unit_policy_sha256") != file_sha(root / UNIT_POLICY):
+        raise ValueError("Table currency unit policy checksum mismatch")
+    selected_scope = (DocumentReportScope.model_validate(result["scope"])
+                      if "version_id" in result["scope"] else None)
+    if selected_scope and (selected_scope.ticker != result["ticker"] or
+                           selected_scope.source_policy != "issuer_reports"):
+        raise ValueError("Selected document scope differs from table request")
     if (result["run_id"] != folder.name or result["profile_sha256"] != file_sha(root / PROFILES[profile_id]) or
             result["retrieval_profile_sha256"] != file_sha(root / "configs/financial_sections_v0_3.json") or
             result["run_kind"] != "table_cell_development_not_final_experiment" or
@@ -307,23 +333,32 @@ def replay(root, folder):
         if not re.fullmatch(r"table-0[1-3]\.json", name):
             raise ValueError("Invalid table source locator")
         b = json.loads((folder / name).read_text(encoding="utf-8"))
+        if selected_scope and not selected_scope.matches(EvidenceVersion.model_validate(b["source"])):
+            raise ValueError("Table source violates the selected document scope")
         if b["source"]["content_hash"] != b["table"]["content_hash"]:
             raise ValueError("Source/table hash differs")
         if b["table"]["extractor"] != profile["extractor"]:
             raise ValueError("Table extractor/profile differs")
-        verifier = replay_page if profile_id == "table_cells_v0.4" else replay_page_v05
+        verifier = {"table_cells_v0.4": replay_page, "table_cells_v0.9": replay_page_v09}.get(profile_id, replay_page_v05)
         verifier(b["table"], store.read_blob(b["source"]["content_hash"]))
         bundles.append(b)
-    if profile_id == "table_cells_v0.7":
+    if profile_id in TEXT_PROFILES:
         saved_text = json.loads((folder / "selected-text-pages.json").read_text(encoding="utf-8"))
         if (result["alternate_text_profile_sha256"] != file_sha(root / TEXT_PROFILE) or
                 result["selected_text_pages_sha256"] != file_sha(folder / "selected-text-pages.json")):
             raise ValueError("Alternate text profile/pages checksum mismatch")
         replay_selected_text(root, saved_text, store)
+        if profile_id in ANNUAL_PROFILES:
+            if result["annual_page_policy_sha256"] != file_sha(root / PAGE_POLICY):
+                raise ValueError("Annual page policy checksum mismatch")
+            verify_annual_pages(root, saved_text, question=result["question"], year=result["scope"]["reporting_period"],
+                                trace=json.loads((folder / "retrieval-trace.json").read_text(encoding="utf-8")))
         expected_sources = {(b["source"]["version_id"], b["table"]["page"]): b["source"] for b in bundles}
         if {(p["version_id"], p["page"]) for p in saved_text} != set(expected_sources):
             raise ValueError("Alternate text pages disagree with selected table sources")
         for p in saved_text:
+            if selected_scope and p["version_id"] != selected_scope.version_id:
+                raise ValueError("Alternate text violates the selected document scope")
             source = expected_sources[(p["version_id"], p["page"])]
             if any(p[k] != source[k] for k in ("content_hash", "source_url", "record_id", "ticker")):
                 raise ValueError("Alternate text source identity differs from table")
@@ -343,7 +378,7 @@ def replay(root, folder):
         raise ValueError("Table selector version/hash mismatch")
     schema, prompt, verifier = ((ShortCellSelection, short_messages, verify_short_selection) if short else
                                 (CellSelection, messages, verify_selection))
-    if profile_id in {"table_cells_v0.6", "table_cells_v0.7"}:
+    if profile_id in CONTEXT_PROFILES:
         if not short:
             raise ValueError("Context v0.6 requires the versioned short selector")
         verifier = verify_contextual_selection
@@ -389,6 +424,8 @@ def main():
     parser.add_argument("--ticker")
     parser.add_argument("--query")
     parser.add_argument("--reporting-period")
+    parser.add_argument("--document-version", help="Read only this version within the company/year and temporal allowlist")
+    parser.add_argument("--list-documents", action="store_true", help="Preview scoped PDF metadata/page budget; no model or PDF read")
     parser.add_argument("--mode", choices=["exploratory_current", "strict_point_in_time"], default="exploratory_current")
     parser.add_argument("--decision-at")
     parser.add_argument("--model", action="store_true", help="One audited local cell-selection call; not a reviewed report")
@@ -402,8 +439,20 @@ def main():
     else:
         if not args.ticker or not args.query:
             parser.error("--ticker and --query are required without --replay")
+        if args.list_documents:
+            from pit_haf.data.catalog import Catalog
+
+            summaries = sorted(root.glob("outputs/milestone-1/data-pilot/*/summary.json"),
+                               key=lambda p: p.stat().st_mtime_ns, reverse=True)
+            if not summaries or not (summaries[0].parent / "catalog.json").is_file():
+                parser.error("Document preview requires the published disk catalog")
+            print(json.dumps(document_options(Catalog(root, summaries[0]), query=args.query, ticker=args.ticker,
+                                              reporting_period=args.reporting_period, profile_id=args.profile,
+                                              mode=args.mode, decision_at=args.decision_at), ensure_ascii=False))
+            return
         folder, result = run(root, query=args.query, ticker=args.ticker, mode=args.mode, decision_at=args.decision_at,
-                             reporting_period=args.reporting_period, use_model=args.model, profile_id=args.profile)
+                             reporting_period=args.reporting_period, use_model=args.model, profile_id=args.profile,
+                             version_id=args.document_version)
         print(json.dumps({"path": str(folder), "status": result["status"], "llm_calls": result["llm_calls"],
                           "selected_candidates": len(result["selected_candidates"]),
                           "extracted_cells": result.get("extracted_cells", 0)}, ensure_ascii=False))

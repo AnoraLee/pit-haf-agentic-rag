@@ -1,0 +1,25 @@
+{
+  "profile_id": "pdf_ocr_sparse_v0.3",
+  "status": "development_not_frozen",
+  "tesserocr_version": "2.12.0",
+  "tesseract_version": "tesseract 5.5.3",
+  "languages": "vie+eng",
+  "psm": 11,
+  "oem": 1,
+  "dpi": 240,
+  "max_pages": 1,
+  "require_region": true,
+  "max_pdf_bytes": 134217728,
+  "max_render_pixels": 8000000,
+  "max_words_per_page": 8000,
+  "page_timeout_seconds": 60,
+  "omp_thread_limit": 1,
+  "low_confidence_threshold": 80,
+  "human_review_required": true,
+  "automatic_facts": false,
+  "models_revision": "87416418657359cb625c412a48b6e1d6d41c29bd",
+  "models": {
+    "vie": "79df64caf7bcfb2a27df5042ecb6121e196eada34da774956995747636d5bfa1",
+    "eng": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+  }
+}

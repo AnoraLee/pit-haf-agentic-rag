@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-02",
+  "software_tests_passed": 553,
+  "ruff": "passed",
+  "prettier": "passed",
+  "frontend_build": "passed",
+  "snapshot_replays_passed": 4,
+  "new_native_ocr_calls": 0,
+  "new_llm_calls": 0,
+  "reference_answers_used": false,
+  "protected_hash_count": 65,
+  "original_artifacts_unchanged": true,
+  "configuration_unchanged": true,
+  "human_reviewed_facts": 0,
+  "independent_gold": false,
+  "semantic_accuracy": null,
+  "used_in_report_context": false,
+  "strict_pit_eligibility_added": 0,
+  "real_review_db_created": false,
+  "page94_counts": [
+    {
+      "ocr_run_id": "20261029T155343Z-f1c67278",
+      "page": 94,
+      "status": "failed",
+      "cells": 0,
+      "fields_observed": {
+        "label": 0,
+        "period": 0,
+        "unit": 0,
+        "statement_scope": 0
+      },
+      "resolved_years": 0,
+      "low_confidence_candidates": 0,
+      "rejected_fragment_columns": 0
+    },
+    {
+      "ocr_run_id": "20261029T155531Z-79d9ef89",
+      "page": 94,
+      "status": "ocr_unreviewed",
+      "cells": 14,
+      "fields_observed": {
+        "label": 14,
+        "period": 0,
+        "unit": 14,
+        "statement_scope": 0
+      },
+      "resolved_years": 0,
+      "low_confidence_candidates": 11,
+      "rejected_fragment_columns": 4
+    },
+    {
+      "ocr_run_id": "20261030T015455Z-fe097131",
+      "page": 94,
+      "status": "ocr_unreviewed",
+      "cells": 24,
+      "fields_observed": {
+        "label": 24,
+        "period": 0,
+        "unit": 24,
+        "statement_scope": 0
+      },
+      "resolved_years": 0,
+      "low_confidence_candidates": 10,
+      "rejected_fragment_columns": 0
+    },
+    {
+      "ocr_run_id": "20261030T015504Z-6d5f47c2",
+      "page": 94,
+      "status": "ocr_unreviewed",
+      "cells": 24,
+      "fields_observed": {
+        "label": 24,
+        "period": 0,
+        "unit": 24,
+        "statement_scope": 0
+      },
+      "resolved_years": 0,
+      "low_confidence_candidates": 13,
+      "rejected_fragment_columns": 0
+    }
+  ],
+  "limitations": [
+    "Labels can be incomplete or gibberish; linking is not semantic verification",
+    "Year/scope absent on the inspected MWG OCR runs; metadata and navigation years are not substitutes",
+    "No cross-page context, wrapped-label joining, value repair or facts promotion",
+    "Development inspection preceded archived validation; not held out"
+  ]
+}

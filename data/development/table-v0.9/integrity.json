@@ -1,0 +1,29 @@
+{
+  "files": {
+    "data/development/table-v0.9/manifest.json": "75cc3567abe995c843747f36d42948f599ff8563f9f30e0f4bc486a5c3fd449c",
+    "data/development/table-v0.9/validation.json": "f0517cc97ac1044d768c2db9b44bf944e837febd9077bc2d929900f12dd11b6a",
+    "configs/corpus_sources_v0_2.json": "db7c59674e218316eb1e2f83cd8e2b5c4319c76b3324d3d1493385eabf02fefa",
+    "configs/corpus_sources_v0_3.json": "2ac6c3cf9c3429776ed430ef0fa92793509f202a1ca44b1ff533b194d36068c9",
+    "configs/corpus_sources_v0_4.json": "901f2ad3bf86ebd395c5cd8b5c7b7c7cea3ead56c306036d6cbbc95c89a6caf6",
+    "configs/dataset_sources_v0_5.json": "cedb7621fe3d825371b30fd26593b035ce730cd324359f5f42532e36105bc837",
+    "configs/financial_sections_v0_3.json": "efae7bc35a6dfaab18b1946cb7292cc77d2fec66fce51101e59e0052d10efd3e",
+    "configs/news_sources_v0_4.json": "c628c4807a42e76a3951d54dab5c7774a97c267a683c7a01bc17803291d4be2f",
+    "configs/pdf_text_v0_7.json": "b92eb3a7d0bf54cd1182f3c81a27bd279291a4c695d5911e84862f22f34897ea",
+    "configs/pilot_sources.json": "24616eccacae448dc527145d80b0df7e7dfd1f8a252c3dc74139ffb6df53770e",
+    "configs/report_retrieval_v0_2.json": "7e690b7b150fcfa283e6d54a905de7461dfb6f266ffd07f418d5e74a85e6817c",
+    "configs/research_development_v0_1.json": "41f6cdf93ded611add96aed45806c0bb2b891b5ab7d1dd12323b0f6278d820cb",
+    "configs/table_context_v0_6.json": "db53a2457d4a795236bbae202e07735cb6920f3ecfeea05c44f4a5d595dd59e5",
+    "configs/table_evidence_v0_4.json": "62d77ddb2affee15be8d04a4ccd076431f8ad08c0600d6c44cf5dd2740391b2d",
+    "configs/table_evidence_v0_5.json": "f3fc516c4ffdf969573b997176bfe6e92cd265f837209753645038de1f4e9e2f",
+    "configs/table_evidence_v0_6.json": "190b59dd79c489640b499dc65c36633cce7366f054bd7216892dedd188e89967",
+    "configs/table_evidence_v0_7.json": "2ae9cf2f108fe5f9774ce6a9de3d042e2fb9136fac9bcbc8d116c374f83d47f5",
+    "configs/table_evidence_v0_8.json": "eb400279002e66baf4b84500281f6ea5c0b8e3c37e74d70bf1f16dea5b8c3f88",
+    "configs/table_evidence_v0_9.json": "c2fb94b6ac204b208fb3b8a14c10ae4b84958fda5cd33058e79ad83660d36e54",
+    "configs/table_page_policy_v0_8.json": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78",
+    "configs/table_selector_v0_4_1.json": "a3d84fb42086fe8def47c81472fea4bbf1580d32760662c15daf0c7ad0566240",
+    "configs/table_units_v0_9.json": "c9de4f106105b2a13aab77d1898eae2c8f975ded35b6d54e5fa3a3a0f9f4eae4",
+    "configs/universe_v0_2.json": "40bd429f978028bfd94e44b6af73e813a0abca366d5ac83e10fc334010b6fd9e",
+    "configs/universe_v0_3.json": "e20e58cfe1a31fb8502334d952066bf5fbc34b07b9223d2bd433a975b5410162",
+    "configs/universe_v0_4.json": "cbd97fe7a339687915dd768acde54ceb643d1e558d7ff09584936f2cc2766f1f"
+  }
+}

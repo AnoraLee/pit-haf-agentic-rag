@@ -1,0 +1,200 @@
+{
+  "policy_id": "ocr_cell_links_v0.1",
+  "date": "2026-11-02",
+  "kind": "development_unreviewed_OCR_cell_context",
+  "study_id": "20261102T093935Z-efea4dc8",
+  "raw_study_path": "outputs/ocr-link-development/20261102T093935Z-efea4dc8",
+  "study_seal_sha256": "a77f04a3628b9044d76a04cf61249c68f203b17292e8768dab3d3ecea5d40281",
+  "plan_sha256": "79b5dd6913684d137384de1ec7fdd6b825d38fd099cdafb388325b258f6b98be",
+  "selection": "Existing four MWG OCR runs; development inspection preceded this archived validation. Not held out.",
+  "reference_answers_used": false,
+  "independent_gold": false,
+  "human_confirmed": false,
+  "source_ocr_runs": [
+    "20261029T155343Z-f1c67278",
+    "20261029T155531Z-79d9ef89",
+    "20261030T015455Z-fe097131",
+    "20261030T015504Z-6d5f47c2"
+  ],
+  "configuration_hashes": {
+    "src/pit_haf/data/ocr_cells.py": "8d9a0d0cdc5d431c75b9da230e1aecdde4e1456af9e1443ab5f9ac60e5aacb39",
+    "src/pit_haf/research/ocr_cell_links.py": "4d2ef29ee73bda192d725716d421e6762f5b0fa231dea07fe48ca5ee6e2b4c5d",
+    "configs/ocr_cell_links_v0_1.json": "3282775c07f6b32abc1e819a45a22d3efd9ed3db41f05877831be1662847a360"
+  },
+  "snapshots": [
+    {
+      "ocr_run_id": "20261029T155343Z-f1c67278",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T093936Z-119fc4ae",
+      "snapshot_seal_sha256": "dc71517169a4e4c2c396ab8747b1fd5d5c4dc1571801160124abffee7c37067b",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 2,
+          "status": "failed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        },
+        {
+          "page": 3,
+          "status": "failed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        },
+        {
+          "page": 48,
+          "status": "failed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        },
+        {
+          "page": 94,
+          "status": "failed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        }
+      ]
+    },
+    {
+      "ocr_run_id": "20261029T155531Z-79d9ef89",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T093938Z-6da59bc5",
+      "snapshot_seal_sha256": "0b8add28aa89dccd8a4577c78e00fc502630e300f2d70f0e83b7eb2b37864f0b",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 2,
+          "status": "ocr_unreviewed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        },
+        {
+          "page": 3,
+          "status": "ocr_unreviewed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        },
+        {
+          "page": 48,
+          "status": "ocr_unreviewed",
+          "cells": 0,
+          "fields_observed": {
+            "label": 0,
+            "period": 0,
+            "unit": 0,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 0,
+          "rejected_fragment_columns": 0
+        },
+        {
+          "page": 94,
+          "status": "ocr_unreviewed",
+          "cells": 14,
+          "fields_observed": {
+            "label": 14,
+            "period": 0,
+            "unit": 14,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 11,
+          "rejected_fragment_columns": 4
+        }
+      ]
+    },
+    {
+      "ocr_run_id": "20261030T015455Z-fe097131",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T093942Z-e9da4e71",
+      "snapshot_seal_sha256": "be2565a54f5b231369e88d8eb6f719566f36964452adcf8974ab953de3cd9378",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 94,
+          "status": "ocr_unreviewed",
+          "cells": 24,
+          "fields_observed": {
+            "label": 24,
+            "period": 0,
+            "unit": 24,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 10,
+          "rejected_fragment_columns": 0
+        }
+      ]
+    },
+    {
+      "ocr_run_id": "20261030T015504Z-6d5f47c2",
+      "snapshot_path": "outputs/ocr-cell-links/20261102T093944Z-6e037216",
+      "snapshot_seal_sha256": "0c3777506d9ac47ed5aaed987cbdb7fc5fb2a3b2d9fb542a85d97f0754178d22",
+      "replay": "passed",
+      "pages": [
+        {
+          "page": 94,
+          "status": "ocr_unreviewed",
+          "cells": 24,
+          "fields_observed": {
+            "label": 24,
+            "period": 0,
+            "unit": 24,
+            "statement_scope": 0
+          },
+          "resolved_years": 0,
+          "low_confidence_candidates": 13,
+          "rejected_fragment_columns": 0
+        }
+      ]
+    }
+  ],
+  "ui_verification_path": "outputs/ocr-link-development/ui-verification-20261102.json",
+  "ui_verification_sha256": "d6fc0df7f8c4f094723b8f646c8c985e6ba15cf04e8dcd553e20f74d36188620"
+}

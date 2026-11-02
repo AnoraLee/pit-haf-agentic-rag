@@ -1,0 +1,12 @@
+{
+  "policy_id": "table_currency_units_v0.9",
+  "status": "development_not_frozen",
+  "header_band_font_heights": 2.5,
+  "declaration_above_font_heights": 4,
+  "column_center_font_heights": 2,
+  "column_gap_fraction": 0.25,
+  "plain_currency_tokens": ["vnd", "dong"],
+  "canonical_plain_unit": "VND",
+  "require_all_columns": true,
+  "allow_numeric_rescaling": false
+}

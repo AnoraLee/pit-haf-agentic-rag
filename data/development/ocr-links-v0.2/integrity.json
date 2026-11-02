@@ -1,0 +1,11 @@
+{
+  "files": {
+    "DATA_CARD.md": "519f32b5e62ad6aa84c18a4a99cc6fdecac495caf470373878095226535199e1",
+    "manifest.json": "6a3567ebb634e7e3af49de8884fb6ca786558d51de8ffa307ae4355c1cde5f31",
+    "validation.json": "8a911d1639c719e1e88a15b55ad1aa4be0efe6b553ae3a4502860a413b9b5ca5"
+  },
+  "profiles": {
+    "configs/pdf_ocr_v0_3.json": "d152c5171a1aff4bbadf599fbcfaf34bdf394891ddee9e450dfb170ec6ec2ab3",
+    "configs/ocr_cell_links_v0_2.json": "30f515cd8173d48b95dc7ed96361a5e72e83904e959ae66b0e0f2fe40a6d5888"
+  }
+}

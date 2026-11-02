@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ExternalLink, Loader2, Table2 } from "lucide-react";
 import TableReview from "./TableReview";
+import OcrPreview from "./OcrPreview";
 
 const reasons = {
   missing_or_ambiguous_statement_scope: "Chưa rõ phạm vi hợp nhất / riêng lẻ",
@@ -21,6 +22,13 @@ const fields = [
   ["unit", "Đơn vị", "#9a59a3"],
   ["statement_scope", "Phạm vi", "#ad5161"],
 ];
+const stopReasons = {
+  missing_or_ambiguous_currency_unit:
+    "Chưa xác định được đơn vị tiền tệ cho bảng",
+  no_supported_annual_cells:
+    "Chưa ghép được đủ nhãn, cột năm và ô số theo bố cục hiện hỗ trợ",
+  no_word_text: "Trang chưa có lớp chữ để đối chiếu ô; cần kiểm tra OCR",
+};
 const status = (s) =>
   ({
     extracted_unreviewed: "Đã đọc bảng · chưa duyệt",
@@ -52,6 +60,9 @@ export default function TableEvidence({
   const [field, setField] = useState("value");
   const [withModel, setWithModel] = useState(false);
   const [withTextLayer, setWithTextLayer] = useState(false);
+  const [textProfile, setTextProfile] = useState("table_cells_v0.7");
+  const [documents, setDocuments] = useState(null);
+  const [documentVersion, setDocumentVersion] = useState("");
   const [error, setError] = useState("");
   const [zoom, setZoom] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -81,6 +92,41 @@ export default function TableEvidence({
     setRunId("");
     setError("");
   }, [ticker, query, mode]);
+  useEffect(() => {
+    setDocuments(null);
+    setDocumentVersion("");
+  }, [
+    ticker,
+    query,
+    mode,
+    cutoff,
+    reportingPeriod,
+    withTextLayer,
+    textProfile,
+  ]);
+  const requestScope = () => ({
+    ticker,
+    query,
+    mode,
+    reporting_period: /^\d{4}$/.test(reportingPeriod) ? reportingPeriod : null,
+    decision_at: mode === "strict_point_in_time" ? `${cutoff}+07:00` : null,
+    profile_id: withTextLayer ? textProfile : "table_cells_v0.6",
+  });
+  async function previewDocuments() {
+    setBusy("table-documents");
+    setError("");
+    setDocumentVersion("");
+    try {
+      setDocuments(
+        await api("research/table-evidence/documents", requestScope()),
+      );
+    } catch (err) {
+      setDocuments(null);
+      setError(err.message);
+    } finally {
+      setBusy("");
+    }
+  }
   const cell = view?.cells[chosen];
   const alternatives = cell?.source_alternatives || [];
   const activeLocation = alternatives[location] || cell;
@@ -117,15 +163,10 @@ export default function TableEvidence({
     setError("");
     setView(null);
     try {
-      const period = /^\d{4}$/.test(reportingPeriod) ? reportingPeriod : null;
       const data = await api("research/table-evidence", {
-        ticker,
-        query,
-        mode,
-        reporting_period: period,
-        decision_at: mode === "strict_point_in_time" ? `${cutoff}+07:00` : null,
+        ...requestScope(),
         use_model: withModel,
-        profile_id: withTextLayer ? "table_cells_v0.7" : "table_cells_v0.6",
+        document_version_id: documentVersion || null,
       });
       setView(data);
       setChosen(0);
@@ -182,9 +223,35 @@ export default function TableEvidence({
             />
             Đọc lại lớp chữ PDF · thử nghiệm
           </label>
+          {withTextLayer && (
+            <label className="table-text-profile">
+              Cách chọn trang thử nghiệm
+              <select
+                aria-label="Cách chọn trang thử nghiệm"
+                value={textProfile}
+                disabled={!!busy}
+                onChange={(e) => setTextProfile(e.target.value)}
+              >
+                <option value="table_cells_v0.7">Lớp chữ đọc lại · v0.7</option>
+                <option value="table_cells_v0.8">
+                  Lớp chữ + kiểm tra cột năm · v0.8
+                </option>
+                <option value="table_cells_v0.9">
+                  Kiểm tra cột năm và đơn vị · v0.9
+                </option>
+              </select>
+            </label>
+          )}
           <button
             className="button primary"
-            disabled={!!busy || ticker === "all" || query.trim().length < 2}
+            disabled={
+              !!busy ||
+              ticker === "all" ||
+              query.trim().length < 2 ||
+              (documents &&
+                (documents.documents.length === 0 ||
+                  (documents.over_page_budget && !documentVersion)))
+            }
             onClick={create}
           >
             {busy === "table" ? (
@@ -203,7 +270,83 @@ export default function TableEvidence({
           vào backtest.
           {withTextLayer &&
             " Đọc lại lớp chữ có thể chậm và đổi trang được chọn. Chưa hỗ trợ PDF cần OCR."}
+          {withTextLayer &&
+            ["table_cells_v0.8", "table_cells_v0.9"].includes(textProfile) &&
+            " Chỉ chọn trang có tiêu đề cột năm khớp kỳ; thiếu tiêu đề thì dừng."}
+          {withTextLayer &&
+            textProfile === "table_cells_v0.9" &&
+            " Bản v0.9 còn nhận đơn vị VND gắn với từng cột năm hoặc dòng Đơn vị; giữ nguyên chuỗi số từ PDF."}
         </p>
+        <div className="table-document-picker">
+          <button
+            className="button"
+            disabled={!!busy || ticker === "all" || query.trim().length < 2}
+            onClick={previewDocuments}
+          >
+            {busy === "table-documents" && (
+              <Loader2 className="spin" size={16} />
+            )}
+            Xem tài liệu phù hợp
+          </button>
+          {documents && (
+            <>
+              <label>
+                Tài liệu dùng để đọc bảng
+                <select
+                  aria-label="Tài liệu dùng để đọc bảng"
+                  value={documentVersion}
+                  disabled={!!busy}
+                  onChange={(e) => setDocumentVersion(e.target.value)}
+                >
+                  <option value="">
+                    Tất cả {documents.documents.length} tài liệu ·{" "}
+                    {documents.total_pages} trang
+                  </option>
+                  {documents.documents.map((d) => (
+                    <option
+                      key={d.version_id}
+                      value={d.version_id}
+                      disabled={!d.within_page_budget}
+                    >
+                      {d.title} · {d.pages} trang · {d.version_id.slice(0, 8)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <p className="footnote" role="status">
+                {documents.documents.length === 0
+                  ? "Chưa có tài liệu phù hợp với doanh nghiệp, năm và chế độ thời gian đã chọn."
+                  : documentVersion
+                    ? `Đang chọn một tài liệu · ${documents.documents.find((d) => d.version_id === documentVersion)?.pages} trang. Các tài liệu còn lại không được đọc trong lượt này.`
+                    : documents.over_page_budget
+                      ? `Tổng ${documents.total_pages} trang vượt giới hạn ${documents.max_reparsed_pages}. Chọn một tài liệu trong giới hạn để tiếp tục.`
+                      : `${documents.documents.length} tài liệu phù hợp · ${documents.total_pages} trang. Có thể chọn một tài liệu để đối chiếu riêng.`}
+                {" Kết quả vẫn cần đối chiếu trên PDF."}
+              </p>
+              {documentVersion && (
+                <a
+                  className="text-link"
+                  href={`/api/documents/${encodeURIComponent(documentVersion)}/raw`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <ExternalLink size={14} /> Mở PDF đã chọn
+                </a>
+              )}
+            </>
+          )}
+        </div>
+        <OcrPreview
+          api={api}
+          ticker={ticker}
+          query={query}
+          mode={mode}
+          cutoff={cutoff}
+          reportingPeriod={reportingPeriod}
+          versionId={documentVersion}
+          busy={busy}
+          setBusy={setBusy}
+        />
         <div className="table-saved-controls">
           <label>
             Lượt đọc bảng đã lưu
@@ -232,6 +375,15 @@ export default function TableEvidence({
         {error && <Notice tone="error">{error}</Notice>}
         {view && (
           <div className="table-evidence-result">
+            {view.document_selection && (
+              <p className="table-saved-question">
+                Nguồn đã giới hạn:{" "}
+                {view.document_selection.title ||
+                  view.document_selection.version_id.slice(0, 8)}
+                {" · "}
+                {view.document_selection.reporting_period}.
+              </p>
+            )}
             <div className="table-result-heading">
               <strong>
                 {view.run.ticker} · {status(view.run.status)}
@@ -253,16 +405,44 @@ export default function TableEvidence({
                   " Có nhóm khác số liệu cần người kiểm tra."}
               </p>
             )}
+            {view.page_selection && (
+              <p className="table-saved-question">
+                Kiểm tra cột năm {view.page_selection.requested_year}: bỏ{" "}
+                {view.page_selection.wrong_period_pages} trang có tiêu đề khác
+                kỳ và {view.page_selection.missing_header_pages} trang chưa nhận
+                diện được tiêu đề năm.
+              </p>
+            )}
             <Notice tone="amber">
               Kết quả phát triển chưa duyệt ngữ nghĩa. Không xác nhận phân tích
               tại thời điểm lịch sử hoặc độ chính xác tài chính.
             </Notice>
             {!cell && (
-              <p className="table-empty">
-                {view.context_audit?.query_supported === false
-                  ? "Phần bảng hiện hỗ trợ số liệu lợi nhuận, doanh thu/thu nhập, tài sản/nợ và tiền theo năm. Câu hỏi này cần luồng báo cáo hoặc bằng chứng khác."
-                  : "Chưa tìm được ô bảng phù hợp. Lượt chạy và lý do dừng vẫn được giữ trong lịch sử."}
-              </p>
+              <div className="table-empty">
+                <p>
+                  {view.context_audit?.query_supported === false
+                    ? "Phần bảng hiện hỗ trợ số liệu lợi nhuận, doanh thu/thu nhập, tài sản/nợ và tiền theo năm. Câu hỏi này cần luồng báo cáo hoặc bằng chứng khác."
+                    : "Chưa tìm được ô bảng phù hợp. Lượt chạy và lý do dừng vẫn được giữ trong lịch sử."}
+                </p>
+                {view.sources.map((s) => (
+                  <p key={s.index}>
+                    Trang {s.page}:{" "}
+                    {s.stop_reasons.length > 0
+                      ? s.stop_reasons
+                          .map(
+                            (reason) =>
+                              stopReasons[reason] ||
+                              "Bố cục bảng cần kiểm tra thêm",
+                          )
+                          .join("; ")
+                      : `${s.extracted_cells} ô được trích xuất nhưng chưa phù hợp với câu hỏi`}
+                    .{" "}
+                    <a href={s.raw_url} target="_blank" rel="noreferrer">
+                      Mở PDF tại trang này
+                    </a>
+                  </p>
+                ))}
+              </div>
             )}
             {cell && (
               <div className="table-evidence-layout">
@@ -306,10 +486,18 @@ export default function TableEvidence({
                                     {c.equivalent_count} vị trí cùng nhãn/số
                                   </small>
                                 )}
+                                {c.review_reasons.includes(
+                                  "missing_or_ambiguous_statement_scope",
+                                ) && <small>Chưa rõ phạm vi báo cáo</small>}
                               </button>
                             </td>
                             <td>{c.year}</td>
-                            <td>{c.value}</td>
+                            <td>
+                              {c.value}
+                              <small className="table-value-unit">
+                                {c.unit || "Chưa rõ đơn vị"}
+                              </small>
+                            </td>
                           </tr>
                         ))}
                       </tbody>

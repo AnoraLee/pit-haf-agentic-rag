@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate','retrieval-study','table-evidence')]
+  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate','retrieval-study','table-evidence','ocr-preview','ocr-numeric-audit','ocr-cell-links')]
   [string]$Task = 'app',
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]]$TaskArgs
@@ -52,5 +52,8 @@ switch ($Task) {
   'development-evaluate' { & $pythonExe -X utf8 -m pit_haf.research.evaluation @TaskArgs }
   'retrieval-study' { & $pythonExe -X utf8 -m pit_haf.research.retrieval_study @TaskArgs }
   'table-evidence' { & $pythonExe -X utf8 -m pit_haf.research.table_evidence @TaskArgs }
+  'ocr-preview' { & $pythonExe -X utf8 -m pit_haf.research.ocr_preview @TaskArgs }
+  'ocr-numeric-audit' { & $pythonExe -X utf8 -m pit_haf.research.ocr_numeric @TaskArgs }
+  'ocr-cell-links' { & $pythonExe -X utf8 -m pit_haf.research.ocr_cell_links @TaskArgs }
 }
 exit $LASTEXITCODE

@@ -96,7 +96,7 @@ def test_separate_tables_do_not_share_years_units_or_entity_scope():
     assert len(right) == 4 and all(c["fields"]["unit"] is None for c in right)
 
 
-def synthetic_pdf(rows=1):
+def synthetic_pdf(rows=1, *, unit="Trieu VND", column_units=False):
     writer = PdfWriter()
     page = writer.add_blank_page(width=600, height=800)
     font = DictionaryObject({NameObject("/Type"): NameObject("/Font"), NameObject("/Subtype"): NameObject("/Type1"),
@@ -104,8 +104,12 @@ def synthetic_pdf(rows=1):
     page[NameObject("/Resources")] = DictionaryObject({NameObject("/Font"): DictionaryObject({NameObject("/F1"): font})})
     stream = DecodedStreamObject()
     chunks = []
-    parts = [(40, 750, "Hop nhat"), (40, 720, "Trieu VND"), (40, 690, "STT Chi tieu"),
+    parts = [(40, 750, "Hop nhat"), (40, 690, "STT Chi tieu"),
              (278, 690, "2024"), (378, 690, "2023")]
+    if unit is not None:
+        parts.append((40, 720, unit))
+    if column_units:
+        parts.extend([(278, 674, "VND"), (378, 674, "VND")])
     for i in range(rows):
         parts.extend([(40, 650 - i * 40, f"{i + 1} Loi nhuan sau thue"),
                       (289, 650 - i * 40, "12"), (389, 650 - i * 40, "25")])
@@ -176,7 +180,11 @@ def runtime(tmp_path, monkeypatch):
     root = Path(__file__).resolve().parents[1]
     for name in (runner.PROFILE, runner.SELECTOR, "configs/financial_sections_v0_3.json", "configs/table_evidence_v0_5.json",
                  "configs/table_evidence_v0_6.json", "configs/table_context_v0_6.json",
-                 "configs/table_evidence_v0_7.json", "configs/pdf_text_v0_7.json"):
+                 "configs/table_evidence_v0_7.json", "configs/pdf_text_v0_7.json",
+                 "configs/table_evidence_v0_8.json", "configs/table_page_policy_v0_8.json",
+                 "configs/table_evidence_v0_9.json", "configs/table_units_v0_9.json", "configs/pdf_ocr_v0_1.json",
+                 "configs/pdf_ocr_v0_2.json", "configs/pdf_ocr_v0_3.json", "configs/ocr_cell_links_v0_1.json",
+                 "configs/ocr_cell_links_v0_2.json"):
         path = tmp_path / name
         path.parent.mkdir(exist_ok=True)
         path.write_bytes((root / name).read_bytes())
@@ -184,9 +192,16 @@ def runtime(tmp_path, monkeypatch):
     return tmp_path
 
 
-@pytest.mark.parametrize("profile_id", ["table_cells_v0.4", "table_cells_v0.5", "table_cells_v0.6", "table_cells_v0.7"])
+@pytest.mark.parametrize("profile_id", ["table_cells_v0.4", "table_cells_v0.5", "table_cells_v0.6", "table_cells_v0.7", "table_cells_v0.8", "table_cells_v0.9"])
 def test_empty_pit_allowlist_never_reads_raw_pdf_or_calls_model(runtime, monkeypatch, profile_id):
-    monkeypatch.setattr(runner, "retrieve", lambda *a, **kw: (Corpus(), [], set(), [{"status": "missing_proof"}]))
+    def denied(*args, **kwargs):
+        if profile_id in {"table_cells_v0.8", "table_cells_v0.9"}:
+            from pit_haf.data.hub import file_sha
+            kwargs["retrieval_trace"]["annual_page_policy"] = {
+                "policy_id": "annual_table_pages_v0.8",
+                "policy_sha256": file_sha(runtime / "configs/table_page_policy_v0_8.json")}
+        return Corpus(), [], set(), [{"status": "missing_proof"}]
+    monkeypatch.setattr(runner, "retrieve", denied)
     monkeypatch.setattr(runner, "extract_page", lambda *a: pytest.fail("raw PDF touched"))
     monkeypatch.setattr(runner, "extract_page_v05", lambda *a: pytest.fail("raw PDF touched"))
     folder, result = runner.run(runtime, query="loi nhuan 2024", ticker="FPT", mode="strict_point_in_time",
@@ -285,6 +300,8 @@ def test_table_api_checks_saved_geometry_images_and_render_bounds(saved_table_ru
         assert view["replay"] == "passed" and view["human_reviewed_facts"] == 0
         assert view["cells"][0]["fields"]["value"]["bbox"]
         assert view["cells"][0]["model_selected"] and view["cells"][0]["context_ref"] == "C1"
+        assert view["sources"][0]["extracted_cells"] > 0
+        assert isinstance(view["sources"][0]["stop_reasons"], list)
         image = client.get(endpoint + "/pages/1/image")
         assert image.status_code == 200 and image.content.startswith(b"\x89PNG\r\n\x1a\n")
         assert client.get(endpoint + "/pages/0/image").status_code == 404

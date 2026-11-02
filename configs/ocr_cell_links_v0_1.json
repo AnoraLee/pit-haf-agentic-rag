@@ -1,0 +1,18 @@
+{
+  "policy_id": "ocr_cell_links_v0.1",
+  "status": "development_not_frozen",
+  "right_edge_tolerance_fraction": 0.008,
+  "min_anchor_rows": 3,
+  "min_anchor_digits": 4,
+  "min_columns": 2,
+  "max_columns": 8,
+  "max_cells": 120,
+  "header_distance_fraction": 0.18,
+  "max_phrase_word_gap_in_heights": 2,
+  "low_confidence_threshold": 80,
+  "require_complete_period_row": true,
+  "require_period_label_prefix": true,
+  "join_wrapped_labels": false,
+  "infer_relative_years": false,
+  "automatic_facts": false
+}

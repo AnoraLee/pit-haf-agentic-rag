@@ -1,0 +1,19 @@
+{
+  "profile_id": "table_cells_v0.8",
+  "status": "development_not_frozen",
+  "max_pdf_pages": 3,
+  "max_model_cells": 18,
+  "max_model_context_characters": 9000,
+  "max_llm_calls": 1,
+  "max_retries": 0,
+  "num_ctx": 4096,
+  "num_predict": 512,
+  "extractor": "pdf_word_cells_v0.5",
+  "annual_columns_only": true,
+  "human_review_required": true,
+  "scoped_lexical_fallback": false,
+  "context_policy": "financial_cell_context_v0.6",
+  "retrieval_profile": "financial_pdf_text_v0.8",
+  "page_policy": "annual_table_pages_v0.8",
+  "limitations": "Same alternate text parser and 400-page budget as v0.7; adds a generic requested-year column-header gate. Other defaults and legacy replay remain unchanged. Missing header/OCR still stops."
+}

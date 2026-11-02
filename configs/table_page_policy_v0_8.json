@@ -1,0 +1,13 @@
+{
+  "policy_id": "annual_table_pages_v0.8",
+  "status": "development_not_frozen",
+  "numeric_topics": ["income", "revenue", "assets", "cash"],
+  "require_requested_year_header": true,
+  "max_column_year_tokens": 8,
+  "nearby_header_lines_before": 1,
+  "nearby_header_lines_after": 3,
+  "max_header_words": 20,
+  "column_remainder_words": ["nam", "chenh", "lech", "stt", "chi", "tieu", "thuyet", "minh", "ma", "so", "don", "vi", "trieu", "ty", "dong", "vnd"],
+  "unit_phrases": ["vnd", "vnđ", "đồng", "triệu", "tỷ"],
+  "limitations": "Generic annual-table page gate. Repeated date columns with nearby units are header evidence; body/footer years alone are insufficient. Missing headers abstain. Not proof of semantic correctness or historical availability; no issuer/page/answer lookup."
+}

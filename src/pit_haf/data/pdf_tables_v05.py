@@ -102,7 +102,7 @@ def header_groups(rows):
     return groups
 
 
-def bind_words(words, *, width, height, content_hash, page_number):
+def bind_words(words, *, width, height, content_hash, page_number, unit_resolver=None, extractor=EXTRACTOR):
     if not 0 < width < 10000 or not 0 < height < 10000 or len(words) > 12000:
         raise ValueError("PDF page geometry/word budget exceeded")
     for i, w in enumerate(words):
@@ -151,20 +151,26 @@ def bind_words(words, *, width, height, content_hash, page_number):
         context = [[w for w in row if context_left <= w["x0"] < right]
                    for row in rows if h["top"] - height * .20 <= row[0]["top"] <= h["bottom"] + 30]
         context = [r for r in context if r]
-        units = legacy.phrase_refs(context, legacy.UNITS)
-        unit_values = {u["value"] for u in units}
+        if unit_resolver is None:
+            units = legacy.phrase_refs(context, legacy.UNITS)
+            unit_values = {u["value"] for u in units}
+            units_by_column = {c["id"]: units[0] for c in cols} if len(unit_values) == 1 else {}
+            unit_diagnostic = {}
+        else:
+            units_by_column, unit_diagnostic = unit_resolver(context, h, context_left, right)
+            unit_values = {u["value"] for u in units_by_column.values()}
         scopes = legacy.phrase_refs(context, {"hop nhat": "consolidated", "rieng le": "parent"})
         scope_values = {s["value"] for s in scopes}
         diagnostic = {"header_index": index, "year_word_ids": [c["id"] for c in cols],
                       "aligned_rows": h["aligned_rows"], "unit_values": sorted(unit_values),
                       "scope_values": sorted(scope_values), "label_region_left": h["left"],
                       "numeric_column_right_edges": [c["anchor"] for c in cols]}
+        diagnostic.update(unit_diagnostic)
         diagnostics.append(diagnostic)
         # An explicit currency qualifier is required even when the header has Chỉ tiêu.
-        if len(unit_values) != 1:
+        if len(unit_values) != 1 or any(c["id"] not in units_by_column for c in cols):
             diagnostic["stop_reason"] = "missing_or_ambiguous_currency_unit"
             continue
-        unit = units[0]
         scope = scopes[0] if len(scope_values) == 1 else None
         for row_index, row in enumerate(rows):
             if not h["bottom"] < row[0]["top"] < h["bottom_limit"]:
@@ -208,14 +214,14 @@ def bind_words(words, *, width, height, content_hash, page_number):
                     reasons.append("row_specific_unit_or_ratio_requires_review")
                 fields = {"label": legacy.locator(label_words), "label_parts": [legacy.locator(p) for p in parts],
                           "value": legacy.locator([value]), "period": legacy.locator([col]),
-                          "unit": unit, "statement_scope": scope}
-                identity = {"extractor": EXTRACTOR, "content_hash": content_hash, "page": page_number,
+                          "unit": units_by_column[col["id"]], "statement_scope": scope}
+                identity = {"extractor": extractor, "content_hash": content_hash, "page": page_number,
                             "header_index": index, "fields": fields}
                 cells.append({"cell_id": sha256(canonical(identity)), **identity,
                               "year": legacy.YEAR.fullmatch(col["text"])[1], "review_reasons": reasons,
                               "structural_status": "needs_review" if reasons else "linked_candidate",
                               "semantic_support": "not_assessed", "human_reviewed": False})
-    return {"extractor": EXTRACTOR, "pdfplumber_version": legacy.pdfplumber.__version__,
+    return {"extractor": extractor, "pdfplumber_version": legacy.pdfplumber.__version__,
             "content_hash": content_hash, "page": page_number, "width": width, "height": height,
             "coordinate_system": "PDF points; top-left origin; word boxes, not character offsets",
             "words": words, "header_diagnostics": diagnostics, "skipped_rows": skipped, "cells": cells}

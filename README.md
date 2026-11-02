@@ -8,7 +8,8 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
-[Tiến độ 23/10/2026](docs/research/17-progress-20261023.md) ·
+[Phiếu đối chiếu OCR 02/11/2026](docs/research/32-ocr-source-review.md) ·
+[Tiến độ 29/10/2026](docs/research/27-progress-20261029.md) ·
 [Hồ sơ nghiên cứu](docs/research/README.md) ·
 [Đáp án và đối chiếu 24 câu](docs/research/development-source-audit-v0.1.md)
 
@@ -51,6 +52,23 @@ Bỏ qua lệnh cài pnpm nếu đã có đúng phiên bản. `run.ps1` gọi tr
 trong `.venv312`, hoặc `.venv` nếu không có `.venv312`; không cần activate môi
 trường. Không sao chép môi trường Python hay `node_modules` từ máy khác.
 Giữ `uv.lock` và `frontend/pnpm-lock.yaml` để cài đúng dependency của dự án.
+Giữ `.gitattributes` khi clone: một số cấu hình lịch sử được ghim checksum
+theo byte CRLF, các cấu hình khác theo LF. Không tự đổi xuống dòng hoặc
+format lại JSON đã có checksum.
+
+OCR là tùy chọn, chỉ cần nếu muốn đọc PDF dạng ảnh:
+
+```powershell
+$env:UV_PROJECT_ENVIRONMENT = ".venv312"
+uv sync --locked --dev --extra ocr --python 3.12
+.\run.ps1 ocr-preview --setup-models
+```
+
+Wheel `tesserocr` đã gồm Tesseract; không cần cài chương trình riêng trên
+Windows x64 có wheel phù hợp. Lệnh setup tải hai bộ nhận diện vie/eng từ
+revision chính thức và kiểm SHA-256, vào `data/cache/ocr/`. Khi chạy OCR,
+PDF được xử lý local và không tự tải model. Xem
+[cài đặt upstream](https://github.com/sirfz/tesserocr#installation).
 
 ## 3. Tải dữ liệu từ Google Drive
 
@@ -190,7 +208,7 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **426 test**; lint và
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **601 test**; lint và
 frontend build đạt. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
 [offline-checks.yml](.github/workflows/offline-checks.yml).
@@ -217,6 +235,7 @@ cổng 8502; giao diện chính là React.
 | `.\run.ps1 table-evidence --ticker BID --query "lợi nhuận năm 2024" --profile table_cells_v0.5` | Parser mới cho một tập con tiêu đề/nhãn bảng, chưa gọi model |
 | `.\run.ps1 table-evidence --ticker BID --query "lợi nhuận năm 2024" --profile table_cells_v0.6` | Lọc theo cụm chỉ tiêu, gộp ô trùng và giữ các vị trí nguồn; chưa gọi model |
 | `.\run.ps1 table-evidence --ticker ACB --query "lợi nhuận năm 2024" --profile table_cells_v0.7` | Đọc lại lớp chữ PDF trước truy xuất; thử nghiệm chậm hơn, chưa gọi model/OCR |
+| `.\run.ps1 table-evidence --ticker VCB --query "lợi nhuận năm 2024" --profile table_cells_v0.8` | Thêm kiểm tra tiêu đề cột năm, bỏ trang khác kỳ hoặc thiếu tiêu đề; chưa gọi model |
 | `.\run.ps1 development-evaluate --evaluate-only --batch-id 20261022T030940Z-22f948f0` | Đánh giá lại batch đã lưu, không inference |
 | `.\run.ps1 development-evaluate` | Chạy inference mới cho 24 case; cần Ollama và có thể tốn thời gian |
 | `.\run.ps1 pilot-data --extract-existing` | Trích lại từ raw snapshot đã lưu; dùng khi phát triển dữ liệu |
@@ -255,6 +274,62 @@ tắt. Bản này đọc raw PDF lại bằng pdfplumber, không sửa corpus ho
 font bằng phép thay chuỗi. Lượt thử tìm được hai ô ứng viên cho ACB, nhưng
 VCB mất context và FPT vượt giới hạn 400 trang, nên chưa thay mặc định v0.6.
 MWG vẫn cần OCR. Xem [kết quả đầy đủ và giới hạn](docs/research/23-alternate-pdf-text.md).
+
+Khi bật lớp chữ thử nghiệm, **Cách chọn trang thử nghiệm** cho phép chọn v0.7
+hoặc **Lớp chữ + kiểm tra cột năm · v0.8**. V0.8 loại được trang trình bày lại
+2023 ở VCB và có 5 ô gợi ý, gồm 2 ô tóm tắt chưa rõ phạm vi. Giao diện hiển
+thị đơn vị từng dòng và lý do loại trang theo năm. Mặc định vẫn v0.6; các ô
+mới chưa là facts được duyệt. Xem [kết quả và giới hạn v0.8](docs/research/24-annual-table-page-gate.md).
+
+Nút **Xem tài liệu phù hợp** liệt kê PDF đúng doanh nghiệp/năm và cho chọn
+**Tài liệu dùng để đọc bảng**. Nếu tổng số trang vượt 400 ở v0.7/v0.8, chọn
+một bản trong giới hạn trước khi đọc. Không tự chọn tài liệu hoặc tăng ngân
+sách; lựa chọn được lưu cùng run và vẫn phải qua gateway PiT. Với hai bản
+FPT 2024, từng bản 213 trang đã chạy được, nhưng chưa tạo được ô đủ điều kiện
+ở lượt thử này. Kết quả rỗng có lý do dừng và link trang PDF để kiểm tra.
+Xem [chọn tài liệu và thử nghiệm FPT](docs/research/25-table-document-scope.md).
+
+Tùy chọn **Kiểm tra cột năm và đơn vị · v0.9** bổ sung locator VND theo
+từng cột năm hoặc dòng khai báo Đơn vị. Lượt thử FPT tiếng Việt có 4 ô
+lợi nhuận chưa duyệt, giữ nguyên chuỗi số và nguồn; không suy hệ số hay
+đổi giá trị sang triệu/tỷ. Các bản trước vẫn mở lại được. Xem
+[đơn vị theo cột năm](docs/research/26-table-currency-units.md) và
+[phần đã có/các bước còn lại](docs/research/27-progress-20261029.md).
+
+Phần **OCR trang PDF · thử nghiệm** nằm dưới bộ chọn tài liệu. Chọn riêng
+một PDF, nhập tối đa bốn số trang rồi OCR, hoặc mở lượt đã lưu. Có tìm
+chữ, điểm nhận dạng từng từ và vùng tô trên ảnh từ PDF; có cả lỗi trong
+lịch sử. OCR chưa sửa corpus, chưa đi vào câu trả lời hoặc facts đã duyệt.
+Thử nghiệm MWG mới nhận 509 từ trên bốn trang nhưng còn lỗi chữ/số rõ rệt.
+Xem [kết quả, cách dùng và giới hạn OCR](docs/research/28-local-ocr-preview.md).
+
+Có thêm tùy chọn **Khoanh vùng OCR một trang**, hiển thị vùng đã chạy và
+hộp từ trên ảnh toàn trang. Trên 24 ô mẫu MWG do trợ lý chép từ ảnh,
+bản v0.2 khớp 24 chuỗi so với 14 ở v0.1; cả nhánh v0.2 toàn trang cũng
+đạt 24/24, chưa chứng minh lợi ích riêng của crop. Đây là chẩn đoán phát
+triển, chưa là nhãn độc lập hoặc số liệu đã duyệt. Xem
+[phép thử OCR vùng và giới hạn](docs/research/29-ocr-region-numeric-diagnostic.md).
+
+Trong kết quả OCR đã lưu, mở **Ô số OCR và thông tin đi kèm** để chọn từng
+ô và tô riêng nguồn chỉ tiêu, giá trị, đơn vị trên PDF. Kỳ hoặc phạm vi
+chưa đọc rõ được ghi là thiếu; không suy năm từ tên báo cáo hoặc lấy
+mảnh số bị tách làm cả giá trị. Đây là ô ứng viên chưa duyệt, chưa đi
+vào câu trả lời. Xem [liên kết ngữ cảnh OCR](docs/research/30-ocr-cell-context.md).
+
+Có thêm cách liên kết **Theo vị trí và nhãn xuống dòng · v0.2** và chọn
+riêng một lượt OCR vùng hẹp để bổ sung tiêu đề trên cùng trang. Mỗi từ
+giữ nguồn OCR riêng; vùng bổ sung không được ghi đè số. Trên mẫu MWG,
+cách này đã đọc được tiêu đề cột tương đối; trang đầu có thêm kỳ tài
+chính và phạm vi hợp nhất, nhưng vẫn còn ô/nhãn lỗi và chưa xác nhận năm
+cho từng số. Xem [kết quả và cách dùng](docs/research/31-ocr-header-spatial-links.md).
+
+Mở **Ghi kết quả đối chiếu ô số** để lưu bản chép đã kiểm tra, lý do sửa
+và lịch sử riêng cho từng ô OCR. Xác nhận cần đủ nguồn, kiểm năm mục và
+tự nhập năm theo locator; thiếu phạm vi/kỳ thì vẫn bị chặn. Có export
+JSON và phát hiện phiếu cũ khi lưu. Đây là khai báo của người đối chiếu
+local, chưa là nhãn độc lập và chưa đưa vào câu trả lời hoặc backtest.
+Phiếu nằm trong `outputs/ocr-reviews/reviews.sqlite3`, ngoài Git; không
+tạo database chỉ vì mở xem. Xem [quy trình và giới hạn](docs/research/32-ocr-source-review.md).
 
 ## 6. Xử lý lỗi thường gặp
 

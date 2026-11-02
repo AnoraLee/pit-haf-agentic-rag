@@ -1,0 +1,352 @@
+{
+  "study_id": "20261029T152456Z-e0c716d3",
+  "kind": "unit_binding_development_not_held_out",
+  "profile_id": "table_cells_v0.9",
+  "query": "Kết quả lợi nhuận năm 2024 được nguồn mô tả như thế nào?",
+  "selection_provenance": "assistant; both previously declared FPT versions and the same six other development issuers",
+  "actions_declared_before_outcomes": [
+    {
+      "ticker": "FPT",
+      "version_id": "0a8c4da3523844123fb636ff8c29bb099379cc8b7a2a3ca12ab66fb64f6d5d58",
+      "title": "FPT annual report 2024",
+      "baseline_run_id": "20261029T080737Z-9f70783b"
+    },
+    {
+      "ticker": "FPT",
+      "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+      "title": "FPT bao cao thuong nien 2024 Vietnamese",
+      "baseline_run_id": "20261029T080853Z-9628ff81"
+    },
+    {
+      "ticker": "HPG",
+      "version_id": null
+    },
+    {
+      "ticker": "VCB",
+      "version_id": null
+    },
+    {
+      "ticker": "ACB",
+      "version_id": null
+    },
+    {
+      "ticker": "BID",
+      "version_id": null
+    },
+    {
+      "ticker": "MWG",
+      "version_id": null
+    },
+    {
+      "ticker": "VNM",
+      "version_id": null
+    }
+  ],
+  "max_new_model_calls": 0,
+  "max_reparsed_pages_per_run": 400,
+  "max_pdf_pages_per_run": 3,
+  "retry_count": 0,
+  "config_before": {
+    "configs/corpus_sources_v0_2.json": "db7c59674e218316eb1e2f83cd8e2b5c4319c76b3324d3d1493385eabf02fefa",
+    "configs/corpus_sources_v0_3.json": "2ac6c3cf9c3429776ed430ef0fa92793509f202a1ca44b1ff533b194d36068c9",
+    "configs/corpus_sources_v0_4.json": "901f2ad3bf86ebd395c5cd8b5c7b7c7cea3ead56c306036d6cbbc95c89a6caf6",
+    "configs/dataset_sources_v0_5.json": "cedb7621fe3d825371b30fd26593b035ce730cd324359f5f42532e36105bc837",
+    "configs/financial_sections_v0_3.json": "efae7bc35a6dfaab18b1946cb7292cc77d2fec66fce51101e59e0052d10efd3e",
+    "configs/news_sources_v0_4.json": "c628c4807a42e76a3951d54dab5c7774a97c267a683c7a01bc17803291d4be2f",
+    "configs/pdf_text_v0_7.json": "b92eb3a7d0bf54cd1182f3c81a27bd279291a4c695d5911e84862f22f34897ea",
+    "configs/pilot_sources.json": "24616eccacae448dc527145d80b0df7e7dfd1f8a252c3dc74139ffb6df53770e",
+    "configs/report_retrieval_v0_2.json": "7e690b7b150fcfa283e6d54a905de7461dfb6f266ffd07f418d5e74a85e6817c",
+    "configs/research_development_v0_1.json": "41f6cdf93ded611add96aed45806c0bb2b891b5ab7d1dd12323b0f6278d820cb",
+    "configs/table_context_v0_6.json": "db53a2457d4a795236bbae202e07735cb6920f3ecfeea05c44f4a5d595dd59e5",
+    "configs/table_evidence_v0_4.json": "62d77ddb2affee15be8d04a4ccd076431f8ad08c0600d6c44cf5dd2740391b2d",
+    "configs/table_evidence_v0_5.json": "f3fc516c4ffdf969573b997176bfe6e92cd265f837209753645038de1f4e9e2f",
+    "configs/table_evidence_v0_6.json": "190b59dd79c489640b499dc65c36633cce7366f054bd7216892dedd188e89967",
+    "configs/table_evidence_v0_7.json": "2ae9cf2f108fe5f9774ce6a9de3d042e2fb9136fac9bcbc8d116c374f83d47f5",
+    "configs/table_evidence_v0_8.json": "eb400279002e66baf4b84500281f6ea5c0b8e3c37e74d70bf1f16dea5b8c3f88",
+    "configs/table_evidence_v0_9.json": "c2fb94b6ac204b208fb3b8a14c10ae4b84958fda5cd33058e79ad83660d36e54",
+    "configs/table_page_policy_v0_8.json": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78",
+    "configs/table_selector_v0_4_1.json": "a3d84fb42086fe8def47c81472fea4bbf1580d32760662c15daf0c7ad0566240",
+    "configs/table_units_v0_9.json": "c9de4f106105b2a13aab77d1898eae2c8f975ded35b6d54e5fa3a3a0f9f4eae4",
+    "configs/universe_v0_2.json": "40bd429f978028bfd94e44b6af73e813a0abca366d5ac83e10fc334010b6fd9e",
+    "configs/universe_v0_3.json": "e20e58cfe1a31fb8502334d952066bf5fbc34b07b9223d2bd433a975b5410162",
+    "configs/universe_v0_4.json": "cbd97fe7a339687915dd768acde54ceb643d1e558d7ff09584936f2cc2766f1f"
+  },
+  "protected_before": {
+    "data/development/v0.2/case_index.json": "585b1f680b22e3fa586881a48575bd51b228395ec7a83f1d468f1ee13965499e",
+    "data/development/evaluation-v0.1/validation.json": "bfda7b2bc44842d044bd8bc527caf9dbc2ebea7e58a4b45acd977541a7dd63f8",
+    "data/development/source-audit-v0.1/integrity.json": "135224d6b2d86b7526284a91cae5e8ab9c5d30ae2b346c20b19e2bb7bf80edb5",
+    "data/development/table-v0.8/integrity.json": "855f5a180ae590d757ce6cb22912d1085b40e08a3a38b579885f62a0887d2fc9",
+    "outputs/development-cases/20261019T030531Z-8ef1bf33/cases.jsonl": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "outputs/development-batches/20261022T030940Z-22f948f0/manifest.json": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389",
+    "outputs/table-evidence/20261024T014354Z-393d7cf3/integrity.json": "691c8df6ecd29b241afab0c36becbdee2ad08b1293b8a959bc57aec27b84808c",
+    "outputs/table-evidence/20261024T014442Z-ebda193b/integrity.json": "1113493334cd985a4f922a1004bc2097b0c967d96d8fb0902d4f1db08eef9003",
+    "outputs/table-evidence/20261024T014512Z-82e20fd1/integrity.json": "7e7d52223f9289e8bf8b72b50c2c2c6ef0b77a23a799aa6ac88b8c7b2bdc6535",
+    "outputs/table-evidence/20261024T014544Z-fdc9957c/integrity.json": "6ff429ff2cc68b0b415767e1378e7cdf1f49e1b116a0ed59cb3c9a4b1b45e103",
+    "outputs/table-evidence/20261024T014550Z-f80fab32/integrity.json": "edeaa10b476eb60db51af6eb5d6d1ed163b4019de03958d9979c8391fa10be05",
+    "outputs/table-evidence/20261024T014558Z-4328e059/integrity.json": "941f8ff64dd2ecc579170348f5409cff6532f5bf7faa455b39b98eb021ff22c1",
+    "outputs/table-evidence/20261024T014603Z-093cb6e5/integrity.json": "514ce74873b1b9e3fe4d842923c492e8c586f16171d670f6d250a03b13427b9a",
+    "outputs/table-evidence/20261024T015111Z-17b4dda5/integrity.json": "711e67e436c9a08fbd1142030aa9aa544570c6796a88f2e98e7a6e1b4180b3a7",
+    "outputs/table-evidence/20261024T015135Z-3671037b/integrity.json": "891bf93ee95262196e25bc801cc780599ae6b33f0da4e191a79016db32444f3b",
+    "outputs/table-evidence/20261024T015146Z-73323f4d/integrity.json": "115a815363b52e47fd42a8cd916e2073582ae5088c97ee5f1dc70ae71ea0513e",
+    "outputs/table-evidence/20261025T153523Z-ece4d06c/integrity.json": "d7ff2275aa3e6e4996077508373e01b7331e45e3a9e9512d80cfee8016f13fed",
+    "outputs/table-evidence/20261025T160457Z-5f504b71/integrity.json": "3ce7eda5951a1d77e91d437e4d4e98c6daf2306dcd75d05c8cebbe9ec74c6470",
+    "outputs/table-evidence/20261025T160509Z-f0667281/integrity.json": "ed8f8ff86e279e8bcf734f34bd619753f54718d9ce869154310f123ff9ad86d4",
+    "outputs/table-evidence/20261025T160518Z-5ef2c043/integrity.json": "61bb66d9cfba8208edee39048cdb76e739f8c6e3b04d178aafa340c070aa4e82",
+    "outputs/table-evidence/20261025T160533Z-261b4e01/integrity.json": "ff08642a34c670f812927967fb24985d0d58afd708834fdb37a2039bfffc38c7",
+    "outputs/table-evidence/20261025T160553Z-a55aea2f/integrity.json": "ad3967539b3bd7d4253b1388e562aefb92f7e4f7686b2774181e1ef480da5271",
+    "outputs/table-evidence/20261025T162303Z-a21ab94f/integrity.json": "6a8a16e33d5ed6d7f57a6a38306b8f959728b7b8435aadcd64e37f4538bce1d7",
+    "outputs/table-evidence/20261025T162447Z-046f7495/integrity.json": "0d90fb436e217067015161276feaaa52e6af54065864f94fd8b46ca7ac34ed9d",
+    "outputs/table-evidence/20261025T162449Z-fa1333fb/integrity.json": "8a6a201fbccfbc22b6ec8c7c88291c388fa787b0270ff3135a52a02c29b3cecd",
+    "outputs/table-evidence/20261025T163954Z-974ed34b/integrity.json": "5765aff57626df835b1b7c84f9c07e53f9bbbeef550ed1f7deb20c2bcd04c66f",
+    "outputs/table-evidence/20261025T172651Z-be8565e7/integrity.json": "885a2a190ebb60dbc98b4e2fc8bee4ffba62e0e4268da09254db0bad9953d16f",
+    "outputs/table-evidence/20261025T172701Z-544d3558/integrity.json": "b318b919f7857590b38594b8999db97c42e283388c90e6ede300ce0b40611ebe",
+    "outputs/table-evidence/20261025T172710Z-93a5311c/integrity.json": "f958db378bce52d1b41be76072ba816ff8d7df5e7ddf96b974c34674b94c968b",
+    "outputs/table-evidence/20261025T172724Z-cd4a00d7/integrity.json": "559199b0ac1ae5853f661484aedf7574e0159b1f964ea8825c15f6cf87fc10c7",
+    "outputs/table-evidence/20261025T172741Z-fca613cd/integrity.json": "f1a56ec7b7faef4f391e7f4491d8f4437999f4b3be3203a5ba75f96db5161dc0",
+    "outputs/table-evidence/20261025T172809Z-b52d6552/integrity.json": "cb0195494a675992d210f684acfd91be072f93943717e590be00d2470379c2bb",
+    "outputs/table-evidence/20261025T172814Z-a7e00fe7/integrity.json": "347c132711d477f78c2f381cdd2902b743e19d67625714dcc06279401dd63b9f",
+    "outputs/table-evidence/20261025T172826Z-7be64de5/integrity.json": "3ddc1b1cc47f5382ae2f4481d2e3dd919430a45f4c9641206afc4c8578f39cb6",
+    "outputs/table-evidence/20261025T172835Z-14785c7f/integrity.json": "74ed1b11fc54085ace09b78ee26168b43b597adf54ac17da85371925ab761569",
+    "outputs/table-evidence/20261025T172842Z-f18d727b/integrity.json": "1e5608e3f76374c160e5f231550e00ad3e66a3660af503ee19a4933c9dd32d4e",
+    "outputs/table-evidence/20261029T015309Z-dedaa3bd/integrity.json": "0ea1eb907abfd2a180305314f9bd2b6846de5abb64bdbc0286dc51375681c4ff",
+    "outputs/table-evidence/20261029T015353Z-00f9e156/integrity.json": "e81fcc8b2961366cb4f604f81b0a6c7f759b83f802821e2fc7724fd42176c76c",
+    "outputs/table-evidence/20261029T015441Z-6e5bad84/integrity.json": "05459958b4ec0d96fc3cdb7c81932f64058a52876deba2f5ba62035eb2bdc660",
+    "outputs/table-evidence/20261029T015555Z-340b5a78/integrity.json": "b52334046b52b70db273df2ec67691c778a67bd9a0957ac790e70385476e9bb1",
+    "outputs/table-evidence/20261029T015616Z-dca5c5fb/integrity.json": "363bc3388c5269bbce60e2aecd151ff80173a4a45ce09edc6d6f6f855a49dd30",
+    "outputs/table-evidence/20261029T015702Z-8d1cc1e0/integrity.json": "311c89add617bf6c7c5d80b5a306dbc36a5bf5fada5d931f7b6f1ec9969d8d25",
+    "outputs/table-evidence/20261029T024559Z-38d14c4b/integrity.json": "026ecdf49ee04023d2a5d4d3637d3ece496f5cbd2b6093fe94440689305b0dc4",
+    "outputs/table-evidence/20261029T024654Z-48878cc7/integrity.json": "5cf6a7015919e30d2b7e730ac3086eccd95f2aa01ed633c6cf4c564604b96992",
+    "outputs/table-evidence/20261029T024801Z-88066182/integrity.json": "714950494b997a92c7e7a5e41a31a64900aab1cded259a7dc1465492d37c87fd",
+    "outputs/table-evidence/20261029T024910Z-7b3ad161/integrity.json": "913a068514bdaf36b0f88f01d95880a0f46e9e3377dedccf7fff66f7e6f2da85",
+    "outputs/table-evidence/20261029T024927Z-5e2c565c/integrity.json": "4e5385dbc3588cada2af9505bbf509c4a52147460edd5d79950f43d272ccf8a0",
+    "outputs/table-evidence/20261029T025003Z-d15a2324/integrity.json": "41102a612c1a4d8d96315734a8db6cc159ea30b55b285b9e8a979339926bc445",
+    "outputs/table-evidence/20261029T080737Z-9f70783b/integrity.json": "02dd426224032d01761fea01718e08854a869c779ca63fbc76b79d474247a7be",
+    "outputs/table-evidence/20261029T080853Z-9628ff81/integrity.json": "b449cc386ea7768d4a2a6423fc9581e4a2837dfdef1b322f8e4eeb2bed24eb14",
+    "data/development/document-scope-v0.1/integrity.json": "9c04ad79b455ca20e8c9e34f5effa58c1f63cab2a01e53c0169924bd22d38d46"
+  },
+  "results": [
+    {
+      "ticker": "FPT",
+      "version_id": "0a8c4da3523844123fb636ff8c29bb099379cc8b7a2a3ca12ab66fb64f6d5d58",
+      "title": "FPT annual report 2024",
+      "baseline_run_id": "20261029T080737Z-9f70783b",
+      "run_id": "20261029T152632Z-dad65562",
+      "status": "abstained_no_table_context",
+      "context_cells": 0,
+      "extracted_cells": 0,
+      "llm_calls": 0,
+      "reparsed_pages": 213,
+      "source_pages": [],
+      "unit_binding_bases": [],
+      "replay": "passed",
+      "elapsed_seconds": 100.29
+    },
+    {
+      "ticker": "FPT",
+      "version_id": "e8509e72eea789549b90734a1bdf3f025967838c9ecdfe2c6faa82259dde6ab2",
+      "title": "FPT bao cao thuong nien 2024 Vietnamese",
+      "baseline_run_id": "20261029T080853Z-9628ff81",
+      "run_id": "20261029T152809Z-d6a89a33",
+      "status": "extracted_unreviewed",
+      "context_cells": 4,
+      "extracted_cells": 36,
+      "llm_calls": 0,
+      "reparsed_pages": 213,
+      "source_pages": [
+        50,
+        151
+      ],
+      "unit_binding_bases": [
+        "aligned_year_column"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 109.06
+    },
+    {
+      "ticker": "HPG",
+      "version_id": null,
+      "run_id": "20261029T152926Z-13228ced",
+      "status": "extracted_unreviewed",
+      "context_cells": 7,
+      "extracted_cells": 78,
+      "llm_calls": 0,
+      "reparsed_pages": 263,
+      "source_pages": [
+        12
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 64.25
+    },
+    {
+      "ticker": "VCB",
+      "version_id": null,
+      "run_id": "20261029T153020Z-10f69baa",
+      "status": "extracted_unreviewed",
+      "context_cells": 5,
+      "extracted_cells": 90,
+      "llm_calls": 0,
+      "reparsed_pages": 106,
+      "source_pages": [
+        67,
+        16
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 56.62
+    },
+    {
+      "ticker": "ACB",
+      "version_id": null,
+      "run_id": "20261029T153132Z-c1fbb3df",
+      "status": "extracted_unreviewed",
+      "context_cells": 2,
+      "extracted_cells": 64,
+      "llm_calls": 0,
+      "reparsed_pages": 142,
+      "source_pages": [
+        64
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 68.42
+    },
+    {
+      "ticker": "BID",
+      "version_id": null,
+      "run_id": "20261029T153243Z-943d6c42",
+      "status": "extracted_unreviewed",
+      "context_cells": 4,
+      "extracted_cells": 110,
+      "llm_calls": 0,
+      "reparsed_pages": 91,
+      "source_pages": [
+        76,
+        80
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 81.96
+    },
+    {
+      "ticker": "MWG",
+      "version_id": null,
+      "run_id": "20261029T153301Z-2f36e523",
+      "status": "abstained_no_table_context",
+      "context_cells": 0,
+      "extracted_cells": 0,
+      "llm_calls": 0,
+      "reparsed_pages": 96,
+      "source_pages": [],
+      "unit_binding_bases": [],
+      "replay": "passed",
+      "elapsed_seconds": 4.43
+    },
+    {
+      "ticker": "VNM",
+      "version_id": null,
+      "run_id": "20261029T153338Z-8f78b9cd",
+      "status": "extracted_unreviewed",
+      "context_cells": 4,
+      "extracted_cells": 50,
+      "llm_calls": 0,
+      "reparsed_pages": 96,
+      "source_pages": [
+        92
+      ],
+      "unit_binding_bases": [
+        "scaled_header_phrase"
+      ],
+      "replay": "passed",
+      "elapsed_seconds": 39.19
+    }
+  ],
+  "config_after": {
+    "configs/corpus_sources_v0_2.json": "db7c59674e218316eb1e2f83cd8e2b5c4319c76b3324d3d1493385eabf02fefa",
+    "configs/corpus_sources_v0_3.json": "2ac6c3cf9c3429776ed430ef0fa92793509f202a1ca44b1ff533b194d36068c9",
+    "configs/corpus_sources_v0_4.json": "901f2ad3bf86ebd395c5cd8b5c7b7c7cea3ead56c306036d6cbbc95c89a6caf6",
+    "configs/dataset_sources_v0_5.json": "cedb7621fe3d825371b30fd26593b035ce730cd324359f5f42532e36105bc837",
+    "configs/financial_sections_v0_3.json": "efae7bc35a6dfaab18b1946cb7292cc77d2fec66fce51101e59e0052d10efd3e",
+    "configs/news_sources_v0_4.json": "c628c4807a42e76a3951d54dab5c7774a97c267a683c7a01bc17803291d4be2f",
+    "configs/pdf_text_v0_7.json": "b92eb3a7d0bf54cd1182f3c81a27bd279291a4c695d5911e84862f22f34897ea",
+    "configs/pilot_sources.json": "24616eccacae448dc527145d80b0df7e7dfd1f8a252c3dc74139ffb6df53770e",
+    "configs/report_retrieval_v0_2.json": "7e690b7b150fcfa283e6d54a905de7461dfb6f266ffd07f418d5e74a85e6817c",
+    "configs/research_development_v0_1.json": "41f6cdf93ded611add96aed45806c0bb2b891b5ab7d1dd12323b0f6278d820cb",
+    "configs/table_context_v0_6.json": "db53a2457d4a795236bbae202e07735cb6920f3ecfeea05c44f4a5d595dd59e5",
+    "configs/table_evidence_v0_4.json": "62d77ddb2affee15be8d04a4ccd076431f8ad08c0600d6c44cf5dd2740391b2d",
+    "configs/table_evidence_v0_5.json": "f3fc516c4ffdf969573b997176bfe6e92cd265f837209753645038de1f4e9e2f",
+    "configs/table_evidence_v0_6.json": "190b59dd79c489640b499dc65c36633cce7366f054bd7216892dedd188e89967",
+    "configs/table_evidence_v0_7.json": "2ae9cf2f108fe5f9774ce6a9de3d042e2fb9136fac9bcbc8d116c374f83d47f5",
+    "configs/table_evidence_v0_8.json": "eb400279002e66baf4b84500281f6ea5c0b8e3c37e74d70bf1f16dea5b8c3f88",
+    "configs/table_evidence_v0_9.json": "c2fb94b6ac204b208fb3b8a14c10ae4b84958fda5cd33058e79ad83660d36e54",
+    "configs/table_page_policy_v0_8.json": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78",
+    "configs/table_selector_v0_4_1.json": "a3d84fb42086fe8def47c81472fea4bbf1580d32760662c15daf0c7ad0566240",
+    "configs/table_units_v0_9.json": "c9de4f106105b2a13aab77d1898eae2c8f975ded35b6d54e5fa3a3a0f9f4eae4",
+    "configs/universe_v0_2.json": "40bd429f978028bfd94e44b6af73e813a0abca366d5ac83e10fc334010b6fd9e",
+    "configs/universe_v0_3.json": "e20e58cfe1a31fb8502334d952066bf5fbc34b07b9223d2bd433a975b5410162",
+    "configs/universe_v0_4.json": "cbd97fe7a339687915dd768acde54ceb643d1e558d7ff09584936f2cc2766f1f"
+  },
+  "protected_after": {
+    "data/development/v0.2/case_index.json": "585b1f680b22e3fa586881a48575bd51b228395ec7a83f1d468f1ee13965499e",
+    "data/development/evaluation-v0.1/validation.json": "bfda7b2bc44842d044bd8bc527caf9dbc2ebea7e58a4b45acd977541a7dd63f8",
+    "data/development/source-audit-v0.1/integrity.json": "135224d6b2d86b7526284a91cae5e8ab9c5d30ae2b346c20b19e2bb7bf80edb5",
+    "data/development/table-v0.8/integrity.json": "855f5a180ae590d757ce6cb22912d1085b40e08a3a38b579885f62a0887d2fc9",
+    "outputs/development-cases/20261019T030531Z-8ef1bf33/cases.jsonl": "e1168dc3a1208580ce72abe22a1931af25e86cc8050302fd999f142bf74d6482",
+    "outputs/development-batches/20261022T030940Z-22f948f0/manifest.json": "df61b48d8c91b19e18a2b1c5192a5e0b959d567d1c42cc74b4b36d00158e3389",
+    "outputs/table-evidence/20261024T014354Z-393d7cf3/integrity.json": "691c8df6ecd29b241afab0c36becbdee2ad08b1293b8a959bc57aec27b84808c",
+    "outputs/table-evidence/20261024T014442Z-ebda193b/integrity.json": "1113493334cd985a4f922a1004bc2097b0c967d96d8fb0902d4f1db08eef9003",
+    "outputs/table-evidence/20261024T014512Z-82e20fd1/integrity.json": "7e7d52223f9289e8bf8b72b50c2c2c6ef0b77a23a799aa6ac88b8c7b2bdc6535",
+    "outputs/table-evidence/20261024T014544Z-fdc9957c/integrity.json": "6ff429ff2cc68b0b415767e1378e7cdf1f49e1b116a0ed59cb3c9a4b1b45e103",
+    "outputs/table-evidence/20261024T014550Z-f80fab32/integrity.json": "edeaa10b476eb60db51af6eb5d6d1ed163b4019de03958d9979c8391fa10be05",
+    "outputs/table-evidence/20261024T014558Z-4328e059/integrity.json": "941f8ff64dd2ecc579170348f5409cff6532f5bf7faa455b39b98eb021ff22c1",
+    "outputs/table-evidence/20261024T014603Z-093cb6e5/integrity.json": "514ce74873b1b9e3fe4d842923c492e8c586f16171d670f6d250a03b13427b9a",
+    "outputs/table-evidence/20261024T015111Z-17b4dda5/integrity.json": "711e67e436c9a08fbd1142030aa9aa544570c6796a88f2e98e7a6e1b4180b3a7",
+    "outputs/table-evidence/20261024T015135Z-3671037b/integrity.json": "891bf93ee95262196e25bc801cc780599ae6b33f0da4e191a79016db32444f3b",
+    "outputs/table-evidence/20261024T015146Z-73323f4d/integrity.json": "115a815363b52e47fd42a8cd916e2073582ae5088c97ee5f1dc70ae71ea0513e",
+    "outputs/table-evidence/20261025T153523Z-ece4d06c/integrity.json": "d7ff2275aa3e6e4996077508373e01b7331e45e3a9e9512d80cfee8016f13fed",
+    "outputs/table-evidence/20261025T160457Z-5f504b71/integrity.json": "3ce7eda5951a1d77e91d437e4d4e98c6daf2306dcd75d05c8cebbe9ec74c6470",
+    "outputs/table-evidence/20261025T160509Z-f0667281/integrity.json": "ed8f8ff86e279e8bcf734f34bd619753f54718d9ce869154310f123ff9ad86d4",
+    "outputs/table-evidence/20261025T160518Z-5ef2c043/integrity.json": "61bb66d9cfba8208edee39048cdb76e739f8c6e3b04d178aafa340c070aa4e82",
+    "outputs/table-evidence/20261025T160533Z-261b4e01/integrity.json": "ff08642a34c670f812927967fb24985d0d58afd708834fdb37a2039bfffc38c7",
+    "outputs/table-evidence/20261025T160553Z-a55aea2f/integrity.json": "ad3967539b3bd7d4253b1388e562aefb92f7e4f7686b2774181e1ef480da5271",
+    "outputs/table-evidence/20261025T162303Z-a21ab94f/integrity.json": "6a8a16e33d5ed6d7f57a6a38306b8f959728b7b8435aadcd64e37f4538bce1d7",
+    "outputs/table-evidence/20261025T162447Z-046f7495/integrity.json": "0d90fb436e217067015161276feaaa52e6af54065864f94fd8b46ca7ac34ed9d",
+    "outputs/table-evidence/20261025T162449Z-fa1333fb/integrity.json": "8a6a201fbccfbc22b6ec8c7c88291c388fa787b0270ff3135a52a02c29b3cecd",
+    "outputs/table-evidence/20261025T163954Z-974ed34b/integrity.json": "5765aff57626df835b1b7c84f9c07e53f9bbbeef550ed1f7deb20c2bcd04c66f",
+    "outputs/table-evidence/20261025T172651Z-be8565e7/integrity.json": "885a2a190ebb60dbc98b4e2fc8bee4ffba62e0e4268da09254db0bad9953d16f",
+    "outputs/table-evidence/20261025T172701Z-544d3558/integrity.json": "b318b919f7857590b38594b8999db97c42e283388c90e6ede300ce0b40611ebe",
+    "outputs/table-evidence/20261025T172710Z-93a5311c/integrity.json": "f958db378bce52d1b41be76072ba816ff8d7df5e7ddf96b974c34674b94c968b",
+    "outputs/table-evidence/20261025T172724Z-cd4a00d7/integrity.json": "559199b0ac1ae5853f661484aedf7574e0159b1f964ea8825c15f6cf87fc10c7",
+    "outputs/table-evidence/20261025T172741Z-fca613cd/integrity.json": "f1a56ec7b7faef4f391e7f4491d8f4437999f4b3be3203a5ba75f96db5161dc0",
+    "outputs/table-evidence/20261025T172809Z-b52d6552/integrity.json": "cb0195494a675992d210f684acfd91be072f93943717e590be00d2470379c2bb",
+    "outputs/table-evidence/20261025T172814Z-a7e00fe7/integrity.json": "347c132711d477f78c2f381cdd2902b743e19d67625714dcc06279401dd63b9f",
+    "outputs/table-evidence/20261025T172826Z-7be64de5/integrity.json": "3ddc1b1cc47f5382ae2f4481d2e3dd919430a45f4c9641206afc4c8578f39cb6",
+    "outputs/table-evidence/20261025T172835Z-14785c7f/integrity.json": "74ed1b11fc54085ace09b78ee26168b43b597adf54ac17da85371925ab761569",
+    "outputs/table-evidence/20261025T172842Z-f18d727b/integrity.json": "1e5608e3f76374c160e5f231550e00ad3e66a3660af503ee19a4933c9dd32d4e",
+    "outputs/table-evidence/20261029T015309Z-dedaa3bd/integrity.json": "0ea1eb907abfd2a180305314f9bd2b6846de5abb64bdbc0286dc51375681c4ff",
+    "outputs/table-evidence/20261029T015353Z-00f9e156/integrity.json": "e81fcc8b2961366cb4f604f81b0a6c7f759b83f802821e2fc7724fd42176c76c",
+    "outputs/table-evidence/20261029T015441Z-6e5bad84/integrity.json": "05459958b4ec0d96fc3cdb7c81932f64058a52876deba2f5ba62035eb2bdc660",
+    "outputs/table-evidence/20261029T015555Z-340b5a78/integrity.json": "b52334046b52b70db273df2ec67691c778a67bd9a0957ac790e70385476e9bb1",
+    "outputs/table-evidence/20261029T015616Z-dca5c5fb/integrity.json": "363bc3388c5269bbce60e2aecd151ff80173a4a45ce09edc6d6f6f855a49dd30",
+    "outputs/table-evidence/20261029T015702Z-8d1cc1e0/integrity.json": "311c89add617bf6c7c5d80b5a306dbc36a5bf5fada5d931f7b6f1ec9969d8d25",
+    "outputs/table-evidence/20261029T024559Z-38d14c4b/integrity.json": "026ecdf49ee04023d2a5d4d3637d3ece496f5cbd2b6093fe94440689305b0dc4",
+    "outputs/table-evidence/20261029T024654Z-48878cc7/integrity.json": "5cf6a7015919e30d2b7e730ac3086eccd95f2aa01ed633c6cf4c564604b96992",
+    "outputs/table-evidence/20261029T024801Z-88066182/integrity.json": "714950494b997a92c7e7a5e41a31a64900aab1cded259a7dc1465492d37c87fd",
+    "outputs/table-evidence/20261029T024910Z-7b3ad161/integrity.json": "913a068514bdaf36b0f88f01d95880a0f46e9e3377dedccf7fff66f7e6f2da85",
+    "outputs/table-evidence/20261029T024927Z-5e2c565c/integrity.json": "4e5385dbc3588cada2af9505bbf509c4a52147460edd5d79950f43d272ccf8a0",
+    "outputs/table-evidence/20261029T025003Z-d15a2324/integrity.json": "41102a612c1a4d8d96315734a8db6cc159ea30b55b285b9e8a979339926bc445",
+    "outputs/table-evidence/20261029T080737Z-9f70783b/integrity.json": "02dd426224032d01761fea01718e08854a869c779ca63fbc76b79d474247a7be",
+    "outputs/table-evidence/20261029T080853Z-9628ff81/integrity.json": "b449cc386ea7768d4a2a6423fc9581e4a2837dfdef1b322f8e4eeb2bed24eb14",
+    "data/development/document-scope-v0.1/integrity.json": "9c04ad79b455ca20e8c9e34f5effa58c1f63cab2a01e53c0169924bd22d38d46"
+  },
+  "configs_unchanged": true,
+  "original_artifacts_unchanged": true
+}

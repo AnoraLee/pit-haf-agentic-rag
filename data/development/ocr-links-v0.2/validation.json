@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-02",
+  "software_tests_passed": 574,
+  "ruff": "passed",
+  "prettier": "passed",
+  "frontend_build": "passed",
+  "new_native_ocr_calls": 9,
+  "new_ocr_runs": 4,
+  "native_ocr_replays_passed": 5,
+  "new_llm_calls": 0,
+  "new_link_snapshots_replayed": 6,
+  "legacy_link_snapshots_replayed": 4,
+  "protected_before_sparse_count": 70,
+  "protected_before_links_validation_count": 75,
+  "original_artifacts_unchanged": true,
+  "link_configuration_unchanged": true,
+  "resolved_years": 0,
+  "human_reviewed_facts": 0,
+  "real_review_db_created": false,
+  "semantic_accuracy": null,
+  "used_in_report_context": false,
+  "strict_pit_eligibility_added": 0,
+  "limitations": [
+    "Incomplete or ambiguous wrapped labels remain missing",
+    "Sparse PSM11 worsened page94 numeric strings; retain PSM6 body and explicit header supplement",
+    "Statement-period evidence is separate from per-cell year; no previous-year arithmetic",
+    "No cross-page context propagation, independent human labels or forecast/backtest results"
+  ]
+}

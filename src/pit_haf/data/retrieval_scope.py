@@ -47,6 +47,35 @@ class ReportScope(BaseModel):
         return self.statement_scope == "all" or version.statement_scope == self.statement_scope
 
 
+class DocumentReportScope(ReportScope):
+    """An explicit version narrows the existing entity/period scope; it never replaces it.
+
+    Kept separate so old scope JSON and old run hashes remain unchanged.
+    """
+
+    version_id: str = Field(pattern=r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
+
+    def sql(self):
+        where, params = super().sql()
+        return where + " AND d.version_id=?", [*params, self.version_id]
+
+    def matches(self, version):
+        return version.version_id == self.version_id and super().matches(version)
+
+
+def check_document_scope(catalog, scope, allowed_versions):
+    """Reject a requested out-of-scope/undelivered version before reading any page."""
+    if not isinstance(scope, DocumentReportScope):
+        return
+    if allowed_versions is not None and scope.version_id not in allowed_versions:
+        raise ValueError("Selected document was not delivered by the Point-in-Time gateway")
+    where, params = scope.sql()
+    with catalog.connect() as db:
+        found = db.execute("SELECT 1 FROM documents d WHERE " + where, params).fetchone()
+    if found is None:
+        raise ValueError("Selected document is absent or outside the requested company/reporting period")
+
+
 def resolve_scope(query, ticker, *, reporting_period=None, source_policy="issuer_reports", statement_scope="all"):
     period, basis = reporting_period, "explicit"
     if reporting_period == "all":

@@ -1,0 +1,57 @@
+{
+  "development_only": true,
+  "independent_gold": false,
+  "human_reviewed_facts": 0,
+  "semantic_accuracy": null,
+  "cer": null,
+  "wer": null,
+  "llm_calls": 0,
+  "native_ocr_attempts_including_initial_failures_and_replay": 12,
+  "successful_source_pages": 4,
+  "recognized_words": 509,
+  "low_confidence_words": 133,
+  "checks": {
+    "software_tests_passed": 503,
+    "ruff": "passed",
+    "frontend_build": "passed",
+    "ocr_full_replay": "passed",
+    "raw_ocr_failures_preserved": 4,
+    "previous_table_run_seals_unchanged": 52,
+    "original_artifacts_unchanged": true
+  },
+  "pages": [
+    {
+      "page": 2,
+      "folder": "page-0002",
+      "status": "ocr_unreviewed",
+      "word_count": 26,
+      "low_confidence_words": 5
+    },
+    {
+      "page": 3,
+      "folder": "page-0003",
+      "status": "ocr_unreviewed",
+      "word_count": 16,
+      "low_confidence_words": 13
+    },
+    {
+      "page": 48,
+      "folder": "page-0048",
+      "status": "ocr_unreviewed",
+      "word_count": 266,
+      "low_confidence_words": 47
+    },
+    {
+      "page": 94,
+      "folder": "page-0094",
+      "status": "ocr_unreviewed",
+      "word_count": 201,
+      "low_confidence_words": 68
+    }
+  ],
+  "limitations": [
+    "Development source inspection, not independent gold; no OCR accuracy measured.",
+    "Word confidence is not a correctness probability; visible numeric and diacritic errors remain.",
+    "OCR preview does not modify the corpus, create reviewed facts or supply LLM context."
+  ]
+}

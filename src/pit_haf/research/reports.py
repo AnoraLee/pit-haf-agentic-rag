@@ -15,8 +15,8 @@ from pit_haf.data.evidence import aware
 from pit_haf.data.financial_sections import search_financial
 from pit_haf.data.gateway import deliver_as_of
 from pit_haf.data.hub import file_sha
-from pit_haf.data.pdf_text import search_pdf_text
-from pit_haf.data.retrieval_scope import resolve_scope
+from pit_haf.data.pdf_text import search_annual_pdf_text, search_pdf_text
+from pit_haf.data.retrieval_scope import check_document_scope, resolve_scope
 from pit_haf.data.snapshots import SnapshotStore
 from pit_haf.llm.ollama import ModelInspectionError, OllamaAdapter, OllamaConfig, sha256, write_json
 from pit_haf.llm.pilot import number_supported
@@ -54,10 +54,8 @@ def protocol(root):
     return settings
 
 
-def retrieve(root, query, ticker, mode, decision_at=None, scope=None, *, retrieval_profile="lexical_v0.2", retrieval_trace=None):
-    """Shared CLI retrieval: historical filtering happens before reading/indexing text."""
-    from pit_haf.data.catalog import Catalog
-
+def retrieval_access(root, mode, decision_at=None):
+    """Share the same temporal allowlist between metadata previews and retrieval."""
     allowed, audit = None, []
     if mode == "strict_point_in_time":
         if not decision_at:
@@ -66,12 +64,22 @@ def retrieve(root, query, ticker, mode, decision_at=None, scope=None, *, retriev
         allowed, audit = {d.evidence.version_id for d in gate.deliveries}, list(gate.audit)
     elif mode != "exploratory_current":
         raise ValueError("Unknown analysis mode")
+    return allowed, audit
+
+
+def retrieve(root, query, ticker, mode, decision_at=None, scope=None, *, retrieval_profile="lexical_v0.2", retrieval_trace=None):
+    """Shared CLI retrieval: historical filtering happens before reading/indexing text."""
+    from pit_haf.data.catalog import Catalog
+
+    allowed, audit = retrieval_access(root, mode, decision_at)
     summaries = sorted(root.glob("outputs/milestone-1/data-pilot/*/summary.json"),
                        key=lambda p: p.stat().st_mtime_ns, reverse=True)
     if summaries and (summaries[0].parent / "catalog.json").exists():
         catalog = Catalog(root, summaries[0])
-        if retrieval_profile in {"financial_sections_v0.3", "financial_pdf_text_v0.7"}:
-            search = search_pdf_text if retrieval_profile == "financial_pdf_text_v0.7" else search_financial
+        check_document_scope(catalog, scope, allowed)
+        if retrieval_profile in {"financial_sections_v0.3", "financial_pdf_text_v0.7", "financial_pdf_text_v0.8"}:
+            search = {"financial_sections_v0.3": search_financial, "financial_pdf_text_v0.7": search_pdf_text,
+                      "financial_pdf_text_v0.8": search_annual_pdf_text}[retrieval_profile]
             data, hits, trace = search(catalog, query, scope=scope, allowed_versions=allowed)
             if retrieval_trace is not None:
                 retrieval_trace.update(trace)
@@ -85,6 +93,10 @@ def retrieve(root, query, ticker, mode, decision_at=None, scope=None, *, retriev
         data = load_corpus(root)
         if data.errors:
             raise ValueError("; ".join(data.errors))
+        if getattr(scope, "version_id", None) and not any(
+            scope.matches(v) and (allowed is None or v.version_id in allowed) for v in data.versions
+        ):
+            raise ValueError("Selected document is absent, outside scope or not delivered by the gateway")
         if scope:
             versions = tuple(v for v in data.versions if scope.matches(v) and (allowed is None or v.version_id in allowed))
             ids = {v.version_id for v in versions}

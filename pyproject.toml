@@ -25,6 +25,9 @@ dependencies = [
 [dependency-groups]
 dev = ["pytest", "ruff"]
 
+[project.optional-dependencies]
+ocr = ["tesserocr==2.12.0"]
+
 [tool.uv.sources]
 vnstock = { url = "https://files.pythonhosted.org/packages/13/0b/a3021930b75ac9c9ca0525e06181e29c59b60cf5d1001ae19aabf3ed4fbb/vnstock-4.0.7-py3-none-any.whl" }
 vnai = { url = "https://files.pythonhosted.org/packages/0f/44/d2c925d26633ea84c579e721c1e509f3755108fb88acb611cfd1e312fbb8/vnai-2.5.9-py3-none-any.whl" }

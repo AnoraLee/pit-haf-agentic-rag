@@ -1,0 +1,10 @@
+{
+  "files": {
+    "DATA_CARD.md": "ac3ce368fca91efcefce1f567003dd2dee1ba736dcda8e9f142d5263c1ec6ab0",
+    "manifest.json": "5c0fce659d4d65952ae111d81e0e43b33ec31760dffd3a99b8aa0af470d906f4",
+    "validation.json": "34c9c12739e181e769f4d0de7587e2f068d4a3ec085bba46d256bdd6b33a9c7a"
+  },
+  "policy": {
+    "configs/ocr_cell_links_v0_1.json": "3282775c07f6b32abc1e819a45a22d3efd9ed3db41f05877831be1662847a360"
+  }
+}

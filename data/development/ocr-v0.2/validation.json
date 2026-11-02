@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-30",
+  "software_tests_passed": 534,
+  "ruff": "passed",
+  "prettier": "passed",
+  "frontend_build": "passed",
+  "comparisons": [
+    {
+      "run_id": "20261029T155531Z-79d9ef89",
+      "cells_checked": 24,
+      "literal_matches": 14,
+      "whitespace_only_matches": 16
+    },
+    {
+      "run_id": "20261030T015455Z-fe097131",
+      "cells_checked": 24,
+      "literal_matches": 24,
+      "whitespace_only_matches": 24
+    },
+    {
+      "run_id": "20261030T015504Z-6d5f47c2",
+      "cells_checked": 24,
+      "literal_matches": 24,
+      "whitespace_only_matches": 24
+    }
+  ],
+  "source_counts": [
+    {
+      "run_id": "20261029T155531Z-79d9ef89",
+      "word_count": 201,
+      "low_confidence_words": 68
+    },
+    {
+      "run_id": "20261030T015455Z-fe097131",
+      "word_count": 182,
+      "low_confidence_words": 35
+    },
+    {
+      "run_id": "20261030T015504Z-6d5f47c2",
+      "word_count": 117,
+      "low_confidence_words": 21
+    }
+  ],
+  "replays": [
+    {
+      "run_id": "20261029T155531Z-79d9ef89",
+      "status": "passed",
+      "pages": 4
+    },
+    {
+      "run_id": "20261030T015455Z-fe097131",
+      "status": "passed",
+      "pages": 1
+    },
+    {
+      "run_id": "20261030T015504Z-6d5f47c2",
+      "status": "passed",
+      "pages": 1
+    }
+  ],
+  "successful_ocr_replay_pages": 6,
+  "numeric_audit_replay": "passed",
+  "new_native_ocr_calls": 8,
+  "new_ocr_runs": 2,
+  "retries": 0,
+  "new_llm_calls": 0,
+  "protected_hash_count": 61,
+  "table_run_seal_count": 52,
+  "old_ocr_run_seals": 2,
+  "original_artifacts_unchanged": true,
+  "profile_hashes_unchanged": true,
+  "implementation_hashes_unchanged": true,
+  "independent_gold": false,
+  "human_confirmed_cells": 0,
+  "semantic_accuracy": null,
+  "resolved_year": null,
+  "used_in_report_context": false,
+  "human_reviewed_facts": 0,
+  "strict_pit_eligibility_added": 0,
+  "limitations": [
+    "assistant chose sample after inspecting baseline errors; not held out",
+    "whole-page control also matched 24 strings; crop benefit unproven",
+    "DPI and PSM both changed; individual effects not isolated",
+    "header/text errors remain; no year/unit/scope financial facts inferred"
+  ]
+}

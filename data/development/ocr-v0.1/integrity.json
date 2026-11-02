@@ -1,0 +1,7 @@
+{
+  "files": {
+    "data/development/ocr-v0.1/manifest.json": "65c325fb02d4c594628f7ac1f9c731f245d7a9864570786df7f4fa73055d1b9c",
+    "data/development/ocr-v0.1/validation.json": "c1f7f6eb11dda038e000714a8bcd559fc2ffec985025c6c8911d18d9bc9e4d66",
+    "configs/pdf_ocr_v0_1.json": "c0d64d486d9a9e807ce4f5b8d473c2c60d28d2c903809c506482d69a040d32ab"
+  }
+}

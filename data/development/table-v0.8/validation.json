@@ -1,0 +1,190 @@
+{
+  "development_only": true,
+  "independent_gold": false,
+  "human_reviewed_facts": 0,
+  "semantic_accuracy": null,
+  "new_model_calls": 0,
+  "checks": {
+    "software_tests_passed": 443,
+    "ruff": "passed",
+    "frontend_build": "passed",
+    "raw_study_replays_passed": 40,
+    "new_raw_runs_replayed": 6,
+    "pre_run_failures_preserved": 1,
+    "legacy_24_case_source_audit": "passed",
+    "original_artifacts_unchanged": true,
+    "configs_unchanged_during_study": true
+  },
+  "runs": [
+    {
+      "ticker": "FPT",
+      "status": "failed",
+      "error_type": "ValueError",
+      "error": "Alternate PDF text metadata page budget exceeded: 426 > 400; narrow the scope",
+      "replay": "not_completed"
+    },
+    {
+      "run_id": "20261029T024559Z-38d14c4b",
+      "ticker": "HPG",
+      "status": "extracted_unreviewed",
+      "llm_calls": 0,
+      "context_cells": 7,
+      "extracted_cells": 78,
+      "replay": "passed",
+      "result_sha256": "17d0c0b3372c979d346dafd5294eee68c87e9b00c6d8549091237fb854f62789",
+      "reparsed_pages": 263,
+      "page_policy": {
+        "policy_id": "annual_table_pages_v0.8",
+        "policy_sha256": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78"
+      },
+      "excluded_by_year": 242,
+      "sources": [
+        {
+          "version_id": "7b158cd0c581cfd089d6839d2a498c662f4fafd3cfbb06c59a80293816f17952",
+          "page": 12
+        }
+      ],
+      "missing_scope_cells": 7,
+      "wrong_period_pages": 7,
+      "missing_header_pages": 235
+    },
+    {
+      "run_id": "20261029T024654Z-48878cc7",
+      "ticker": "VCB",
+      "status": "extracted_unreviewed",
+      "llm_calls": 0,
+      "context_cells": 5,
+      "extracted_cells": 90,
+      "replay": "passed",
+      "result_sha256": "dceb50bbb9009fcc457961700a18e552d2072c3dd13823100ce40142f688797f",
+      "reparsed_pages": 106,
+      "page_policy": {
+        "policy_id": "annual_table_pages_v0.8",
+        "policy_sha256": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78"
+      },
+      "excluded_by_year": 85,
+      "sources": [
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 67
+        },
+        {
+          "version_id": "eecbec96bab35e2bf0dc0fbd41603e7ecdc7508897c19932a4ca51a3126b9bae",
+          "page": 16
+        }
+      ],
+      "missing_scope_cells": 2,
+      "wrong_period_pages": 6,
+      "missing_header_pages": 79
+    },
+    {
+      "run_id": "20261029T024801Z-88066182",
+      "ticker": "ACB",
+      "status": "extracted_unreviewed",
+      "llm_calls": 0,
+      "context_cells": 2,
+      "extracted_cells": 64,
+      "replay": "passed",
+      "result_sha256": "0b3018f5352e958db61d405da6c2093c7f32a2f34645f628c69e1c2cc4038aad",
+      "reparsed_pages": 142,
+      "page_policy": {
+        "policy_id": "annual_table_pages_v0.8",
+        "policy_sha256": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78"
+      },
+      "excluded_by_year": 115,
+      "sources": [
+        {
+          "version_id": "f4b6af1f0fd45f71ccdd5f70958f4a761c634eba247bfbdc688204a47250aef0",
+          "page": 64
+        }
+      ],
+      "missing_scope_cells": 0,
+      "wrong_period_pages": 4,
+      "missing_header_pages": 111
+    },
+    {
+      "run_id": "20261029T024910Z-7b3ad161",
+      "ticker": "BID",
+      "status": "extracted_unreviewed",
+      "llm_calls": 0,
+      "context_cells": 4,
+      "extracted_cells": 110,
+      "replay": "passed",
+      "result_sha256": "0a8dc5290d2c04fb9a3daab813318240e68ba3fa23eedab720d3a635f9c43d01",
+      "reparsed_pages": 91,
+      "page_policy": {
+        "policy_id": "annual_table_pages_v0.8",
+        "policy_sha256": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78"
+      },
+      "excluded_by_year": 77,
+      "sources": [
+        {
+          "version_id": "9e33249772ed7cba285a65b9f176a73a2d58412521fa01b9c356599ccbf2fc00",
+          "page": 76
+        },
+        {
+          "version_id": "9e33249772ed7cba285a65b9f176a73a2d58412521fa01b9c356599ccbf2fc00",
+          "page": 80
+        }
+      ],
+      "missing_scope_cells": 0,
+      "wrong_period_pages": 3,
+      "missing_header_pages": 74
+    },
+    {
+      "run_id": "20261029T024927Z-5e2c565c",
+      "ticker": "MWG",
+      "status": "abstained_no_table_context",
+      "llm_calls": 0,
+      "context_cells": 0,
+      "extracted_cells": 0,
+      "replay": "passed",
+      "result_sha256": "ebdfc6e7e9281b885cc7b5c1e2952145d27db11c0fd69cd21781bede051da17a",
+      "reparsed_pages": 96,
+      "page_policy": {
+        "policy_id": "annual_table_pages_v0.8",
+        "policy_sha256": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78"
+      },
+      "excluded_by_year": 96,
+      "sources": [],
+      "missing_scope_cells": 0,
+      "wrong_period_pages": 0,
+      "missing_header_pages": 96
+    },
+    {
+      "run_id": "20261029T025003Z-d15a2324",
+      "ticker": "VNM",
+      "status": "extracted_unreviewed",
+      "llm_calls": 0,
+      "context_cells": 4,
+      "extracted_cells": 50,
+      "replay": "passed",
+      "result_sha256": "ecc9ce363a9fbc25207ac32246cc280bdc64162d819108f2fe29d5dfc4ab82f9",
+      "reparsed_pages": 96,
+      "page_policy": {
+        "policy_id": "annual_table_pages_v0.8",
+        "policy_sha256": "bfeed57335f4e8ad1dc99f28aacb90bb6149ccc65f43477d7a4f50fc488b4a78"
+      },
+      "excluded_by_year": 89,
+      "sources": [
+        {
+          "version_id": "969d6a75f362cd4c4bc044e6cfea47c7dcf171b93c2d36d84b884824c49a7fea",
+          "page": 92
+        }
+      ],
+      "missing_scope_cells": 0,
+      "wrong_period_pages": 3,
+      "missing_header_pages": 86
+    }
+  ],
+  "v07_context_cells": {
+    "FPT": null,
+    "HPG": 7,
+    "VCB": 0,
+    "ACB": 2,
+    "BID": 4,
+    "MWG": 0,
+    "VNM": 4
+  },
+  "note": "Unreviewed context candidates; counts are not accuracy/recall. VCB has 3 cells on page 67 plus 2 summary cells with missing scope. FPT remains over 400-page budget; MWG still needs OCR."
+}

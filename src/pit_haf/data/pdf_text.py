@@ -8,6 +8,8 @@ import pdfplumber
 from pit_haf.data.evidence import EvidencePage
 from pit_haf.data.financial_sections import load_profile, search_financial, topic_for
 from pit_haf.data.hub import file_sha
+from pit_haf.data.table_page_policy import POLICY as PAGE_POLICY
+from pit_haf.data.table_page_policy import gate, load_policy
 from pit_haf.llm.ollama import sha256
 from pit_haf.ui.workspace import Corpus
 
@@ -35,7 +37,7 @@ def extract_text_pages(payload, content_hash, *, max_pages, numbers=None):
         return [(n, pdf.pages[n - 1].extract_text() or "") for n in wanted]
 
 
-def search_pdf_text(catalog, query, *, scope, allowed_versions=None):
+def search_pdf_text(catalog, query, *, scope, allowed_versions=None, page_policy=None):
     profile = settings(catalog.root)
     audit = {"profile_id": profile["profile_id"], "profile_sha256": file_sha(catalog.root / PROFILE),
              "extractor": profile["extractor"], "pdfplumber_version": pdfplumber.__version__,
@@ -76,8 +78,17 @@ def search_pdf_text(catalog, query, *, scope, allowed_versions=None):
                              data_kind=version.data_kind) for n, text in texts]
 
     data, hits, trace = search_financial(catalog, query, scope=scope, allowed_versions=allowed_versions,
-                                        page_loader=loader)
+                                        page_loader=loader, page_policy=page_policy)
     trace["alternate_text_layer"] = audit
+    return data, hits, trace
+
+
+def search_annual_pdf_text(catalog, query, *, scope, allowed_versions=None):
+    policy = load_policy(catalog.root)
+    data, hits, trace = search_pdf_text(catalog, query, scope=scope, allowed_versions=allowed_versions,
+                                       page_policy=gate(catalog.root))
+    trace["annual_page_policy"] = {"policy_id": policy["policy_id"],
+                                   "policy_sha256": file_sha(catalog.root / PAGE_POLICY)}
     return data, hits, trace
 
 
