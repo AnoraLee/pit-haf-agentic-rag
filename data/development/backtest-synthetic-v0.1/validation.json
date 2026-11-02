@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-02",
+  "software_tests_passed": 645,
+  "new_execution_tests_passed": 44,
+  "ruff": "passed",
+  "test_dependency_warnings": 2,
+  "frontend_build": "not_rerun_frontend_unchanged",
+  "synthetic_runs": 3,
+  "replays_passed": 3,
+  "protected_artifact_count": 83,
+  "protected_artifacts_unchanged": true,
+  "new_llm_calls": 0,
+  "new_market_data_downloads": 0,
+  "real_review_database_created": false,
+  "research_result": false,
+  "historical_availability_validated": false,
+  "independent_gold": false,
+  "tested": [
+    "hand_calculated_cash_fees_return_drawdown_turnover",
+    "next_supplied_session_open_and_gaps",
+    "share_and_sale_cash_settlement_fifo",
+    "partial_fills_volume_lots_and_zero_volume",
+    "no_forced_terminal_liquidation",
+    "future_price_perturbation_invariance",
+    "Decimal_context_independence",
+    "strict_input_validation",
+    "raw_input_and_config_preservation",
+    "recompute_json_csv_and_resealed_tampering",
+    "CLI_and_replay_override_rejection"
+  ],
+  "limitations": [
+    "Synthetic scenario parameters are not verified market rules or data",
+    "Daily volume and OHLC constraints do not prove open auction liquidity",
+    "No corporate actions, dividends, tick/fee rounding, price limits or delisting",
+    "No agent horizon exit policy, Q2/Q3/Q4, real-price backtest or research baseline results"
+  ]
+}

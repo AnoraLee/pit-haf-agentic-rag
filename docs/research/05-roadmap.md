@@ -20,6 +20,10 @@ Tổng sơ bộ 210–360 giờ công, cộng thời gian inference/thu thập/c
 lớn. Giờ làm mỗi tuần chưa xác định. Không suy ra 8 tuần đủ chỉ từ checklist.
 Các CLI chưa hiện thực trong cột artifacts là tiêu chí đích, không lệnh đang chạy.
 Hiện lệnh có thật: test/lint/pit-demo/data/app/doctor qua run.ps1.
+Ngày 02/11/2026 bổ sung `backtest-synthetic`: động cơ thực thi và lịch
+Q0/Q1 trên kịch bản tự tạo, có ledger/replay. Đây mới là nền tảng M2;
+chưa đạt tiêu chí calendar/settlement/giá thật hoặc đủ năm baseline.
+Xem [mốc 33](33-synthetic-execution-engine.md).
 
 ```mermaid
 flowchart LR

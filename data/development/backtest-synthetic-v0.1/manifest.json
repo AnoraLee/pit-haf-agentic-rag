@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-02",
+  "kind": "synthetic_execution_diagnostic",
+  "research_result": false,
+  "protocol": "synthetic_execution_v0.1",
+  "study": {
+    "path": "outputs/backtest-development/20261102T142512Z-0471bf7f",
+    "seal_sha256": "b5cfaf97b1d7759c0f1ef3418e863683b744c7ff00f9753d6cc05ad9c50b1ca5",
+    "plan_sha256": "729f7b998bac3f0ce4ecc1f3147f1bc2e870a6b58136855f38d846b765a1432c"
+  },
+  "scenario": {
+    "symbols": [
+      "SYN_A",
+      "SYN_B"
+    ],
+    "sessions": 6,
+    "bars": 12,
+    "currency": "scenario_units",
+    "calendar_basis": "explicit_synthetic_sessions"
+  },
+  "config_path": "configs/synthetic_execution_v0_1.json",
+  "config_sha256": "ddb49e1f4da8f43f7655ecfe344786f185f82264948e3db4ceba8fda2f87aba2",
+  "arms": [
+    {
+      "baseline": "manual",
+      "interval": null,
+      "path": "outputs/backtest-synthetic/20261102T142512Z-0319e243",
+      "seal_sha256": "d29474093d4137812ed3c64529ca3dc8ffba4ac86f62e596a4bea19e8835358b",
+      "replay": "passed",
+      "research_result": false
+    },
+    {
+      "baseline": "Q0",
+      "interval": null,
+      "path": "outputs/backtest-synthetic/20261102T142513Z-5a331b59",
+      "seal_sha256": "ec7590803c395a763f2ce4e1c4b93422367864778e2eca17e360cd6557d19e39",
+      "replay": "passed",
+      "research_result": false
+    },
+    {
+      "baseline": "Q1",
+      "interval": 2,
+      "path": "outputs/backtest-synthetic/20261102T142514Z-6ffe1c85",
+      "seal_sha256": "842cfa4fb742b14ecc84aab0790322058ea483c2353ee7349f6611e850405062",
+      "replay": "passed",
+      "research_result": false
+    }
+  ],
+  "independent_gold": false,
+  "historical_availability_validated": false
+}

@@ -8,7 +8,8 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
-[Phiếu đối chiếu OCR 02/11/2026](docs/research/32-ocr-source-review.md) ·
+[Backtest giả lập 02/11/2026](docs/research/33-synthetic-execution-engine.md) ·
+[Phiếu đối chiếu OCR](docs/research/32-ocr-source-review.md) ·
 [Tiến độ 29/10/2026](docs/research/27-progress-20261029.md) ·
 [Hồ sơ nghiên cứu](docs/research/README.md) ·
 [Đáp án và đối chiếu 24 câu](docs/research/development-source-audit-v0.1.md)
@@ -208,8 +209,9 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **601 test**; lint và
-frontend build đạt. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **645 test** và lint.
+Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc backtest
+giả lập. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
 [offline-checks.yml](.github/workflows/offline-checks.yml).
 
@@ -331,6 +333,24 @@ local, chưa là nhãn độc lập và chưa đưa vào câu trả lời hoặc
 Phiếu nằm trong `outputs/ocr-reviews/reviews.sqlite3`, ngoài Git; không
 tạo database chỉ vì mở xem. Xem [quy trình và giới hạn](docs/research/32-ocr-source-review.md).
 
+### Backtest giả lập
+
+Đã có động cơ thực thi long-only/cash để kiểm tra độ trễ phiên, phí,
+slippage, lô, thanh toán và sổ danh mục bằng dữ liệu tự tạo:
+
+```powershell
+.\run.ps1 backtest-synthetic --demo
+.\run.ps1 backtest-synthetic --demo --baseline Q0
+.\run.ps1 backtest-synthetic --demo --baseline Q1 --rebalance-every 2
+```
+
+Kết quả JSON/CSV và nguồn/config/hash nằm ở `outputs/backtest-synthetic/`.
+Dùng `--replay <thư mục run>` để tái tính. Không cần Ollama hoặc tải giá.
+Q0/Q1 mới có cơ chế tạo lịch trên kịch bản giả lập; chưa là kết quả của
+hai baseline nghiên cứu. Runner chưa nhận giá thị trường, chưa xác minh
+lịch/điều chỉnh giá/quy tắc thực thi sàn hoặc chạy đủ năm baseline.
+Xem [quy tắc, kiểm chứng và giới hạn](docs/research/33-synthetic-execution-engine.md).
+
 ## 6. Xử lý lỗi thường gặp
 
 | Hiện tượng | Cách xử lý |
@@ -363,8 +383,10 @@ tạo database chỉ vì mở xem. Xem [quy trình và giới hạn](docs/resear
 - Quote Resolution kiểm nguyên văn/chuỗi số trên văn bản trích xuất, gắn trang,
   offset và hash; chưa bảo đảm đúng ngữ nghĩa, chỉ tiêu, đơn vị hoặc loại bỏ
   mọi ảo giác. Đây chưa phải toàn bộ hệ agent phân cấp PiT-HAF.
-- Backtest, 5 baseline định lượng, graph/peer/memory và ablation đầy đủ còn
-  theo lộ trình; chưa có kết quả dự báo lợi suất hoặc giao dịch để công bố.
+- Có nền tảng thực thi trên dữ liệu giả lập với lịch Q0/Q1, phí/thanh toán
+  và ledger; chưa có backtest giá thật hoặc kết quả đủ 5 baseline. Phần
+  graph/peer/memory và ablation đầy đủ còn theo lộ trình; chưa có kết quả
+  dự báo lợi suất hoặc giao dịch thực nghiệm để công bố.
 
 ## 8. Tài liệu và cấu trúc mã nguồn
 
@@ -374,6 +396,7 @@ tạo database chỉ vì mở xem. Xem [quy trình và giới hạn](docs/resear
 | `src/pit_haf/llm/` | Adapter Ollama, schema, giới hạn gọi model và pilot trích xuất |
 | `src/pit_haf/verification/` | Đối soát quote và kiểm tra số học |
 | `src/pit_haf/research/` | Case pack, batch/evaluator, review và đối chiếu nguồn |
+| `src/pit_haf/backtest/` | Hợp đồng, động cơ thực thi và runner giả lập; lịch Q0/Q1, ledger, replay |
 | `src/pit_haf/ui/`, `frontend/` | API FastAPI và giao diện React/Vite |
 | `configs/`, `data/development/`, `data/corpus/` | Cấu hình, data card, metadata/checksum |
 | `tests/` | Kiểm thử offline với fixture tách khỏi dữ liệu thực |
