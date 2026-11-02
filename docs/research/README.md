@@ -42,6 +42,7 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [32 — Phiếu đối chiếu OCR](32-ocr-source-review.md) | Bản chép có lý do sửa, năm tự nhập theo nguồn, điều kiện xác nhận, revision/conflict và export; chưa là nhãn độc lập |
 | [33 — Động cơ thực thi giả lập](33-synthetic-execution-engine.md) | Lệnh trễ phiên, phí/slippage, settlement, sổ tiền/vị thế, lịch Q0/Q1 và replay; chưa có backtest thị trường |
 | [34 — Snapshot giá 2021–2024](34-market-price-snapshots.md) | Raw KBS và Decimal, 2.994 bar cổ phiếu, chặn VNINDEX lỗi OHLC, replay và báo điều kiện còn thiếu; chưa chạy lợi suất |
+| [35 — Đối soát VNINDEX](35-index-vendor-crosscheck.md) | KBS/Vietcap theo trường, 998 close khớp, giữ lỗi OHLC/volume và tạo comparator close-only; chưa xác nhận dữ liệu thực thi/PiT |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

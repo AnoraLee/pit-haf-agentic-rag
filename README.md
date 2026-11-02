@@ -8,6 +8,7 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
+[Đối soát VNINDEX](docs/research/35-index-vendor-crosscheck.md) ·
 [Snapshot giá 2021–2024](docs/research/34-market-price-snapshots.md) ·
 [Backtest giả lập](docs/research/33-synthetic-execution-engine.md) ·
 [Phiếu đối chiếu OCR](docs/research/32-ocr-source-review.md) ·
@@ -210,9 +211,9 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **682 test** và lint.
-Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc snapshot
-giá. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **724 test** và lint.
+Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc đối soát
+chỉ số. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
 [offline-checks.yml](.github/workflows/offline-checks.yml).
 
@@ -370,6 +371,21 @@ nguồn lỗi chất lượng, kể cả khi replay khớp. Giá điều chỉnh
 lịch sở và quy tắc thực thi chưa được xác nhận; snapshot chưa chuyển sang
 engine hoặc tạo lợi suất. Xem [kết quả và giới hạn](docs/research/34-market-price-snapshots.md).
 
+### Đối soát VNINDEX và so chuẩn giá đóng cửa
+
+```powershell
+.\run.ps1 index-crosscheck --capture --kbs-run <run-id-KBS>
+.\run.ps1 index-crosscheck --replay outputs/index-crosschecks/<run-id>
+```
+
+Đọc chart công khai Vietcap và pin nguồn KBS đã lưu, đối chiếu từng trường,
+giữ mọi sai lệch/lỗi OHLC. Mốc 2021–2024 có **998/998 close khớp**, còn
+open/high/low và volume khác biệt. Tạo comparator close-only, curve gốc
+100 và CSV để phát triển Q2; không phát sinh lệnh hoặc sửa bộ OHLCV gốc.
+Exit 0 chỉ thể hiện đồng thuận close-only, chưa cấp điều kiện thực thi hay
+xác nhận PiT. Không chứng minh các vendor độc lập upstream. Xem
+[quy tắc và kết quả](docs/research/35-index-vendor-crosscheck.md).
+
 ## 6. Xử lý lỗi thường gặp
 
 | Hiện tượng | Cách xử lý |
@@ -409,6 +425,9 @@ engine hoặc tạo lợi suất. Xem [kết quả và giới hạn](docs/resear
 - Có snapshot giá KBS 2021–2024 cho ba mã phát triển và raw VNINDEX bị
   chặn chất lượng. Chưa xác minh điều chỉnh giá/phiên bản khả dụng, chưa
   dùng các bar này làm cohort PiT strict hoặc dữ liệu thực thi.
+- Có đối soát VNINDEX với Vietcap và comparator giá đóng cửa Q2 phát
+  triển. Các sai lệch OHLC/volume còn giữ; chưa có Q2 nghiên cứu đã khóa,
+  Q3/Q4 hoặc bộ kết quả so sánh giao dịch hoàn chỉnh.
 
 ## 8. Tài liệu và cấu trúc mã nguồn
 

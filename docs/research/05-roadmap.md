@@ -28,6 +28,10 @@ Xem [mốc 33](33-synthetic-execution-engine.md).
 giá KBS 2021–2024 và kiểm chất lượng/replay; ba mã có 2.994 bar, VNINDEX
 bị chặn vì quan hệ OHLC. Chưa chuyển các bar vào thực thi hoặc coi lịch,
 adjustment và tính khả dụng là đã xác minh.
+`index-crosscheck` ở [mốc 35](35-index-vendor-crosscheck.md) đối chiếu
+KBS/Vietcap và tạo comparator close-only cho Q2 phát triển khi toàn bộ
+close/tập ngày đồng thuận. Không nâng dữ liệu OHLCV thành đủ điều kiện
+thực thi, chưa thay tiêu chí nghiệm thu M2 hoặc freeze thực nghiệm.
 
 ```mermaid
 flowchart LR

@@ -1,0 +1,7 @@
+{
+  "protocol": "market_index_crosscheck_v0.1",
+  "start": "2021-01-01",
+  "end": "2024-12-31",
+  "symbol": "VNINDEX",
+  "count_back": 1100
+}
