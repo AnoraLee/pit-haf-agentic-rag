@@ -1,0 +1,397 @@
+{
+  "protocol": "settlement_calendar_audit_v0.1",
+  "basis": "candidate_weekdays_minus_curated_VSDC_closures",
+  "scope": "cash_equity_settlement_dates_only",
+  "audit_start": "2021-01-01",
+  "audit_end": "2024-12-31",
+  "sources": [
+    {
+      "id": "vsd_2021_initial",
+      "url": "https://vsdc.vn/vi/ad/68796",
+      "raw_sha256": "528a663741fa4fb6869a846fde74f06343fa896df7e12599460609f6034cefe3",
+      "body_sha256": "ee05561710998dea61699b1b5e8374791e34142ce3bf5f5433b86cd276f6472e",
+      "anchors": [
+        "11/02/2021",
+        "17/02/2021"
+      ]
+    },
+    {
+      "id": "vsd_2021_amendment",
+      "url": "https://vsdc.vn/vi/ad/76898",
+      "raw_sha256": "0439b0c7c0f0f71c03951c482ced6ba22128ec7ba3623a206b32ac2a5e9189c6",
+      "body_sha256": "6f005ac4c36b3c788e166d515bd44447cea150f0ec5e4baeabeb6e7c77b56ebd",
+      "anchors": [
+        "10/02/2021",
+        "16/02/2021",
+        "1909/TB-VSD"
+      ]
+    },
+    {
+      "id": "vsd_2022",
+      "url": "https://vsdc.vn/vi/ad/144999",
+      "raw_sha256": "eaf83ad0fc840620b6a6fbae1cc2877843ebd7d5fd25b3db3f5b79b444d81e7e",
+      "body_sha256": "25efb1190aaa165e292951b7f935087b62c65e22bc2078b8a53a823ad6ff5d6f",
+      "anchors": [
+        "03/01/2022",
+        "31/01/2022",
+        "04/02/2022"
+      ]
+    },
+    {
+      "id": "vsd_2023_initial",
+      "url": "https://vsdc.vn/vi/ad/152241",
+      "raw_sha256": "d7e6f4027da29a88461f56a556d771a33470c45112c27c625af13c26a1872b0e",
+      "body_sha256": "c1e9e36c1dcc2e319a654b89503884304917ce2fee4dbe0fefada0e6cf0529b3",
+      "anchors": [
+        "05/9/2023"
+      ]
+    },
+    {
+      "id": "vsd_2023_amendment",
+      "url": "https://vsdc.vn/vi/ad/155165",
+      "raw_sha256": "110d272826b732feace676adc66f1847f7850048f4eb1cfde5c17ab5fe9740f9",
+      "body_sha256": "b456adb82e2753ce2774083f98a586a671e8c2c2257071e2cb506d8278d63f72",
+      "anchors": [
+        "01/09/2023",
+        "04/09/2023",
+        "2331/TB-VSD"
+      ]
+    },
+    {
+      "id": "vsd_2024_initial",
+      "url": "https://vsdc.vn/vi/ad/159293",
+      "raw_sha256": "b36878de398f22707f2a1a06865f8141e9ee9b6d45e5290444140d083478ab94",
+      "body_sha256": "f5fe20f2c89de89ede627cce95eadb2b09cd06dcc0a541abd9103eaaf555a445",
+      "anchors": [
+        "08/02/2024",
+        "14/02/2024"
+      ]
+    },
+    {
+      "id": "vsdc_2024_april",
+      "url": "https://vsdc.vn/vi/ad/170099",
+      "raw_sha256": "afbf00efdf6e8b423e9b18acc9bcbba2f67477070476da3412f5a45139f9479b",
+      "body_sha256": "9b2679ea3b48d27811da46891ec5a5a8cb5f89e7eb2126241675744a03aff60f",
+      "anchors": [
+        "27/4/2024",
+        "01/5/2024",
+        "04/5/2024"
+      ]
+    },
+    {
+      "id": "vsd_2025_initial_tail_only",
+      "url": "https://vsdc.vn/vi/ad/159292",
+      "raw_sha256": "0c69d0c7f31c504982e7198f2d8fb21522390d751c3eb28c5fe54534f54292f0",
+      "body_sha256": "a5b63cca569cbaf49c05eae9b2766ac57c322617debfb8eb3aa55ce5e836e864",
+      "anchors": [
+        "01/01/2025"
+      ]
+    },
+    {
+      "id": "vsd_2022_timing",
+      "url": "https://vsdc.vn/vi/ad/152750",
+      "raw_sha256": "537ab6af8343246688bf415a07d595e0379ea5b81a81b839be7b954d30454c52",
+      "body_sha256": "81fc7106e49e886c7d32be3abeebf81eff90516aa06fe8f812c7468011602cbc",
+      "anchors": [
+        "29/8/2022",
+        "25/8/2022",
+        "13h"
+      ]
+    }
+  ],
+  "revisions": [
+    {
+      "id": "calendar_2021_initial",
+      "start": "2021-01-01",
+      "end": "2021-12-31",
+      "supersedes": null,
+      "closures": [
+        {
+          "start": "2021-01-01",
+          "end": "2021-01-01",
+          "source_id": "vsd_2021_initial",
+          "reason": "new_year"
+        },
+        {
+          "start": "2021-04-21",
+          "end": "2021-04-21",
+          "source_id": "vsd_2021_initial",
+          "reason": "hung_kings"
+        },
+        {
+          "start": "2021-04-30",
+          "end": "2021-04-30",
+          "source_id": "vsd_2021_initial",
+          "reason": "april_may"
+        },
+        {
+          "start": "2021-05-03",
+          "end": "2021-05-03",
+          "source_id": "vsd_2021_initial",
+          "reason": "april_may"
+        },
+        {
+          "start": "2021-09-02",
+          "end": "2021-09-03",
+          "source_id": "vsd_2021_initial",
+          "reason": "national_day"
+        },
+        {
+          "start": "2021-02-11",
+          "end": "2021-02-17",
+          "source_id": "vsd_2021_initial",
+          "reason": "lunar_new_year"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2021_revised",
+      "start": "2021-01-01",
+      "end": "2021-12-31",
+      "supersedes": "calendar_2021_initial",
+      "closures": [
+        {
+          "start": "2021-01-01",
+          "end": "2021-01-01",
+          "source_id": "vsd_2021_amendment",
+          "reason": "new_year"
+        },
+        {
+          "start": "2021-04-21",
+          "end": "2021-04-21",
+          "source_id": "vsd_2021_amendment",
+          "reason": "hung_kings"
+        },
+        {
+          "start": "2021-04-30",
+          "end": "2021-04-30",
+          "source_id": "vsd_2021_amendment",
+          "reason": "april_may"
+        },
+        {
+          "start": "2021-05-03",
+          "end": "2021-05-03",
+          "source_id": "vsd_2021_amendment",
+          "reason": "april_may"
+        },
+        {
+          "start": "2021-09-02",
+          "end": "2021-09-03",
+          "source_id": "vsd_2021_amendment",
+          "reason": "national_day"
+        },
+        {
+          "start": "2021-02-10",
+          "end": "2021-02-16",
+          "source_id": "vsd_2021_amendment",
+          "reason": "lunar_new_year"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2022",
+      "start": "2022-01-01",
+      "end": "2022-12-31",
+      "supersedes": null,
+      "closures": [
+        {
+          "start": "2022-01-03",
+          "end": "2022-01-03",
+          "source_id": "vsd_2022",
+          "reason": "new_year"
+        },
+        {
+          "start": "2022-01-31",
+          "end": "2022-02-04",
+          "source_id": "vsd_2022",
+          "reason": "lunar_new_year"
+        },
+        {
+          "start": "2022-04-11",
+          "end": "2022-04-11",
+          "source_id": "vsd_2022",
+          "reason": "hung_kings"
+        },
+        {
+          "start": "2022-05-02",
+          "end": "2022-05-03",
+          "source_id": "vsd_2022",
+          "reason": "april_may"
+        },
+        {
+          "start": "2022-09-01",
+          "end": "2022-09-02",
+          "source_id": "vsd_2022",
+          "reason": "national_day"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2023_initial",
+      "start": "2023-01-01",
+      "end": "2023-12-31",
+      "supersedes": null,
+      "closures": [
+        {
+          "start": "2023-01-02",
+          "end": "2023-01-02",
+          "source_id": "vsd_2023_initial",
+          "reason": "new_year"
+        },
+        {
+          "start": "2023-01-20",
+          "end": "2023-01-26",
+          "source_id": "vsd_2023_initial",
+          "reason": "lunar_new_year"
+        },
+        {
+          "start": "2023-04-29",
+          "end": "2023-05-03",
+          "source_id": "vsd_2023_initial",
+          "reason": "april_may"
+        },
+        {
+          "start": "2023-09-04",
+          "end": "2023-09-05",
+          "source_id": "vsd_2023_initial",
+          "reason": "national_day"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2023_revised",
+      "start": "2023-01-01",
+      "end": "2023-12-31",
+      "supersedes": "calendar_2023_initial",
+      "closures": [
+        {
+          "start": "2023-01-02",
+          "end": "2023-01-02",
+          "source_id": "vsd_2023_amendment",
+          "reason": "new_year"
+        },
+        {
+          "start": "2023-01-20",
+          "end": "2023-01-26",
+          "source_id": "vsd_2023_amendment",
+          "reason": "lunar_new_year"
+        },
+        {
+          "start": "2023-04-29",
+          "end": "2023-05-03",
+          "source_id": "vsd_2023_amendment",
+          "reason": "april_may"
+        },
+        {
+          "start": "2023-09-01",
+          "end": "2023-09-04",
+          "source_id": "vsd_2023_amendment",
+          "reason": "national_day"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2024_initial",
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "supersedes": null,
+      "closures": [
+        {
+          "start": "2024-01-01",
+          "end": "2024-01-01",
+          "source_id": "vsd_2024_initial",
+          "reason": "new_year"
+        },
+        {
+          "start": "2024-02-08",
+          "end": "2024-02-14",
+          "source_id": "vsd_2024_initial",
+          "reason": "lunar_new_year"
+        },
+        {
+          "start": "2024-04-18",
+          "end": "2024-04-18",
+          "source_id": "vsd_2024_initial",
+          "reason": "hung_kings"
+        },
+        {
+          "start": "2024-09-02",
+          "end": "2024-09-03",
+          "source_id": "vsd_2024_initial",
+          "reason": "national_day"
+        },
+        {
+          "start": "2024-04-30",
+          "end": "2024-05-01",
+          "source_id": "vsd_2024_initial",
+          "reason": "april_may"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2024_revised",
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "supersedes": "calendar_2024_initial",
+      "closures": [
+        {
+          "start": "2024-01-01",
+          "end": "2024-01-01",
+          "source_id": "vsd_2024_initial",
+          "reason": "new_year"
+        },
+        {
+          "start": "2024-02-08",
+          "end": "2024-02-14",
+          "source_id": "vsd_2024_initial",
+          "reason": "lunar_new_year"
+        },
+        {
+          "start": "2024-04-18",
+          "end": "2024-04-18",
+          "source_id": "vsd_2024_initial",
+          "reason": "hung_kings"
+        },
+        {
+          "start": "2024-09-02",
+          "end": "2024-09-03",
+          "source_id": "vsd_2024_initial",
+          "reason": "national_day"
+        },
+        {
+          "start": "2024-04-27",
+          "end": "2024-05-01",
+          "source_id": "vsdc_2024_april",
+          "reason": "april_may"
+        },
+        {
+          "start": "2024-05-04",
+          "end": "2024-05-04",
+          "source_id": "vsdc_2024_april",
+          "reason": "no_equity_settlement_on_makeup_day"
+        }
+      ]
+    },
+    {
+      "id": "calendar_2025_tail",
+      "start": "2025-01-01",
+      "end": "2025-01-03",
+      "supersedes": null,
+      "closures": [
+        {
+          "start": "2025-01-01",
+          "end": "2025-01-01",
+          "source_id": "vsd_2025_initial_tail_only",
+          "reason": "new_year"
+        }
+      ]
+    }
+  ],
+  "selected": [
+    "calendar_2021_revised",
+    "calendar_2022",
+    "calendar_2023_revised",
+    "calendar_2024_revised",
+    "calendar_2025_tail"
+  ]
+}

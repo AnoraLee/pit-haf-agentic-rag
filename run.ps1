@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate','retrieval-study','table-evidence','ocr-preview','ocr-numeric-audit','ocr-cell-links','backtest-synthetic','backtest-timed','market-snapshot','index-crosscheck')]
+  [ValidateSet('test','lint','app','streamlit','frontend-install','frontend-build','frontend-dev','data','pit-demo','doctor','pilot-data','corpus-merge','corpus-coverage','llm-pilot','quote-audit','company-report','development-cases','development-evaluate','retrieval-study','table-evidence','ocr-preview','ocr-numeric-audit','ocr-cell-links','backtest-synthetic','backtest-timed','market-snapshot','index-crosscheck','calendar-audit')]
   [string]$Task = 'app',
   [Parameter(ValueFromRemainingArguments = $true)]
   [string[]]$TaskArgs
@@ -59,5 +59,6 @@ switch ($Task) {
   'backtest-timed' { & $pythonExe -X utf8 -m pit_haf.backtest.timed_runner @TaskArgs }
   'market-snapshot' { & $pythonExe -X utf8 -m pit_haf.research.market_snapshot @TaskArgs }
   'index-crosscheck' { & $pythonExe -X utf8 -m pit_haf.research.index_crosscheck @TaskArgs }
+  'calendar-audit' { & $pythonExe -X utf8 -m pit_haf.research.calendar_audit @TaskArgs }
 }
 exit $LASTEXITCODE

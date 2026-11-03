@@ -37,6 +37,10 @@ Ngày 03/11/2026 bổ sung `backtest-timed` ở
 kiểm tài sản theo thời điểm khả dụng, giữ nguyên protocol mốc 33.
 Đã có mô hình giả lập cho thanh toán giữa ngày; lịch HOSE/VSDC,
 broker availability và adapter thực thi giá thật vẫn chưa được xác minh.
+`calendar-audit` ở [mốc 37](37-settlement-calendar-audit.md) pin chín
+thông báo VSD/VSDC, giữ sửa đổi và đối chiếu ngày của ba mã với 998 ngày
+thanh toán ứng viên. Có cặp ngày T+2 qua đầu năm 2025; chưa nâng thành
+lịch HOSE đã xác minh hoặc tự gán giờ tài sản về để thực thi.
 
 ```mermaid
 flowchart LR

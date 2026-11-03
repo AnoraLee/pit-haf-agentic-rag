@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-03",
+  "protocol": "settlement_calendar_audit_v0.1",
+  "kind": "retrospective_settlement_calendar_diagnostic",
+  "research_result": false,
+  "eligible_for_execution": false,
+  "venue_calendar_verified": false,
+  "broker_availability_verified": false,
+  "historical_availability_validated": false,
+  "independent_gold": false,
+  "study": {
+    "path": "outputs/calendar-development/20261103T025838Z-9308fc82",
+    "seal_sha256": "3ca86a61220a19cd3bb3a1357d04ac9442723a3850dd5d52f10649d6bebb2f1c"
+  },
+  "audit": {
+    "path": "outputs/calendar-audits/20261103T025840Z-fa7a29cb",
+    "seal_sha256": "731f2603d3d11695fa1975214b751209e0d758389a6bef7fcda73fd012f98ff8"
+  },
+  "dependency_binding": {
+    "sources_run": "20261103T025020Z-4e864c99",
+    "sources_seal_sha256": "b48b5f00d7a6e05356cbd5e71299db9eb963e26ab4e78858d52f2692af550a85",
+    "market_run": "20261102T145138Z-21243d88",
+    "market_seal_sha256": "d37d8cf13df76dcd508d80ba179886b2489cb31a039194d12fbc44c7a14148f5"
+  },
+  "config_path": "configs/settlement_calendar_v0_1.json",
+  "config_sha256": "4f253c93cae9f0421080cc199770768551f5f0c99a6d71e44ec9d0c2f86b8674",
+  "source_plan_path": "configs/calendar_sources_v0_1.json",
+  "source_plan_sha256": "b3bc2d69b9df5043946350621ebbf7b0ab381101b7853c1e7de7f60e844194ff",
+  "code_hashes": {
+    "src/pit_haf/data/session_calendar.py": "ea7c968322838743e59487298939dff2e2dfac28db94ff540f0701e27477f497",
+    "src/pit_haf/research/calendar_audit.py": "fda11e369e03dca24c372bdf6a61b41d753ae5a0a7adc99b066ea8f03a724d54",
+    "scripts/capture-calendar-sources.ps1": "11eb1dccd77ca7831c2f5f523fba6f40a9b684476b8861cbc67341dd97147d54"
+  },
+  "capture_script_sha256_at_capture": "778251eef6d9d802f7d4a9da5f7eaa59776b8d0dc07c8eda6e2d9355b2386808",
+  "curation": "assistant_authored_source_interpretation; no_independent_human_confirmation",
+  "candidate_sessions": 998,
+  "candidate_sessions_by_year": {
+    "2021": 250,
+    "2022": 249,
+    "2023": 249,
+    "2024": 250
+  },
+  "assets": [
+    {
+      "symbol": "FPT",
+      "observed_sessions": 998,
+      "missing_candidate_dates": [],
+      "unexpected_observed_dates": [],
+      "date_set_matches_candidate": true
+    },
+    {
+      "symbol": "HPG",
+      "observed_sessions": 998,
+      "missing_candidate_dates": [],
+      "unexpected_observed_dates": [],
+      "date_set_matches_candidate": true
+    },
+    {
+      "symbol": "VCB",
+      "observed_sessions": 998,
+      "missing_candidate_dates": [],
+      "unexpected_observed_dates": [],
+      "date_set_matches_candidate": true
+    }
+  ],
+  "unassessed_instruments": [
+    {
+      "symbol": "VNINDEX",
+      "asset_type": "index",
+      "reason": "1 validation error for Bar\n  Value error, Require positive prices and low <= open/close <= high [type=value_error, input_value={'session': '2023-05-15',...1', 'volume': 791524900}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    }
+  ],
+  "revision_changes": [
+    {
+      "date": "2021-02-10",
+      "prior_revision": "calendar_2021_initial",
+      "revision": "calendar_2021_revised",
+      "prior_open": true,
+      "revised_open": false
+    },
+    {
+      "date": "2021-02-17",
+      "prior_revision": "calendar_2021_initial",
+      "revision": "calendar_2021_revised",
+      "prior_open": false,
+      "revised_open": true
+    },
+    {
+      "date": "2023-09-01",
+      "prior_revision": "calendar_2023_initial",
+      "revision": "calendar_2023_revised",
+      "prior_open": true,
+      "revised_open": false
+    },
+    {
+      "date": "2023-09-05",
+      "prior_revision": "calendar_2023_initial",
+      "revision": "calendar_2023_revised",
+      "prior_open": false,
+      "revised_open": true
+    },
+    {
+      "date": "2024-04-29",
+      "prior_revision": "calendar_2024_initial",
+      "revision": "calendar_2024_revised",
+      "prior_open": true,
+      "revised_open": false
+    }
+  ],
+  "candidate_T2_date_count": 998,
+  "cross_year_tail": [
+    {
+      "trade_date": "2024-12-30",
+      "candidate_T2_date": "2025-01-02",
+      "shares_available_at": null,
+      "sale_cash_available_at": null
+    },
+    {
+      "trade_date": "2024-12-31",
+      "candidate_T2_date": "2025-01-03",
+      "shares_available_at": null,
+      "sale_cash_available_at": null
+    }
+  ]
+}

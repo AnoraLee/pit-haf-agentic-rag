@@ -8,6 +8,7 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
+[Đối soát lịch thanh toán](docs/research/37-settlement-calendar-audit.md) ·
 [Thanh toán theo thời điểm](docs/research/36-timestamp-settlement.md) ·
 [Đối soát VNINDEX](docs/research/35-index-vendor-crosscheck.md) ·
 [Snapshot giá 2021–2024](docs/research/34-market-price-snapshots.md) ·
@@ -212,7 +213,7 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **766 test** và lint.
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **801 test** và lint.
 Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc đối soát
 chỉ số. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
@@ -370,6 +371,19 @@ HOSE/VSDC và thời điểm tài khoản khách hàng vẫn cần xác minh tr�
 dùng giá thật. Xem [thanh toán theo thời điểm](docs/research/36-timestamp-settlement.md).
 
 ### Snapshot giá thị trường
+
+Đối soát ngày giá với thông báo thanh toán VSD/VSDC:
+
+```powershell
+.\run.ps1 calendar-audit --build --sources-run <run-nguồn> --market-run <run-giá>
+.\run.ps1 calendar-audit --replay outputs/calendar-audits/<run-id>
+```
+
+Ba mã FPT/HPG/VCB khớp toàn bộ **998 ngày** với lịch ứng viên 2021–2024,
+có giữ bản gốc/sửa đổi và cặp ngày T+2 qua đầu năm 2025. Chưa xác minh
+đầy đủ lịch HOSE hoặc giờ tài sản về tài khoản; chưa nối vào thực thi.
+Build/replay cần archive nguồn và snapshot giá local. Capture nguồn mới
+cần PowerShell 7.2+; xem [nguồn, lệnh và giới hạn](docs/research/37-settlement-calendar-audit.md).
 
 ```powershell
 .\run.ps1 market-snapshot --capture

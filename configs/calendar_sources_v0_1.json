@@ -1,0 +1,14 @@
+{
+  "protocol": "calendar_source_capture_v0.1",
+  "sources": [
+    {"id": "vsd_2021_initial", "url": "https://vsdc.vn/vi/ad/68796"},
+    {"id": "vsd_2021_amendment", "url": "https://vsdc.vn/vi/ad/76898"},
+    {"id": "vsd_2022", "url": "https://vsdc.vn/vi/ad/144999"},
+    {"id": "vsd_2023_initial", "url": "https://vsdc.vn/vi/ad/152241"},
+    {"id": "vsd_2023_amendment", "url": "https://vsdc.vn/vi/ad/155165"},
+    {"id": "vsd_2024_initial", "url": "https://vsdc.vn/vi/ad/159293"},
+    {"id": "vsdc_2024_april", "url": "https://vsdc.vn/vi/ad/170099"},
+    {"id": "vsd_2025_initial_tail_only", "url": "https://vsdc.vn/vi/ad/159292"},
+    {"id": "vsd_2022_timing", "url": "https://vsdc.vn/vi/ad/152750"}
+  ]
+}
