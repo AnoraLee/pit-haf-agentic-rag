@@ -8,6 +8,7 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
+[Thanh toán theo thời điểm](docs/research/36-timestamp-settlement.md) ·
 [Đối soát VNINDEX](docs/research/35-index-vendor-crosscheck.md) ·
 [Snapshot giá 2021–2024](docs/research/34-market-price-snapshots.md) ·
 [Backtest giả lập](docs/research/33-synthetic-execution-engine.md) ·
@@ -211,7 +212,7 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **724 test** và lint.
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **766 test** và lint.
 Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc đối soát
 chỉ số. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
@@ -352,6 +353,21 @@ Q0/Q1 mới có cơ chế tạo lịch trên kịch bản giả lập; chưa là
 hai baseline nghiên cứu. Runner chưa nhận giá thị trường, chưa xác minh
 lịch/điều chỉnh giá/quy tắc thực thi sàn hoặc chạy đủ năm baseline.
 Xem [quy tắc, kiểm chứng và giới hạn](docs/research/33-synthetic-execution-engine.md).
+
+Phiên bản có thời điểm thanh toán riêng:
+
+```powershell
+.\run.ps1 backtest-timed --demo
+.\run.ps1 backtest-timed --demo --baseline Q1 --rebalance-every 2
+.\run.ps1 backtest-timed --replay outputs/backtest-timed-synthetic/<run-id>
+```
+
+Tách lịch giao dịch/lịch thanh toán và giờ khả dụng của tiền/cổ phiếu;
+tài sản về buổi trưa chưa được dùng lúc mở cửa. Có ledger sự kiện,
+`settlement_schedule.csv`, `settlement_events.csv` và replay offline.
+Giữ nguyên protocol giả lập cũ. Đây là mô hình kiểm tra kế toán, lịch
+HOSE/VSDC và thời điểm tài khoản khách hàng vẫn cần xác minh trước khi
+dùng giá thật. Xem [thanh toán theo thời điểm](docs/research/36-timestamp-settlement.md).
 
 ### Snapshot giá thị trường
 

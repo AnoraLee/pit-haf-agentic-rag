@@ -32,6 +32,11 @@ adjustment và tính khả dụng là đã xác minh.
 KBS/Vietcap và tạo comparator close-only cho Q2 phát triển khi toàn bộ
 close/tập ngày đồng thuận. Không nâng dữ liệu OHLCV thành đủ điều kiện
 thực thi, chưa thay tiêu chí nghiệm thu M2 hoặc freeze thực nghiệm.
+Ngày 03/11/2026 bổ sung `backtest-timed` ở
+[mốc 36](36-timestamp-settlement.md): tách lịch phiên/lịch thanh toán,
+kiểm tài sản theo thời điểm khả dụng, giữ nguyên protocol mốc 33.
+Đã có mô hình giả lập cho thanh toán giữa ngày; lịch HOSE/VSDC,
+broker availability và adapter thực thi giá thật vẫn chưa được xác minh.
 
 ```mermaid
 flowchart LR

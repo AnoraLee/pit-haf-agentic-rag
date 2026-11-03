@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-03",
+  "protocol": "synthetic_timed_execution_v0.1",
+  "kind": "synthetic_execution_development_diagnostic",
+  "research_result": false,
+  "eligible_for_execution": false,
+  "venue_calendar_verified": false,
+  "historical_availability_validated": false,
+  "independent_gold": false,
+  "study": {
+    "path": "outputs/timed-execution-development/20261103T022901Z-a6f9af92",
+    "seal_sha256": "8f740c05201f4c0ebdd93d4189357722bb3f0e890c752997a15cacff7a3dfdd8"
+  },
+  "config_path": "configs/synthetic_timed_execution_v0_1.json",
+  "config_sha256": "ae40d70b22c0beba3fae547ff17d5faa08e93a72ab21fee37e08a13045eda38c",
+  "code_hashes": {
+    "src/pit_haf/backtest/timed_contracts.py": "66a1c693f5bd471cf5eb5b1998503dab751c093410632d66ecc944d1b6102ba4",
+    "src/pit_haf/backtest/timed_engine.py": "0bf91593abe77f07ddf0b68cafd55a1ce570b2490538f903184819d2f08e9f98",
+    "src/pit_haf/backtest/timed_runner.py": "20ebe576afc8c58b91a797ac9520400b223008bc4888100ea74d4b16c67feee6"
+  },
+  "runs": [
+    {
+      "baseline": "manual",
+      "path": "outputs/backtest-timed-synthetic/20261103T022901Z-1537404f",
+      "seal_sha256": "ffbfa90e1dd5d36cf77cc368c0fbcfc98725c6dc03396b9fa062920bcc53e970",
+      "replay": "passed",
+      "sessions": 6,
+      "settlement_schedule_rows": 6,
+      "settlement_events": 3,
+      "research_result": false,
+      "eligible_for_execution": false
+    },
+    {
+      "baseline": "Q0",
+      "path": "outputs/backtest-timed-synthetic/20261103T022902Z-59c8b5f4",
+      "seal_sha256": "5b4ce32d9eed35ffde5724b7f1d38e031debed5201fe72a7fc0badd48304a608",
+      "replay": "passed",
+      "sessions": 6,
+      "settlement_schedule_rows": 6,
+      "settlement_events": 2,
+      "research_result": false,
+      "eligible_for_execution": false
+    },
+    {
+      "baseline": "Q1",
+      "path": "outputs/backtest-timed-synthetic/20261103T022902Z-9c1ddc0f",
+      "seal_sha256": "29386d8e90901cec8fa3f27bdb359e1b2dcfe22df824699d696156700c69681f",
+      "replay": "passed",
+      "sessions": 6,
+      "settlement_schedule_rows": 6,
+      "settlement_events": 3,
+      "research_result": false,
+      "eligible_for_execution": false
+    }
+  ],
+  "legacy_v0_1_replay": [
+    {
+      "path": "outputs/backtest-synthetic/20261102T142512Z-0319e243",
+      "replay": "passed"
+    },
+    {
+      "path": "outputs/backtest-synthetic/20261102T142513Z-5a331b59",
+      "replay": "passed"
+    },
+    {
+      "path": "outputs/backtest-synthetic/20261102T142514Z-6ffe1c85",
+      "replay": "passed"
+    }
+  ],
+  "input_provenance": "assistant_authored_synthetic_fixture; no_independent_human_labels",
+  "source_note": {
+    "url": "https://vsdc.vn/vi/ad/152750",
+    "consulted_date": "2026-11-03",
+    "use": "design_rationale_only; no_verified_market_calendar_or_broker_profile",
+    "raw_source_archived": false
+  },
+  "new_llm_calls": 0,
+  "new_market_downloads": 0
+}

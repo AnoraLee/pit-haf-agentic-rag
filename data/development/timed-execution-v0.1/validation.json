@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-03",
+  "software_tests_passed": 766,
+  "new_timed_execution_tests_passed": 42,
+  "related_tests_passed": 86,
+  "ruff": "passed",
+  "test_dependency_warnings": 2,
+  "final_full_suite_execution": "require_escalated_after_sandbox_TestClient_stall",
+  "sandbox_test_attempts_interrupted": 2,
+  "test_cases_excluded": 0,
+  "frontend_build": "not_rerun_frontend_unchanged",
+  "new_snapshot_replays": 3,
+  "legacy_snapshot_replays": 3,
+  "actual_cli_replay": "passed",
+  "protected_artifact_count": 104,
+  "protected_artifacts_unchanged": true,
+  "real_review_database_created": false,
+  "new_llm_calls": 0,
+  "new_market_downloads": 0,
+  "research_result": false,
+  "eligible_for_execution": false,
+  "venue_calendar_verified": false,
+  "historical_availability_validated": false,
+  "independent_gold": false,
+  "limitations": [
+    "Synthetic calendars and timestamps only; no verified HOSE/VSDC/broker availability profile",
+    "Open-only orders do not execute at afternoon asset release; no automatic retry",
+    "No real-price execution adapter, corporate actions, historical universe or final baseline results",
+    "Software accounting checks do not establish semantic accuracy, PiT eligibility or financial performance"
+  ]
+}

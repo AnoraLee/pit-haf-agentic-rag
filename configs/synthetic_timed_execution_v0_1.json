@@ -1,0 +1,11 @@
+{
+  "protocol": "synthetic_timed_execution_v0.1",
+  "initial_cash": "100000",
+  "lot_size": 10,
+  "buy_fee_bps": 10,
+  "sell_fee_bps": 20,
+  "slippage_bps": 5,
+  "participation_bps": 1000,
+  "share_lag_days": 2,
+  "sale_cash_lag_days": 2
+}

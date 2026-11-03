@@ -1,6 +1,6 @@
 # Hồ sơ nghiên cứu PiT-HAF
 
-Cập nhật: 29/10/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
+Cập nhật: 03/11/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
 không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết quả khoa học.
 
 | Hồ sơ | Nội dung |
@@ -43,6 +43,7 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [33 — Động cơ thực thi giả lập](33-synthetic-execution-engine.md) | Lệnh trễ phiên, phí/slippage, settlement, sổ tiền/vị thế, lịch Q0/Q1 và replay; chưa có backtest thị trường |
 | [34 — Snapshot giá 2021–2024](34-market-price-snapshots.md) | Raw KBS và Decimal, 2.994 bar cổ phiếu, chặn VNINDEX lỗi OHLC, replay và báo điều kiện còn thiếu; chưa chạy lợi suất |
 | [35 — Đối soát VNINDEX](35-index-vendor-crosscheck.md) | KBS/Vietcap theo trường, 998 close khớp, giữ lỗi OHLC/volume và tạo comparator close-only; chưa xác nhận dữ liệu thực thi/PiT |
+| [36 — Thanh toán theo thời điểm](36-timestamp-settlement.md) | Hai lịch tường minh, giờ về tiền/cổ phiếu, ranh giới open/close/decision và replay; chưa xác minh lịch HOSE/VSDC |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,
