@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-06",
+  "protocol": "corporate_action_development_v0.1",
+  "research_result": false,
+  "eligible_for_execution": false,
+  "historical_availability_validated": false,
+  "independent_gold": false,
+  "study": {
+    "path": "outputs/corporate-development/20261106T071032Z-1ec973eb",
+    "seal_sha256": "b4c060fd13cef0ff05dce6c3dc67d6e05b290189a81a7705c42ad23c3156557b"
+  },
+  "audit": {
+    "path": "outputs/corporate-actions/20261106T071034Z-aa43ce9a",
+    "seal_sha256": "6a1772d575be166e064431ee4232d1c0dfbcef7b898420d08ae2c26617499c8a"
+  },
+  "demo": {
+    "path": "outputs/corporate-actions/20261106T071036Z-b53cb8b3",
+    "seal_sha256": "a39d8e26f3d2e0bc0d16abf4e0a5293590944bf2cdd73fcd1c3b1d39ce63b290"
+  },
+  "dependency_binding": {
+    "sources_run": "20261106T065017Z-5e9486ce",
+    "sources_seal_sha256": "2cd0ebeafb1025bbc9e7ad0b60b2cdfcfe0cd158ed1a422c43dd638761e77e7c",
+    "market_run": "20261102T145138Z-21243d88",
+    "market_seal_sha256": "d37d8cf13df76dcd508d80ba179886b2489cb31a039194d12fbc44c7a14148f5",
+    "external_pdf_inputs": [
+      {
+        "path": "data/cache/evidence/blobs/30/304a93a65e1587f625e0045d6ec9bcfba6647d19df4034cfd8fc1ec7b62eeb64",
+        "sha256": "304a93a65e1587f625e0045d6ec9bcfba6647d19df4034cfd8fc1ec7b62eeb64",
+        "page": 57
+      }
+    ]
+  },
+  "config_path": "configs/corporate_actions_v0_1.json",
+  "config_sha256": "da40f0736e4b75a174c08a1d087b6e4e65a19e0d645b2c350735dd97551f0974",
+  "source_plan_path": "configs/corporate_sources_v0_1.json",
+  "source_plan_sha256": "ee1d9862bf7efde257f622336d69735fc562480e1956ce7423005c2288b38e7a",
+  "code_hashes": {
+    "src/pit_haf/backtest/corporate_ledger.py": "60254a79d12df7099726c4862f9b07b04feb7e5621ad80cb819b34fb51819007",
+    "src/pit_haf/data/corporate_actions.py": "0933cf2723025fb9a00b6f7406a506b7f34fc40394cc6c250e2bfa2e3e4c9dfd",
+    "src/pit_haf/research/corporate_runner.py": "8dd148da1fa39b2921a3d57de47ad1f7c29f0015055087d12e4f5949656d7c88"
+  },
+  "curation": "assistant_source_read_and_visual_PDF_inspection; not_independent_human_gold",
+  "observed_events": 3,
+  "notice_sources": 6,
+  "notice_token_locators": 20,
+  "disagreements": [
+    {
+      "event_id": "hpg_2024_observed_distribution",
+      "issuer_symbol": "HPG",
+      "other_record_date": "2024-06-03",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/03/bao-cao-tai-chinh-hop-nhat-nam-2024-da-kiem-toan-1.pdf",
+      "content_hash": "304a93a65e1587f625e0045d6ec9bcfba6647d19df4034cfd8fc1ec7b62eeb64",
+      "pdf_page": 57,
+      "basis": "assistant_visual_read_of_original_pdf_page",
+      "independent_confirmation": false,
+      "notice_record_date": "2024-05-24"
+    }
+  ],
+  "synthetic_initial_value": "2320",
+  "synthetic_checkpoint_total_values": [
+    "2320",
+    "2320",
+    "2320",
+    "2320"
+  ],
+  "venue_fragment": {
+    "document_issuer_as_printed": "HOSE",
+    "notice_number_visual_read": "803/TB-SGDHCM",
+    "notice_date": "2024-04-19",
+    "document_page": 1,
+    "source_url": "https://static2.vietstock.vn/vietstock/2024/4/19/20240419_19042024___cap_nhat_lich_nghi_giao_dich_2024_.pdf",
+    "referer_url": "https://www.phs.vn/tin-tuc/hose-cap-nhat-lich-nghi-giao-dich-nam-2024/6167965",
+    "retrieval_role": "mirror_linked_by_broker; not_direct_exchange_download",
+    "pdf_path": "outputs/venue-source-probes/20261106T064550Z-cd3cf842/hose-2024-amendment.pdf",
+    "pdf_sha256": "0c579efbaf9acd12c7c7559290c05b82d6e3a1885184737b239ea9dc306374d5",
+    "page_image_sha256": "a4621452af08151a35b2f60050164f2ce0cd00c385fd3ccb74cc791396e96e3a",
+    "curation": "assistant_visual_read_of_rendered_page; no_independent_human_review",
+    "text_layer_notice_number": "905 (incorrect extraction; preserved source bytes)",
+    "closed_dates": [
+      "2024-04-29",
+      "2024-04-30",
+      "2024-05-01",
+      "2024-05-04"
+    ],
+    "matches_settlement_candidate_for_these_dates": true,
+    "calendar_seal_sha256": "731f2603d3d11695fa1975214b751209e0d758389a6bef7fcda73fd012f98ff8",
+    "signature_authenticity_verified": false,
+    "full_venue_calendar_verified": false,
+    "research_result": false
+  }
+}

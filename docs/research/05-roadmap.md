@@ -41,6 +41,10 @@ broker availability và adapter thực thi giá thật vẫn chưa được xác
 thông báo VSD/VSDC, giữ sửa đổi và đối chiếu ngày của ba mã với 998 ngày
 thanh toán ứng viên. Có cặp ngày T+2 qua đầu năm 2025; chưa nâng thành
 lịch HOSE đã xác minh hoặc tự gán giờ tài sản về để thực thi.
+Ngày 06/11/2026, `corporate-actions` ở
+[mốc 38](38-corporate-action-ledger.md) bổ sung ledger quyền giả lập,
+ba sự kiện nguồn và giữ bất đồng ngày HPG. Chưa có đầy đủ ex-date,
+factor lịch sử, số lượng được hưởng hoặc tích hợp vào engine giá thật.
 
 ```mermaid
 flowchart LR

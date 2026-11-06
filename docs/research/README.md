@@ -1,6 +1,6 @@
 # Hồ sơ nghiên cứu PiT-HAF
 
-Cập nhật: 03/11/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
+Cập nhật: 06/11/2026. Đây là đặc tả và kế hoạch phát triển toàn bộ đề tài,
 không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết quả khoa học.
 
 | Hồ sơ | Nội dung |
@@ -45,6 +45,7 @@ không phải tuyên bố hệ thống đã hoàn thành hoặc đã có kết q
 | [35 — Đối soát VNINDEX](35-index-vendor-crosscheck.md) | KBS/Vietcap theo trường, 998 close khớp, giữ lỗi OHLC/volume và tạo comparator close-only; chưa xác nhận dữ liệu thực thi/PiT |
 | [36 — Thanh toán theo thời điểm](36-timestamp-settlement.md) | Hai lịch tường minh, giờ về tiền/cổ phiếu, ranh giới open/close/decision và replay; chưa xác minh lịch HOSE/VSDC |
 | [37 — Đối soát lịch thanh toán](37-settlement-calendar-audit.md) | Chín thông báo VSD/VSDC, revision, 998 ngày khớp ba mã và T+2 qua đầu năm; lịch HOSE/giờ tài khoản chưa xác minh |
+| [38 — Sổ quyền nhận cổ tức/cổ phiếu](38-corporate-action-ledger.md) | Entitlement ledger giả lập, ba sự kiện có nguồn, giữ bất đồng HPG và đối chiếu một thông báo HOSE; chưa tích hợp thực thi giá thật |
 
 Tài liệu trong thư mục này là protocol đang phát triển. Ghi chú đọc paper
 03/09/2026 và bản dịch trong `docs/translations/` là tài liệu tham khảo; dữ liệu,

@@ -8,6 +8,7 @@ sẵn, không huấn luyện một LLM mới.
 
 **Backend:** FastAPI · **Frontend:** React + Vite · **LLM local:** Ollama/Qwen3:4b.
 
+[Sổ cổ tức và cổ phiếu thưởng](docs/research/38-corporate-action-ledger.md) ·
 [Đối soát lịch thanh toán](docs/research/37-settlement-calendar-audit.md) ·
 [Thanh toán theo thời điểm](docs/research/36-timestamp-settlement.md) ·
 [Đối soát VNINDEX](docs/research/35-index-vendor-crosscheck.md) ·
@@ -213,7 +214,7 @@ Model được tải riêng trên từng máy; không nằm trong gói dữ li�
 
 `test`, `lint` và `pit-demo` chạy offline. `pit-demo` sử dụng ví dụ giả định.
 `doctor` lưu chẩn đoán môi trường/Ollama ở `outputs/preflight/`, không tải model
-hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **801 test** và lint.
+hoặc chạy inference. Lượt kiểm tra local gần nhất đạt **855 test** và lint.
 Frontend giữ bản build đã kiểm tra ở mốc OCR, không đổi trong mốc đối soát
 chỉ số. Đây là kiểm thử phần mềm, không phải độ chính xác tài chính
 hoặc kết quả GitHub Actions. CI test/lint được cấu hình tại
@@ -371,6 +372,20 @@ HOSE/VSDC và thời điểm tài khoản khách hàng vẫn cần xác minh tr�
 dùng giá thật. Xem [thanh toán theo thời điểm](docs/research/36-timestamp-settlement.md).
 
 ### Snapshot giá thị trường
+
+Sổ quyền nhận cổ tức/cổ phiếu và đối soát các sự kiện nguồn:
+
+```powershell
+.\run.ps1 corporate-actions --demo
+.\run.ps1 corporate-actions --audit --sources-run <run-nguồn-quyền> --market-run <run-giá>
+.\run.ps1 corporate-actions --replay outputs/corporate-actions/<run-id>
+```
+
+Demo kiểm kế toán tiền phải thu, thuế giả lập, cổ phiếu chờ giao dịch
+và phần lẻ. Audit giữ ba sự kiện mẫu FPT/HPG/VCB có locator nguồn và
+bất đồng ngày HPG; chưa tạo entitlement thật hoặc điều chỉnh giá.
+Audit cần thêm blob BCTC HPG đã ghim để replay bất đồng nguồn; demo
+không cần dữ liệu/Ollama. Xem [phạm vi và nguồn](docs/research/38-corporate-action-ledger.md).
 
 Đối soát ngày giá với thông báo thanh toán VSD/VSDC:
 

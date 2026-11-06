@@ -1,0 +1,11 @@
+{
+  "protocol": "calendar_source_capture_v0.1",
+  "sources": [
+    {"id": "fpt_2024_rights", "url": "https://vsdc.vn/vi/ad/171655"},
+    {"id": "fpt_2024_tradable", "url": "https://vsdc.vn/vi/ad/173404"},
+    {"id": "hpg_2024_rights", "url": "https://vsdc.vn/vi/ad/170903"},
+    {"id": "hpg_2024_tradable", "url": "https://vsdc.vn/vi/ad/172369"},
+    {"id": "vcb_2023_rights", "url": "https://vsdc.vn/vi/ad/159971"},
+    {"id": "vcb_2023_tradable", "url": "https://vsdc.vn/vi/ad/161434"}
+  ]
+}

@@ -15,6 +15,9 @@ src/pit_haf/backtest/*.py text eol=lf
 configs/synthetic_execution_v0_1.json text eol=lf
 configs/synthetic_timed_execution_v0_1.json text eol=lf
 configs/calendar_sources_v0_1.json text eol=lf
+configs/corporate_sources_v0_1.json text eol=lf
+configs/corporate_actions_v0_1.json text eol=lf
+src/pit_haf/research/corporate_runner.py text eol=lf
 # Calendar profile is frozen with its generated CRLF bytes in the source-bound audit.
 configs/settlement_calendar_v0_1.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 scripts/capture-calendar-sources.ps1 text eol=lf
@@ -66,5 +69,6 @@ data/development/market-prices-v0.1/** -text whitespace=blank-at-eol,blank-at-eo
 data/development/index-crosscheck-v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/development/timed-execution-v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/development/calendar-audit-v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+data/development/corporate-actions-v0.1/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/development/table-v0.5/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/development/table-v0.4/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

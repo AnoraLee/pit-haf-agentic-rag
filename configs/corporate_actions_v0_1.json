@@ -1,0 +1,235 @@
+{
+  "protocol": "corporate_action_development_v0.1",
+  "coverage": "selected_examples_only_not_complete_history",
+  "audit_start": "2021-01-01",
+  "audit_end": "2024-12-31",
+  "sources": [
+    {
+      "id": "fpt_2024_rights",
+      "url": "https://vsdc.vn/vi/ad/171655",
+      "raw_sha256": "f7c63a2ab8a28b4170888eaa554321e3f4490614359111c985a01b341cd962fc",
+      "body_sha256": "328b2025805d035f584ecacf6360dbaab98c3fc293dd005cd573c8ebe6c7b538",
+      "anchors": [
+        "FPT"
+      ]
+    },
+    {
+      "id": "fpt_2024_tradable",
+      "url": "https://vsdc.vn/vi/ad/173404",
+      "raw_sha256": "26fd667b666eb592136126422063c28abe8e1f5e9a675e176187381f6fd3a1c3",
+      "body_sha256": "013edeee5fb9317e2fcdb42884807874832b181ae9982022400587102a036086",
+      "anchors": [
+        "FPT"
+      ]
+    },
+    {
+      "id": "hpg_2024_rights",
+      "url": "https://vsdc.vn/vi/ad/170903",
+      "raw_sha256": "fb877f0500c06f3f0b4cc50e94bcd41ae1055f7e0870c57b58586515edcef2d8",
+      "body_sha256": "94556279e29a55685d1d7a27ba8b1b5353d3aeb8830abc7eb9490cf6230cdb0d",
+      "anchors": [
+        "HPG"
+      ]
+    },
+    {
+      "id": "hpg_2024_tradable",
+      "url": "https://vsdc.vn/vi/ad/172369",
+      "raw_sha256": "9af0d38fadea454b262c0a8d880962cbf250c5d7dda003ae78b7d7ff5c3e01db",
+      "body_sha256": "e7b58d182b0f32bd09bbd34281a076e5f73822d465837445cd43740542ee0135",
+      "anchors": [
+        "HPG"
+      ]
+    },
+    {
+      "id": "vcb_2023_rights",
+      "url": "https://vsdc.vn/vi/ad/159971",
+      "raw_sha256": "d03cc9bf837262e21eb167f24c4986468e6c354ce1d50260d8834c175e3162ac",
+      "body_sha256": "e29b6c26f99f622ebdf7da7a730339fa8f4bf432e7546a7a37b2c5006e0e83be",
+      "anchors": [
+        "VCB"
+      ]
+    },
+    {
+      "id": "vcb_2023_tradable",
+      "url": "https://vsdc.vn/vi/ad/161434",
+      "raw_sha256": "e91c20f69443a7288b88067e9e6b88a7a6444faf9872ab5e46c187781d0291f4",
+      "body_sha256": "99ddf38a6bfbeb6926e075277ae51714885acc33eb605d6ae59cdcdce54ddf71",
+      "anchors": [
+        "VCB"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "fpt_2024_observed_distribution",
+      "symbol": "FPT",
+      "record_date": "2024-06-13",
+      "ex_date": null,
+      "cash_per_share": "1000",
+      "cash_payment_date": "2024-06-20",
+      "ratio_old": 20,
+      "ratio_new": 3,
+      "stock_tradable_date": "2024-08-01",
+      "proofs": [
+        {
+          "field": "symbol",
+          "source_id": "fpt_2024_rights",
+          "start": 212,
+          "token": "FPT"
+        },
+        {
+          "field": "symbol",
+          "source_id": "fpt_2024_tradable",
+          "start": 231,
+          "token": "FPT"
+        },
+        {
+          "field": "record_date",
+          "source_id": "fpt_2024_rights",
+          "start": 341,
+          "token": "13/06/2024"
+        },
+        {
+          "field": "stock_ratio",
+          "source_id": "fpt_2024_rights",
+          "start": 1690,
+          "token": "20:3"
+        },
+        {
+          "field": "stock_tradable_date",
+          "source_id": "fpt_2024_tradable",
+          "start": 284,
+          "token": "01/08/2024"
+        },
+        {
+          "field": "tradable_record_date",
+          "source_id": "fpt_2024_tradable",
+          "start": 627,
+          "token": "13/06/2024"
+        },
+        {
+          "field": "cash_per_share",
+          "source_id": "fpt_2024_rights",
+          "start": 588,
+          "token": "1.000"
+        },
+        {
+          "field": "cash_payment_date",
+          "source_id": "fpt_2024_rights",
+          "start": 623,
+          "token": "20/06/2024"
+        }
+      ]
+    },
+    {
+      "id": "hpg_2024_observed_distribution",
+      "symbol": "HPG",
+      "record_date": "2024-05-24",
+      "ex_date": null,
+      "cash_per_share": "0",
+      "cash_payment_date": null,
+      "ratio_old": 10,
+      "ratio_new": 1,
+      "stock_tradable_date": "2024-06-28",
+      "proofs": [
+        {
+          "field": "symbol",
+          "source_id": "hpg_2024_rights",
+          "start": 236,
+          "token": "HPG"
+        },
+        {
+          "field": "symbol",
+          "source_id": "hpg_2024_tradable",
+          "start": 245,
+          "token": "HPG"
+        },
+        {
+          "field": "record_date",
+          "source_id": "hpg_2024_rights",
+          "start": 365,
+          "token": "24/05/2024"
+        },
+        {
+          "field": "stock_ratio",
+          "source_id": "hpg_2024_rights",
+          "start": 489,
+          "token": "10:1"
+        },
+        {
+          "field": "stock_tradable_date",
+          "source_id": "hpg_2024_tradable",
+          "start": 298,
+          "token": "28/06/2024"
+        },
+        {
+          "field": "tradable_record_date",
+          "source_id": "hpg_2024_tradable",
+          "start": 641,
+          "token": "24/05/2024"
+        }
+      ]
+    },
+    {
+      "id": "vcb_2023_observed_distribution",
+      "symbol": "VCB",
+      "record_date": "2023-07-26",
+      "ex_date": null,
+      "cash_per_share": "0",
+      "cash_payment_date": null,
+      "ratio_old": 1000,
+      "ratio_new": 181,
+      "stock_tradable_date": "2023-09-15",
+      "proofs": [
+        {
+          "field": "symbol",
+          "source_id": "vcb_2023_rights",
+          "start": 228,
+          "token": "VCB"
+        },
+        {
+          "field": "symbol",
+          "source_id": "vcb_2023_tradable",
+          "start": 255,
+          "token": "VCB"
+        },
+        {
+          "field": "record_date",
+          "source_id": "vcb_2023_rights",
+          "start": 360,
+          "token": "26/07/2023"
+        },
+        {
+          "field": "stock_ratio",
+          "source_id": "vcb_2023_rights",
+          "start": 524,
+          "token": "1.000 : 181"
+        },
+        {
+          "field": "stock_tradable_date",
+          "source_id": "vcb_2023_tradable",
+          "start": 308,
+          "token": "15/09/2023"
+        },
+        {
+          "field": "tradable_record_date",
+          "source_id": "vcb_2023_tradable",
+          "start": 702,
+          "token": "26/7/2023"
+        }
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "event_id": "hpg_2024_observed_distribution",
+      "issuer_symbol": "HPG",
+      "other_record_date": "2024-06-03",
+      "source_url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/03/bao-cao-tai-chinh-hop-nhat-nam-2024-da-kiem-toan-1.pdf",
+      "content_hash": "304a93a65e1587f625e0045d6ec9bcfba6647d19df4034cfd8fc1ec7b62eeb64",
+      "pdf_page": 57,
+      "basis": "assistant_visual_read_of_original_pdf_page",
+      "independent_confirmation": false
+    }
+  ]
+}
